@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Effects
+  - PlayerVirtualCameras
   layers:
   - Default
   - TransparentFX

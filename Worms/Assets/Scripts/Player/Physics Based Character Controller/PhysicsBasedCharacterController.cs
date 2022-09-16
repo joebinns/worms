@@ -48,7 +48,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     private Vector3 _m_GoalVel = Vector3.zero;
 
     [Header("Movement:")]
-    [SerializeField] private float _maxSpeed = 8f;
+    [SerializeField] public float _maxSpeed = 8f;
     [SerializeField] private float _acceleration = 200f;
     [SerializeField] private float _maxAccelForce = 150f;
     [SerializeField] private float _leanFactor = 0.25f;
@@ -65,7 +65,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     private bool _isJumping = false;
 
     [Header("Jump:")]
-    [SerializeField] private float _jumpForceFactor = 10f;
+    [SerializeField] public float _jumpForceFactor = 10f;
     [SerializeField] private float _riseGravityFactor = 5f;
     [SerializeField] private float _fallGravityFactor = 10f; // typically > 1f (i.e. 5f).
     [SerializeField] private float _lowJumpFactor = 2.5f;

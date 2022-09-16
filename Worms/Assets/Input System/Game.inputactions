@@ -1,0 +1,51 @@
+{
+    "name": "Player 1",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "2f4fc0ae-54a7-4c3c-821d-0c988d2dbdfe",
+            "actions": [
+                {
+                    "name": "End Turn",
+                    "type": "Button",
+                    "id": "d9d07daa-e394-45e0-9861-ad2e85847cde",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a7718ce-6be0-4e5c-bd49-c5633edda377",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "End Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard & Mouse",
+            "bindingGroup": "Keyboard & Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

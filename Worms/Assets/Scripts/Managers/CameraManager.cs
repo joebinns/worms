@@ -1,27 +1,71 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager Instance;
+    
+    private static Animator animator;
+
+    public static CameraState state;
+
     private void Awake()
     {
-        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        Instance = this;
+        animator = GetComponent<Animator>();
+    }
+    
+    void Start()
+    {
+        UpdateCameraState(CameraState.FollowCamera);
     }
 
-    private void OnDestroy()
+    public static void UpdateCameraState(CameraState cameraState)
     {
-        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+        state = cameraState;
+        
+        switch (state)
+        {
+            case CameraState.FollowCamera:
+                animator.Play("Follow Camera");
+                // Enable Movement
+                PlayerManager.EnableCurrentPlayerMovement();
+                // Turn off crosshair
+                //UIManager.DisableReticle();
+                break;
+            case CameraState.AimCamera:
+                animator.Play("Aim Camera");
+                // Disable Movement
+                PlayerManager.DisablePlayerMovement();
+                // Enable Aiming
+                // Turn on crosshair
+                //UIManager.EnableReticle();
+                break;
+        }
     }
-
-    private void GameManagerOnGameStateChanged(GameState state)
+    
+    public void ToggleAimAction(InputAction.CallbackContext context)
     {
-        // Do something
+        if (state == CameraState.FollowCamera)
+        {
+            UpdateCameraState(CameraState.AimCamera);
+        }
+        else
+        {
+            UpdateCameraState(CameraState.FollowCamera);
+        }
+        
     }
-
-    private enum State
-    {
-        POV
-    };
 }
+
+public enum CameraState
+{
+    FollowCamera,
+    AimCamera
+};
+

@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public PlayerState state;
     
     public static event Action<PlayerState> OnPlayerStateChanged;
-    
+
+
     public void UpdatePlayerState(PlayerState playerState)
     {
         state = playerState;
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Aiming:
                 break;
+            case PlayerState.Dead:
+                break;
         }
 
         OnPlayerStateChanged?.Invoke(state); // '?.Invoke' prevent a Null error exception, in the case that there are no subscribers 
@@ -34,6 +37,6 @@ public class Player : MonoBehaviour
 public enum PlayerState
 {
     Moving,
-    Aiming
-};
-
+    Aiming,
+    Dead
+}
