@@ -1236,6 +1236,8 @@ GameObject:
   - component: {fileID: 940614117}
   - component: {fileID: 940614116}
   - component: {fileID: 940614118}
+  - component: {fileID: 940614119}
+  - component: {fileID: 940614120}
   m_Layer: 0
   m_Name: Aim Camera
   m_TagString: Untagged
@@ -1304,7 +1306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940614115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2588cc5dedbb75e49a44aada63f7b939, type: 3}
   m_Name: 
@@ -1314,7 +1316,65 @@ MonoBehaviour:
     m_Bits: 1
   IgnoreTag: 
   AimDistance: 200
-  AimTargetReticle: {fileID: 0}
+  AimTargetReticle: {fileID: 359101804}
+--- !u!114 &940614119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940614115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 172766545edceb043917b46d06cad5cc, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 940614120}
+        m_TargetAssemblyTypeName: Aiming, Assembly-CSharp
+        m_MethodName: LookPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 271afbc4-ae74-4ea9-94b5-afedb88df6cf
+    m_ActionName: Player/Aim[/Mouse/position]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &940614120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940614115}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9252adeabd28cff458d0820f423e36fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1005537612
 GameObject:
   m_ObjectHideFlags: 0
@@ -6166,7 +6226,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1063478617
 MonoBehaviour:
@@ -6273,7 +6333,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1170955910
 MonoBehaviour:
@@ -6319,7 +6379,7 @@ Transform:
   - {fileID: 1480753234}
   - {fileID: 359101804}
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395329938
 GameObject:
@@ -6406,7 +6466,7 @@ Transform:
   - {fileID: 3772657465848145706}
   - {fileID: 940614117}
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1395329941
 Animator:
@@ -6691,6 +6751,7 @@ MonoBehaviour:
   _characterLookDirection: 0
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
+  _aimingInput: {x: 0, y: 0, z: 0}
   _maxSpeed: 10
   _acceleration: 400
   _maxAccelForce: 300
@@ -11842,7 +11903,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1701353180
 MonoBehaviour:
@@ -12017,7 +12078,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1768387019}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1728100637
 MonoBehaviour:
@@ -12059,7 +12120,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4284719321532863250}
   - {fileID: 1170955909}
   - {fileID: 1728100636}
   - {fileID: 1063478616}
@@ -12067,7 +12127,7 @@ Transform:
   - {fileID: 1246214842}
   - {fileID: 1701353179}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833694369
 GameObject:
@@ -12322,6 +12382,7 @@ MonoBehaviour:
   _characterLookDirection: 0
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
+  _aimingInput: {x: 0, y: 0, z: 0}
   _maxSpeed: 10
   _acceleration: 400
   _maxAccelForce: 300
@@ -12612,7 +12673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Damping: 1
+  m_Damping: 0
 --- !u!1 &1928930064
 GameObject:
   m_ObjectHideFlags: 0
@@ -17886,6 +17947,7 @@ MonoBehaviour:
   _characterLookDirection: 0
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
+  _aimingInput: {x: 0, y: 0, z: 0}
   _maxSpeed: 10
   _acceleration: 400
   _maxAccelForce: 300
@@ -18213,8 +18275,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1768387019}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4284719321532863260
 GameObject:

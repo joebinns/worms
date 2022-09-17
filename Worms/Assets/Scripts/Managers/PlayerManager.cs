@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     
     public static event Action<GameObject> OnPlayerChanged;
 
-    private void Start()
+    private void Awake()
     {
         foreach (Player player in FindObjectsOfType<Player>())
         {

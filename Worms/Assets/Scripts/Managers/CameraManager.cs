@@ -12,17 +12,21 @@ public class CameraManager : MonoBehaviour
     
     private static Animator animator;
 
+    private static Aiming aiming;
+
     public static CameraState state;
 
     private void Awake()
     {
         Instance = this;
         animator = GetComponent<Animator>();
+        aiming = FindObjectOfType<Aiming>();
     }
     
     void Start()
     {
-        UpdateCameraState(CameraState.FollowCamera);
+        state = CameraState.FollowCamera;
+        //UpdateCameraState(CameraState.FollowCamera);
     }
 
     public static void UpdateCameraState(CameraState cameraState)
@@ -35,6 +39,8 @@ public class CameraManager : MonoBehaviour
                 animator.Play("Follow Camera");
                 // Enable Movement
                 PlayerManager.EnableCurrentPlayerMovement();
+                // Disable Aiming
+                aiming.enabled = false;
                 // Turn off crosshair
                 //UIManager.DisableReticle();
                 break;
@@ -43,6 +49,7 @@ public class CameraManager : MonoBehaviour
                 // Disable Movement
                 PlayerManager.DisablePlayerMovement();
                 // Enable Aiming
+                aiming.enabled = true;
                 // Turn on crosshair
                 //UIManager.EnableReticle();
                 break;

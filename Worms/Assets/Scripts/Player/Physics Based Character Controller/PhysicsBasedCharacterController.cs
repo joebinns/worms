@@ -30,22 +30,22 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     [SerializeField] private Oscillator _squashAndStretchOcillator;
 
 
-    private enum lookDirectionOptions { velocity, acceleration, moveInput };
+    public enum lookDirectionOptions { velocity, acceleration, moveInput, aiming };
     private Quaternion _uprightTargetRot = Quaternion.identity; // Adjust y value to match the desired direction to face.
     private Quaternion _lastTargetRot;
     private Vector3 _platformInitRot;
     private bool didLastRayHit;
 
     [Header("Upright Spring:")]
-    [SerializeField] private lookDirectionOptions _characterLookDirection = lookDirectionOptions.velocity;
+    [SerializeField] public lookDirectionOptions _characterLookDirection = lookDirectionOptions.velocity;
     [SerializeField] private float _uprightSpringStrength = 40f;
     [SerializeField] private float _uprightSpringDamper = 5f;
-
 
     private Vector3 _moveInput;
     private float _speedFactor = 1f;
     private float _maxAccelForceFactor = 1f;
     private Vector3 _m_GoalVel = Vector3.zero;
+    public Vector3 _aimingInput = Vector3.zero;
 
     [Header("Movement:")]
     [SerializeField] public float _maxSpeed = 8f;
@@ -135,6 +135,10 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         else if (lookDirectionOption == lookDirectionOptions.moveInput)
         {
             lookDirection = _moveInput;
+        }
+        else if (lookDirectionOption == lookDirectionOptions.aiming)
+        {
+            lookDirection = _aimingInput;
         }
         return lookDirection;
     }

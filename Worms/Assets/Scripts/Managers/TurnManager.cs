@@ -10,8 +10,7 @@ public class TurnManager : MonoBehaviour
     private int _turn = 0;
     
     public void NextTurn(InputAction.CallbackContext context)
-    {
-        
+    {   
         if (!context.performed)
         {
             return;
