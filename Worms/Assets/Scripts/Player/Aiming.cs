@@ -56,7 +56,7 @@ public class Aiming : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_mousePosition);
+        //Debug.Log(_mousePosition);
 
         _mousePosition += _lookPosition * Time.deltaTime;
         // HMMM... using mouse delta works well. BUT, doesn't work when the mouse ISN'T moving...

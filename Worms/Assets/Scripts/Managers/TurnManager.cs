@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 
 public class TurnManager : MonoBehaviour
 {
-    private int _turn = 0;
+    private static int _turn = 0;
     
-    public void NextTurn(InputAction.CallbackContext context)
-    {   
+    public static void NextTurn(InputAction.CallbackContext context)
+    {
         if (!context.performed)
         {
             return;
         }
-        
+
         _turn++;
      
         PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);

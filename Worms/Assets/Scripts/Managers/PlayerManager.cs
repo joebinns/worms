@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
+    
     private static List<Player> _players = new List<Player>();
     
     public static int numPlayers => _players.Count;
@@ -16,40 +18,39 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        
         foreach (Player player in FindObjectsOfType<Player>())
         {
             _players.Add(player.GetComponent<Player>());
         }
 
         currentPlayer = _players[0];
+            
+            
+        //GameObject.FindObjectOfType<InputManager>().SubscribeToMovement(PlayerManager.currentPlayer);
+        //GameObject.FindObjectOfType<InputManager>().SubscribeToTurns();
     }
 
     public static void SetCurrentPlayer(int index)
     {
-        // Disable old Player movement (Turn off input)
-        DisablePlayerMovement();
+        // Reset old players movement inputs
+        currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
+        
+        // Unsubscribe old player
+        InputManager.UnsubscribeFromMovement(currentPlayer);
 
         currentPlayer = _players[index];
         
-        // Enable new Player movement (Turn on input)
-        EnableCurrentPlayerMovement();
+        // Subscribe new player
+        InputManager.SubscribeToMovement(currentPlayer);
         
         OnPlayerChanged?.Invoke(currentPlayer.gameObject);
         
     }
-
-    public static void DisablePlayerMovement()
-    {
-        foreach (Player player in _players)
-        {
-            currentPlayer.GetComponent<PlayerInput>().enabled = false;
-        }
-    }
-
-    public static void EnableCurrentPlayerMovement()
-    {
-        currentPlayer.GetComponent<PlayerInput>().enabled = true;
-    }
+    
+    
+    
 
 }
 

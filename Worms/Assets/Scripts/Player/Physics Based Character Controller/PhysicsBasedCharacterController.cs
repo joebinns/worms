@@ -48,7 +48,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     public Vector3 _aimingInput = Vector3.zero;
 
     [Header("Movement:")]
-    [SerializeField] public float _maxSpeed = 8f;
+    [SerializeField] private float _maxSpeed = 8f;
     [SerializeField] private float _acceleration = 200f;
     [SerializeField] private float _maxAccelForce = 150f;
     [SerializeField] private float _leanFactor = 0.25f;
@@ -65,7 +65,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     private bool _isJumping = false;
 
     [Header("Jump:")]
-    [SerializeField] public float _jumpForceFactor = 10f;
+    [SerializeField] private float _jumpForceFactor = 10f;
     [SerializeField] private float _riseGravityFactor = 5f;
     [SerializeField] private float _fallGravityFactor = 10f; // typically > 1f (i.e. 5f).
     [SerializeField] private float _lowJumpFactor = 2.5f;
@@ -355,30 +355,6 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     }
 
     /// <summary>
-    /// Reads the player movement input.
-    /// </summary>
-    /// <param name="context">The move input's context.</param>
-    public void MoveInputAction(InputAction.CallbackContext context)
-    {
-        _moveContext = context.ReadValue<Vector2>();
-    }
-
-    /// <summary>
-    /// Reads the player jump input.
-    /// </summary>
-    /// <param name="context">The jump input's context.</param>
-    public void JumpInputAction(InputAction.CallbackContext context)
-    {
-        float jumpContext = context.ReadValue<float>();
-        _jumpInput = new Vector3(0, jumpContext, 0);
-
-        if (context.started) // button down
-        {
-            _timeSinceJumpPressed = 0f;
-        }
-    }
-
-    /// <summary>
     /// Adjusts the input, so that the movement matches input regardless of camera rotation.
     /// </summary>
     /// <param name="moveInput">The player movement input.</param>
@@ -406,6 +382,37 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         {
             transform.SetParent(null);
         }
+    }
+
+    public void MakeInputsNull()
+    {
+        _moveContext = Vector2.zero;
+        _jumpInput = Vector3.zero;
+    }
+    
+    /// <summary>
+    /// Reads the player movement input.
+    /// </summary>
+    /// <param name="context">The move input's context.</param>
+    public void MoveInputAction(InputAction.CallbackContext context)
+    {
+        _moveContext = context.ReadValue<Vector2>();
+    }
+
+    /// <summary>
+    /// Reads the player jump input.
+    /// </summary>
+    /// <param name="context">The jump input's context.</param>
+    public void JumpInputAction(InputAction.CallbackContext context)
+    {
+        float jumpContext = context.ReadValue<float>();
+        _jumpInput = new Vector3(0, jumpContext, 0);
+
+        if (context.started) // button down
+        {
+            _timeSinceJumpPressed = 0f;
+        }
+        
     }
 
     /// <summary>

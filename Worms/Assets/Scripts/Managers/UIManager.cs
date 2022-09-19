@@ -5,21 +5,26 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private static GameObject reticle;
+    private static Reticle reticle;
 
     private void Awake()
     {
-        reticle = FindObjectOfType<Reticle>().gameObject;
+        reticle = FindObjectOfType<Reticle>();
         DisableReticle();
     }
 
     public static void EnableReticle()
     {
-        reticle.SetActive(true);
+        reticle.gameObject.SetActive(true);
     }
     
     public static void DisableReticle()
     {
-        reticle.SetActive(false);
+        reticle.gameObject.SetActive(false);
+    }
+
+    public static void ToggleReticleZoom()
+    {
+        reticle.ToggleZoom();
     }
 }

@@ -37,26 +37,31 @@ public class CameraManager : MonoBehaviour
         {
             case CameraState.FollowCamera:
                 animator.Play("Follow Camera");
-                // Enable Movement
-                PlayerManager.EnableCurrentPlayerMovement();
+                
+                InputManager.DisableAimingActionMap();
+                InputManager.EnableMovingActionMap();
+                
                 // Disable Aiming
                 aiming.enabled = false;
                 // Turn off crosshair
-                //UIManager.DisableReticle();
+                UIManager.DisableReticle();
+
                 break;
             case CameraState.AimCamera:
                 animator.Play("Aim Camera");
-                // Disable Movement
-                PlayerManager.DisablePlayerMovement();
+                
+                InputManager.DisableMovingActionMap();
+                InputManager.EnableAimingActionMap();
+                
                 // Enable Aiming
                 aiming.enabled = true;
                 // Turn on crosshair
-                //UIManager.EnableReticle();
+                UIManager.EnableReticle();
                 break;
         }
     }
     
-    public void ToggleAimAction(InputAction.CallbackContext context)
+    public static void ToggleAimAction(InputAction.CallbackContext context)
     {
         if (state == CameraState.FollowCamera)
         {
@@ -68,11 +73,32 @@ public class CameraManager : MonoBehaviour
         }
         
     }
+    
+    /*
+    public void ToggleZoomAction(InputAction.CallbackContext context)
+    {
+        if (state == CameraState.AimCamera | state == CameraState.ZoomedAimCamera)
+        {
+            
+        }
+        
+        if (state == CameraState.FollowCamera)
+        {
+            UpdateCameraState(CameraState.AimCamera);
+        }
+        else
+        {
+            UpdateCameraState(CameraState.FollowCamera);
+        }
+        
+    }
+    */
 }
 
 public enum CameraState
 {
     FollowCamera,
-    AimCamera
+    AimCamera,
+    ZoomedAimCamera
 };
 
