@@ -256,7 +256,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12.5, y: 2}
+  m_SizeDelta: {x: 9.708204, y: 3}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &56134721
 MonoBehaviour:
@@ -332,7 +332,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 12.5}
+  m_SizeDelta: {x: 3, y: 9.708204}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &72800998
 MonoBehaviour:
@@ -547,7 +547,7 @@ MonoBehaviour:
   _rideSpringStrength: 200
   _rideSpringDamper: 10
   _squashAndStretchOcillator: {fileID: 1891120382}
-  _characterLookDirection: 0
+  _characterLookDirection: 2
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
   _aimingInput: {x: 0, y: 0, z: 0}
@@ -665,8 +665,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294931033}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.85, y: 6.375, z: -9.1}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 10, y: 6.375, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -675,7 +675,7 @@ Transform:
   - {fileID: 2137783214}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!1 &359101800
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1024,8 +1024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 27.5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607617384
 MonoBehaviour:
@@ -6061,7 +6061,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12.5, y: 2}
+  m_SizeDelta: {x: 9.708204, y: 3}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &708060929
 MonoBehaviour:
@@ -6137,7 +6137,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 12.5}
+  m_SizeDelta: {x: 3, y: 9.708204}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &742848227
 MonoBehaviour:
@@ -6393,8 +6393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -27.5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900590599
 MonoBehaviour:
@@ -11564,8 +11564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
-  m_SizeDelta: {x: 80, y: 396}
+  m_AnchoredPosition: {x: 30, y: 0}
+  m_SizeDelta: {x: 60, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1211940923
 CanvasRenderer:
@@ -11587,7 +11587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bccca377ee69b4b9f5212182e411cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _portraits: []
   _activePortrait: {fileID: 1987753914}
 --- !u!1 &1246214841
 GameObject:
@@ -12007,7 +12006,7 @@ MonoBehaviour:
   _rideSpringStrength: 200
   _rideSpringDamper: 10
   _squashAndStretchOcillator: {fileID: 504060739}
-  _characterLookDirection: 0
+  _characterLookDirection: 2
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
   _aimingInput: {x: 0, y: 0, z: 0}
@@ -12125,8 +12124,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476362662}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.43, y: 6.375, z: -2.36}
+  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
+  m_LocalPosition: {x: -10, y: 6.375, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12135,7 +12134,7 @@ Transform:
   - {fileID: 519777050}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &1480753231
 GameObject:
   m_ObjectHideFlags: 0
@@ -17575,8 +17574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -82.5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: -74}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806760701
 MonoBehaviour:
@@ -17821,7 +17820,7 @@ MonoBehaviour:
   _rideSpringStrength: 200
   _rideSpringDamper: 10
   _squashAndStretchOcillator: {fileID: 1928930065}
-  _characterLookDirection: 0
+  _characterLookDirection: 2
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
   _aimingInput: {x: 0, y: 0, z: 0}
@@ -17939,8 +17938,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901462043}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.375, z: -11.49}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -10, y: 6.375, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17949,7 +17948,7 @@ Transform:
   - {fileID: 751599098}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1 &1907877740
 GameObject:
   m_ObjectHideFlags: 0
@@ -18200,8 +18199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 82.5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 75}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987753914
 MonoBehaviour:
@@ -23465,8 +23464,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266506272364649315}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.375, z: 0}
+  m_LocalRotation: {x: 0, y: 0.9238796, z: -0, w: -0.38268325}
+  m_LocalPosition: {x: 10, y: 6.375, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23475,7 +23474,7 @@ Transform:
   - {fileID: 266506271959173117}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 225, z: 0}
 --- !u!114 &266506272364649318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23498,7 +23497,7 @@ MonoBehaviour:
   _rideSpringStrength: 200
   _rideSpringDamper: 10
   _squashAndStretchOcillator: {fileID: 266506272380195680}
-  _characterLookDirection: 0
+  _characterLookDirection: 2
   _uprightSpringStrength: 40
   _uprightSpringDamper: 5
   _aimingInput: {x: 0, y: 0, z: 0}
