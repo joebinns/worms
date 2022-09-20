@@ -28,8 +28,7 @@ public class CameraManager : MonoBehaviour
     
     void Start()
     {
-        state = CameraState.FollowCamera;
-        //UpdateCameraState(CameraState.FollowCamera);
+        UpdateCameraState(CameraState.FollowCamera);
     }
 
     public static void UpdateCameraState(CameraState cameraState)
@@ -41,22 +40,15 @@ public class CameraManager : MonoBehaviour
             case CameraState.FollowCamera:
                 animator.Play("Follow Camera");
                 InputManager.SwitchActionMap("Moving");
-                // Reset zoom
                 followCameraZoom.ResetZoom();
-
-                // Disable Aiming
                 aiming.enabled = false;
-                // Turn off crosshair
                 UIManager.DisableReticle();
 
                 break;
             case CameraState.AimCamera:
                 animator.Play("Aim Camera");
                 InputManager.SwitchActionMap("Aiming");
-                
-                // Enable Aiming
                 aiming.enabled = true;
-                // Turn on crosshair
                 UIManager.EnableReticle();
                 break;
         }
@@ -79,26 +71,6 @@ public class CameraManager : MonoBehaviour
         }
         
     }
-    
-    /*
-    public void ToggleZoomAction(InputAction.CallbackContext context)
-    {
-        if (state == CameraState.AimCamera | state == CameraState.ZoomedAimCamera)
-        {
-            
-        }
-        
-        if (state == CameraState.FollowCamera)
-        {
-            UpdateCameraState(CameraState.AimCamera);
-        }
-        else
-        {
-            UpdateCameraState(CameraState.FollowCamera);
-        }
-        
-    }
-    */
 }
 
 public enum CameraState
