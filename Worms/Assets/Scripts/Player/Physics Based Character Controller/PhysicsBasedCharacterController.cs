@@ -141,10 +141,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         {
             var theta = _aimingInput.x;
             var phi = Mathf.Atan2(_lastYLookAt.x, _lastYLookAt.z);
-
-            var aimingInput = new Vector3(Mathf.Sin(theta + phi), _aimingInput.y, Mathf.Cos(theta + phi));
-
-            lookDirection = aimingInput;
+            lookDirection = new Vector3(Mathf.Sin(theta + phi), _aimingInput.y, Mathf.Cos(theta + phi));
         }
         return lookDirection;
     }
@@ -351,6 +348,13 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     {
         CalculateTargetRotation(yLookAt, rayHit);
 
+        if (_characterLookDirection == lookDirectionOptions.aiming)
+        {
+            // Whilst aiming, take direct control over the rotation.
+            transform.rotation = _uprightTargetRot;
+            return;
+        }
+
         Quaternion currentRot = transform.rotation;
         Quaternion toGoal = MathsUtils.ShortestRotation(_uprightTargetRot, currentRot);
 
@@ -363,6 +367,8 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         float rotRadians = rotDegrees * Mathf.Deg2Rad;
 
         _rb.AddTorque((rotAxis * (rotRadians * _uprightSpringStrength)) - (_rb.angularVelocity * _uprightSpringDamper));
+        
+        
     }
 
     /// <summary>

@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 public class Aiming : MonoBehaviour
 {
     private Vector2 _cursorDelta;
-    //private Vector3 _cursorOffset = Vector3.zero;
     private Vector2 _cursorPosition = Vector2.zero;
 
     private PhysicsBasedCharacterController _characterController;
 
-    private Vector2 _sensitivity = Vector2.one * 25f;
+    private Vector2 _sensitivity = Vector2.one * 10f;
 
     private void Start()
     {
@@ -30,42 +29,48 @@ public class Aiming : MonoBehaviour
         _characterController = PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
 
         _cursorPosition = Vector2.zero;
-        //_cursorOffset = velocity;
-
-        //Debug.Log(_cursorOffset);
 
         _characterController._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.aiming;
 
-        
-
-        // Make the _characterController look spring much faster and less dampened... hmmm... bit janky
     }
 
     private void OnDisable()
     {
         Cursor.lockState = CursorLockMode.None;
 
-        _characterController._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.velocity;
+        aimingInputVec3.y = 0;
+        _characterController._aimingInput = aimingInputVec3;
 
+        if (!this.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+        StartCoroutine(RevertCharacterLookDirectionAfterFixedUpdate());
+    }
+
+    private IEnumerator RevertCharacterLookDirectionAfterFixedUpdate()
+    {
+        yield return new WaitForFixedUpdate();
+
+        _characterController._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.velocity;
     }
 
     public void CursorDelta(InputAction.CallbackContext context)
     {
-        _cursorDelta = context.ReadValue<Vector2>(); // Actually, this is DELTA now
+        _cursorDelta = context.ReadValue<Vector2>();
     }
+
+    private Vector3 aimingInputVec3;
 
     private void Update()
     {
         _cursorPosition += _cursorDelta * Time.deltaTime;
-        _cursorPosition.y = Mathf.Clamp(_cursorPosition.y, -2.5f, 2.5f);
+        _cursorPosition.y = Mathf.Clamp(_cursorPosition.y, -50f/_sensitivity.y, 50f/_sensitivity.y);
 
         var aimingInput = MathsUtils.MultiplyRows(_cursorPosition * Mathf.Deg2Rad, _sensitivity);
-        var aimingInputVec3 = new Vector3(aimingInput.x, aimingInput.y, aimingInput.x);
-        //var aimingInput = new Vector3(Mathf.Sin(adjustedCursor.x), adjustedCursor.y, Mathf.Cos(adjustedCursor.x));
+        aimingInputVec3 = new Vector3(aimingInput.x, aimingInput.y, aimingInput.x);
 
-        _characterController._aimingInput = aimingInputVec3; // I want to somehow bypass the character controller's spring system...
+        _characterController._aimingInput = aimingInputVec3;
 
     }
-
-    //lookDirec
 }

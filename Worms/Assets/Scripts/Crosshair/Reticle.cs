@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class Reticle : MonoBehaviour
@@ -25,13 +24,13 @@ public class Reticle : MonoBehaviour
     private void ZoomIn()
     {
         _isZoomed = true;
-        ResizeReticle(50f);
+        ResizeReticle(30f);
     }
 
     private void ZoomOut()
     {
         _isZoomed = false;
-        ResizeReticle(100f);
+        ResizeReticle(50f);
     }
 
     public void ToggleZoom()
