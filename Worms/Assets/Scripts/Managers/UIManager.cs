@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,8 +24,13 @@ public class UIManager : MonoBehaviour
         reticle.gameObject.SetActive(false);
     }
 
-    public static void ToggleReticleZoom()
+    public static void ToggleReticleZoom(InputAction.CallbackContext context)
     {
-        reticle.ToggleZoom();
+        if (context.performed)
+        {
+            return;
+        }
+
+        reticle.ToggleZoom(); // started or canceled
     }
 }

@@ -205,6 +205,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""30339520-5635-4081-a39e-d4a4f129e283"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""End Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""112fc3a4-866d-4d61-b52a-70c3310d0ad5"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -275,6 +295,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Aiming_Aim = m_Aiming.FindAction("Aim", throwIfNotFound: true);
         m_Aiming_EndTurn = m_Aiming.FindAction("End Turn", throwIfNotFound: true);
         m_Aiming_ToggleAim = m_Aiming.FindAction("Toggle Aim", throwIfNotFound: true);
+        m_Aiming_Zoom = m_Aiming.FindAction("Zoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -402,6 +423,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Aiming_Aim;
     private readonly InputAction m_Aiming_EndTurn;
     private readonly InputAction m_Aiming_ToggleAim;
+    private readonly InputAction m_Aiming_Zoom;
     public struct AimingActions
     {
         private @PlayerControls m_Wrapper;
@@ -409,6 +431,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Aiming_Aim;
         public InputAction @EndTurn => m_Wrapper.m_Aiming_EndTurn;
         public InputAction @ToggleAim => m_Wrapper.m_Aiming_ToggleAim;
+        public InputAction @Zoom => m_Wrapper.m_Aiming_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Aiming; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -427,6 +450,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleAim.started -= m_Wrapper.m_AimingActionsCallbackInterface.OnToggleAim;
                 @ToggleAim.performed -= m_Wrapper.m_AimingActionsCallbackInterface.OnToggleAim;
                 @ToggleAim.canceled -= m_Wrapper.m_AimingActionsCallbackInterface.OnToggleAim;
+                @Zoom.started -= m_Wrapper.m_AimingActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_AimingActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_AimingActionsCallbackInterface.OnZoom;
             }
             m_Wrapper.m_AimingActionsCallbackInterface = instance;
             if (instance != null)
@@ -440,6 +466,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleAim.started += instance.OnToggleAim;
                 @ToggleAim.performed += instance.OnToggleAim;
                 @ToggleAim.canceled += instance.OnToggleAim;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
             }
         }
     }
@@ -466,5 +495,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnEndTurn(InputAction.CallbackContext context);
         void OnToggleAim(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }

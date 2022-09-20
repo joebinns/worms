@@ -104,4 +104,13 @@ public static class MathsUtils
 
         return current;
     }
+
+    public static Vector2 MultiplyRows(Vector2 a, Vector2 b)
+    {
+        Vector2 product;
+        product.x = a.x * b.x;
+        product.y = a.y * b.y;
+
+        return product;
+    }
 }

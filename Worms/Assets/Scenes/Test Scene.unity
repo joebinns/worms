@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 940614116}
   - component: {fileID: 940614118}
   - component: {fileID: 940614120}
+  - component: {fileID: 940614121}
   m_Layer: 0
   m_Name: Aim Camera
   m_TagString: Untagged
@@ -1328,6 +1329,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9252adeabd28cff458d0820f423e36fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &940614121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940614115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e060a7a92f13dfc469a1c628267e9508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultZoom: 2.5
+  _zoomRange: {x: 0, y: 2.5}
+  _zoomSensitivity: 2.5
 --- !u!1 &1005537612
 GameObject:
   m_ObjectHideFlags: 0
@@ -11869,7 +11885,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 940614120}
         m_TargetAssemblyTypeName: Aiming, Assembly-CSharp
-        m_MethodName: LookPosition
+        m_MethodName: CursorDelta
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11945,6 +11961,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 65da00c1-366b-4e41-ae63-faafc8ef7701
     m_ActionName: Aiming/Toggle Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 940614121}
+        m_TargetAssemblyTypeName: CameraZoom, Assembly-CSharp
+        m_MethodName: ShiftInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1246214843}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ToggleReticleZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 30339520-5635-4081-a39e-d4a4f129e283
+    m_ActionName: Aiming/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Moving
@@ -18024,6 +18068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e060a7a92f13dfc469a1c628267e9508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultZoom: 16.5
+  _zoomRange: {x: 4.5, y: 30}
+  _zoomSensitivity: 1.5
 --- !u!114 &3772657466424711707
 MonoBehaviour:
   m_ObjectHideFlags: 3

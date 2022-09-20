@@ -16,11 +16,14 @@ public class CameraManager : MonoBehaviour
 
     public static CameraState state;
 
+    public static CameraZoom followCameraZoom;
+
     private void Awake()
     {
         Instance = this;
         animator = GetComponent<Animator>();
         aiming = FindObjectOfType<Aiming>();
+        followCameraZoom = GameObject.Find("Follow Camera").GetComponent<CameraZoom>();
     }
     
     void Start()
@@ -38,6 +41,8 @@ public class CameraManager : MonoBehaviour
             case CameraState.FollowCamera:
                 animator.Play("Follow Camera");
                 InputManager.SwitchActionMap("Moving");
+                // Reset zoom
+                followCameraZoom.ResetZoom();
 
                 // Disable Aiming
                 aiming.enabled = false;

@@ -32,6 +32,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
 
     public enum lookDirectionOptions { velocity, acceleration, moveInput, aiming };
     private Quaternion _uprightTargetRot = Quaternion.identity; // Adjust y value to match the desired direction to face.
+    private Vector3 _lastYLookAt;
     private Quaternion _lastTargetRot;
     private Vector3 _platformInitRot;
     private bool didLastRayHit;
@@ -138,7 +139,12 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         }
         else if (lookDirectionOption == lookDirectionOptions.aiming)
         {
-            lookDirection = _aimingInput;
+            var theta = _aimingInput.x;
+            var phi = Mathf.Atan2(_lastYLookAt.x, _lastYLookAt.z);
+
+            var aimingInput = new Vector3(Mathf.Sin(theta + phi), _aimingInput.y, Mathf.Cos(theta + phi));
+
+            lookDirection = aimingInput;
         }
         return lookDirection;
     }
@@ -304,6 +310,11 @@ public class PhysicsBasedCharacterController : MonoBehaviour
 
         if (yLookAt != Vector3.zero)
         {
+            if (_characterLookDirection == lookDirectionOptions.velocity) // Get the last velocity's lookAt, to use as an offset whilst aiming
+            {
+                _lastYLookAt = yLookAt.normalized;
+            }
+            
             _uprightTargetRot = Quaternion.LookRotation(yLookAt, Vector3.up);
             _lastTargetRot = _uprightTargetRot;
             try

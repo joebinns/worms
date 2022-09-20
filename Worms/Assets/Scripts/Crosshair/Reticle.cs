@@ -24,12 +24,13 @@ public class Reticle : MonoBehaviour
     
     private void ZoomIn()
     {
-        
+        _isZoomed = true;
         ResizeReticle(50f);
     }
 
     private void ZoomOut()
     {
+        _isZoomed = false;
         ResizeReticle(100f);
     }
 
