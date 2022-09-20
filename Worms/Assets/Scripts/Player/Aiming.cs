@@ -10,7 +10,7 @@ public class Aiming : MonoBehaviour
 
     private PhysicsBasedCharacterController _characterController;
 
-    private Vector2 _sensitivity = Vector2.one * 40f;
+    private Vector2 _sensitivity = Vector2.one * 20f;
 
     private void Start()
     {
