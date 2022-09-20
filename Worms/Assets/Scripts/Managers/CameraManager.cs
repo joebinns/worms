@@ -37,10 +37,8 @@ public class CameraManager : MonoBehaviour
         {
             case CameraState.FollowCamera:
                 animator.Play("Follow Camera");
-                
-                InputManager.DisableAimingActionMap();
-                InputManager.EnableMovingActionMap();
-                
+                InputManager.SwitchActionMap("Moving");
+
                 // Disable Aiming
                 aiming.enabled = false;
                 // Turn off crosshair
@@ -49,9 +47,7 @@ public class CameraManager : MonoBehaviour
                 break;
             case CameraState.AimCamera:
                 animator.Play("Aim Camera");
-                
-                InputManager.DisableMovingActionMap();
-                InputManager.EnableAimingActionMap();
+                InputManager.SwitchActionMap("Aiming");
                 
                 // Enable Aiming
                 aiming.enabled = true;
@@ -63,6 +59,11 @@ public class CameraManager : MonoBehaviour
     
     public static void ToggleAimAction(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+        {
+            return;
+        }
+
         if (state == CameraState.FollowCamera)
         {
             UpdateCameraState(CameraState.AimCamera);

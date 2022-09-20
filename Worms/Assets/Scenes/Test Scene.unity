@@ -11818,11 +11818,35 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1701353181}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: MoveInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ae2756f7-5591-4795-97ff-5d7df30b6dfc
     m_ActionName: Moving/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1701353181}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: JumpInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6cc5023f-c6ee-4c26-90e4-1c84140fa63f
     m_ActionName: Moving/Jump[/Keyboard/space]
   - m_PersistentCalls:

@@ -37,13 +37,7 @@ public class PlayerManager : MonoBehaviour
         // Reset old players movement inputs
         currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
         
-        // Unsubscribe old player
-        InputManager.UnsubscribeFromMovement(currentPlayer);
-
         currentPlayer = _players[index];
-        
-        // Subscribe new player
-        InputManager.SubscribeToMovement(currentPlayer);
         
         OnPlayerChanged?.Invoke(currentPlayer.gameObject);
         
