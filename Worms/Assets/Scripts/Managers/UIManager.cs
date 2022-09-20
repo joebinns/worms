@@ -7,10 +7,15 @@ using UnityEngine.InputSystem;
 public class UIManager : MonoBehaviour
 {
     private static Reticle reticle;
+    private static Portraits portraits;
 
     private void Awake()
     {
         reticle = FindObjectOfType<Reticle>();
+        portraits = FindObjectOfType<Portraits>();
+
+        PlayerManager.OnPlayerChanged += SwitchActivePortrait;
+
         DisableReticle();
     }
 
@@ -33,4 +38,10 @@ public class UIManager : MonoBehaviour
 
         reticle.ToggleZoom(); // started or canceled
     }
+
+    public static void SwitchActivePortrait(Player player)
+    {
+        portraits.SwitchActive(player.portrait);
+    }
+
 }

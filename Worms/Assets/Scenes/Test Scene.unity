@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 294931035}
   - component: {fileID: 294931034}
   m_Layer: 6
-  m_Name: Player Green
+  m_Name: Player Lime
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hat: {fileID: 0}
   state: 0
+  portrait: {fileID: 1806760701}
 --- !u!114 &294931035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,7 +1001,7 @@ GameObject:
   - component: {fileID: 607617385}
   - component: {fileID: 607617384}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Cyan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6408,7 +6409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11534,8 +11535,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1211940922}
   - component: {fileID: 1211940923}
+  - component: {fileID: 1211940924}
   m_Layer: 5
-  m_Name: Profiles
+  m_Name: Portraits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11573,6 +11575,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211940921}
   m_CullTransparentMesh: 1
+--- !u!114 &1211940924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211940921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1bccca377ee69b4b9f5212182e411cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portraits: []
+  _activePortrait: {fileID: 1987753914}
 --- !u!1 &1246214841
 GameObject:
   m_ObjectHideFlags: 0
@@ -11953,6 +11969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hat: {fileID: 0}
   state: 0
+  portrait: {fileID: 900590599}
 --- !u!114 &1476362664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17535,7 +17552,7 @@ GameObject:
   - component: {fileID: 1806760702}
   - component: {fileID: 1806760701}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Lime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17574,7 +17591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17766,6 +17783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hat: {fileID: 0}
   state: 0
+  portrait: {fileID: 607617384}
 --- !u!114 &1901462045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23591,6 +23609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hat: {fileID: 0}
   state: 0
+  portrait: {fileID: 1987753914}
 --- !u!114 &266506272380195680
 MonoBehaviour:
   m_ObjectHideFlags: 0

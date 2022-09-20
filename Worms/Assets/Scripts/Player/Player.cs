@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     public PlayerState state;
     
     public static event Action<PlayerState> OnPlayerStateChanged;
+
+    public Image portrait;
 
 
     public void UpdatePlayerState(PlayerState playerState)

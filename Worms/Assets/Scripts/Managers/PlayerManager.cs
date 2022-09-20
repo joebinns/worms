@@ -14,22 +14,19 @@ public class PlayerManager : MonoBehaviour
 
     public static Player currentPlayer { get; private set; }
     
-    public static event Action<GameObject> OnPlayerChanged;
+    public static event Action<Player> OnPlayerChanged;
 
     private void Awake()
     {
         Instance = this;
         
-        foreach (Player player in FindObjectsOfType<Player>())
+        foreach (Player player in FindObjectsOfType<Player>()) // TODO: I want the _players List to be in a specific order.
         {
             _players.Add(player.GetComponent<Player>());
         }
 
         currentPlayer = _players[0];
-            
-            
-        //GameObject.FindObjectOfType<InputManager>().SubscribeToMovement(PlayerManager.currentPlayer);
-        //GameObject.FindObjectOfType<InputManager>().SubscribeToTurns();
+        OnPlayerChanged?.Invoke(currentPlayer);
     }
 
     public static void SetCurrentPlayer(int index)
@@ -39,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         
         currentPlayer = _players[index];
         
-        OnPlayerChanged?.Invoke(currentPlayer.gameObject);
+        OnPlayerChanged?.Invoke(currentPlayer);
         
     }
     
