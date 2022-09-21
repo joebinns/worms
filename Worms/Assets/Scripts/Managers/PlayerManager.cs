@@ -20,10 +20,12 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
         
-        foreach (Player player in FindObjectsOfType<Player>()) // TODO: I want the _players List to be in a specific order.
+        foreach (Player player in FindObjectsOfType<Player>())
         {
             _players.Add(player.GetComponent<Player>());
         }
+
+        _players.Sort((x, y) => x.id.CompareTo(y.id)); // Sort objects of type Player by id (ascending.)
 
         currentPlayer = _players[0];
         OnPlayerChanged?.Invoke(currentPlayer);

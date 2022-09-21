@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int _id { get; private set; }
-    
-    public string name { get; set; }
+    public int id;
+
+    public string playerName;
 
     public HatScriptableObject hat;
 
@@ -17,6 +17,14 @@ public class Player : MonoBehaviour
     public static event Action<PlayerState> OnPlayerStateChanged;
 
     public Image portrait;
+
+    public Material ditherMaterial;
+
+    public Material jumpsuitMaterial;
+    public Material visorMaterial;
+
+    public GameObject jumpsuit;
+    public GameObject visor;
 
 
     public void UpdatePlayerState(PlayerState playerState)

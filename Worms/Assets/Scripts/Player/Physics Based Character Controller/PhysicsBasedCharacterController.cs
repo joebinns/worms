@@ -23,7 +23,7 @@ public class PhysicsBasedCharacterController : MonoBehaviour
     private bool _shouldMaintainHeight = true;
 
     [Header("Height Spring:")]
-    [SerializeField] private float _rideHeight = 1.75f; // rideHeight: desired distance to ground (Note, this is distance from the original raycast position (currently centre of transform)). 
+    [SerializeField] public float _rideHeight = 1.75f; // rideHeight: desired distance to ground (Note, this is distance from the original raycast position (currently centre of transform)). 
     [SerializeField] private float _rayToGroundLength = 3f; // rayToGroundLength: max distance of raycast to ground (Note, this should be greater than the rideHeight).
     [SerializeField] public float _rideSpringStrength = 50f; // rideSpringStrength: strength of spring. (?)
     [SerializeField] private float _rideSpringDamper = 5f; // rideSpringDampener: dampener of spring. (?)
