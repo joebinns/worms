@@ -11,8 +11,6 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        
         _playerInput = GetComponent<PlayerInput>();
     }
 

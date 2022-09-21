@@ -40,7 +40,7 @@ public class CameraZoom : MonoBehaviour
 
     private void RefreshZoom()
     {
-        CinemachineComponentBase componentBase = _virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+        var componentBase = _virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
         if (componentBase is CinemachineFramingTransposer)
         {
             (componentBase as CinemachineFramingTransposer).m_CameraDistance = _currentZoom;
