@@ -52,8 +52,6 @@ public class PlayerManager : MonoBehaviour
     {
         for (var playerToRemove = maxPlayers - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
-            Debug.Log("Remove player");
-            Debug.Log(playerToRemove);
             var player = players[playerToRemove];
             players.Remove(player);
             Destroy(player.gameObject);

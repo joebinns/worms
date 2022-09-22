@@ -21,7 +21,14 @@ public class PlayerSpawner : MonoBehaviour
     {
         foreach (Player player in PlayerManager.players)
         {
-            Debug.Log(player.name);
+            // Get a random available spawnPoint
+            var random = UnityEngine.Random.Range(0, _availableSpawnPoints.Count);
+            var spawnpoint = _availableSpawnPoints[random];
+            _availableSpawnPoints.RemoveAt(random);
+
+            // Position the player to spawnPoint
+            player.transform.position = spawnpoint.transform.position;
+
         }
         
     }

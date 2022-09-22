@@ -8,7 +8,7 @@ public class FollowPosition : MonoBehaviour
 {
     public GameObject player;
 
-    private void Awake()
+    private void Start()
     {
         player = PlayerManager.currentPlayer.gameObject;
     }
