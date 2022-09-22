@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,10 +9,10 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    
-    private static List<Player> _players = new List<Player>();
-    
-    public static int numPlayers => _players.Count;
+
+    public static List<Player> players { get; private set; } = new List<Player>();
+
+    public static int numPlayers => players.Count;
 
     public static Player currentPlayer { get; private set; }
     
@@ -23,14 +24,16 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
         
+        DontDestroyOnLoad(gameObject);
+        
         foreach (Player player in FindObjectsOfType<Player>())
         {
-            _players.Add(player.GetComponent<Player>());
+            players.Add(player.GetComponent<Player>());
         }
 
-        _players.Sort((x, y) => x.id.CompareTo(y.id)); // Sort objects of type Player by id (ascending.)
+        players.Sort((x, y) => x.id.CompareTo(y.id)); // Sort objects of type Player by id (ascending.)
 
-        currentPlayer = _players[0];
+        currentPlayer = players[0];
         OnPlayerChanged?.Invoke(currentPlayer);
     }
 
@@ -39,22 +42,24 @@ public class PlayerManager : MonoBehaviour
         // Reset old players movement inputs
         currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
         
-        currentPlayer = _players[index];
+        currentPlayer = players[index];
         
         OnPlayerChanged?.Invoke(currentPlayer);
         
     }
 
-    public static void FinaliseNumberOfPlayers(int numPlayers)
+    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers)
     {
-        for (var playerToRemove = maxPlayers - 1; playerToRemove >= numPlayers; playerToRemove--)
+        for (var playerToRemove = maxPlayers - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
             Debug.Log("Remove player");
             Debug.Log(playerToRemove);
-            _players.RemoveAt(playerToRemove);
+            players.RemoveAt(playerToRemove);
         }
-        
+
+        PlayerManager.SetCurrentPlayer(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
 }

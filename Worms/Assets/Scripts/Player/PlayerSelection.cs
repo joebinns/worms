@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -65,8 +66,9 @@ public class PlayerSelection : MonoBehaviour
 
     }
 
-    public static void FinaliseSelection()
+    public void FinaliseSelection()
     {
         PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
+        this.GetComponent<PlayerSelection>().enabled = false;
     }
 }
