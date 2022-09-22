@@ -54,7 +54,9 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Remove player");
             Debug.Log(playerToRemove);
-            players.RemoveAt(playerToRemove);
+            var player = players[playerToRemove];
+            players.Remove(player);
+            Destroy(player.gameObject);
         }
 
         PlayerManager.SetCurrentPlayer(0);

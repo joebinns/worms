@@ -12,9 +12,14 @@ public class PlayerSelection : MonoBehaviour
 
     private Player _previousPlayer;
 
-    private void Awake()
+    private void OnEnable()
     {
         PlayerManager.OnPlayerChanged += ChangePlayerSelection;
+    }
+
+    private void OnDisable()
+    {
+        PlayerManager.OnPlayerChanged -= ChangePlayerSelection;
     }
 
     private void Start()
@@ -69,6 +74,14 @@ public class PlayerSelection : MonoBehaviour
     public void FinaliseSelection()
     {
         PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
+        foreach (Player player in PlayerManager.players)
+        {
+            player.GetComponent<PhysicsBasedCharacterController>()._rideHeight = _defaultRideHeight;
+            player.GetComponent<PhysicsBasedCharacterController>()._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.velocity;
+            
+            player.jumpsuit.GetComponent<Renderer>().material = player.jumpsuitMaterial;
+            player.visor.GetComponent<Renderer>().material = player.visorMaterial;
+        }
         this.GetComponent<PlayerSelection>().enabled = false;
     }
 }

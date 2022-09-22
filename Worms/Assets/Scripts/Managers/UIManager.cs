@@ -41,7 +41,8 @@ public class UIManager : MonoBehaviour
 
     public static void SwitchActivePortrait(Player player)
     {
-        portraits.SwitchActive(player.portrait);
+        Debug.Log("Warning: UIManager.SwitchActive is currently commented out for MVP.");
+        //portraits.SwitchActive(player.portrait);
     }
 
 }

@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
     public GameObject visor;
 
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void UpdatePlayerState(PlayerState playerState)
     {
         state = playerState;

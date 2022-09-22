@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerName
-      value: Lime
+      value: Player Lime
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
