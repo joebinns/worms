@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerManager : MonoBehaviour
     public static Player currentPlayer { get; private set; }
     
     public static event Action<Player> OnPlayerChanged;
+
+    private static int maxPlayers = 4;
 
     private void Awake()
     {
@@ -41,9 +44,18 @@ public class PlayerManager : MonoBehaviour
         OnPlayerChanged?.Invoke(currentPlayer);
         
     }
-    
-    
-    
+
+    public static void FinaliseNumberOfPlayers(int numPlayers)
+    {
+        for (var playerToRemove = maxPlayers - 1; playerToRemove >= numPlayers; playerToRemove--)
+        {
+            Debug.Log("Remove player");
+            Debug.Log(playerToRemove);
+            _players.RemoveAt(playerToRemove);
+        }
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
 }
 

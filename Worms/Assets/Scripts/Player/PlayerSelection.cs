@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,16 @@ public class PlayerSelection : MonoBehaviour
     private float _defaultRideHeight = 2f;
     private float _increasedRideHeight = 2.5f;
 
-    [SerializeField] private Player _previousPlayer;
+    private Player _previousPlayer;
 
     private void Awake()
     {
         PlayerManager.OnPlayerChanged += ChangePlayerSelection;
+    }
+
+    private void Start()
+    {
+        _previousPlayer = PlayerManager.currentPlayer;
     }
 
     private void ChangePlayerSelection(Player player)
@@ -57,5 +63,10 @@ public class PlayerSelection : MonoBehaviour
             PlayerManager.SetCurrentPlayer((PlayerManager.currentPlayer.id - 1));
         }
 
+    }
+
+    public static void FinaliseSelection()
+    {
+        PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
     }
 }
