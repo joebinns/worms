@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Player : MonoBehaviour
     
     public static event Action<PlayerState> OnPlayerStateChanged;
 
-    public Image portrait;
+    public Sprite portrait;
 
     public Material ditherMaterial;
 

@@ -52,6 +52,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c56f43888b748b44978f7b82843418e, type: 3}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerName
       value: Player Cyan
       objectReference: {fileID: 0}

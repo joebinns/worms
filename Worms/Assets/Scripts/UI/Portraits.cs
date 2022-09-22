@@ -10,7 +10,60 @@ public class Portraits : MonoBehaviour
     private float _minPortraitSize = 35f;
     private float _maxPortraitSize = 40f;
 
-    public void SwitchActive(Image portrait)
+    private float _portraitSpacing = 50f; // Vertical distance between the centres of portraits
+
+    public GameObject emptyPortraitPrefab;
+
+    private List<Image> _portraits = new List<Image>();
+
+    private void Start()
+    {
+        LoadPortraits();
+        _activePortrait = _portraits[0];
+        var activeColor = _activePortrait.color;
+        activeColor.a = 1f;
+        _activePortrait.color = activeColor;
+    }
+
+    public void LoadPortraits()
+    {
+        var totalSpacing = _portraitSpacing * (PlayerManager.numPlayers - 1);
+
+        var startPosition = totalSpacing / 2;
+
+        var position = startPosition;
+
+        foreach (Player player in PlayerManager.players)
+        {
+            // Instantiate portrait prefabs with calculated vertical displacements
+            var portrait = Instantiate(emptyPortraitPrefab);
+            portrait.transform.SetParent(gameObject.transform, false);
+
+            portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
+            position -= _portraitSpacing;
+
+            portrait.GetComponent<Image>().sprite = player.portrait;
+            _portraits.Add(portrait.GetComponent<Image>());
+
+
+
+            /*
+            var portraitPosition = portrait.GetComponent<RectTransform>().anchoredPosition;
+            portraitPosition.y += displacement;
+            Debug.Log(displacement);
+            portrait.GetComponent<RectTransform>().position = portraitPosition;
+
+            // Set prefab sprite to player.portrait
+            portrait.GetComponent<Image>().sprite = player.portrait;
+
+            _portraits.Add(portrait.GetComponent<Image>());
+
+            displacement -= _portraitSpacing;
+            */
+        }
+    }
+
+    public void SwitchActive(int id)
     {
         // Deactivate old portrait
         var activeColor = _activePortrait.color;
@@ -19,7 +72,7 @@ public class Portraits : MonoBehaviour
         StartCoroutine(lerp(_activePortrait.GetComponent<RectTransform>(), false));
 
         // Activate new portrait
-        _activePortrait = portrait;
+        _activePortrait = _portraits[id];
         activeColor = _activePortrait.color;
         activeColor.a = 1f;
         _activePortrait.color = activeColor;
