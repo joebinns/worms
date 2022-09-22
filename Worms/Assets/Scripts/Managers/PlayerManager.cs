@@ -37,6 +37,11 @@ public class PlayerManager : MonoBehaviour
         OnPlayerChanged?.Invoke(currentPlayer);
     }
 
+    private void Start()
+    {
+        //SetCurrentPlayer(0);
+    }
+
     public static void SetCurrentPlayer(int index)
     {
         // Reset old players movement inputs

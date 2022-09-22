@@ -13,14 +13,19 @@ public class CameraFocus : MonoBehaviour
         PlayerManager.OnPlayerChanged += SetFocus;
     }
 
+    private void Start()
+    {
+        SetFocus(PlayerManager.currentPlayer);
+    }
+
     public void SetFocus(Player focusPlayer)
-    { 
+    {
         playerPositionFollow.player = focusPlayer.gameObject;
 
         if (aimCamera != null)
         {
             aimCamera.GetComponent<CinemachineVirtualCamera>().Follow = focusPlayer.transform;
         }
-    }
 
+    }
 }
