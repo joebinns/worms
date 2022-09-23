@@ -38,7 +38,7 @@ public class CameraManager : MonoBehaviour
         switch (state)
         {
             case CameraState.FollowCamera:
-                animator.Play("Follow Camera");
+                animator.Play("Follow Camera"); // Switch state driven camera to use Follow Camera
                 InputManager.SwitchActionMap("Moving");
                 followCameraZoom.ResetZoom();
                 aiming.enabled = false;
@@ -46,7 +46,7 @@ public class CameraManager : MonoBehaviour
                 Camera.main.GetComponent<CursorVisibilityToggle>().DisableCursor();
                 break;
             case CameraState.AimCamera:
-                animator.Play("Aim Camera");
+                animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
                 InputManager.SwitchActionMap("Aiming");
                 aiming.enabled = true;
                 UIManager.EnableReticle();

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager instance;
 
     public GameState state;
 
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        instance = this;
     }
     
     void Start()

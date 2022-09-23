@@ -1,45 +1,48 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-
     public static List<Player> players { get; private set; } = new List<Player>();
-
     public static int numPlayers => players.Count;
-
     public static Player currentPlayer { get; private set; }
-    
     public static event Action<Player> OnPlayerChanged;
 
-    private static int maxPlayers = 4;
+    private const int MAX_PLAYERS = 4;
 
     private void Awake()
     {
-        Instance = this;
-        
-        DontDestroyOnLoad(gameObject);
-        
-        foreach (Player player in FindObjectsOfType<Player>())
+        if (Instance == null)
         {
-            players.Add(player.GetComponent<Player>());
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
         }
 
-        players.Sort((x, y) => x.id.CompareTo(y.id)); // Sort objects of type Player by id (ascending.)
+        GetPlayers();
+        SortPlayersByID();
 
         currentPlayer = players[0];
         OnPlayerChanged?.Invoke(currentPlayer);
     }
 
-    private void Start()
+    private void GetPlayers()
     {
-        //SetCurrentPlayer(0);
+        players = new List<Player>();
+        foreach (Player player in FindObjectsOfType<Player>())
+        {
+            players.Add(player.GetComponent<Player>());
+        }
+    }
+
+    private void SortPlayersByID()
+    {
+        players.Sort((x, y) => x.id.CompareTo(y.id));
     }
 
     public static void SetCurrentPlayer(int index)
@@ -50,12 +53,11 @@ public class PlayerManager : MonoBehaviour
         currentPlayer = players[index];
         
         OnPlayerChanged?.Invoke(currentPlayer);
-        
     }
 
     public static void FinaliseNumberOfPlayers(int desiredNumberPlayers)
     {
-        for (var playerToRemove = maxPlayers - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
+        for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
             var player = players[playerToRemove];
             players.Remove(player);
@@ -63,8 +65,30 @@ public class PlayerManager : MonoBehaviour
         }
 
         PlayerManager.SetCurrentPlayer(0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
+    }
+
+    private void EnableAllParticleSystems()
+    {
+        foreach (Player player in players)
+        {
+            player.EnableParticleSystem();
+        }
+    }
+
+    private void DisableAllParticleSystems()
+    {
+        foreach (Player player in players)
+        {
+            player.DisableParticleSystem();
+        }
+    }
+
+    private void SetAllLookDirectionOptions(PhysicsBasedCharacterController.lookDirectionOptions option)
+    {
+        foreach (Player player in players)
+        {
+            player.SetLookDirectionOption(option);
+        }
     }
 
 }

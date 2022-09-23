@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class CameraFocus : MonoBehaviour
 {
-    public FollowPosition playerPositionFollow;
+    public FollowPosition playerFollowPosition;
+    
+    [Header("Optional")]
     public GameObject aimCamera;
     
-    private void Awake()
+    private void OnEnable()
     {
         PlayerManager.OnPlayerChanged += SetFocus;
+    }
+
+    private void OnDisable()
+    {
+        PlayerManager.OnPlayerChanged -= SetFocus;
     }
 
     private void Start()
@@ -20,12 +27,10 @@ public class CameraFocus : MonoBehaviour
 
     public void SetFocus(Player focusPlayer)
     {
-        playerPositionFollow.player = focusPlayer.gameObject;
-
+        playerFollowPosition.target = focusPlayer.gameObject;
         if (aimCamera != null)
         {
             aimCamera.GetComponent<CinemachineVirtualCamera>().Follow = focusPlayer.transform;
         }
-
     }
 }
