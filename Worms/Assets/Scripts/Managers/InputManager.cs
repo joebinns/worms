@@ -9,9 +9,16 @@ public class InputManager : MonoBehaviour
 {
     private static PlayerInput _playerInput;
 
+    private static InputActionMap _previousActionMap;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+    }
+
+    private void Start()
+    {
+        _previousActionMap = _playerInput.currentActionMap;
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)
@@ -26,6 +33,13 @@ public class InputManager : MonoBehaviour
 
     public static void SwitchActionMap(string newActionMap)
     {
+        _previousActionMap = _playerInput.currentActionMap;
         _playerInput.SwitchCurrentActionMap(newActionMap);
+    }
+
+    public static void RevertActionMap()
+    {
+        _playerInput.SwitchCurrentActionMap(_previousActionMap.name);
+        _previousActionMap = _playerInput.currentActionMap;
     }
 }

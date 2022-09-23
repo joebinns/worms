@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class CursorVisibilityToggle : MonoBehaviour
 {
-    public void EnableCursor()
+    public static void EnableCursor()
     {
         Cursor.visible = true;
     }
 
-    public void DisableCursor()
+    public static void DisableCursor()
     {
         Cursor.visible = false;
     }

@@ -44,22 +44,6 @@ public class Portraits : MonoBehaviour
 
             portrait.GetComponent<Image>().sprite = player.portrait;
             _portraits.Add(portrait.GetComponent<Image>());
-
-
-
-            /*
-            var portraitPosition = portrait.GetComponent<RectTransform>().anchoredPosition;
-            portraitPosition.y += displacement;
-            Debug.Log(displacement);
-            portrait.GetComponent<RectTransform>().position = portraitPosition;
-
-            // Set prefab sprite to player.portrait
-            portrait.GetComponent<Image>().sprite = player.portrait;
-
-            _portraits.Add(portrait.GetComponent<Image>());
-
-            displacement -= _portraitSpacing;
-            */
         }
     }
 

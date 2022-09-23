@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadingScreen : MonoBehaviour
 {
     private static Animator _transition;
-    private const float TRANSITION_TIME = 1f;
+    private const float TRANSITION_TIME = 0.16666666666f;
 
     public static event Action OnTransitionedToLoadingScreen;
 

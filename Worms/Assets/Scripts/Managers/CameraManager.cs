@@ -43,14 +43,14 @@ public class CameraManager : MonoBehaviour
                 followCameraZoom.ResetZoom();
                 aiming.enabled = false;
                 UIManager.DisableReticle();
-                Camera.main.GetComponent<CursorVisibilityToggle>().DisableCursor();
+                CursorVisibilityToggle.DisableCursor();
                 break;
             case CameraState.AimCamera:
                 animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
                 InputManager.SwitchActionMap("Aiming");
                 aiming.enabled = true;
                 UIManager.EnableReticle();
-                Camera.main.GetComponent<CursorVisibilityToggle>().EnableCursor();
+                CursorVisibilityToggle.EnableCursor();
                 break;
         }
     }

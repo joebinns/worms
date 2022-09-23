@@ -91,5 +91,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        foreach (Player player in players)
+        {
+            Destroy(player.gameObject);
+        }
+    }
+
 }
 
