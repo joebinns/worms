@@ -5237,6 +5237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constantVolume: 1
+  _localEquilibriumScale: {x: 0, y: 0, z: 0}
   _oscillator: {fileID: 5502202853504435056}
   _conversion: 0.12
 --- !u!114 &5502202853488462712
@@ -5253,6 +5254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   playerName: Player Name Undefined
+  hat: {fileID: 6224936595129453434, guid: 412b949111ff1734d8255ae84e2b8df3, type: 3}
   jumpsuit: {fileID: 5502202852464488739}
   jumpsuitMaterial: {fileID: 0}
   visor: {fileID: 5502202851998090982}

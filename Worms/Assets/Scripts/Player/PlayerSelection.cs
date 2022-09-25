@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 public class PlayerSelection : MonoBehaviour
 {
     // Constants
@@ -12,6 +14,9 @@ public class PlayerSelection : MonoBehaviour
 
     // Variables
     private Player _previousPlayer;
+
+    public TMP_InputField nameInput;
+    public HatRack hatRack;
 
     private void OnEnable()
     {
@@ -62,9 +67,20 @@ public class PlayerSelection : MonoBehaviour
 
     public void NextPlayer()
     {
-        if (PlayerManager.currentPlayer.id < 3)
+        var currentPlayer = PlayerManager.currentPlayer;
+        if (currentPlayer.id < 3)
         {
-            PlayerManager.SetCurrentPlayer((PlayerManager.currentPlayer.id + 1));
+            // Save Edits to Player
+            currentPlayer.playerName = nameInput.text;
+            currentPlayer.hat = hatRack.currentHat;
+
+            // Clear Hat selection and Input Field
+            nameInput.text = "";
+            hatRack.ChangeHat(0);
+
+            // Change Player
+            PlayerManager.SetCurrentPlayer(currentPlayer.id + 1);
+
         }
         else
         {
@@ -74,9 +90,18 @@ public class PlayerSelection : MonoBehaviour
 
     public void PreviousPlayer()
     {
-        if (PlayerManager.currentPlayer.id > 0)
+        var currentPlayer = PlayerManager.currentPlayer;
+        if (currentPlayer.id > 0)
         {
-            PlayerManager.SetCurrentPlayer((PlayerManager.currentPlayer.id - 1));
+            // Change Player
+            PlayerManager.SetCurrentPlayer(currentPlayer.id - 1);
+
+            currentPlayer = PlayerManager.currentPlayer;
+
+            // Set Input Field text to saved name
+            nameInput.text = currentPlayer.playerName;
+            hatRack.ChangeHat(currentPlayer.hat);
+
         }
         else
         {

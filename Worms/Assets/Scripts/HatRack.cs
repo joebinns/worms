@@ -10,21 +10,36 @@ public class HatRack : MonoBehaviour
 
     public SpawnEffect spawnEffect;
 
+    public GameObject currentHat;
+
     private void Awake()
     {
         //_previousIndex = hats.Count;
     }
 
-    private void ChangeHat(int index)
+    public int FindHatIndex(GameObject hat)
+    {
+        var index = hats.IndexOf(hat);
+        return index;
+    }
+
+    public void ChangeHat(GameObject hat)
+    {
+        var index = FindHatIndex(hat);
+        ChangeHat(index);
+    }
+
+    public void ChangeHat(int index)
     {
         // Disable current game object
         hats[_currentIndex].SetActive(false);
 
         // Enable next indexed game object
-        hats[index].SetActive(true);
+        currentHat = hats[index];
+        currentHat.SetActive(true);
 
         // Spawn effect
-        spawnEffect.ActivateEffects(this.transform, hats[index]);
+        spawnEffect.ActivateEffects(this.transform, currentHat);
     }
 
     public void NextHat()

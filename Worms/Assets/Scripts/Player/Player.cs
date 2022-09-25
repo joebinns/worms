@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
 
     [Header("Renderers")]
+    public GameObject hat;
     public GameObject jumpsuit; // these vars should be made serialized private...
     public Material jumpsuitMaterial;
     public GameObject visor;
