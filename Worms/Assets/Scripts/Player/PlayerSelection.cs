@@ -72,7 +72,7 @@ public class PlayerSelection : MonoBehaviour
         {
             // Save Edits to Player
             currentPlayer.playerName = nameInput.text;
-            currentPlayer.hat = hatRack.currentHat;
+            currentPlayer.SetHat(hatRack.currentHat);
 
             // Clear Hat selection and Input Field
             nameInput.text = "";
@@ -127,6 +127,11 @@ public class PlayerSelection : MonoBehaviour
 
     public void FinaliseSelection()
     {
+        // Save Edits to final Player
+        var currentPlayer = PlayerManager.currentPlayer;
+        currentPlayer.playerName = nameInput.text;
+        currentPlayer.SetHat(hatRack.currentHat);
+
         StartCoroutine(LoadingScreen.TransitionToLoadingScreen());
     }
 

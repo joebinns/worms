@@ -34,12 +34,14 @@ public class HatRack : MonoBehaviour
         // Disable current game object
         hats[_currentIndex].SetActive(false);
 
-        // Enable next indexed game object
+        // Enable newly indexed game object
         currentHat = hats[index];
         currentHat.SetActive(true);
 
         // Spawn effect
         spawnEffect.ActivateEffects(this.transform, currentHat);
+
+        _currentIndex = index;
     }
 
     public void NextHat()
@@ -47,8 +49,6 @@ public class HatRack : MonoBehaviour
         var index = (_currentIndex + 1) % hats.Count;
 
         ChangeHat(index);
-
-        _currentIndex = index;
 
     }
 
@@ -61,8 +61,6 @@ public class HatRack : MonoBehaviour
         }
 
         ChangeHat(index);
-
-        _currentIndex = index;
 
     }
 }

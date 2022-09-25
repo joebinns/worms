@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
 
     [Header("Renderers")]
+    public Transform renderers;
     public GameObject hat;
     public GameObject jumpsuit; // these vars should be made serialized private...
     public Material jumpsuitMaterial;
@@ -34,6 +35,22 @@ public class Player : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
+    }
+
+    public void SetHat(GameObject newHat)
+    {
+        // Delete previous hat
+        Destroy(hat);
+
+        // Instantiate new hat
+        hat = Instantiate(newHat, renderers);
+        hat.layer = renderers.gameObject.layer;
+        foreach (Transform child in hat.transform)
+        {
+            child.gameObject.layer = renderers.gameObject.layer;
+        }
+        hat.transform.localPosition += Vector3.up;
+
     }
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
