@@ -10,7 +10,7 @@ public class SquashAndStretch : MonoBehaviour
 {
     public bool constantVolume = true;
 
-    private Vector3 _localEquilibriumScale;
+    [HideInInspector] public Vector3 _localEquilibriumScale;
 
     [Tooltip("The oscillator that reacts to this object's physics.")]
     [SerializeField] private Oscillator _oscillator;

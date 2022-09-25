@@ -53,7 +53,7 @@ public class Portraits : MonoBehaviour
         var activeColor = _activePortrait.color;
         activeColor.a = 0.25f;
         _activePortrait.color = activeColor;
-        StartCoroutine(lerp(_activePortrait.GetComponent<RectTransform>(), false));
+        StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), false));
 
         // Activate new portrait
         _activePortrait = _portraits[id];
@@ -61,10 +61,10 @@ public class Portraits : MonoBehaviour
         activeColor.a = 1f;
         _activePortrait.color = activeColor;
 
-        StartCoroutine(lerp(_activePortrait.GetComponent<RectTransform>(), true));
+        StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), true));
     }
 
-    private IEnumerator lerp(RectTransform portrait, bool shouldEnlarge)
+    private IEnumerator EasedLerpScale(RectTransform portrait, bool shouldEnlarge)
     {
         var t = 0f;
         var easedT = 0f;

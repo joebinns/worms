@@ -8,6 +8,8 @@ public class HatRack : MonoBehaviour
 
     private int _currentIndex = 0;
 
+    public SpawnEffect spawnEffect;
+
     private void Awake()
     {
         //_previousIndex = hats.Count;
@@ -20,6 +22,9 @@ public class HatRack : MonoBehaviour
 
         // Enable next indexed game object
         hats[index].SetActive(true);
+
+        // Spawn effect
+        spawnEffect.ActivateEffects(this.transform, hats[index]);
     }
 
     public void NextHat()
