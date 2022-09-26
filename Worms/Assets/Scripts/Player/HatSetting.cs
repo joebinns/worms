@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Hat Setting")]
+[CreateAssetMenu(fileName = "New Hat", menuName = "HatSetting")]
 public class HatSettings : ScriptableObject
 {
-    public string hatTextEffect;
+    public int id;
+    public new string name;
 
-    public GameObject hatPrefab;
 }

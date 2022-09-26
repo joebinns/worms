@@ -15,19 +15,27 @@ public class HatRack : MonoBehaviour
     private void Awake()
     {
         //_previousIndex = hats.Count;
+        for (int i = 0; i < hats.Count; i++)
+        {
+            hats[i].GetComponent<Hat>().id = i;
+        }
     }
 
+    /*
     public int FindHatIndex(GameObject hat)
     {
         var index = hats.IndexOf(hat);
         return index;
     }
 
+
     public void ChangeHat(GameObject hat)
     {
+        Debug.Log(hat.name);
         var index = FindHatIndex(hat);
         ChangeHat(index);
     }
+    */
 
     public void ChangeHat(int index)
     {

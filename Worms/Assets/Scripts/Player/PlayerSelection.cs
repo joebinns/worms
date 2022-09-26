@@ -100,7 +100,8 @@ public class PlayerSelection : MonoBehaviour
 
             // Set Input Field text to saved name
             nameInput.text = currentPlayer.playerName;
-            hatRack.ChangeHat(currentPlayer.hat);
+            //hatRack.ChangeHat(currentPlayer.hat);
+            hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
 
         }
         else
