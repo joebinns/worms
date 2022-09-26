@@ -8,9 +8,9 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints;
     private List<Transform> _availableSpawnPoints = new List<Transform>();
 
-    [SerializeField] private List<GameObject> _playerPrefabs;
+    //[SerializeField] private List<GameObject> _playerPrefabs;
 
-    private void Awake()
+    private void Start()
     {
         _availableSpawnPoints = _spawnPoints;
         

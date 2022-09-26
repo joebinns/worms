@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659166dcb9a47e4480ce0a8f298985e, type: 3}
   m_Name: Player 2
   m_EditorClassIdentifier: 
-  name: Player 2
-  hatPrefab: {fileID: 2696246847144132998, guid: 193db90aceedada418234dfe55fb1cdb, type: 3}
+  baseId: 1
+  baseName: Player 2
+  baseHat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}

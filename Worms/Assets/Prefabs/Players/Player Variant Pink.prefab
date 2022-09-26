@@ -92,6 +92,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2b9bcfeec16f46b4bb5353465bc683e5, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ab801e055a0038648b7e2fab174e2817, type: 2}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: jumpsuitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}

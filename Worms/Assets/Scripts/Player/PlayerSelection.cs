@@ -168,6 +168,7 @@ public class PlayerSelection : MonoBehaviour
 
     private void BehindTheCurtain()
     {
+
         var currentPlayer = PlayerManager.currentPlayer;
 
         // Save Edits to final Player
@@ -189,10 +190,21 @@ public class PlayerSelection : MonoBehaviour
             player.SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions.velocity);
             player.DisableDitherMode();
             player.EnableParticleSystem();
+
+            // Save their settings
+            player.PackPlayerSettings();
         }
 
         // Load scene
         LoadingScreen.LoadScene(SceneIndices.GAME);
+
+        // Unpack their settings
+        foreach (Player player in PlayerManager.players)
+        {
+            player.UnpackPlayerSettings();
+        }
+
+        // Reveal new scene
         LoadingScreen.TransitionFromLoadingScreen();
     }
 }

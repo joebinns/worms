@@ -9,10 +9,13 @@ public class Player : MonoBehaviour
     public int id;
     public string playerName = "Player Name Undefined";
     public bool hasUserEdits = false;
+    public PlayerSettings playerSettings;
+    //public HatSettings hatSettings;
 
     [Header("Renderers")]
     public Transform renderers;
     public GameObject hat;
+    public Transform hatSlot;
     public GameObject jumpsuit; // these vars should be made serialized private...
     public Material jumpsuitMaterial;
     public GameObject visor;
@@ -34,8 +37,12 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
+    }
+
+    private void Start()
+    {
+        UnpackPlayerSettings();
     }
 
     public void SetHat(GameObject newHat)
@@ -104,6 +111,21 @@ public class Player : MonoBehaviour
         }
         OnPlayerStateChanged?.Invoke(state);
     }
+
+    public void PackPlayerSettings()
+    {
+        playerSettings.id = id;
+        playerSettings.name = playerName;
+        playerSettings.hat = hat.GetComponent<Hat>().hatSettings;
+    }
+
+    public void UnpackPlayerSettings()
+    {
+        id = playerSettings.id;
+        playerName = playerSettings.name;
+        hat = Instantiate(playerSettings.hat.prefab, hatSlot);
+    }
+
 }
 
 public enum PlayerState

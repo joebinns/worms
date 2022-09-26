@@ -61,7 +61,7 @@ public class PauseMenu : MonoBehaviour
     private void BehindTheCurtain()
     {
         // Remove PlayerManager and Players from DontDestroyOnLoad
-        Destroy(FindObjectOfType<PlayerManager>().gameObject);
+        //Destroy(FindObjectOfType<PlayerManager>().gameObject);
 
         // Load scene
         LoadingScreen.LoadScene(SceneIndices.MAIN_MENU);

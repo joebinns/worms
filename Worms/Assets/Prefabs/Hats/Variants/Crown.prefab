@@ -90,6 +90,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 765047196851787867, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
+      propertyPath: hatSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fa144929b315864fb15091ecbdee68c, type: 2}
     - target: {fileID: 3892126062643369621, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
+    public static LoadingScreen Instance;
+
     private static Animator _transition;
     private const float TRANSITION_TIME = 0.16666666666f;
 
@@ -12,18 +14,28 @@ public class LoadingScreen : MonoBehaviour
 
     public void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
+        
         DontDestroyOnLoad(this);
         _transition = GetComponent<Animator>();
     }
 
-    public static IEnumerator TransitionToLoadingScreen()
+    public static IEnumerator TransitionToLoadingScreen() // It would be a nice touch if the camera zoomed out
     {
         _transition.SetTrigger("Start");
         yield return new WaitForSeconds(TRANSITION_TIME);
         OnTransitionedToLoadingScreen?.Invoke();
     }
 
-    public static void TransitionFromLoadingScreen()
+    public static void TransitionFromLoadingScreen() // It would be a nice touch if the camera zoomed in
     {
         _transition.SetTrigger("End");
     }

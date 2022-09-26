@@ -17,11 +17,12 @@ public class PlayerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {
+            Debug.Log("oops");
             Destroy(this);
+            return;
         }
 
         GetPlayers();
@@ -97,10 +98,12 @@ public class PlayerManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        /*
         foreach (Player player in players)
         {
             Destroy(player.gameObject);
         }
+        */
     }
 
 }
