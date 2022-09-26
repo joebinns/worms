@@ -168,22 +168,14 @@ public class PlayerSelection : MonoBehaviour
 
     private void BehindTheCurtain()
     {
-        // Save Edits to final Player
         var currentPlayer = PlayerManager.currentPlayer;
+
+        // Save Edits to final Player
         currentPlayer.playerName = nameInput.text;
         currentPlayer.SetHat(hatRack.currentHat);
         currentPlayer.hat.transform.localPosition = Vector3.up * 0.825f;
         currentPlayer.hasUserEdits = true;
         currentPlayer.hat.SetActive(true);
-
-        // Reset final player scale
-        //transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
-        //Debug.Log(currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale);
-        //currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * MIN_PLAYER_SIZE;
-        //currentPlayer.transform.localScale = Vector3.one * MIN_PLAYER_SIZE;
-        //Debug.Log(currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale);
-        //StartCoroutine(EasedLerpScale(currentPlayer.transform, false));
-
 
         PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
         // Remove excess Players from list

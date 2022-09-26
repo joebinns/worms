@@ -9,7 +9,6 @@ public class CinemachineShake : MonoBehaviour
     private float shakeTimer;
     private float shakeTimerTotal;
     private float startingIntensity;
-    
 
     private void Awake()
     {
@@ -17,7 +16,7 @@ public class CinemachineShake : MonoBehaviour
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    public void ShakeCamera(float intensity = 2.5f, float duration = .4f)
+    public void ShakeCamera(float intensity = 2.5f, float duration = 0.4f)
     {
         CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;

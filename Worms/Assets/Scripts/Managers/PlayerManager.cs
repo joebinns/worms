@@ -27,8 +27,9 @@ public class PlayerManager : MonoBehaviour
         GetPlayers();
         SortPlayersByID();
 
-        currentPlayer = players[0];
-        OnPlayerChanged?.Invoke(currentPlayer);
+        //currentPlayer = players[0];
+        //OnPlayerChanged?.Invoke(currentPlayer);
+        SetCurrentPlayer(0);
     }
 
     private void GetPlayers()
@@ -48,14 +49,17 @@ public class PlayerManager : MonoBehaviour
     public static void SetCurrentPlayer(int index)
     {
         // Reset old players movement inputs
-        currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
+        if (currentPlayer != null)
+        {
+            currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
+        }
         
         currentPlayer = players[index];
         
         OnPlayerChanged?.Invoke(currentPlayer);
     }
 
-    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers)
+    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should be moved to PlayerSelection
     {
         for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
