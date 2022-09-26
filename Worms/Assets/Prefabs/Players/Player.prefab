@@ -5255,6 +5255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   playerName: Player Name Undefined
+  hasUserEdits: 0
   renderers: {fileID: 5502202852554818354}
   hat: {fileID: 5144090459030191183}
   jumpsuit: {fileID: 5502202852464488739}
