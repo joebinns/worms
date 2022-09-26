@@ -7,10 +7,10 @@ public class PlayerSelection : MonoBehaviour
 {
     // Constants
     private const float DEFAULT_RIDE_HEIGHT = 2f;
-    private const float UPPER_RIDE_HEIGHT = 2.5f;
+    private const float UPPER_RIDE_HEIGHT = 2.75f;
 
-    private const float MIN_PLAYER_SIZE = 0.8f;
-    private const float MAX_PLAYER_SIZE = 1f;
+    private const float MIN_PLAYER_SIZE = 1f;
+    private const float MAX_PLAYER_SIZE = 1.2f;
 
     // Variables
     private Player _previousPlayer;
@@ -46,8 +46,13 @@ public class PlayerSelection : MonoBehaviour
 
     private void AdjustScales(Player player)
     {
-        StartCoroutine(EasedLerpScale(_previousPlayer.transform, false));
-        StartCoroutine(EasedLerpScale(player.transform, true));
+        AdjustScale(_previousPlayer, false);
+        AdjustScale(player, true);
+    }
+
+    private void AdjustScale(Player player, bool shouldEnlarge)
+    {
+        StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
     }
 
     private void AdjustRideHeights(Player player)
@@ -73,14 +78,29 @@ public class PlayerSelection : MonoBehaviour
             // Save Edits to Player
             currentPlayer.playerName = nameInput.text;
             currentPlayer.SetHat(hatRack.currentHat);
+            currentPlayer.hasUserEdits = true;
 
-            // Clear Hat selection and Input Field
-            nameInput.text = "";
-            hatRack.ChangeHat(0);
+            // Activate players hat    
+            currentPlayer.hat.SetActive(true);
+            currentPlayer.hat.transform.localPosition = Vector3.up * 0.825f;
 
             // Change Player
             PlayerManager.SetCurrentPlayer(currentPlayer.id + 1);
+            currentPlayer = PlayerManager.currentPlayer;
 
+            if (currentPlayer.hasUserEdits)
+            {
+                // Restore any saved edits
+                nameInput.text = currentPlayer.playerName;
+                hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
+            }
+            else
+            {
+                // Otherwise restore to default
+                nameInput.text = "";
+                hatRack.ChangeHat(0);
+            }
+            
         }
         else
         {
@@ -93,15 +113,27 @@ public class PlayerSelection : MonoBehaviour
         var currentPlayer = PlayerManager.currentPlayer;
         if (currentPlayer.id > 0)
         {
+            // Save Edits to Player
+            currentPlayer.playerName = nameInput.text;
+            currentPlayer.SetHat(hatRack.currentHat);
+            currentPlayer.hasUserEdits = true;
+
+            // Deactive players hat
+            currentPlayer.hat.SetActive(false);
+
             // Change Player
             PlayerManager.SetCurrentPlayer(currentPlayer.id - 1);
-
             currentPlayer = PlayerManager.currentPlayer;
 
-            // Set Input Field text to saved name
-            nameInput.text = currentPlayer.playerName;
-            //hatRack.ChangeHat(currentPlayer.hat);
-            hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
+            // Deactive players hat
+            currentPlayer.hat.SetActive(false);
+
+            if (currentPlayer.hasUserEdits) // This should always be the case...
+            {
+                // Restore saved edits
+                nameInput.text = currentPlayer.playerName;
+                hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
+            }
 
         }
         else
@@ -128,16 +160,31 @@ public class PlayerSelection : MonoBehaviour
 
     public void FinaliseSelection()
     {
-        // Save Edits to final Player
         var currentPlayer = PlayerManager.currentPlayer;
-        currentPlayer.playerName = nameInput.text;
-        currentPlayer.SetHat(hatRack.currentHat);
+        AdjustScale(currentPlayer, false);
 
         StartCoroutine(LoadingScreen.TransitionToLoadingScreen());
     }
 
     private void BehindTheCurtain()
     {
+        // Save Edits to final Player
+        var currentPlayer = PlayerManager.currentPlayer;
+        currentPlayer.playerName = nameInput.text;
+        currentPlayer.SetHat(hatRack.currentHat);
+        currentPlayer.hat.transform.localPosition = Vector3.up * 0.825f;
+        currentPlayer.hasUserEdits = true;
+        currentPlayer.hat.SetActive(true);
+
+        // Reset final player scale
+        //transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
+        //Debug.Log(currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale);
+        //currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * MIN_PLAYER_SIZE;
+        //currentPlayer.transform.localScale = Vector3.one * MIN_PLAYER_SIZE;
+        //Debug.Log(currentPlayer.transform.GetComponent<SquashAndStretch>()._localEquilibriumScale);
+        //StartCoroutine(EasedLerpScale(currentPlayer.transform, false));
+
+
         PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
         // Remove excess Players from list
         // Delete excess Player game objects

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("Other")]
     public int id;
     public string playerName = "Player Name Undefined";
+    public bool hasUserEdits = false;
 
     [Header("Renderers")]
     public Transform renderers;
@@ -44,11 +45,14 @@ public class Player : MonoBehaviour
 
         // Instantiate new hat
         hat = Instantiate(newHat, renderers);
+        hat.transform.localPosition = Vector3.zero;
+
         hat.layer = renderers.gameObject.layer;
         foreach (Transform child in hat.transform)
         {
             child.gameObject.layer = renderers.gameObject.layer;
         }
+
         hat.transform.localPosition += Vector3.up;
 
     }

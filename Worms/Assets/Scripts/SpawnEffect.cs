@@ -25,8 +25,8 @@ public class SpawnEffect : MonoBehaviour
     {
         _t = 0f;
         _activatedGameObject = activatedGameObject;
-        _startPos = anchor.position;
-        _endPos = activatedGameObject.transform.position;
+        _startPos = anchor.localPosition;
+        _endPos = activatedGameObject.transform.localPosition;
         _endScale = activatedGameObject.transform.localScale;
         isPlaying = true;    
 
@@ -71,7 +71,7 @@ public class SpawnEffect : MonoBehaviour
         // Lerp scale from Vector3.zero to endScale
         Vector3 scale = MathsUtils.LerpVector3(Vector3.zero, endScale, t);
 
-        _activatedGameObject.transform.position = position;
+        _activatedGameObject.transform.localPosition = position;
 
         _activatedGameObject.transform.localScale = scale;
 

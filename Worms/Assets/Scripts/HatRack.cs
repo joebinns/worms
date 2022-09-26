@@ -14,7 +14,8 @@ public class HatRack : MonoBehaviour
 
     private void Awake()
     {
-        //_previousIndex = hats.Count;
+        currentHat = hats[0];
+
         for (int i = 0; i < hats.Count; i++)
         {
             hats[i].GetComponent<Hat>().id = i;
@@ -45,6 +46,9 @@ public class HatRack : MonoBehaviour
         // Enable newly indexed game object
         currentHat = hats[index];
         currentHat.SetActive(true);
+
+        // Reset transform
+        currentHat.transform.localPosition = Vector3.zero;
 
         // Spawn effect
         spawnEffect.ActivateEffects(this.transform, currentHat);
