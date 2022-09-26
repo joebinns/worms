@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Pharoah Headdress Settings
+  m_EditorClassIdentifier: Assembly-CSharp::HatSettings
+  id: 5
+  name: Pharoah Headdress
+  prefab: {fileID: 1545421101783787332, guid: fce0353a757a97248b9a5365dfd4cac1, type: 3}

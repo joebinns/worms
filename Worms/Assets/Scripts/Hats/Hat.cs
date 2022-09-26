@@ -5,4 +5,6 @@ using UnityEngine;
 public class Hat : MonoBehaviour
 {
     [HideInInspector] public int id;
+
+    public HatSettings hatSettings;
 }
