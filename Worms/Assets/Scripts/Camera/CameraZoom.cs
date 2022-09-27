@@ -17,7 +17,7 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private Vector2 _zoomRange = new Vector2(4.5f, 30f);
 
     [SerializeField] private float _zoomSensitivity = 1.5f;
-    
+
     private void Awake()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();

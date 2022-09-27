@@ -17,6 +17,8 @@ public class CameraManager : MonoBehaviour
     public static CameraState state;
 
     public static CameraZoom followCameraZoom;
+    
+    public static event Action<CameraState> OnCameraStateChanged;
 
     private void Awake()
     {
@@ -53,6 +55,8 @@ public class CameraManager : MonoBehaviour
                 CursorVisibilityToggle.EnableCursor();
                 break;
         }
+
+        OnCameraStateChanged?.Invoke(state);
     }
     
     public static void ToggleAimAction(InputAction.CallbackContext context)
