@@ -16,3 +16,4 @@ MonoBehaviour:
   baseName: 
   baseSuggestedName: Player 2
   baseHat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
+  baseShouldSpawn: 1

@@ -46,15 +46,15 @@ public class PlayerManager : MonoBehaviour
     {
         players.Sort((x, y) => x.id.CompareTo(y.id));
     }
-
+    
     public static Player SetCurrentPlayer(int index)
     {
-        // Reset old players movement inputs
         if (currentPlayer != null)
         {
+            // Reset old players movement inputs
             currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
         }
-        
+
         currentPlayer = players[index];
         
         OnPlayerChanged?.Invoke(currentPlayer);
@@ -62,16 +62,19 @@ public class PlayerManager : MonoBehaviour
         return (currentPlayer);
     }
 
-    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should be moved to PlayerSelection
+    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should probably be moved to PlayerSelection
     {
         for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
             var player = players[playerToRemove];
-            players.Remove(player);
-            Destroy(player.gameObject);
+            //players.Remove(player);
+            //Destroy(player.gameObject);
+            
+            // Set a bool in the Player's playerSettings
+            player.playerSettings.shouldSpawn = false;
         }
 
-        PlayerManager.SetCurrentPlayer(0);
+        //PlayerManager.SetCurrentPlayer(0);
     }
 
     private void EnableAllParticleSystems()
@@ -96,6 +99,12 @@ public class PlayerManager : MonoBehaviour
         {
             player.SetLookDirectionOption(option);
         }
+    }
+
+    public static void DeletePlayer(Player player)
+    {
+        players.Remove(player);
+        Destroy(player.gameObject);
     }
 
     private void OnDestroy()

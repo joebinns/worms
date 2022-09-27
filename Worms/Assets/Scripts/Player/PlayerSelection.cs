@@ -11,12 +11,14 @@ public class PlayerSelection : MonoBehaviour
 
     private const float DEFAULT_PLAYER_SIZE = 1f;
     private const float MAX_PLAYER_SIZE = 1.2f;
+    
 
     // Variables
     private Player _previousPlayer;
 
     public TMP_InputField nameInput;
     public HatRack hatRack;
+
 
     private void OnEnable()
     {
@@ -37,7 +39,7 @@ public class PlayerSelection : MonoBehaviour
         // Update name placeholder text
         ((TextMeshProUGUI)nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
     }
-
+    
     private void ChangePlayerSelection(Player player)
     {
         AdjustScales(player);
@@ -132,22 +134,6 @@ public class PlayerSelection : MonoBehaviour
         }
     }
 
-    private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)
-    {
-        var t = 0f;
-        var easedT = 0f;
-        while (Mathf.Abs(t) < 1f)
-        {
-            easedT = Easing.Back.Out(t);
-            var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
-            //transform.localScale = Vector3.one * size;
-            transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
-            yield return new WaitForFixedUpdate(); // Surely this is poor practise.
-            t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
-        }
-        yield break;
-    }
-
     public void FinaliseSelection()
     {
         var currentPlayer = PlayerManager.currentPlayer;
@@ -159,15 +145,11 @@ public class PlayerSelection : MonoBehaviour
     private void BehindTheCurtain()
     {
         var currentPlayer = PlayerManager.currentPlayer;
-
+        
         // Save Edits to final Player
         currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentHat);
-
         
-        PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
-        // Remove excess Players from list
-        // Delete excess Player game objects
-        // Reset current player
+        PlayerManager.FinaliseNumberOfPlayers(currentPlayer.id + 1);
 
         // For each remaining player...
         foreach (Player player in PlayerManager.players)
@@ -192,5 +174,21 @@ public class PlayerSelection : MonoBehaviour
 
         // Reveal new scene
         LoadingScreen.TransitionFromLoadingScreen();
+    }
+    
+    private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)
+    {
+        var t = 0f;
+        var easedT = 0f;
+        while (Mathf.Abs(t) < 1f)
+        {
+            easedT = Easing.Back.Out(t);
+            var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
+            //transform.localScale = Vector3.one * size;
+            transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
+            yield return new WaitForFixedUpdate(); // Surely this is poor practise.
+            t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
+        }
+        yield break;
     }
 }
