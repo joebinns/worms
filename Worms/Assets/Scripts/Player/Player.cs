@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
     public bool hasUserEdits = false;
     public PlayerSettings playerSettings;
-    //public HatSettings hatSettings;
+    public Transform follower;
 
     [Header("Renderers")]
     public Transform renderers;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     public Material visorMaterial;
     public Material ditherMaterial;
     public Sprite portrait;
+    public TextMeshProUGUI namePlateText;
 
     [Header("Particle Systems")]
     public ParticleSystem dustParticleSystem;
@@ -134,16 +136,16 @@ public class Player : MonoBehaviour
     {
         id = playerSettings.id;
         playerName = playerSettings.name;
-        /*
-        if (hat != null)
-        {
-            Destroy(hat);
-        }
-        hat = Instantiate(playerSettings.hat.prefab, hatSlot);
-        */
         ChangeHat(playerSettings.hat.prefab);
     }
 
+    private void OnDestroy()
+    {
+        if (follower != null)
+        {
+            Destroy(follower.gameObject);
+        }
+    }
 }
 
 public enum PlayerState

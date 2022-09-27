@@ -12,5 +12,6 @@ public class FollowPosition : MonoBehaviour
     public void FixedUpdate()
     {
         this.transform.position = target.transform.position;
+
     }
 }
