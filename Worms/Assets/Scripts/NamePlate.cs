@@ -56,6 +56,7 @@ public class NamePlate : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        _canvasGroup.alpha = 0f;
     }
     
     private IEnumerator Show(float duration)
@@ -67,5 +68,6 @@ public class NamePlate : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        _canvasGroup.alpha = DEFAULT_ALPHA;
     }
 }
