@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
         players.Sort((x, y) => x.id.CompareTo(y.id));
     }
 
-    public static void SetCurrentPlayer(int index)
+    public static Player SetCurrentPlayer(int index)
     {
         // Reset old players movement inputs
         if (currentPlayer != null)
@@ -58,6 +58,8 @@ public class PlayerManager : MonoBehaviour
         currentPlayer = players[index];
         
         OnPlayerChanged?.Invoke(currentPlayer);
+
+        return (currentPlayer);
     }
 
     public static void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should be moved to PlayerSelection

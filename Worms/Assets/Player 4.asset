@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Player 4
   m_EditorClassIdentifier: 
   baseId: 3
-  baseName: Player 4
+  baseName: 
+  baseSuggestedName: Player 4
   baseHat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
-  id: 3
-  name: 
-  hat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}

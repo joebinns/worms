@@ -9,7 +9,7 @@ public class PlayerSelection : MonoBehaviour
     private const float DEFAULT_RIDE_HEIGHT = 2f;
     private const float UPPER_RIDE_HEIGHT = 2.75f;
 
-    private const float MIN_PLAYER_SIZE = 1f;
+    private const float DEFAULT_PLAYER_SIZE = 1f;
     private const float MAX_PLAYER_SIZE = 1.2f;
 
     // Variables
@@ -32,7 +32,10 @@ public class PlayerSelection : MonoBehaviour
 
     private void Start()
     {
-        _previousPlayer = PlayerManager.currentPlayer;
+        var currentPlayer = PlayerManager.currentPlayer;
+        _previousPlayer = currentPlayer;
+        // Update name placeholder text
+        ((TextMeshProUGUI)nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
     }
 
     private void ChangePlayerSelection(Player player)
@@ -69,38 +72,18 @@ public class PlayerSelection : MonoBehaviour
         }
         player.DisableDitherMode();
     }
-
+    
     public void NextPlayer()
     {
         var currentPlayer = PlayerManager.currentPlayer;
         if (currentPlayer.id < 3)
         {
-            // Save Edits to Player
-            currentPlayer.playerName = nameInput.text;
-            currentPlayer.SetHat(hatRack.currentHat);
-            currentPlayer.hasUserEdits = true;
-
-            // Activate players hat    
-            currentPlayer.hat.SetActive(true);
-            currentPlayer.hat.transform.localPosition = Vector3.up * 0.825f;
-
-            // Change Player
-            PlayerManager.SetCurrentPlayer(currentPlayer.id + 1);
-            currentPlayer = PlayerManager.currentPlayer;
-
-            if (currentPlayer.hasUserEdits)
-            {
-                // Restore any saved edits
-                nameInput.text = currentPlayer.playerName;
-                hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
-            }
-            else
-            {
-                // Otherwise restore to default
-                nameInput.text = "";
-                hatRack.ChangeHat(0);
-            }
+            // Change to next Player
+            currentPlayer = ChangePlayer(currentPlayer.id + 1);
             
+            // Deactivate new players hat
+            currentPlayer.hat.SetActive(false);
+
         }
         else
         {
@@ -108,32 +91,39 @@ public class PlayerSelection : MonoBehaviour
         }
     }
 
+    private Player ChangePlayer(int id)
+    {
+        var currentPlayer = PlayerManager.currentPlayer;
+        
+        // Save edits to Player
+        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentHat);
+        
+        // Change to next Player
+        currentPlayer = PlayerManager.SetCurrentPlayer(id);
+
+        // Update name placeholder text
+        ((TextMeshProUGUI)nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
+
+        // Restore saved edits
+        nameInput.text = currentPlayer.playerName;
+        hatRack.ChangeHat(currentPlayer.playerSettings.hat.id);
+
+        return currentPlayer;
+    }
+
     public void PreviousPlayer()
     {
         var currentPlayer = PlayerManager.currentPlayer;
         if (currentPlayer.id > 0)
         {
-            // Save Edits to Player
-            currentPlayer.playerName = nameInput.text;
-            currentPlayer.SetHat(hatRack.currentHat);
-            currentPlayer.hasUserEdits = true;
-
-            // Deactive players hat
+            // Deactivate latest players hat
             currentPlayer.hat.SetActive(false);
 
-            // Change Player
-            PlayerManager.SetCurrentPlayer(currentPlayer.id - 1);
-            currentPlayer = PlayerManager.currentPlayer;
+            // Change to previous player
+            currentPlayer = ChangePlayer(currentPlayer.id - 1);
 
-            // Deactive players hat
+            // Deactivate previous players hat
             currentPlayer.hat.SetActive(false);
-
-            if (currentPlayer.hasUserEdits) // This should always be the case...
-            {
-                // Restore saved edits
-                nameInput.text = currentPlayer.playerName;
-                hatRack.ChangeHat(currentPlayer.hat.GetComponent<Hat>().id);
-            }
 
         }
         else
@@ -149,7 +139,7 @@ public class PlayerSelection : MonoBehaviour
         while (Mathf.Abs(t) < 1f)
         {
             easedT = Easing.Back.Out(t);
-            var size = (shouldEnlarge ? MIN_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - MIN_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
+            var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
             //transform.localScale = Vector3.one * size;
             transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
             yield return new WaitForFixedUpdate(); // Surely this is poor practise.
@@ -168,16 +158,12 @@ public class PlayerSelection : MonoBehaviour
 
     private void BehindTheCurtain()
     {
-
         var currentPlayer = PlayerManager.currentPlayer;
 
         // Save Edits to final Player
-        currentPlayer.playerName = nameInput.text;
-        currentPlayer.SetHat(hatRack.currentHat);
-        currentPlayer.hat.transform.localPosition = Vector3.up * 0.825f;
-        currentPlayer.hasUserEdits = true;
-        currentPlayer.hat.SetActive(true);
+        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentHat);
 
+        
         PlayerManager.FinaliseNumberOfPlayers(PlayerManager.currentPlayer.id + 1);
         // Remove excess Players from list
         // Delete excess Player game objects

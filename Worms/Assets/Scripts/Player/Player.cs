@@ -45,23 +45,20 @@ public class Player : MonoBehaviour
         UnpackPlayerSettings();
     }
 
-    public void SetHat(GameObject newHat)
+    public void ChangeHat(GameObject newHat)
     {
-        // Delete previous hat
-        Destroy(hat);
-
-        // Instantiate new hat
-        hat = Instantiate(newHat, renderers);
-        hat.transform.localPosition = Vector3.zero;
-
+        if (hat != null)
+        {
+            Destroy(hat);
+        }
+        hat = Instantiate(newHat, hatSlot);
+        
+        // Change hat to have the player's layer (due to dither shader)
         hat.layer = renderers.gameObject.layer;
         foreach (Transform child in hat.transform)
         {
             child.gameObject.layer = renderers.gameObject.layer;
         }
-
-        hat.transform.localPosition += Vector3.up;
-
     }
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
@@ -112,6 +109,20 @@ public class Player : MonoBehaviour
         OnPlayerStateChanged?.Invoke(state);
     }
 
+    public void EditPlayerSettings(string name, GameObject hat)
+    {
+        if (name == "")
+        {
+            name = playerSettings.suggestedName;
+        }
+        playerName = name;
+        ChangeHat(hat);
+        
+        hasUserEdits = true;
+
+        PackPlayerSettings();
+    }
+
     public void PackPlayerSettings()
     {
         playerSettings.id = id;
@@ -123,7 +134,14 @@ public class Player : MonoBehaviour
     {
         id = playerSettings.id;
         playerName = playerSettings.name;
+        /*
+        if (hat != null)
+        {
+            Destroy(hat);
+        }
         hat = Instantiate(playerSettings.hat.prefab, hatSlot);
+        */
+        ChangeHat(playerSettings.hat.prefab);
     }
 
 }
