@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [Header("Other")]
     public int id;
     public string playerName = "Player Name Undefined";
-    public bool hasUserEdits = false;
     public PlayerSettings playerSettings;
     public Transform follower;
 
@@ -119,8 +118,6 @@ public class Player : MonoBehaviour
         }
         playerName = name;
         ChangeHat(hat);
-        
-        hasUserEdits = true;
 
         PackPlayerSettings();
     }

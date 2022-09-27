@@ -11,7 +11,7 @@ public class PlayerSettings : ScriptableObject
 
     public int id { get; set; }
     public new string name { get; set; }
-    public new string suggestedName { get; set; }
+    public string suggestedName { get; set; }
     public HatSettings hat { get; set; }
     public bool shouldSpawn { get; set; }
 

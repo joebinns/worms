@@ -80,11 +80,14 @@ public class PlayerSelection : MonoBehaviour
         var currentPlayer = PlayerManager.currentPlayer;
         if (currentPlayer.id < 3)
         {
+            // Activate players hat
+            currentPlayer.hatSlot.gameObject.SetActive(true);
+
             // Change to next Player
             currentPlayer = ChangePlayer(currentPlayer.id + 1);
             
             // Deactivate new players hat
-            currentPlayer.hat.SetActive(false);
+            //currentPlayer.hatSlot.gameObject.SetActive(false);
 
         }
         else
@@ -119,13 +122,13 @@ public class PlayerSelection : MonoBehaviour
         if (currentPlayer.id > 0)
         {
             // Deactivate latest players hat
-            currentPlayer.hat.SetActive(false);
+            currentPlayer.hatSlot.gameObject.SetActive(false);
 
             // Change to previous player
             currentPlayer = ChangePlayer(currentPlayer.id - 1);
 
             // Deactivate previous players hat
-            currentPlayer.hat.SetActive(false);
+            currentPlayer.hatSlot.gameObject.SetActive(false);
 
         }
         else
@@ -165,12 +168,6 @@ public class PlayerSelection : MonoBehaviour
 
         // Load scene
         LoadingScreen.LoadScene(SceneIndices.GAME);
-
-        // Unpack their settings
-        foreach (Player player in PlayerManager.players)
-        {
-            player.UnpackPlayerSettings();
-        }
 
         // Reveal new scene
         LoadingScreen.TransitionFromLoadingScreen();
