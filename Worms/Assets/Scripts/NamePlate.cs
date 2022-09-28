@@ -8,8 +8,6 @@ public class NamePlate : MonoBehaviour
 {
     private const float DEFAULT_ALPHA = 255f/100f;
 
-    private float _t;
-
     private CanvasGroup _canvasGroup;
     
     private Player _player;

@@ -35,6 +35,11 @@ public class CameraManager : MonoBehaviour
 
     public static void UpdateCameraState(CameraState cameraState)
     {
+        if (state == cameraState)
+        {
+            return;
+        }
+
         state = cameraState;
         
         switch (state)
