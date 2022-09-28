@@ -12,14 +12,12 @@ public class PlayerSelection : MonoBehaviour
     private const float DEFAULT_PLAYER_SIZE = 1f;
     private const float MAX_PLAYER_SIZE = 1.2f;
     
-
     // Variables
     private Player _previousPlayer;
 
     public TMP_InputField nameInput;
     public HatRack hatRack;
-
-
+    
     private void OnEnable()
     {
         PlayerManager.OnPlayerChanged += ChangePlayerSelection;

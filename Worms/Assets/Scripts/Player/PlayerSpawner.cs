@@ -37,7 +37,7 @@ public class PlayerSpawner : MonoBehaviour
             player.transform.position = spawnpoint.transform.position;
             
             // Set name plate
-            player.namePlateText.text = player.playerName;
+            player.namePlateText.text = player.playerSettings.name;
 
         }
         

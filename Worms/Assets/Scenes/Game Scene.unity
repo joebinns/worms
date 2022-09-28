@@ -639,7 +639,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 200972177}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 623373295815737138, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
 --- !u!224 &207958914 stripped
 RectTransform:
@@ -1626,7 +1627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3042,6 +3043,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3652,7 +3657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757524, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_LocalPosition.x

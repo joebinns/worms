@@ -55,7 +55,7 @@ public class Portraits : MonoBehaviour
         _activePortrait.color = activeColor;
         StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), false));
 
-        // Activate new portrait
+            // Activate new portrait
         _activePortrait = _portraits[id];
         activeColor = _activePortrait.color;
         activeColor.a = 1f;

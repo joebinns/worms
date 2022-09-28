@@ -39,11 +39,12 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
+        UnpackPlayerSettings();
     }
 
     private void Start()
     {
-        UnpackPlayerSettings();
+        //UnpackPlayerSettings();
     }
 
     public void ChangeHat(GameObject newHat)
@@ -133,6 +134,7 @@ public class Player : MonoBehaviour
     {
         id = playerSettings.id;
         playerName = playerSettings.name;
+        //Debug.LogError(playerName);
         ChangeHat(playerSettings.hat.prefab);
     }
 

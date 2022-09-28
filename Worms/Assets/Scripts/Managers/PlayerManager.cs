@@ -28,9 +28,12 @@ public class PlayerManager : MonoBehaviour
         GetPlayers();
         SortPlayersByID();
 
-        //currentPlayer = players[0];
-        //OnPlayerChanged?.Invoke(currentPlayer);
-        SetCurrentPlayer(0);
+        currentPlayer = players[0];
+    }
+
+    private void Start()
+    {
+        //SetCurrentPlayer(0);
     }
 
     private void GetPlayers()

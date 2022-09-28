@@ -10,7 +10,7 @@ public class Aiming : MonoBehaviour
 
     private PhysicsBasedCharacterController _characterController;
 
-    private Vector2 _sensitivity = Vector2.one * 20f;
+    private Vector2 _sensitivity = Vector2.one * 0.03f;
 
     private void Start()
     {
@@ -64,7 +64,7 @@ public class Aiming : MonoBehaviour
 
     private void Update()
     {
-        _cursorPosition += _cursorDelta * Time.deltaTime;
+        _cursorPosition += _cursorDelta; // Don't multiply this by Time.deltaTime, as sensitivity should NOT be framerate dependent.
         _cursorPosition.y = Mathf.Clamp(_cursorPosition.y, -100f/_sensitivity.y, 100f/_sensitivity.y);
 
         var aimingInput = MathsUtils.MultiplyRows(_cursorPosition * Mathf.Deg2Rad, _sensitivity);
