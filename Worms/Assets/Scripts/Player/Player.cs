@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
     public PlayerSettings playerSettings;
     public Transform follower;
+    public Weapon currentWeapon;
 
     [Header("Renderers")]
     public Transform renderers;
@@ -46,6 +47,16 @@ public class Player : MonoBehaviour
     {
         //UnpackPlayerSettings();
     }
+
+/*
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            currentWeapon.Attack();
+        }
+    }
+    */
 
     public void ChangeHat(GameObject newHat)
     {
