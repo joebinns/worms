@@ -8,6 +8,8 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints;
     private List<Transform> _availableSpawnPoints = new List<Transform>();
 
+    [SerializeField] private List<TextSizer> _nameplateResizers;
+
     //[SerializeField] private List<GameObject> _playerPrefabs;
 
     private void Start()
@@ -38,6 +40,7 @@ public class PlayerSpawner : MonoBehaviour
             
             // Set name plate
             player.namePlateText.text = player.playerSettings.name;
+            _nameplateResizers[player.id].Refresh();
 
         }
         

@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         if (CameraManager.state == CameraState.AimCamera)
         {
             CursorVisibilityToggle.DisableCursor();
+            Cursor.lockState = CursorLockMode.Locked;
         }
         Time.timeScale = 1f;
         isPaused = false;
@@ -48,6 +49,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         InputManager.SwitchActionMap("Paused");
         CursorVisibilityToggle.EnableCursor();
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         isPaused = true;
     }

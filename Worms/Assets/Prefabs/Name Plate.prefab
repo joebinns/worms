@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2110825677049757483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 2110825677738242406}
   - component: {fileID: 2110825677738242400}
   - component: {fileID: 2110825677738242401}
+  - component: {fileID: 2147248419520327521}
   m_Layer: 5
   m_Name: Name Plate
   m_TagString: Untagged
@@ -179,7 +180,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 70}
+  m_SizeDelta: {x: 173.34, y: 65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2110825677738242406
 MonoBehaviour:
@@ -233,6 +234,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2147248419520327521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110825677738242404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd5aca6d7f7f6c41ac5c0df5b0d5a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 2110825678081774231}
+  ResizeTextObject: 1
+  Padding: {x: 20, y: 0}
+  MaxSize: {x: 800, y: 65}
+  MinSize: {x: 20, y: 0}
+  ControlAxes: 3
 --- !u!1 &2110825678081774229
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +399,7 @@ GameObject:
   - component: {fileID: 8371400512837744233}
   - component: {fileID: 7466042452463942894}
   - component: {fileID: 6641317259944198926}
+  - component: {fileID: 7154650354461255216}
   m_Layer: 5
   m_Name: Health Plate
   m_TagString: Untagged
@@ -406,7 +426,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 220, y: 70}
+  m_SizeDelta: {x: 214.26, y: 65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8371400512837744233
 MonoBehaviour:
@@ -460,6 +480,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7154650354461255216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580427816537824899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd5aca6d7f7f6c41ac5c0df5b0d5a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 389598615562970792}
+  ResizeTextObject: 1
+  Padding: {x: 20, y: 0}
+  MaxSize: {x: 800, y: 65}
+  MinSize: {x: 20, y: 0}
+  ControlAxes: 3
 --- !u!1 &6128267875237958506
 GameObject:
   m_ObjectHideFlags: 0

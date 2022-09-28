@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Courtesy of #14: https://forum.unity.com/threads/does-the-content-size-fitter-work.484678/
 [ExecuteInEditMode]
 public class TextSizer : MonoBehaviour
 {
