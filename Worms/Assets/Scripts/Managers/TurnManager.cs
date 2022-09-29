@@ -19,8 +19,7 @@ public class TurnManager : MonoBehaviour
         _turn++;
      
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
-        PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
-        
+        PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);     
 
     }
     

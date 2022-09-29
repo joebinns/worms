@@ -6,6 +6,11 @@ public abstract class Weapon : ScriptableObject
     public int damage;
     public GameObject prefab;
 
+    public virtual void Equip(Player player)
+    {
+        // Instantiate weapon prefab in player's weapon slot
+    }
+
     public abstract void Attack();
 
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NamePlate : MonoBehaviour
+public class Nameplate : MonoBehaviour
 {
     private const float DEFAULT_ALPHA = 255f/100f;
 
@@ -12,10 +12,27 @@ public class NamePlate : MonoBehaviour
     
     private Player _player;
 
+    [SerializeField] private Transform _nameplate;
+    [SerializeField] private Transform _healthplate;
+
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
         _player = transform.parent.GetComponent<FollowPosition>().target.GetComponent<Player>();
+    }
+
+    public void ChangeName(string name)
+    {
+        var textplateSizer = _nameplate.GetComponent<TextSizer>();
+        textplateSizer.Text.text = name;
+        textplateSizer.Refresh();
+    }
+
+    public void ChangeHealth(int health)
+    {
+        var healthplateSizer = _healthplate.GetComponent<TextSizer>();
+        healthplateSizer.Text.text = name;
+        healthplateSizer.Refresh();
     }
 
     private void OnEnable()
@@ -37,15 +54,15 @@ public class NamePlate : MonoBehaviour
         
         if (cameraState == CameraState.AimCamera)
         {
-            StartCoroutine(Hide(0.5f));
+            StartCoroutine(Hide());
         }
         else if (cameraState == CameraState.FollowCamera)
         {
-            StartCoroutine(Show(0.5f));
+            StartCoroutine(Show());
         }
     }
 
-    private IEnumerator Hide(float duration)
+    public IEnumerator Hide(float duration = 0.5f)
     {
         var t = 0f;
         while (t < duration)
@@ -57,7 +74,7 @@ public class NamePlate : MonoBehaviour
         _canvasGroup.alpha = 0f;
     }
     
-    private IEnumerator Show(float duration)
+    public IEnumerator Show(float duration = 0.5f)
     {
         var t = 0f;
         while (t < duration)

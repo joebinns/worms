@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     private int _health = 100;
+    private bool _isDead = false;
     /*
     public int health {
         get => _health;
@@ -28,11 +29,16 @@ public class Health : MonoBehaviour
 
     public void ChangeHealth(int delta)
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         _health += delta;
 
         // Flash materials white
 
-        if (_health < 0)
+        if (_health <= 0)
         {
             Die();
         }
@@ -44,5 +50,7 @@ public class Health : MonoBehaviour
         _health = 0;
 
         GetComponent<Player>().UpdatePlayerState(PlayerState.Dead);
+
+        _isDead = true;
     }
 }

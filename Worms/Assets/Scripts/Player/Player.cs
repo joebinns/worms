@@ -17,9 +17,12 @@ public class Player : MonoBehaviour
     public Transform renderers;
     public GameObject hat;
     public Transform hatSlot;
+    public Transform weaponSlot;
     public Material ditherMaterial;
     public Sprite portrait;
-    public TextMeshProUGUI namePlateText;
+
+    //public TextMeshProUGUI namePlateText;
+    public Nameplate nameplate;
 
     [Header("Particle Systems")]
     public ParticleSystem dustParticleSystem;
@@ -43,8 +46,21 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
+        currentWeapon.Equip(this);
         currentWeapon.Attack();
     } 
+
+    public void ChangeName(string newName)
+    {
+        playerName = newName;
+
+        // Update nameplate
+        if (nameplate != null)
+        {
+            nameplate.ChangeName(playerName);
+        }
+
+    }
 
     public void ChangeHat(GameObject newHat)
     {
@@ -58,6 +74,21 @@ public class Player : MonoBehaviour
         UpdateAllRenderers();
         SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
     }
+
+    /*
+    public void EquipWeapon(GameObject newWeapon) // Is it better to have this here or in the weapon SO? 
+    {
+        if (currentWeapon != null)
+        {
+            Destroy(currentWeapon.gameObject); // How can I rework this to work with the scriptable object...
+        }
+        weapon = Instantiate(newWeapon, weaponSlot);
+
+        // Change hat to have the player's layer (due to dither shader)
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
+    }
+    */
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
     {
@@ -155,8 +186,8 @@ public class Player : MonoBehaviour
                 SetRenderersLayerMask("Default");
 
                 // Disable nameplates
-
-                
+                //nameplate.gameObject.SetActive(false);
+                StartCoroutine(nameplate.Hide(0.25f));
 
                 break;
         }
@@ -185,8 +216,7 @@ public class Player : MonoBehaviour
     public void UnpackPlayerSettings()
     {
         id = playerSettings.id;
-        playerName = playerSettings.name;
-        //Debug.LogError(playerName);
+        ChangeName(playerSettings.name);
         ChangeHat(playerSettings.hat.prefab);
     }
 
