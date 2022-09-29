@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5502202851998090983}
   - component: {fileID: 5502202851998090981}
   - component: {fileID: 5502202851998090980}
+  - component: {fileID: 7123105908047842761}
   m_Layer: 0
   m_Name: Eyes Cube
   m_TagString: Player
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7123105908047842761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502202851998090982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7ece81057d6884eb83566bccc519b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: f7a119b4c246a18449f3ec4c2f96b052, type: 2}
 --- !u!1 &5502202852464488739
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: 5502202852464488736}
   - component: {fileID: 5502202852464488742}
   - component: {fileID: 5502202852464488737}
+  - component: {fileID: 6769903898225873924}
   m_Layer: 0
   m_Name: Body Capsule
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6769903898225873924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502202852464488739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7ece81057d6884eb83566bccc519b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 0}
 --- !u!1 &5502202852526469066
 GameObject:
   m_ObjectHideFlags: 0

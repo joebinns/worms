@@ -17,10 +17,6 @@ public class Player : MonoBehaviour
     public Transform renderers;
     public GameObject hat;
     public Transform hatSlot;
-    public GameObject jumpsuit; // these vars should be made serialized private...
-    public Material jumpsuitMaterial;
-    public GameObject visor;
-    public Material visorMaterial;
     public Material ditherMaterial;
     public Sprite portrait;
     public TextMeshProUGUI namePlateText;
@@ -36,11 +32,13 @@ public class Player : MonoBehaviour
 
     // Variables
     private PlayerState state;
+    private List<Transform> _allRenderers = new List<Transform>();
 
     private void Awake()
     {
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
         UnpackPlayerSettings();
+        UpdateAllRenderers();
     }
 
     public void Attack()
@@ -55,13 +53,10 @@ public class Player : MonoBehaviour
             Destroy(hat);
         }
         hat = Instantiate(newHat, hatSlot);
-        
+
         // Change hat to have the player's layer (due to dither shader)
-        hat.layer = renderers.gameObject.layer;
-        foreach (Transform child in hat.transform)
-        {
-            child.gameObject.layer = renderers.gameObject.layer;
-        }
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
     }
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
@@ -92,26 +87,51 @@ public class Player : MonoBehaviour
         physicsBasedCharacterController._rideHeight = rideHeight;
     }
 
+    private void UpdateAllRenderers()
+    {
+        _allRenderers.Clear();
+        _allRenderers.Add(renderers);
+        UnityUtils.GetAllChildren(renderers.transform, ref _allRenderers);
+    }
+
     public void EnableDitherMode()
     {
-        jumpsuit.GetComponent<Renderer>().material = ditherMaterial;
-        visor.GetComponent<Renderer>().material = ditherMaterial;
+        UpdateAllRenderers();
+
+        foreach (Transform transform in _allRenderers)
+        {
+            var renderer = transform.GetComponent<Renderer>();
+            if (renderer == null)
+            {
+                continue;
+            }
+
+            renderer.material = ditherMaterial;
+        }
     }
 
     public void DisableDitherMode()
     {
-        jumpsuit.GetComponent<Renderer>().material = jumpsuitMaterial;
-        visor.GetComponent<Renderer>().material = visorMaterial;
+        UpdateAllRenderers(); // Not sure why this is needed here, since it already gets called when new hats are instantiated.
+
+        foreach (Transform transform in _allRenderers)
+        {
+            var materialStorage = transform.GetComponent<MaterialStorage>();
+            if (materialStorage == null)
+            {
+                continue;
+            }
+
+            transform.GetComponent<Renderer>().material = materialStorage.defaultMaterial;
+        }
     }
 
     private void SetRenderersLayerMask(string layerName)
     {
-        var allRenderers = new List<Transform>();
-        allRenderers.Add(renderers);
-        UnityUtils.GetAllChildren(renderers.transform, ref allRenderers);
-        foreach (Transform transform in allRenderers)
+        var newLayer = LayerMask.NameToLayer(layerName);
+        foreach (Transform transform in _allRenderers)
         {
-            transform.gameObject.layer = LayerMask.NameToLayer(layerName);
+            transform.gameObject.layer = newLayer;
         }
     }
 
@@ -135,6 +155,7 @@ public class Player : MonoBehaviour
                 SetRenderersLayerMask("Default");
 
                 // Disable nameplates
+
                 
 
                 break;

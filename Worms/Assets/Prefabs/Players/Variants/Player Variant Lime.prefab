@@ -99,5 +99,9 @@ PrefabInstance:
       propertyPath: jumpsuitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: e96c73d9fec4fe64c84c700fe4c542ac, type: 2}
+    - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e96c73d9fec4fe64c84c700fe4c542ac, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc949d419aa56f848a1906bcca721029, type: 3}
