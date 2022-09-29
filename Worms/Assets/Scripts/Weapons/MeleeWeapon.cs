@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MeleeWeaponSettings", menuName = "ScriptableObjects/Weapon/MeleeWeapon")]
 public class MeleeWeapon : Weapon
 {
-    public float range = 8f; // Note that this is distance from the camera, and not the player... Should be adjusted in the future.
+    public float range = 7.5f; // Note that this is distance from the camera, and not the player... Should be adjusted in the future.
 
     public override void Attack()
     {
@@ -20,8 +20,9 @@ public class MeleeWeapon : Weapon
         if (didRaycastHit)
         {
             //raycastHit.collider.GetComponent<Health>().health -= damage;
-            raycastHit.collider.GetComponent<Health>().ChangeHealth(-damage);
+            raycastHit.collider.GetComponent<Knockback>().ChangeKnockback(damage);
         }
 
     }
+    
 }

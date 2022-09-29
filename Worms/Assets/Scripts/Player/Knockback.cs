@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Knockback : MonoBehaviour
 {
-    private int _health = 100;
+    private int _knockback = 0;
     private bool _isDead = false;
     /*
     public int health {
@@ -26,31 +27,28 @@ public class Health : MonoBehaviour
     */
     //public int health;
 
+    // --> Subscribed to by material flasher, Healthplate.
+    public event Action<int> OnKnockbackChanged; // Can I make this non static, so that not all nameplates are called?
 
-    public void ChangeHealth(int delta)
+    public void ChangeKnockback(int delta)
     {
         if (_isDead)
         {
             return;
         }
 
-        _health += delta;
+        _knockback += delta;
 
-        // Flash materials white
-
-        if (_health <= 0)
-        {
-            Die();
-        }
+        OnKnockbackChanged?.Invoke(_knockback);
     }
 
-
-    private void Die()
+    private void Die() // This is no longer a needed state, if using the percentage knockback system.
     {
-        _health = 0;
+        //_health = 0;
 
         GetComponent<Player>().UpdatePlayerState(PlayerState.Dead);
 
         _isDead = true;
+
     }
 }

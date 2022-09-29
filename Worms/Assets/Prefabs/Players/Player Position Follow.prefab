@@ -53,6 +53,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8880937654670262088}
     m_Modifications:
+    - target: {fileID: 12080097029541365, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 92.33
+      objectReference: {fileID: 0}
     - target: {fileID: 2110825677049757480, guid: fe62adcee29673944b67e4a675b9366a, type: 3}
       propertyPath: m_Name
       value: Name Plate

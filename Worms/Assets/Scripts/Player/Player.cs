@@ -46,9 +46,19 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        currentWeapon.Equip(this);
+        //currentWeapon.Equip(this);
         currentWeapon.Attack();
     } 
+
+    public void PickUp()
+    {
+
+    }
+
+    public void Equip()
+    {
+
+    }
 
     public void ChangeName(string newName)
     {
@@ -185,8 +195,6 @@ public class Player : MonoBehaviour
 
                 SetRenderersLayerMask("Default");
 
-                // Disable nameplates
-                //nameplate.gameObject.SetActive(false);
                 StartCoroutine(nameplate.Hide(0.25f));
 
                 break;

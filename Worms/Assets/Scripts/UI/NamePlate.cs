@@ -13,9 +13,9 @@ public class Nameplate : MonoBehaviour
     private Player _player;
 
     [SerializeField] private Transform _nameplate;
-    [SerializeField] private Transform _healthplate;
+    [SerializeField] private Transform _knockbackplate;
 
-    private void Start()
+    private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
         _player = transform.parent.GetComponent<FollowPosition>().target.GetComponent<Player>();
@@ -28,21 +28,24 @@ public class Nameplate : MonoBehaviour
         textplateSizer.Refresh();
     }
 
-    public void ChangeHealth(int health)
+    public void ChangeKnockback(int knockback)
     {
-        var healthplateSizer = _healthplate.GetComponent<TextSizer>();
-        healthplateSizer.Text.text = name;
-        healthplateSizer.Refresh();
+        var knockbackplateSizer = _knockbackplate.GetComponent<TextSizer>();
+        knockbackplateSizer.Text.text = knockback.ToString() + "<size=85%><u><voffset=.125em>%</voffset></u>";
+        knockbackplateSizer.Text.color = Color32.Lerp(new Color32(255, 255, 255, 255), new Color32(255, 0, 0, 255), (float)knockback/(float)200);
+        knockbackplateSizer.Refresh();
     }
 
     private void OnEnable()
     {
         CameraManager.OnCameraStateChanged += ChangeVisibility;
+        _player.GetComponent<Knockback>().OnKnockbackChanged += ChangeKnockback;
     }
 
     private void OnDisable()
     {
         CameraManager.OnCameraStateChanged -= ChangeVisibility;
+        _player.GetComponent<Knockback>().OnKnockbackChanged -= ChangeKnockback;
     }
 
     private void ChangeVisibility(CameraState cameraState)

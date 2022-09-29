@@ -10,5 +10,7 @@ public class ProjectileWeapon : Weapon
     public override void Attack()
     {
         Debug.Log("projectile pew");
+
     }
+    
 }
