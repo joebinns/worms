@@ -31,6 +31,16 @@ public class InputManager : MonoBehaviour
         PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>().JumpInputAction(context);
     }
 
+    public void AttackInputAction(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        PlayerManager.currentPlayer.GetComponent<Player>().Attack();
+    }
+
     public static void SwitchActionMap(string newActionMap)
     {
         _previousActionMap = _playerInput.currentActionMap;

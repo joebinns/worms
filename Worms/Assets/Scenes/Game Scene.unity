@@ -1664,6 +1664,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1201024265}
     - target: {fileID: 1441680057779348093, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+    - target: {fileID: 1441680057779348093, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
       propertyPath: namePlateText
       value: 
       objectReference: {fileID: 1955391053}
@@ -2643,6 +2647,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 49103959}
     - target: {fileID: 4264920953719839084, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+    - target: {fileID: 4264920953719839084, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
       propertyPath: namePlateText
       value: 
       objectReference: {fileID: 1934996168}
@@ -2937,6 +2945,10 @@ PrefabInstance:
       propertyPath: follower
       value: 
       objectReference: {fileID: 1739836942}
+    - target: {fileID: 6998102512539828088, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
     - target: {fileID: 6998102512539828088, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
       propertyPath: namePlateText
       value: 
@@ -4292,6 +4304,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: efb4e0fc-f924-4377-9922-33fd20f9cfde
     m_ActionName: Paused/Toggle Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: AttackInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e631fa8-6103-46e9-b25a-d3832523fed7
+    m_ActionName: Aiming/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Moving

@@ -43,20 +43,10 @@ public class Player : MonoBehaviour
         UnpackPlayerSettings();
     }
 
-    private void Start()
+    public void Attack()
     {
-        //UnpackPlayerSettings();
-    }
-
-/*
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            currentWeapon.Attack();
-        }
-    }
-    */
+        currentWeapon.Attack();
+    } 
 
     public void ChangeHat(GameObject newHat)
     {

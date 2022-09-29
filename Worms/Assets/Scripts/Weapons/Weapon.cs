@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class Weapon : ScriptableObject
 {
-    public string name;
-    public float damage;
+    public new string name;
+    public int damage;
     public GameObject prefab;
 
     public abstract void Attack();

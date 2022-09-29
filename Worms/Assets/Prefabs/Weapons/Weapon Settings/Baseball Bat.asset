@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Baseball Bat
   m_EditorClassIdentifier: 
   name: Baseball Bat
-  damage: 1
+  damage: 20
   prefab: {fileID: 2021789547751843852, guid: 0e851835e0b5b8d42a47f7d0b423a18e, type: 3}
+  range: 7

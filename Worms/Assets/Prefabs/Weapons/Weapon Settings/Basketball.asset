@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Basketball
   m_EditorClassIdentifier: 
   name: Basketball
-  damage: 1
+  damage: 5
   prefab: {fileID: 6566537792400996785, guid: 9ea290fffa137ee4b835df807ee5ac04, type: 3}
   projectileSpeed: 1
