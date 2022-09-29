@@ -30,6 +30,8 @@ public class Health : MonoBehaviour
     {
         _health += delta;
 
+        // Flash materials white
+
         if (_health < 0)
         {
             Die();
@@ -39,8 +41,8 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("I'M DEAD");
-
         _health = 0;
+
+        GetComponent<Player>().UpdatePlayerState(PlayerState.Dead);
     }
 }

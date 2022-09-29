@@ -71,12 +71,20 @@ public class Player : MonoBehaviour
 
     public void EnableParticleSystem()
     {
-        dustParticleSystem.transform.parent.gameObject.SetActive(true);
+        ParticleSystem.EmissionModule emission;
+        emission = dustParticleSystem.emission; // Stores the module in a local variable
+        emission.enabled = true; // Applies the new value directly to the Particle System
+
+        //dustParticleSystem.transform.parent.gameObject.SetActive(true);
     }
 
     public void DisableParticleSystem()
     {
-        dustParticleSystem.transform.parent.gameObject.SetActive(false);
+        ParticleSystem.EmissionModule emission;
+        emission = dustParticleSystem.emission; // Stores the module in a local variable
+        emission.enabled = false; // Applies the new value directly to the Particle System
+
+        //dustParticleSystem.transform.parent.gameObject.SetActive(false);
     }
 
     public void AdjustRideHeight(float rideHeight)
@@ -96,6 +104,17 @@ public class Player : MonoBehaviour
         visor.GetComponent<Renderer>().material = visorMaterial;
     }
 
+    private void SetRenderersLayerMask(string layerName)
+    {
+        var allRenderers = new List<Transform>();
+        allRenderers.Add(renderers);
+        UnityUtils.GetAllChildren(renderers.transform, ref allRenderers);
+        foreach (Transform transform in allRenderers)
+        {
+            transform.gameObject.layer = LayerMask.NameToLayer(layerName);
+        }
+    }
+
     public void UpdatePlayerState(PlayerState playerState)
     {
         state = playerState;
@@ -107,6 +126,17 @@ public class Player : MonoBehaviour
             case PlayerState.Aiming:
                 break;
             case PlayerState.Dead:
+                physicsBasedCharacterController.enabled = false;
+                
+                EnableDitherMode();
+
+                DisableParticleSystem();
+
+                SetRenderersLayerMask("Default");
+
+                // Disable nameplates
+                
+
                 break;
         }
         OnPlayerStateChanged?.Invoke(state);
