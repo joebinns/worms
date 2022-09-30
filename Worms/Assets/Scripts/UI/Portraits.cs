@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Portraits : MonoBehaviour
@@ -55,13 +56,27 @@ public class Portraits : MonoBehaviour
         _activePortrait.color = activeColor;
         StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), false));
 
-            // Activate new portrait
+        // Activate new portrait
         _activePortrait = _portraits[id];
         activeColor = _activePortrait.color;
         activeColor.a = 1f;
         _activePortrait.color = activeColor;
 
         StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), true));
+    }
+
+    public void DisablePortrait(int id)
+    {
+        if (id > PlayerManager.numPlayers-1) // This is a dirty way around this function being called when Unspawned players are deleted...
+        {
+            return;
+        }
+        
+        Debug.Log(id);
+        var portraitToDisable = _portraits[id];
+        var disabledColor = Color.gray;
+        disabledColor.a = 0.25f;
+        portraitToDisable.color = disabledColor;
     }
 
     private IEnumerator EasedLerpScale(RectTransform portrait, bool shouldEnlarge)

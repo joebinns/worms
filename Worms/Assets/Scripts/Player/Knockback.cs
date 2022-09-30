@@ -6,7 +6,7 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     private int _knockback = 0;
-    private bool _isDead = false;
+    // private bool _isDead = false;
     /*
     public int health {
         get => _health;
@@ -32,10 +32,12 @@ public class Knockback : MonoBehaviour
 
     public int ChangeKnockback(int delta)
     {
+        /*
         if (_isDead)
         {
             return _knockback;
         }
+        */
 
         _knockback += delta;
         
@@ -46,6 +48,7 @@ public class Knockback : MonoBehaviour
         return _knockback;
     }
 
+    /*
     private void Die() // This is no longer a needed state, if using the percentage knockback system.
     {
         //_health = 0;
@@ -55,4 +58,5 @@ public class Knockback : MonoBehaviour
         _isDead = true;
 
     }
+    */
 }

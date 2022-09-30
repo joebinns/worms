@@ -247,6 +247,20 @@ public class Player : MonoBehaviour
         ChangeHat(playerSettings.hat.prefab);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Death Trigger"))
+        {
+            // Grey out player sprite
+            //portrait.
+            
+
+            PlayerManager.DeletePlayer(this);
+
+            //Destroy(this.gameObject);
+        }
+    }
+
     private void OnDestroy()
     {
         if (follower != null)
