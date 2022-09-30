@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2110825677049757483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110825677049757480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5195f646c5123914683444a01f55d277, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b85b571c7971d04bafc61488c210631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameplate: {fileID: 2110825677738242407}
+  _knockbackplate: {fileID: 12080097029541365}
 --- !u!1 &2110825677738242404
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +403,7 @@ GameObject:
   - component: {fileID: 6641317259944198926}
   - component: {fileID: 7154650354461255216}
   m_Layer: 5
-  m_Name: Health Plate
+  m_Name: Knockback Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +428,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 214.26, y: 65}
+  m_SizeDelta: {x: 97.06, y: 65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8371400512837744233
 MonoBehaviour:
@@ -564,10 +566,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 <3
+  m_text: 0<size=85%><u><voffset=.125em>%</voffset></u>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 857e60d974f4e01418ea8ba55d0d01ee, type: 2}
-  m_sharedMaterial: {fileID: -8051234952251552569, guid: 857e60d974f4e01418ea8ba55d0d01ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e781c2723fcd5df4ab62875b34bba9f3, type: 2}
+  m_sharedMaterial: {fileID: -6369076172781082855, guid: e781c2723fcd5df4ab62875b34bba9f3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

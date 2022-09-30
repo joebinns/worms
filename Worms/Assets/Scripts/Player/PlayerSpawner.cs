@@ -37,10 +37,6 @@ public class PlayerSpawner : MonoBehaviour
 
             // Position the player to spawnPoint
             player.transform.position = spawnpoint.transform.position;
-            
-            // Set name plate
-            player.namePlateText.text = player.playerSettings.name;
-            _nameplateResizers[player.id].Refresh();
 
         }
         

@@ -11,19 +11,21 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
     public PlayerSettings playerSettings;
     public Transform follower;
-    public Weapon currentWeapon;
 
     [Header("Renderers")]
     public Transform renderers;
     public GameObject hat;
     public Transform hatSlot;
-    public GameObject jumpsuit; // these vars should be made serialized private...
-    public Material jumpsuitMaterial;
-    public GameObject visor;
-    public Material visorMaterial;
+    //public List<GameObject> weapons;
+    //public int currentWeaponIndex;
+    public ItemRack weaponRack;
+    //public GameObject weapon;
+    public Transform weaponSlot;
     public Material ditherMaterial;
     public Sprite portrait;
-    public TextMeshProUGUI namePlateText;
+
+    //public TextMeshProUGUI namePlateText;
+    public Nameplate nameplate;
 
     [Header("Particle Systems")]
     public ParticleSystem dustParticleSystem;
@@ -36,25 +38,56 @@ public class Player : MonoBehaviour
 
     // Variables
     private PlayerState state;
+    private List<Transform> _allRenderers = new List<Transform>();
 
     private void Awake()
     {
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
         UnpackPlayerSettings();
+        UpdateAllRenderers();
     }
 
-    private void Start()
+    public void Attack()
     {
-        //UnpackPlayerSettings();
+        //currentWeapon.Equip(this);
+        //weapon.GetComponent<Weapon>().weaponSettings.Attack();
+        weaponRack.currentItem.GetComponent<Weapon>().weaponSettings.Attack();
+    } 
+
+    public void PickUp()
+    {
+
     }
 
-/*
-    private void Update()
+    public void ChangeName(string newName)
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        playerName = newName;
+
+        // Update nameplate
+        if (nameplate != null)
         {
-            currentWeapon.Attack();
+            nameplate.ChangeName(playerName);
         }
+
+    }
+
+    /*
+    public void ChangeWeapon(GameObject newWeapon)
+    {
+        // Have all equipped weapons in a list, cycle between activating in the list (like hatrack)
+        weapons[currentWeaponIndex].SetActive(false);
+        
+        
+        
+        
+        if (weapon != null)
+        {
+            Destroy(weapon);
+        }
+        weapon = Instantiate(newWeapon, weaponSlot);
+
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
     }
     */
 
@@ -65,14 +98,26 @@ public class Player : MonoBehaviour
             Destroy(hat);
         }
         hat = Instantiate(newHat, hatSlot);
-        
+
         // Change hat to have the player's layer (due to dither shader)
-        hat.layer = renderers.gameObject.layer;
-        foreach (Transform child in hat.transform)
-        {
-            child.gameObject.layer = renderers.gameObject.layer;
-        }
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
     }
+
+    /*
+    public void EquipWeapon(GameObject newWeapon) // Is it better to have this here or in the weapon SO? 
+    {
+        if (currentWeapon != null)
+        {
+            Destroy(currentWeapon.gameObject); // How can I rework this to work with the scriptable object...
+        }
+        weapon = Instantiate(newWeapon, weaponSlot);
+
+        // Change hat to have the player's layer (due to dither shader)
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
+    }
+    */
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
     {
@@ -81,12 +126,20 @@ public class Player : MonoBehaviour
 
     public void EnableParticleSystem()
     {
-        dustParticleSystem.transform.parent.gameObject.SetActive(true);
+        ParticleSystem.EmissionModule emission;
+        emission = dustParticleSystem.emission; // Stores the module in a local variable
+        emission.enabled = true; // Applies the new value directly to the Particle System
+
+        //dustParticleSystem.transform.parent.gameObject.SetActive(true);
     }
 
     public void DisableParticleSystem()
     {
-        dustParticleSystem.transform.parent.gameObject.SetActive(false);
+        ParticleSystem.EmissionModule emission;
+        emission = dustParticleSystem.emission; // Stores the module in a local variable
+        emission.enabled = false; // Applies the new value directly to the Particle System
+
+        //dustParticleSystem.transform.parent.gameObject.SetActive(false);
     }
 
     public void AdjustRideHeight(float rideHeight)
@@ -94,16 +147,52 @@ public class Player : MonoBehaviour
         physicsBasedCharacterController._rideHeight = rideHeight;
     }
 
+    private void UpdateAllRenderers()
+    {
+        _allRenderers.Clear();
+        _allRenderers.Add(renderers);
+        UnityUtils.GetAllChildren(renderers.transform, ref _allRenderers);
+    }
+
     public void EnableDitherMode()
     {
-        jumpsuit.GetComponent<Renderer>().material = ditherMaterial;
-        visor.GetComponent<Renderer>().material = ditherMaterial;
+        UpdateAllRenderers();
+
+        foreach (Transform transform in _allRenderers)
+        {
+            var renderer = transform.GetComponent<Renderer>();
+            if (renderer == null)
+            {
+                continue;
+            }
+
+            renderer.material = ditherMaterial;
+        }
     }
 
     public void DisableDitherMode()
     {
-        jumpsuit.GetComponent<Renderer>().material = jumpsuitMaterial;
-        visor.GetComponent<Renderer>().material = visorMaterial;
+        UpdateAllRenderers(); // Not sure why this is needed here, since it already gets called when new hats are instantiated.
+
+        foreach (Transform transform in _allRenderers)
+        {
+            var materialStorage = transform.GetComponent<MaterialStorage>();
+            if (materialStorage == null)
+            {
+                continue;
+            }
+
+            transform.GetComponent<Renderer>().material = materialStorage.defaultMaterial;
+        }
+    }
+
+    private void SetRenderersLayerMask(string layerName)
+    {
+        var newLayer = LayerMask.NameToLayer(layerName);
+        foreach (Transform transform in _allRenderers)
+        {
+            transform.gameObject.layer = newLayer;
+        }
     }
 
     public void UpdatePlayerState(PlayerState playerState)
@@ -117,6 +206,16 @@ public class Player : MonoBehaviour
             case PlayerState.Aiming:
                 break;
             case PlayerState.Dead:
+                physicsBasedCharacterController.enabled = false;
+                
+                EnableDitherMode();
+
+                DisableParticleSystem();
+
+                SetRenderersLayerMask("Default");
+
+                StartCoroutine(nameplate.Hide(0.25f));
+
                 break;
         }
         OnPlayerStateChanged?.Invoke(state);
@@ -144,9 +243,22 @@ public class Player : MonoBehaviour
     public void UnpackPlayerSettings()
     {
         id = playerSettings.id;
-        playerName = playerSettings.name;
-        //Debug.LogError(playerName);
+        ChangeName(playerSettings.name);
         ChangeHat(playerSettings.hat.prefab);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Death Trigger"))
+        {
+            // Grey out player sprite
+            //portrait.
+            
+
+            PlayerManager.DeletePlayer(this);
+
+            //Destroy(this.gameObject);
+        }
     }
 
     private void OnDestroy()

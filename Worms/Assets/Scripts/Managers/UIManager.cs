@@ -14,9 +14,19 @@ public class UIManager : MonoBehaviour
         reticle = FindObjectOfType<Reticle>();
         portraits = FindObjectOfType<Portraits>();
 
-        PlayerManager.OnPlayerChanged += SwitchActivePortrait;
-
         DisableReticle();
+    }
+
+    private void OnEnable()
+    {
+        PlayerManager.OnPlayerChanged += SwitchActivePortrait;
+        PlayerManager.OnPlayerRemoved += DisablePortrait;
+    }
+
+    private void OnDisable()
+    {
+        PlayerManager.OnPlayerChanged -= SwitchActivePortrait;
+        PlayerManager.OnPlayerRemoved -= DisablePortrait;
     }
 
     public static void EnableReticle()
@@ -42,6 +52,12 @@ public class UIManager : MonoBehaviour
     public static void SwitchActivePortrait(Player player)
     {
         portraits.SwitchActive(player.id);
+    }
+
+    public static void DisablePortrait(Player player)
+    {
+        
+        portraits.DisablePortrait(player.id);
     }
 
 }

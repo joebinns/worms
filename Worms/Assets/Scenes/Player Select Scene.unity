@@ -259,8 +259,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 381200062}
-        m_TargetAssemblyTypeName: HatRack, Assembly-CSharp
-        m_MethodName: PreviousHat
+        m_TargetAssemblyTypeName: ItemRack, Assembly-CSharp
+        m_MethodName: PreviousItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -393,8 +393,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 381200062}
-        m_TargetAssemblyTypeName: HatRack, Assembly-CSharp
-        m_MethodName: NextHat
+        m_TargetAssemblyTypeName: ItemRack, Assembly-CSharp
+        m_MethodName: NextItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a272118021cce6d42b788caa14bba91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats:
+  items:
   - {fileID: 377176586}
   - {fileID: 1873452481}
   - {fileID: 110276071}
@@ -732,7 +732,7 @@ MonoBehaviour:
   - {fileID: 1016768875}
   - {fileID: 1019420688}
   spawnEffect: {fileID: 381200063}
-  currentHat: {fileID: 0}
+  currentItem: {fileID: 377176586}
 --- !u!114 &381200063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystems: []
-  _activatedGameObject: {fileID: 0}
+  _activatedGameObject: {fileID: 381200060}
   _startPos: {x: 0, y: -1, z: 0}
   _endPos: {x: 0, y: 0, z: 0}
   _endScale: {x: 1, y: 1, z: 1}
@@ -2624,6 +2624,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5414284888280672451, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
 --- !u!1001 &1739385675
@@ -2698,6 +2702,10 @@ PrefabInstance:
       value: Player Cyan
       objectReference: {fileID: 0}
     - target: {fileID: 4264920954392036856, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210980118885864402, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4076,6 +4084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4484677156353062342, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6998102511482504481, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4166,6 +4178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1354368298373859981, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2261599335128490284, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: m_IsActive
       value: 1

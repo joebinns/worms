@@ -20,6 +20,26 @@ public class InputManager : MonoBehaviour
     {
         _previousActionMap = _playerInput.currentActionMap;
     }
+    
+    public void PrimaryHotbarSlotInputAction(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        
+        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(1);
+    }
+    
+    public void SecondaryHotbarSlotInputAction(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(2);
+    }
 
     public void MoveInputAction(InputAction.CallbackContext context)
     {
@@ -29,6 +49,16 @@ public class InputManager : MonoBehaviour
     public void JumpInputAction(InputAction.CallbackContext context)
     {
         PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>().JumpInputAction(context);
+    }
+
+    public void AttackInputAction(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        PlayerManager.currentPlayer.GetComponent<Player>().Attack();
     }
 
     public static void SwitchActionMap(string newActionMap)

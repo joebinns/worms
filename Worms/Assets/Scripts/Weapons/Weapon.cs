@@ -1,11 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : ScriptableObject
+public class Weapon : Item
 {
-    public string name;
-    public float damage;
-    public GameObject prefab;
+    [HideInInspector] public WeaponSettings weaponSettings;
+    
+    private void Awake()
+    {
+        /*
+        if (!(itemSettings is WeaponSettings))
+        {
+            return;
+        }
+        */
+        if (itemSettings is WeaponSettings)
+        {
+            weaponSettings = itemSettings as WeaponSettings;
+        }
 
-    public abstract void Attack();
-
+        //id = (itemSettings as WeaponSettings).id;
+    }
 }

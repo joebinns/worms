@@ -58,6 +58,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Primary Hotbar Slot",
+                    "type": "Button",
+                    "id": "5cf4d67a-a0ba-4897-9f85-5d6724584795",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary Hotbar Slot",
+                    "type": "Button",
+                    "id": "326b663d-d125-4edc-9879-5972c34503b2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -170,6 +188,28 @@
                     "action": "Toggle Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bebf216-c481-4ad6-93b8-8e4140e8c8a7",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Primary Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b4bb676-000b-4c08-a3a9-24b6352d4b8b",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Secondary Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -217,6 +257,33 @@
                     "name": "Toggle Pause",
                     "type": "Button",
                     "id": "fca75dd0-8f8f-4ca5-a916-b89262ebc10f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "5e631fa8-6103-46e9-b25a-d3832523fed7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Primary Hotbar Slot",
+                    "type": "Button",
+                    "id": "6aee7d8d-a444-4849-b8be-756f079b489a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary Hotbar Slot",
+                    "type": "Button",
+                    "id": "fe7f777c-9785-4dae-95c7-964a672e9852",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -276,6 +343,39 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Toggle Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "541fd913-ef62-4435-b851-2b0598641d1c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "343c4112-a18a-4103-b253-9cfbb15d5d5d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Secondary Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90eb2f9c-e00c-4a09-aedb-fa125c09632b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Primary Hotbar Slot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

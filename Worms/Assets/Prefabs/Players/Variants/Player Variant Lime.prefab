@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3262155890746618880
+--- !u!1001 &6366436242776779013
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,27 +9,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5502202851998090982, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5502202852464488737, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
+      objectReference: {fileID: 2100000, guid: e96c73d9fec4fe64c84c700fe4c542ac, type: 2}
     - target: {fileID: 5502202852464488739, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5502202852554818365, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462707, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Name
-      value: Player Variant Pink
+      value: Player Variant Lime
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462707, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_RootOrder
@@ -77,27 +77,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: id
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: portrait
       value: 
-      objectReference: {fileID: 21300000, guid: 154bada8a2f33f3418acbd6586ad76c6, type: 3}
+      objectReference: {fileID: 21300000, guid: 9f0cbe8d9d8d6fb429cd561f8cf5aa1b, type: 3}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerName
-      value: Player Pink
+      value: Player Lime
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 2b9bcfeec16f46b4bb5353465bc683e5, type: 2}
+      objectReference: {fileID: 2100000, guid: 555ef87d6fd17a44e9b75c4e311c72ba, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerSettings
       value: 
-      objectReference: {fileID: 11400000, guid: ab801e055a0038648b7e2fab174e2817, type: 2}
+      objectReference: {fileID: 11400000, guid: 1cf6b343683b19543bf06ada957d1d75, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: jumpsuitMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
+      objectReference: {fileID: 2100000, guid: e96c73d9fec4fe64c84c700fe4c542ac, type: 2}
+    - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e96c73d9fec4fe64c84c700fe4c542ac, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc949d419aa56f848a1906bcca721029, type: 3}

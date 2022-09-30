@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec3d196c9fa81447a8f9767882034f5, type: 3}
   m_Name: Basketball
   m_EditorClassIdentifier: 
+  id: 2
   name: Basketball
-  damage: 1
-  prefab: {fileID: 6566537792400996785, guid: 9ea290fffa137ee4b835df807ee5ac04, type: 3}
+  prefab: {fileID: 7103056407376101900, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
+  damage: 5
   projectileSpeed: 1

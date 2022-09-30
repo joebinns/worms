@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public static int numPlayers => players.Count;
     public static Player currentPlayer { get; private set; }
     public static event Action<Player> OnPlayerChanged;
+    public static event Action<Player> OnPlayerRemoved;
 
     private const int MAX_PLAYERS = 4;
 
@@ -108,6 +109,8 @@ public class PlayerManager : MonoBehaviour
     {
         players.Remove(player);
         Destroy(player.gameObject);
+        
+        OnPlayerRemoved?.Invoke(player);
     }
 
     private void OnDestroy()

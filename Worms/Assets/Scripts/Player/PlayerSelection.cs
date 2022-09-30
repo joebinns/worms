@@ -16,7 +16,7 @@ public class PlayerSelection : MonoBehaviour
     private Player _previousPlayer;
 
     public TMP_InputField nameInput;
-    public HatRack hatRack;
+    public ItemRack hatRack;
     
     private void OnEnable()
     {
@@ -99,7 +99,7 @@ public class PlayerSelection : MonoBehaviour
         var currentPlayer = PlayerManager.currentPlayer;
         
         // Save edits to Player
-        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentHat);
+        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentItem);
         
         // Change to next Player
         currentPlayer = PlayerManager.SetCurrentPlayer(id);
@@ -109,7 +109,7 @@ public class PlayerSelection : MonoBehaviour
 
         // Restore saved edits
         nameInput.text = currentPlayer.playerName;
-        hatRack.ChangeHat(currentPlayer.playerSettings.hat.id);
+        hatRack.ChangeItem(currentPlayer.playerSettings.hat.id);
 
         return currentPlayer;
     }
@@ -148,7 +148,7 @@ public class PlayerSelection : MonoBehaviour
         var currentPlayer = PlayerManager.currentPlayer;
         
         // Save Edits to final Player
-        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentHat);
+        currentPlayer.EditPlayerSettings(nameInput.text, hatRack.currentItem);
         
         PlayerManager.FinaliseNumberOfPlayers(currentPlayer.id + 1);
 

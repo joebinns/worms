@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &122417056225299275
+--- !u!1001 &3262155890746618880
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,31 +9,59 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5502202851998090982, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5502202852464488737, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ba5547041affa2942a22e7e3fd4a296d, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
     - target: {fileID: 5502202852464488739, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5502202852554818365, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462707, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Name
-      value: Player Variant Orange
+      value: Player Variant Pink
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462707, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462709, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -48,24 +76,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: portrait
       value: 
-      objectReference: {fileID: 21300000, guid: 10fc29619609fa841b4d3fb19cd5a38c, type: 3}
+      objectReference: {fileID: 21300000, guid: 154bada8a2f33f3418acbd6586ad76c6, type: 3}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerName
-      value: Player Orange
+      value: Player Pink
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: a105bb817c0e55e4eb6330094876aeed, type: 2}
+      objectReference: {fileID: 2100000, guid: 2b9bcfeec16f46b4bb5353465bc683e5, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerSettings
       value: 
-      objectReference: {fileID: 11400000, guid: 771743d9f5457d041ac8e704c2d1d489, type: 2}
+      objectReference: {fileID: 11400000, guid: ab801e055a0038648b7e2fab174e2817, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: jumpsuitMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: ba5547041affa2942a22e7e3fd4a296d, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
+    - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc949d419aa56f848a1906bcca721029, type: 3}
