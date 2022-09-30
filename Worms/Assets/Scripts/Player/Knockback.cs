@@ -30,11 +30,11 @@ public class Knockback : MonoBehaviour
     // --> Subscribed to by material flasher, Healthplate.
     public event Action<int> OnKnockbackChanged; // Can I make this non static, so that not all nameplates are called?
 
-    public void ChangeKnockback(int delta)
+    public int ChangeKnockback(int delta)
     {
         if (_isDead)
         {
-            return;
+            return _knockback;
         }
 
         _knockback += delta;
@@ -42,6 +42,8 @@ public class Knockback : MonoBehaviour
         Debug.Log(_knockback);
 
         OnKnockbackChanged?.Invoke(_knockback);
+
+        return _knockback;
     }
 
     private void Die() // This is no longer a needed state, if using the percentage knockback system.
