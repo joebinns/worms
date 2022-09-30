@@ -1,9 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : Item
+public class Weapon : Item
 {
-    public int damage;
+    [HideInInspector] public WeaponSettings weaponSettings;
+    
+    private void Awake()
+    {
+        /*
+        if (!(itemSettings is WeaponSettings))
+        {
+            return;
+        }
+        */
+        if (itemSettings is WeaponSettings)
+        {
+            weaponSettings = itemSettings as WeaponSettings;
+        }
 
-    public abstract void Attack();
-
+        //id = (itemSettings as WeaponSettings).id;
+    }
 }

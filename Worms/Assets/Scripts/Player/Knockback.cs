@@ -38,6 +38,8 @@ public class Knockback : MonoBehaviour
         }
 
         _knockback += delta;
+        
+        Debug.Log(_knockback);
 
         OnKnockbackChanged?.Invoke(_knockback);
     }

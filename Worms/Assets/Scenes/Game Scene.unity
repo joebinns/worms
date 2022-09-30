@@ -494,6 +494,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 805576817011922972, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804762657269508331, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5103021126263142148, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -509,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 5614064581838110771, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5614064581838110771, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: namePlateText
       value: 
@@ -565,6 +573,14 @@ PrefabInstance:
     - target: {fileID: 5614064581838110782, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884075861067481402, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386758091818691107, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
@@ -1687,7 +1703,7 @@ PrefabInstance:
     - target: {fileID: 1441680057779348093, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1441680057779348093, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
       propertyPath: namePlateText
       value: 
@@ -2717,7 +2733,7 @@ PrefabInstance:
     - target: {fileID: 4264920953719839084, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4264920953719839084, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
       propertyPath: namePlateText
       value: 
@@ -2985,7 +3001,7 @@ PrefabInstance:
     - target: {fileID: 6998102512539828088, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6998102512539828088, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
       propertyPath: namePlateText
       value: 
@@ -4022,6 +4038,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9252adeabd28cff458d0820f423e36fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1620226596654534389
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5198508109083197414, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_Name
+      value: Invisible Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342468878736903953, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
 --- !u!4 &3659344874274850448
 Transform:
   m_ObjectHideFlags: 0
@@ -4282,6 +4355,70 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e631fa8-6103-46e9-b25a-d3832523fed7
     m_ActionName: Aiming/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: PrimaryHotbarSlotInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5cf4d67a-a0ba-4897-9f85-5d6724584795
+    m_ActionName: Moving/Primary Hotbar Slot[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SecondaryHotbarSlotInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 326b663d-d125-4edc-9879-5972c34503b2
+    m_ActionName: Moving/Secondary Hotbar Slot[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: PrimaryHotbarSlotInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6aee7d8d-a444-4849-b8be-756f079b489a
+    m_ActionName: Aiming/Primary Hotbar Slot[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SecondaryHotbarSlotInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe7f777c-9785-4dae-95c7-964a672e9852
+    m_ActionName: Aiming/Secondary Hotbar Slot[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Moving

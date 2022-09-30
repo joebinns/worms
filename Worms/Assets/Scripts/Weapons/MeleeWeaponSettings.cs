@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MeleeWeaponSettings", menuName = "ScriptableObjects/Weapon/MeleeWeapon")]
-public class MeleeWeapon : Weapon
+public class MeleeWeaponSettings : WeaponSettings
 {
     public float range = 7.5f; // Note that this is distance from the camera, and not the player... Should be adjusted in the future.
 

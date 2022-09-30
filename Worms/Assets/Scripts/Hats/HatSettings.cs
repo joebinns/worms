@@ -1,10 +1,6 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HatSettings", menuName = "ScriptableObjects/Hat")]
-public class HatSettings : ScriptableObject
+public class HatSettings : ItemSettings
 {
-    public int id;
-    public new string name;
-    public GameObject prefab;
-
 }

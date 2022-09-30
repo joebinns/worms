@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
     public string playerName = "Player Name Undefined";
     public PlayerSettings playerSettings;
     public Transform follower;
-    public Weapon currentWeapon;
 
     [Header("Renderers")]
     public Transform renderers;
     public GameObject hat;
     public Transform hatSlot;
+    //public List<GameObject> weapons;
+    //public int currentWeaponIndex;
+    public ItemRack weaponRack;
+    public GameObject weapon;
     public Transform weaponSlot;
     public Material ditherMaterial;
     public Sprite portrait;
@@ -47,15 +50,10 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         //currentWeapon.Equip(this);
-        currentWeapon.Attack();
+        weapon.GetComponent<Weapon>().weaponSettings.Attack();
     } 
 
     public void PickUp()
-    {
-
-    }
-
-    public void Equip()
     {
 
     }
@@ -71,6 +69,26 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    /*
+    public void ChangeWeapon(GameObject newWeapon)
+    {
+        // Have all equipped weapons in a list, cycle between activating in the list (like hatrack)
+        weapons[currentWeaponIndex].SetActive(false);
+        
+        
+        
+        
+        if (weapon != null)
+        {
+            Destroy(weapon);
+        }
+        weapon = Instantiate(newWeapon, weaponSlot);
+
+        UpdateAllRenderers();
+        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
+    }
+    */
 
     public void ChangeHat(GameObject newHat)
     {
