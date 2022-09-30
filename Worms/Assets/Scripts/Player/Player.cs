@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     //public List<GameObject> weapons;
     //public int currentWeaponIndex;
     public ItemRack weaponRack;
-    public GameObject weapon;
+    //public GameObject weapon;
     public Transform weaponSlot;
     public Material ditherMaterial;
     public Sprite portrait;
@@ -50,7 +50,8 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         //currentWeapon.Equip(this);
-        weapon.GetComponent<Weapon>().weaponSettings.Attack();
+        //weapon.GetComponent<Weapon>().weaponSettings.Attack();
+        weaponRack.currentItem.GetComponent<Weapon>().weaponSettings.Attack();
     } 
 
     public void PickUp()
