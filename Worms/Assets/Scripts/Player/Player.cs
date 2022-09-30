@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public Transform weaponSlot;
     public Material ditherMaterial;
     public Sprite portrait;
+    public Sprite deadPortrait;
 
     //public TextMeshProUGUI namePlateText;
     public Nameplate nameplate;
@@ -205,18 +206,6 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Aiming:
                 break;
-            case PlayerState.Dead:
-                physicsBasedCharacterController.enabled = false;
-                
-                EnableDitherMode();
-
-                DisableParticleSystem();
-
-                SetRenderersLayerMask("Default");
-
-                StartCoroutine(nameplate.Hide(0.25f));
-
-                break;
         }
         OnPlayerStateChanged?.Invoke(state);
     }
@@ -273,6 +262,5 @@ public class Player : MonoBehaviour
 public enum PlayerState
 {
     Moving,
-    Aiming,
-    Dead
+    Aiming
 }

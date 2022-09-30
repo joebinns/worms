@@ -60,6 +60,10 @@ PrefabInstance:
       value: Player Cyan
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: deadPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: dad4f384ce450bf48a704f58474e4b18, type: 3}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ad339431099bb884894d88c908148858, type: 2}

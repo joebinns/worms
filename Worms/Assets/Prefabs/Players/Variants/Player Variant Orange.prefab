@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836825139723002784, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5399991801774281119, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: m_IsActive
@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: playerName
       value: Player Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: deadPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 10a7ef57a6d1601479cc734e781f91f0, type: 3}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
       value: 

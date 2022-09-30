@@ -4284,7 +4284,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1063478617}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: NextTurn
+        m_MethodName: NextTurnInputAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4332,7 +4332,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1063478617}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: NextTurn
+        m_MethodName: NextTurnInputAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

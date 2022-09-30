@@ -88,6 +88,10 @@ PrefabInstance:
       value: Player Pink
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: deadPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ee164142a244304983a7f7a8da0c43b, type: 3}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: ditherMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 2b9bcfeec16f46b4bb5353465bc683e5, type: 2}

@@ -24,6 +24,7 @@ public class Portraits : MonoBehaviour
         var activeColor = _activePortrait.color;
         activeColor.a = 1f;
         _activePortrait.color = activeColor;
+        StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), true));
     }
 
     public void LoadPortraits()
@@ -61,7 +62,6 @@ public class Portraits : MonoBehaviour
         activeColor = _activePortrait.color;
         activeColor.a = 1f;
         _activePortrait.color = activeColor;
-
         StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), true));
     }
 
@@ -72,11 +72,17 @@ public class Portraits : MonoBehaviour
             return;
         }
         
-        Debug.Log(id);
+        /*
         var portraitToDisable = _portraits[id];
-        var disabledColor = Color.gray;
+        var disabledColor = Color.black;
         disabledColor.a = 0.25f;
         portraitToDisable.color = disabledColor;
+        StartCoroutine(EasedLerpScale(portraitToDisable.GetComponent<RectTransform>(), false));
+        */
+        var portraitToDisable = _portraits[id];
+        var player = PlayerManager.players[id];
+        portraitToDisable.sprite = player.deadPortrait;
+        //portraitToDisable.sprite = 
     }
 
     private IEnumerator EasedLerpScale(RectTransform portrait, bool shouldEnlarge)
