@@ -107,15 +107,17 @@ public class PlayerManager : MonoBehaviour
 
     public static void DeletePlayer(Player player)
     {
+        players.Remove(player);
+        Destroy(player.gameObject);
+        
+        OnPlayerRemoved?.Invoke(player);
+        
+
         if (player == currentPlayer)
         {
             TurnManager.NextTurn();
         }
         
-        players.Remove(player);
-        Destroy(player.gameObject);
-        
-        OnPlayerRemoved?.Invoke(player);
     }
 
     private void OnDestroy()

@@ -56,7 +56,6 @@ public class UIManager : MonoBehaviour
 
     public static void DisablePortrait(Player player)
     {
-        
         portraits.DisablePortrait(player.id);
     }
 
