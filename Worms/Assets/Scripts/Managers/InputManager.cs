@@ -28,7 +28,11 @@ public class InputManager : MonoBehaviour
             return;
         }
         
+        // Change weapon rack item
         PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(1);
+
+        // Change hotbar icon
+        
     }
     
     public void SecondaryHotbarSlotInputAction(InputAction.CallbackContext context)
