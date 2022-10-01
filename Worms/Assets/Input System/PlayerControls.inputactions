@@ -58,24 +58,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Primary Hotbar Slot",
-                    "type": "Button",
-                    "id": "5cf4d67a-a0ba-4897-9f85-5d6724584795",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Secondary Hotbar Slot",
-                    "type": "Button",
-                    "id": "326b663d-d125-4edc-9879-5972c34503b2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -188,28 +170,6 @@
                     "action": "Toggle Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2bebf216-c481-4ad6-93b8-8e4140e8c8a7",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Primary Hotbar Slot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1b4bb676-000b-4c08-a3a9-24b6352d4b8b",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Secondary Hotbar Slot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -284,6 +244,15 @@
                     "name": "Secondary Hotbar Slot",
                     "type": "Button",
                     "id": "fe7f777c-9785-4dae-95c7-964a672e9852",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Empty Hotbar Slot",
+                    "type": "Button",
+                    "id": "3d5be3d5-def4-408e-88de-5cb2fb489c34",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -376,6 +345,94 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Primary Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4748e192-d510-4a78-a8ed-26b0f97860c8",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c155b47-8709-49f8-a0ce-0cbcae106926",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7c8b99c-5635-47b0-ad1f-aa8eff84da55",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dba1cf72-13bb-4197-a07b-c8c7d32b0a40",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd3d4b1a-6181-41d5-ba98-b47bf0db2a18",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb246d63-942e-41c8-8a68-658dd3feb855",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b399fedb-7ff4-4c74-b5a8-c48c674393fc",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57a4cc77-2214-4772-a05f-72c121b312ab",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Empty Hotbar Slot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

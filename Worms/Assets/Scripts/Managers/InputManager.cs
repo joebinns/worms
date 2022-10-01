@@ -28,10 +28,8 @@ public class InputManager : MonoBehaviour
             return;
         }
         
-        // Change weapon rack item
+        // Change weapon rack item, change hotbar icon
         PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(1);
-
-        // Change hotbar icon
         UIManager.SwitchActiveHotbar(1);
     }
     
@@ -42,10 +40,21 @@ public class InputManager : MonoBehaviour
             return;
         }
 
+        // Change weapon rack item, change hotbar icon
         PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(2);
-
-        // Change hotbar icon
         UIManager.SwitchActiveHotbar(2);
+    }
+
+    public void EmptyHotbarSlotInputAction(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        // Change weapon rack item, change hotbar icon
+        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(0);
+        UIManager.SwitchActiveHotbar(0);
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)

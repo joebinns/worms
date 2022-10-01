@@ -4605,38 +4605,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5cf4d67a-a0ba-4897-9f85-5d6724584795
-    m_ActionName: Moving/Primary Hotbar Slot[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3659344874274850450}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: SecondaryHotbarSlotInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 326b663d-d125-4edc-9879-5972c34503b2
-    m_ActionName: Moving/Secondary Hotbar Slot[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3659344874274850450}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: PrimaryHotbarSlotInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 6aee7d8d-a444-4849-b8be-756f079b489a
     m_ActionName: Aiming/Primary Hotbar Slot[/Keyboard/1]
   - m_PersistentCalls:
@@ -4655,6 +4623,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fe7f777c-9785-4dae-95c7-964a672e9852
     m_ActionName: Aiming/Secondary Hotbar Slot[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659344874274850450}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: EmptyHotbarSlotInputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d5be3d5-def4-408e-88de-5cb2fb489c34
+    m_ActionName: Aiming/Empty Hotbar Slot[/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7,/Keyboard/8,/Keyboard/9,/Keyboard/0]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Moving
