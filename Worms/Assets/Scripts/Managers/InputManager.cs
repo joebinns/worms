@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
         PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(1);
 
         // Change hotbar icon
-        
+        UIManager.SwitchActiveHotbar(1);
     }
     
     public void SecondaryHotbarSlotInputAction(InputAction.CallbackContext context)
@@ -43,6 +43,9 @@ public class InputManager : MonoBehaviour
         }
 
         PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(2);
+
+        // Change hotbar icon
+        UIManager.SwitchActiveHotbar(2);
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)

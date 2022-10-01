@@ -8,11 +8,13 @@ public class UIManager : MonoBehaviour
 {
     private static Reticle reticle;
     private static Portraits portraits;
+    private static UIRack hotbar;
 
     private void Awake()
     {
         reticle = FindObjectOfType<Reticle>();
         portraits = FindObjectOfType<Portraits>();
+        hotbar = FindObjectOfType<UIRack>(); // May this also find Portraits accidentally, due to inheritance?
 
         DisableReticle();
     }
@@ -49,6 +51,11 @@ public class UIManager : MonoBehaviour
         reticle.ToggleZoom(); // started or canceled
     }
 
+    public static void SwitchActiveHotbar(int id)
+    {
+        hotbar.SwitchActive(id);
+    }
+
     public static void SwitchActivePortrait(Player player)
     {
         portraits.SwitchActive(player.id);
@@ -56,7 +63,6 @@ public class UIManager : MonoBehaviour
 
     public static void DisablePortrait(Player player)
     {
-        //portraits.DisablePortrait(player.id);
         portraits.DisablePortrait(player);
     }
 

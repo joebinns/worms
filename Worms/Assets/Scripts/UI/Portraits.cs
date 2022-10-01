@@ -13,11 +13,11 @@ public class Portraits : UIRack
     {
         LoadPortraits();
 
-        activePortrait = portraits[0];
-        var activeColor = activePortrait.color;
+        activeImage = images[0];
+        var activeColor = activeImage.color;
         activeColor.a = 1f;
-        activePortrait.color = activeColor;
-        StartCoroutine(EasedLerpScale(activePortrait.GetComponent<RectTransform>(), true));
+        activeImage.color = activeColor;
+        StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), true));
     }
 
     public void LoadPortraits()
@@ -38,21 +38,21 @@ public class Portraits : UIRack
             position -= _portraitSpacing;
 
             portrait.GetComponent<Image>().sprite = player.portrait;
-            portraits.Add(portrait.GetComponent<Image>());
+            images.Add(portrait.GetComponent<Image>());
         }
     }
 
     public void DisablePortrait(Player player)
     {
         // Find portrait using player id
-        var maxIndex = portraits.Count - 1;
+        var maxIndex = images.Count - 1;
         if (player.id > maxIndex)
         {
             // If player doesn't have a portrait, return
             return;
         }
 
-        var portrait = portraits[player.id];
+        var portrait = images[player.id];
 
         // Disable portrait
         portrait.sprite = player.deadPortrait;
