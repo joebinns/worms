@@ -37,6 +37,12 @@ public class PlayerManager : MonoBehaviour
         //SetCurrentPlayer(0);
     }
 
+    public static int IdToIndex(int id) // Since the list size is subject to change, meaning indices are inconsistent-
+    {
+        var index = players.FindIndex(x => x.id == id);
+        return index;
+    }
+
     private void GetPlayers()
     {
         players = new List<Player>();
@@ -57,6 +63,8 @@ public class PlayerManager : MonoBehaviour
         {
             // Reset old players movement inputs
             currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
+
+            // Un-equip any weapons
         }
 
         currentPlayer = players[index];
@@ -109,10 +117,9 @@ public class PlayerManager : MonoBehaviour
     {
         players.Remove(player);
         Destroy(player.gameObject);
-        
+
         OnPlayerRemoved?.Invoke(player);
         
-
         if (player == currentPlayer)
         {
             TurnManager.NextTurn();

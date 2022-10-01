@@ -20,6 +20,7 @@ public class Portraits : MonoBehaviour
     private void Start()
     {
         LoadPortraits();
+
         _activePortrait = _portraits[0];
         var activeColor = _activePortrait.color;
         activeColor.a = 1f;
@@ -65,25 +66,54 @@ public class Portraits : MonoBehaviour
         StartCoroutine(EasedLerpScale(_activePortrait.GetComponent<RectTransform>(), true));
     }
 
-    public void DisablePortrait(int id)
+    
+    /*
+    public void DisablePortrait(int id) // This id doesn't work the same as PlayerManager id... // Should I change this to take in a Player?
     {
-        if (id > PlayerManager.numPlayers-1) // This is a dirty way around this function being called when Unspawned players are deleted...
+        
+        Debug.Log(id);
+        Debug.Log(PlayerManager.numPlayers);
+
+        if (id >= PlayerManager.numPlayers) // This doesn't work
         {
             return;
         }
         
-        /*
+        
+        //var portraitToDisable = _portraits[id];
+        //var disabledColor = Color.black;
+        //disabledColor.a = 0.25f;
+        //portraitToDisable.color = disabledColor;
+        //StartCoroutine(EasedLerpScale(portraitToDisable.GetComponent<RectTransform>(), false));
+        
         var portraitToDisable = _portraits[id];
-        var disabledColor = Color.black;
-        disabledColor.a = 0.25f;
-        portraitToDisable.color = disabledColor;
-        StartCoroutine(EasedLerpScale(portraitToDisable.GetComponent<RectTransform>(), false));
-        */
-        var portraitToDisable = _portraits[id];
-        var player = PlayerManager.players[id];
+        //var player = PlayerManager.players[id];
+        var player = PlayerManager.players[PlayerManager.IdToIndex(id)];
         portraitToDisable.sprite = player.deadPortrait;
-        //portraitToDisable.sprite = 
+        
+
     }
+    */
+    
+
+    public void DisablePortrait(Player player)
+    {
+        // Find portrait using player id
+        var maxIndex = _portraits.Count - 1;
+        if (player.id > maxIndex)
+        {
+            // If player doesn't have a portrait, return
+            return;
+        }
+
+        var portrait = _portraits[player.id];
+
+        // Disable portrait
+        portrait.sprite = player.deadPortrait;
+
+    }
+    
+    
 
     private IEnumerator EasedLerpScale(RectTransform portrait, bool shouldEnlarge)
     {
