@@ -10,9 +10,15 @@ EditorBuildSettings:
     guid: 157b31e7bc1989848881bb3833bf8e30
   - enabled: 1
     path: Assets/Scenes/Player Select Scene.unity
-    guid: f62243b88da36ab4ebeb79c91e1f374b
+    guid: a9bef4acaa3b13c4c8cc241fa6a28610
   - enabled: 1
     path: Assets/Scenes/Game Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Victory Scene.unity
+    guid: d8e5f1a6a4b75764f9142f1b5bb0c30d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ac2226c1bdb5b474ca17077d9cabd4c4, type: 2}

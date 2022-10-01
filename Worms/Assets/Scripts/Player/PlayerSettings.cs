@@ -15,13 +15,13 @@ public class PlayerSettings : ScriptableObject
     public HatSettings hat { get; set; }
     public bool shouldSpawn { get; set; }
 
-    public void OnEnable()
-    {
-        RestoreDefaults();
+    public void OnEnable() // Why is this being called spuradically? Because the scriptable object is going "out of scope"... meaning it is no longer referenced...
+    { // https://forum.unity.com/threads/scriptableobject-behaviour-discussion-how-scriptable-objects-work.541212/
+        //RestoreDefaults();
     }
 
     // Restore the scriptable object values to base values at runtime.
-    private void RestoreDefaults()
+    public void RestoreDefaults()
     {
         id = baseId;
         name = baseName;

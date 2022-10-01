@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public static Player currentPlayer { get; private set; }
     public static event Action<Player> OnPlayerChanged;
     public static event Action<Player> OnPlayerRemoved;
+    public static event Action OnLastPlayerStanding;
 
     private const int MAX_PLAYERS = 4;
 
@@ -30,11 +32,6 @@ public class PlayerManager : MonoBehaviour
         SortPlayersByID();
 
         currentPlayer = players[0];
-    }
-
-    private void Start()
-    {
-        //SetCurrentPlayer(0);
     }
 
     public static int IdToIndex(int id) // Since the list size is subject to change, meaning indices are inconsistent-
@@ -115,16 +112,28 @@ public class PlayerManager : MonoBehaviour
 
     public static void DeletePlayer(Player player)
     {
+        if (numPlayers == 1)
+        {
+            return;
+        }
+
+        player.playerSettings.shouldSpawn = false;
+
         players.Remove(player);
         Destroy(player.gameObject);
 
         OnPlayerRemoved?.Invoke(player);
-        
+
         if (player == currentPlayer)
         {
             TurnManager.NextTurn();
         }
-        
+
+        if (numPlayers == 1)
+        {
+            OnLastPlayerStanding?.Invoke();
+        }
+
     }
 
     private void OnDestroy()

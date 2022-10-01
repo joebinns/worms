@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndices.PLAYER_SELECT)
+        {
+            playerSettings.RestoreDefaults();
+        }
+        
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
         UnpackPlayerSettings();
         UpdateAllRenderers();
@@ -233,20 +239,17 @@ public class Player : MonoBehaviour
     {
         id = playerSettings.id;
         ChangeName(playerSettings.name);
-        ChangeHat(playerSettings.hat.prefab);
+        if (playerSettings.hat != null)
+        {
+            ChangeHat(playerSettings.hat.prefab);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Death Trigger"))
         {
-            // Grey out player sprite
-            //portrait.
-            
-
             PlayerManager.DeletePlayer(this);
-
-            //Destroy(this.gameObject);
         }
     }
 

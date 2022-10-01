@@ -23,12 +23,14 @@ public class UIManager : MonoBehaviour
     {
         PlayerManager.OnPlayerChanged += SwitchActivePortrait;
         PlayerManager.OnPlayerRemoved += DisablePortrait;
+        PlayerManager.OnLastPlayerStanding += meow;
     }
 
     private void OnDisable()
     {
         PlayerManager.OnPlayerChanged -= SwitchActivePortrait;
         PlayerManager.OnPlayerRemoved -= DisablePortrait;
+        PlayerManager.OnLastPlayerStanding -= meow;
     }
 
     public static void EnableReticle()
@@ -64,6 +66,11 @@ public class UIManager : MonoBehaviour
     public static void DisablePortrait(Player player)
     {
         portraits.DisablePortrait(player);
+    }
+
+    public void meow()
+    {
+        StartCoroutine(LoadingScreen.ChangeSceneImpatient(SceneIndices.VICTORY));
     }
 
 }
