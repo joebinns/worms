@@ -83,14 +83,6 @@ PrefabInstance:
       propertyPath: jumpsuitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ba5547041affa2942a22e7e3fd4a296d, type: 2}
-    - target: {fileID: 6755483020088446501, guid: cc949d419aa56f848a1906bcca721029, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755483020088446501, guid: cc949d419aa56f848a1906bcca721029, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: defaultMaterial
       value: 
