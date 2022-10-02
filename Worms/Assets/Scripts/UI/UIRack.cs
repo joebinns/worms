@@ -11,6 +11,9 @@ public class UIRack : MonoBehaviour
     public float minImageSize = 35f;
     public float maxImageSize = 40f;
 
+    public Color deactiveColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+    public Color activeColor = Color.white;
+
     public float transitionTime = 1f;
 
     public List<Image> images = new List<Image>();
@@ -18,15 +21,11 @@ public class UIRack : MonoBehaviour
     public void SwitchActive(int id)
     {
         // Deactivate old image
-        var activeColor = activeImage.color;
-        activeColor.a = 0.25f;
-        activeImage.color = activeColor;
+        activeImage.color = deactiveColor;
         StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), false));
 
         // Activate new image
         activeImage = images[id];
-        activeColor = activeImage.color;
-        activeColor.a = 1f;
         activeImage.color = activeColor;
         StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), true));
     }
