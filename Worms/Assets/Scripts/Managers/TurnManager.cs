@@ -22,7 +22,20 @@ public class TurnManager : MonoBehaviour
     public static void RefreshTurn()
     {
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
-        PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
+        var newPlayer = PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
+  
+        // Reset new player's ammo
+        foreach (GameObject item in newPlayer.weaponRack.items)
+        {
+            var weapon = item.GetComponent<Weapon>();
+
+            if (weapon != null)
+            {
+                weapon.ResetAmmunition();
+            }
+
+        }  
+    
     }
 
     public static void NextTurn()

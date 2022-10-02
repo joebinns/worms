@@ -60,11 +60,9 @@ public class PlayerManager : MonoBehaviour
         {
             // Reset old players movement inputs
             currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
-
-            // Un-equip any weapons
         }
 
-        currentPlayer = players[index];
+        currentPlayer = players[index];   
         
         OnPlayerChanged?.Invoke(currentPlayer);
 

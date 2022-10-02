@@ -12,37 +12,6 @@ public class ItemRack : MonoBehaviour
 
     public GameObject currentItem;
 
-    
-    private void Awake()
-    {
-        //currentItem = items[0];
-
-        /*
-        for (int i = 0; i < items.Count; i++)
-        {
-            var item = items[i].GetComponent(typeof(Item));
-            Debug.Log(item.GetType());
-            //item.id = i;
-        }
-        */
-    }
-
-    /*
-    public int FindHatIndex(GameObject hat)
-    {
-        var index = hats.IndexOf(hat);
-        return index;
-    }
-
-
-    public void ChangeHat(GameObject hat)
-    {
-        Debug.Log(hat.name);
-        var index = FindHatIndex(hat);
-        ChangeHat(index);
-    }
-    */
-
     public void ChangeItem(int index)
     {
         // Disable current game object
