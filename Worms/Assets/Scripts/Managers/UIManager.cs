@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         PlayerManager.OnPlayerChanged -= SwitchActivePortrait;
         PlayerManager.OnPlayerRemoved -= DisablePortrait;
         PlayerManager.OnLastPlayerStanding -= NextScene;
-        PlayerManager.OnPlayerChanged += ResetTurnTimer;
+        PlayerManager.OnPlayerChanged -= ResetTurnTimer;
     }
 
     public static void EnableReticle()

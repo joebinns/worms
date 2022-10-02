@@ -112,24 +112,24 @@ public class PlayerManager : MonoBehaviour
 
     public static void DeletePlayer(Player player)
     {
-        if (numPlayers == 1)
+        if (numPlayers == 1) // To ensure there is always 1 player alive
         {
             return;
         }
 
         player.playerSettings.shouldSpawn = false;
 
-        players.Remove(player);
-        Destroy(player.gameObject);
+        OnPlayerRemoved?.Invoke(player); // Disable portrait
 
-        OnPlayerRemoved?.Invoke(player);
+        players.Remove(player); // Remove player from list
+        Destroy(player.gameObject); // Destroy player game object
 
         if (player == currentPlayer)
         {
-            TurnManager.NextTurn();
+            TurnManager.RefreshTurn();
         }
 
-        if (numPlayers == 1)
+        if (numPlayers == 1) // If this is the last player alive
         {
             OnLastPlayerStanding?.Invoke();
         }

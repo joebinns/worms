@@ -19,13 +19,17 @@ public class TurnManager : MonoBehaviour
         CountdownTimer.OnCountedDown -= NextTurn;
     }
 
-    public static void NextTurn()
-    { // Why is the turn jumping...
-        _turn++;
-     
+    public static void RefreshTurn()
+    {
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
         PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
+    }
 
+    public static void NextTurn()
+    {
+        _turn++;
+
+        RefreshTurn();
     }
     
     public static void NextTurnInputAction(InputAction.CallbackContext context)
