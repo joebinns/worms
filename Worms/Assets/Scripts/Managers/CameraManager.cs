@@ -51,8 +51,8 @@ public class CameraManager : MonoBehaviour
                 aiming.enabled = false;
                 UIManager.DisableReticle();
                 CursorVisibilityToggle.DisableCursor();
-                PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(0);
-                UIManager.SwitchActiveHotbar(0);
+                InputManager.SwapWeapon(0);
+                UIManager.HideHotbar();
                 break;
             case CameraState.AimCamera:
                 animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
@@ -60,6 +60,7 @@ public class CameraManager : MonoBehaviour
                 aiming.enabled = true;
                 UIManager.EnableReticle();
                 CursorVisibilityToggle.EnableCursor();
+                UIManager.ShowHotbar();
                 break;
         }
 

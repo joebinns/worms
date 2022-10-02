@@ -28,9 +28,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         
-        // Change weapon rack item, change hotbar icon
-        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(1);
-        UIManager.SwitchActiveHotbar(1);
+        SwapWeapon(1);
     }
     
     public void SecondaryHotbarSlotInputAction(InputAction.CallbackContext context)
@@ -40,9 +38,7 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        // Change weapon rack item, change hotbar icon
-        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(2);
-        UIManager.SwitchActiveHotbar(2);
+        SwapWeapon(2);
     }
 
     public void EmptyHotbarSlotInputAction(InputAction.CallbackContext context)
@@ -52,9 +48,23 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        // Change weapon rack item, change hotbar icon
-        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(0);
-        UIManager.SwitchActiveHotbar(0);
+        SwapWeapon(0);
+    }
+
+    public static void SwapWeapon(int index)
+    {
+        // Change weapon rack item, change hotbar icon and update ammunition
+        PlayerManager.currentPlayer.GetComponent<Player>().weaponRack.ChangeItem(index);
+        UIManager.SwitchActiveHotbar(index);
+        if (index == 0)
+        {
+            UIManager.HideAmmunition();
+        }
+        else
+        {
+            UIManager.ShowAmmunition();
+            UIManager.RefreshAmmunition();
+        }
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)
@@ -75,6 +85,7 @@ public class InputManager : MonoBehaviour
         }
 
         PlayerManager.currentPlayer.GetComponent<Player>().Attack();
+        UIManager.RefreshAmmunition();
     }
 
     public static void SwitchActionMap(string newActionMap)

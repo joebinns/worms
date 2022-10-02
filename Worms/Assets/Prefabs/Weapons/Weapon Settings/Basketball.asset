@@ -16,4 +16,5 @@ MonoBehaviour:
   name: Basketball
   prefab: {fileID: 7103056407376101900, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
   damage: 5
+  maxAmmunition: 2
   projectileSpeed: 1

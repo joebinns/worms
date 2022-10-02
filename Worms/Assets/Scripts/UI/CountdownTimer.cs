@@ -44,10 +44,10 @@ public class CountdownTimer : MonoBehaviour
     }
 
     // Make text flash faster as timer gets lower
-
     public void ResetTimer()
     {
         _timer = MAX_TIME;
+        text.alpha = 1f;
     }
 
 }

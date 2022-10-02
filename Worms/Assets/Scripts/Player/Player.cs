@@ -56,17 +56,9 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        //currentWeapon.Equip(this);
-        //weapon.GetComponent<Weapon>().weaponSettings.Attack();
-
-        //weaponRack.currentItem.GetComponent<Weapon>().weaponSettings.Attack();
         weaponRack.currentItem.GetComponent<Weapon>().Attack();
+
     } 
-
-    public void PickUp()
-    {
-
-    }
 
     public void ChangeName(string newName)
     {
@@ -80,26 +72,6 @@ public class Player : MonoBehaviour
 
     }
 
-    /*
-    public void ChangeWeapon(GameObject newWeapon)
-    {
-        // Have all equipped weapons in a list, cycle between activating in the list (like hatrack)
-        weapons[currentWeaponIndex].SetActive(false);
-        
-        
-        
-        
-        if (weapon != null)
-        {
-            Destroy(weapon);
-        }
-        weapon = Instantiate(newWeapon, weaponSlot);
-
-        UpdateAllRenderers();
-        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
-    }
-    */
-
     public void ChangeHat(GameObject newHat)
     {
         if (hat != null)
@@ -112,21 +84,6 @@ public class Player : MonoBehaviour
         UpdateAllRenderers();
         SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
     }
-
-    /*
-    public void EquipWeapon(GameObject newWeapon) // Is it better to have this here or in the weapon SO? 
-    {
-        if (currentWeapon != null)
-        {
-            Destroy(currentWeapon.gameObject); // How can I rework this to work with the scriptable object...
-        }
-        weapon = Instantiate(newWeapon, weaponSlot);
-
-        // Change hat to have the player's layer (due to dither shader)
-        UpdateAllRenderers();
-        SetRenderersLayerMask(LayerMask.LayerToName(this.gameObject.layer));
-    }
-    */
 
     public void SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions option)
     {

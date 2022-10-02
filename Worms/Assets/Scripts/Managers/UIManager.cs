@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     private static Portraits portraits;
     private static UIRack hotbar;
     private static CountdownTimer turnTimer;
+    private static Ammunition ammunition;
 
     private void Awake()
     {
@@ -17,8 +18,14 @@ public class UIManager : MonoBehaviour
         portraits = FindObjectOfType<Portraits>();
         hotbar = FindObjectOfType<UIRack>(); // May this also find Portraits accidentally, due to inheritance?
         turnTimer = FindObjectOfType<CountdownTimer>();
+        ammunition = FindObjectOfType<Ammunition>();
 
         DisableReticle();
+    }
+
+    private void Start()
+    {
+        HideHotbar();
     }
 
     private void OnEnable()
@@ -60,6 +67,7 @@ public class UIManager : MonoBehaviour
     public static void SwitchActiveHotbar(int id)
     {
         hotbar.SwitchActive(id);
+        // Update ammo
     }
 
     public static void SwitchActivePortrait(Player player)
@@ -75,6 +83,32 @@ public class UIManager : MonoBehaviour
     public void ResetTurnTimer(Player player)
     {
         turnTimer.ResetTimer();
+    }
+
+    public static void RefreshAmmunition() // Called on weapon switch and on attack
+    {
+        ammunition.RefreshDisplay();
+    }
+
+    public static void HideHotbar()
+    {
+        hotbar.gameObject.SetActive(false);
+        HideAmmunition();
+    }
+
+    public static void ShowHotbar()
+    {
+        hotbar.gameObject.SetActive(true);
+    }
+
+    public static void HideAmmunition()
+    {
+        ammunition.gameObject.SetActive(false);
+    }
+    
+    public static void ShowAmmunition()
+    {
+        ammunition.gameObject.SetActive(true);
     }
 
     public void NextScene()

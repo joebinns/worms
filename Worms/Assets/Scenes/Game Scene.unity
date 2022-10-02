@@ -173,6 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cc2c0adf54f0d4280fe965a32621b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 494507675}
+  outOfAmmo:
+    serializedVersion: 2
+    rgba: 4286545919
+  hasAmmo:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!1 &17306513
 GameObject:
   m_ObjectHideFlags: 0

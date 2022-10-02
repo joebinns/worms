@@ -13,7 +13,7 @@ public class Weapon : Item
         if (itemSettings is WeaponSettings)
         {
             weaponSettings = itemSettings as WeaponSettings;
-            currentAmmunition = weaponSettings.maxAmmunition;
+            ResetAmmunition();
         }
 
     }
@@ -35,4 +35,10 @@ public class Weapon : Item
         // Update UI... Hmmm... UI manager should update remaining ammunition and max ammunition when changing weapons.
         // UI manager shoudl update remaining ammunition whenever attack is called.
     }
+
+    public void ResetAmmunition() // Call this at the start of each turn... also we should increase player ride height
+    {
+        currentAmmunition = weaponSettings.maxAmmunition;
+    }
+
 }
