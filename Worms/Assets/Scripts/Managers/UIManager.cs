@@ -9,12 +9,14 @@ public class UIManager : MonoBehaviour
     private static Reticle reticle;
     private static Portraits portraits;
     private static UIRack hotbar;
+    private static CountdownTimer turnTimer;
 
     private void Awake()
     {
         reticle = FindObjectOfType<Reticle>();
         portraits = FindObjectOfType<Portraits>();
         hotbar = FindObjectOfType<UIRack>(); // May this also find Portraits accidentally, due to inheritance?
+        turnTimer = FindObjectOfType<CountdownTimer>();
 
         DisableReticle();
     }
@@ -23,14 +25,16 @@ public class UIManager : MonoBehaviour
     {
         PlayerManager.OnPlayerChanged += SwitchActivePortrait;
         PlayerManager.OnPlayerRemoved += DisablePortrait;
-        PlayerManager.OnLastPlayerStanding += meow;
+        PlayerManager.OnLastPlayerStanding += NextScene;
+        PlayerManager.OnPlayerChanged += ResetTurnTimer;
     }
 
     private void OnDisable()
     {
         PlayerManager.OnPlayerChanged -= SwitchActivePortrait;
         PlayerManager.OnPlayerRemoved -= DisablePortrait;
-        PlayerManager.OnLastPlayerStanding -= meow;
+        PlayerManager.OnLastPlayerStanding -= NextScene;
+        PlayerManager.OnPlayerChanged += ResetTurnTimer;
     }
 
     public static void EnableReticle()
@@ -68,7 +72,12 @@ public class UIManager : MonoBehaviour
         portraits.DisablePortrait(player);
     }
 
-    public void meow()
+    public void ResetTurnTimer(Player player)
+    {
+        turnTimer.ResetTimer();
+    }
+
+    public void NextScene()
     {
         StartCoroutine(LoadingScreen.ChangeSceneImpatient(SceneIndices.VICTORY));
     }

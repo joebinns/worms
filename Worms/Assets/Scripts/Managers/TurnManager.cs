@@ -8,14 +8,23 @@ using UnityEngine.InputSystem;
 public class TurnManager : MonoBehaviour
 {
     private static int _turn = 0;
-    
-    public static void NextTurn()
+
+    private void OnEnable()
     {
+        CountdownTimer.OnCountedDown += NextTurn;
+    }
+
+    private void OnDisable()
+    {
+        CountdownTimer.OnCountedDown -= NextTurn;
+    }
+
+    public static void NextTurn()
+    { // Why is the turn jumping...
         _turn++;
-        
      
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
-        PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);     
+        PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
 
     }
     
