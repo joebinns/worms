@@ -58,7 +58,9 @@ public class Player : MonoBehaviour
     {
         //currentWeapon.Equip(this);
         //weapon.GetComponent<Weapon>().weaponSettings.Attack();
-        weaponRack.currentItem.GetComponent<Weapon>().weaponSettings.Attack();
+
+        //weaponRack.currentItem.GetComponent<Weapon>().weaponSettings.Attack();
+        weaponRack.currentItem.GetComponent<Weapon>().Attack();
     } 
 
     public void PickUp()
