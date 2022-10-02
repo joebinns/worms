@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: -7977380389902416908, guid: 5f001e5ee0c96634898b327082e14353, type: 3}
     - target: {fileID: 6468792841594737321, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_Name
-      value: Basketball Variant
+      value: Basketball
       objectReference: {fileID: 0}
     - target: {fileID: 8360013305506783838, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_RootOrder
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360013305506783838, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360013305506783838, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360013305506783838, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360013305506783838, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87,5 +87,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2638839650220996316, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
+--- !u!1 &7103056407376101900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6468792841594737321, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
+  m_PrefabInstance: {fileID: 4275856666243567781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7713194734496769495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103056407376101900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8675a6eb37afe1f419223e0e7a13e463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  itemSettings: {fileID: 11400000, guid: c5edd08602c94df41bf3f9782faf6aef, type: 2}
+  weaponSettings: {fileID: 0}
+  currentAmmunition: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Item
+public abstract class Weapon : Item
 {
     [HideInInspector] public WeaponSettings weaponSettings;
 
@@ -13,18 +13,7 @@ public class Weapon : Item
         ResetAmmunition();
     }
 
-    public void Attack()
-    {
-        if (currentAmmunition <= 0)
-        {
-            return;
-        }
-
-        weaponSettings.Attack();
-
-        // Deplete ammunition
-        currentAmmunition--;
-    }
+    public abstract void Attack();
 
     // Call this at the start of each turn
     public void ResetAmmunition()

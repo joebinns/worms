@@ -5363,10 +5363,10 @@ MonoBehaviour:
   hat: {fileID: 5144090459030191183}
   hatSlot: {fileID: 6492892573529083841}
   weaponRack: {fileID: 2546887323538763949}
-  weapon: {fileID: 8357185788804053638}
   weaponSlot: {fileID: 6755483020088446501}
   ditherMaterial: {fileID: 2100000, guid: 84588cd6da68422458a7fe68e5d6c1f7, type: 2}
   portrait: {fileID: 0}
+  deadPortrait: {fileID: 0}
   nameplate: {fileID: 0}
   dustParticleSystem: {fileID: 5502202852526469067}
 --- !u!114 &1912313937625753042
@@ -5521,7 +5521,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2290623936604169849, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
+    - {fileID: 5188087554917860971, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
 --- !u!4 &6896148519887169604 stripped
 Transform:
@@ -5588,7 +5590,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3854520442750458771, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
 --- !u!4 &6790248652402510449 stripped
 Transform:
@@ -5600,6 +5603,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5198508109083197414, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
   m_PrefabInstance: {fileID: 4314025849452987744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3635407486299425840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357185788804053638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8675a6eb37afe1f419223e0e7a13e463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  itemSettings: {fileID: 11400000, guid: 83dd014d67bf6794e81a7d1f0ef4d33e, type: 2}
+  weaponSettings: {fileID: 0}
+  currentAmmunition: 0
 --- !u!1001 &7064323984463199689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5734,7 +5753,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3900864417999241514, guid: 111ac607eeb547549a65a624611ea879, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 111ac607eeb547549a65a624611ea879, type: 3}
 --- !u!4 &765350739014521687 stripped
 Transform:

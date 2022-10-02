@@ -14,6 +14,11 @@ public class ItemRack : MonoBehaviour
 
     public void ChangeItem(int index)
     {
+        if (index == _currentIndex)
+        {
+            return;
+        }
+
         // Disable current game object
         items[_currentIndex].SetActive(false);
 
