@@ -117,7 +117,8 @@ public class Player : MonoBehaviour
     {
         _allRenderers.Clear();
         _allRenderers.Add(renderers);
-        UnityUtils.GetAllChildren(renderers.transform, ref _allRenderers);
+        int layerMask =~ LayerMask.GetMask("Projectile");
+        UnityUtils.GetAllChildren(renderers.transform, ref _allRenderers, layerMask);
     }
 
     public void EnableDitherMode()

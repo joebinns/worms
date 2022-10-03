@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public static class UnityUtils
 {
-    public static void GetAllChildren(Transform parent, ref List<Transform> transforms)
+    public static void GetAllChildren(Transform parent, ref List<Transform> transforms, LayerMask layerMask)
     {
         foreach (Transform child in parent)
         {
-            transforms.Add(child);
+            if (layerMask == (layerMask | (1 << child.gameObject.layer)))
+            {
+                transforms.Add(child);
  
-            GetAllChildren(child, ref transforms);
- 
+                GetAllChildren(child, ref transforms, layerMask);
+            }
         }
  
     } 

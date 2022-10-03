@@ -21,6 +21,10 @@ public class ProjectileWeapon : Weapon
         projectile.SetActive(false);
         projectile.transform.parent = this.transform;
         StartCoroutine(UnityUtils.ResetRigidbody(projectile.GetComponent<Rigidbody>(), Vector3.zero, Quaternion.identity));
+        
+        // Set the projectile's damage
+        projectile.GetComponent<Projectile>().damage = projectileWeaponSettings.damage;
+
     }
 
     [SerializeField] private new GameObject renderer;

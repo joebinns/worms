@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6421343131429303533}
   - component: {fileID: 1602374973199731873}
   - component: {fileID: 6271965394774510484}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 3852026635464084703}
   - component: {fileID: 3986722648480637201}
   - component: {fileID: 8714299674562815252}
-  m_Layer: 0
+  - component: {fileID: 5942342574107689560}
+  m_Layer: 11
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +147,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.65
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5942342574107689560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780147597566245928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b017aa4a82aef534f9f5d187a7b4f225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1001 &4275856666243567781
 PrefabInstance:
   m_ObjectHideFlags: 0
