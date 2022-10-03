@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileWeapon : Weapon
 {
+    [SerializeField] private new GameObject renderer;
+    [SerializeField] private GameObject projectile;
     private ProjectileWeaponSettings projectileWeaponSettings
     {
         get
@@ -11,6 +14,16 @@ public class ProjectileWeapon : Weapon
             return weaponSettings as ProjectileWeaponSettings;
         }
     }
+
+    [Header("Display Controls")]
+    [SerializeField]
+    private LineRenderer _lineRenderer;
+    [SerializeField]
+    [Range(10, 100)]
+    private int _linePoints = 25;
+    [SerializeField]
+    [Range(0.01f, 0.25f)]
+    private float _timeBetweenPoints = 0.1f;
 
     private void OnEnable()
     {
@@ -27,9 +40,8 @@ public class ProjectileWeapon : Weapon
 
     }
 
-    [SerializeField] private new GameObject renderer;
-    [SerializeField] private GameObject projectile;
-
+    private Vector3 _force;    
+    
     public override void Attack()
     {
         if (currentAmmunition <= 0)
@@ -47,8 +59,7 @@ public class ProjectileWeapon : Weapon
         projectile.transform.parent = null;
 
         // Apply force to projectile in direction of camera
-        var force = Camera.main.transform.forward * projectileWeaponSettings.projectileSpeed;
-        projectile.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+        projectile.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
 
 
 
@@ -64,10 +75,33 @@ public class ProjectileWeapon : Weapon
 
     }
 
-    public override void ResetAmmunition()
+    private void Update()
     {
-        base.ResetAmmunition();
-
+        if (currentAmmunition > 0)
+        {
+            _force = Camera.main.transform.forward * projectileWeaponSettings.projectileSpeed;
+            DrawProjection();
+        }
     }
+
+    private void DrawProjection()
+    {
+        _lineRenderer.enabled = true;
+        _lineRenderer.positionCount = Mathf.CeilToInt(_linePoints / _timeBetweenPoints) + 1;
+        Vector3 startPosition = transform.position;
+        Vector3 startVelocity = _force / projectile.GetComponent<Rigidbody>().mass;
+        int i = 0;
+        _lineRenderer.SetPosition(i, startPosition);
+        for (float t = 0; t < _linePoints; t += _timeBetweenPoints)
+        {
+            i++;
+            
+            Vector3 point = startPosition + t * startVelocity;
+            point.y = startPosition.y + startVelocity.y * t + (0.5f * Physics.gravity.y * Mathf.Pow(t, 2)); // Kinematic equation
+            
+            _lineRenderer.SetPosition(i, point);
+        }
+    }
+    
 }
 
