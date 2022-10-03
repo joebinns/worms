@@ -115,6 +115,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6468792841594737321, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
   m_PrefabInstance: {fileID: 1350425865580525558}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &4614481451868537491
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438213079050823007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69225c51d3f84ea42b8b93ddb4100701, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1273239597648102237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,5 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemSettings: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
-  weaponSettings: {fileID: 0}
   currentAmmunition: 0
+  _animator: {fileID: 4614481451868537491}

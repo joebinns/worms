@@ -9,8 +9,6 @@ public class MeleeWeaponSettings : WeaponSettings
 
     public override void Attack()
     {
-        // Play animation
-
         // Raycast from the camera a short distance
         RaycastHit raycastHit;
         var layermask = LayerMask.GetMask("Player Orange", "Player Cyan", "Player Pink", "Player Lime");
