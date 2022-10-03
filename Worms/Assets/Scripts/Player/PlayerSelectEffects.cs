@@ -57,7 +57,7 @@ public class PlayerSelectEffects : MonoBehaviour
         {
             _previousPlayer.EnableDitherMode();
         }
-        player.DisableDitherMode();
+        player.RestoreDefaultMaterials();
     }
 
     private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)

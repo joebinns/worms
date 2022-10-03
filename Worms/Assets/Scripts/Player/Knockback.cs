@@ -7,8 +7,7 @@ public class Knockback : MonoBehaviour
 {
     private int _knockback = 0;
 
-    // --> Subscribed to by material flasher, Healthplate.
-    public event Action<int> OnKnockbackChanged; // Can I make this non static, so that not all nameplates are called?
+    public event Action<int> OnKnockbackChanged;
 
     public int ChangeKnockback(int delta)
     {
@@ -32,7 +31,6 @@ public class Knockback : MonoBehaviour
 
             // Apply force in direction of collision, which accounts for the players knockback
             var force = collision.GetContact(0).normal.normalized * knockbackMultiplier; // if normal doesn't work well, use impulse.normalized or relativeVelocity.normalized.
-            force = force;
             force.y *= 1f;
             force.y = Mathf.Abs(force.y);
 

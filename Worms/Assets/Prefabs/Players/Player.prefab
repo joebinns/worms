@@ -5365,6 +5365,7 @@ MonoBehaviour:
   weaponRack: {fileID: 2546887323538763949}
   weaponSlot: {fileID: 6755483020088446501}
   ditherMaterial: {fileID: 2100000, guid: 84588cd6da68422458a7fe68e5d6c1f7, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 96be5210e4271a24ba93071d3766e58e, type: 2}
   portrait: {fileID: 0}
   deadPortrait: {fileID: 0}
   nameplate: {fileID: 0}

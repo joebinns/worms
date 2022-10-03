@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     //public GameObject weapon;
     public Transform weaponSlot;
     public Material ditherMaterial;
+    public Material flashMaterial;
     public Sprite portrait;
     public Sprite deadPortrait;
 
@@ -52,6 +53,11 @@ public class Player : MonoBehaviour
         physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
         UnpackPlayerSettings();
         UpdateAllRenderers();
+    }
+
+    private void OnEnable()
+    {
+        GetComponent<Knockback>().OnKnockbackChanged += FlashWhite;
     }
 
     public void Attack()
@@ -90,6 +96,20 @@ public class Player : MonoBehaviour
         physicsBasedCharacterController._characterLookDirection = option;
     }
 
+    public void FlashWhite(int _)
+    {
+        StartCoroutine(FlashMaterial(flashMaterial));
+    }
+
+    private IEnumerator FlashMaterial(Material material)
+    {
+        ChangeMaterials(material);
+
+        yield return new WaitForSeconds(0.2f);
+
+        RestoreDefaultMaterials();
+    }
+
     public void EnableParticleSystem()
     {
         ParticleSystem.EmissionModule emission;
@@ -123,21 +143,10 @@ public class Player : MonoBehaviour
 
     public void EnableDitherMode()
     {
-        UpdateAllRenderers();
-
-        foreach (Transform transform in _allRenderers)
-        {
-            var renderer = transform.GetComponent<Renderer>();
-            if (renderer == null)
-            {
-                continue;
-            }
-
-            renderer.material = ditherMaterial;
-        }
+        ChangeMaterials(ditherMaterial);
     }
 
-    public void DisableDitherMode()
+    public void RestoreDefaultMaterials()
     {
         UpdateAllRenderers(); // Not sure why this is needed here, since it already gets called when new hats are instantiated.
 
@@ -150,6 +159,22 @@ public class Player : MonoBehaviour
             }
 
             transform.GetComponent<Renderer>().material = materialStorage.defaultMaterial;
+        }
+    }
+
+    private void ChangeMaterials(Material material)
+    {
+        UpdateAllRenderers();
+
+        foreach (Transform transform in _allRenderers)
+        {
+            var renderer = transform.GetComponent<Renderer>();
+            if (renderer == null)
+            {
+                continue;
+            }
+
+            renderer.material = material;
         }
     }
 

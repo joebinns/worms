@@ -70,7 +70,7 @@ public class PlayerSelection : MonoBehaviour
         {
             _previousPlayer.EnableDitherMode();
         }
-        player.DisableDitherMode();
+        player.RestoreDefaultMaterials();
     }
     
     public void NextPlayer()
@@ -157,7 +157,7 @@ public class PlayerSelection : MonoBehaviour
         {
             player.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
             player.SetLookDirectionOption(PhysicsBasedCharacterController.lookDirectionOptions.velocity);
-            player.DisableDitherMode();
+            player.RestoreDefaultMaterials();
             player.EnableParticleSystem();
 
             // Save their settings
