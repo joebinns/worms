@@ -18,12 +18,13 @@ public class ProjectileWeapon : Weapon
     [Header("Display Controls")]
     [SerializeField]
     private LineRenderer _lineRenderer;
-    [SerializeField]
-    [Range(10, 100)]
-    private int _linePoints = 25;
-    [SerializeField]
-    [Range(0.01f, 0.25f)]
-    private float _timeBetweenPoints = 0.1f;
+    //[SerializeField]
+    //[Range(2, 100)]
+    //private int _linePoints = 3;
+    //[SerializeField]
+    //[Range(0.00001f, 1f)]
+    //private float _timeBetweenPoints = 0.5f;
+    [SerializeField] private int _maxPhysicsFrameIterations = 10;
 
     private void OnEnable()
     {
@@ -87,10 +88,16 @@ public class ProjectileWeapon : Weapon
     private void DrawProjection()
     {
         _lineRenderer.enabled = true;
-        _lineRenderer.positionCount = Mathf.CeilToInt(_linePoints / _timeBetweenPoints) + 1;
+        //_lineRenderer.positionCount = Mathf.CeilToInt(_linePoints / _timeBetweenPoints) + 1;
+        
+        _lineRenderer.positionCount = _maxPhysicsFrameIterations;
+        
         Vector3 startPosition = transform.position;
         Vector3 startVelocity = _force / projectile.GetComponent<Rigidbody>().mass;
+        /*
         int i = 0;
+        
+        _timeBetweenPoints = Time.fixedDeltaTime;
         _lineRenderer.SetPosition(i, startPosition);
         for (float t = 0; t < _linePoints; t += _timeBetweenPoints)
         {
@@ -101,6 +108,20 @@ public class ProjectileWeapon : Weapon
             
             _lineRenderer.SetPosition(i, point);
         }
+        */
+        
+        _lineRenderer.SetPosition(0, startPosition);
+        
+        for (var i = 1; i < _maxPhysicsFrameIterations; i++)
+        {
+            var time = i * Time.fixedDeltaTime;
+            
+            Vector3 point = startPosition + time * startVelocity;
+            point.y = startPosition.y + startVelocity.y * time + (0.5f * Physics.gravity.y * Mathf.Pow(time, 2)); // Kinematic equation
+            
+            _lineRenderer.SetPosition(i, point);
+        }
+
     }
     
 }

@@ -268,7 +268,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7103056407376101900}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -280,7 +280,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96be5210e4271a24ba93071d3766e58e, type: 2}
+  - {fileID: 2100000, guid: a62f47019fee876419cae4ef0b4b50f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -354,7 +354,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -377,8 +377,7 @@ MonoBehaviour:
   renderer: {fileID: 9014415625365305680}
   projectile: {fileID: 1780147597566245928}
   _lineRenderer: {fileID: -2846489718532554897}
-  _linePoints: 25
-  _timeBetweenPoints: 0.1
+  _maxPhysicsFrameIterations: 32
 --- !u!1 &9014415625365305680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5066346978364762613, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
