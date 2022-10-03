@@ -9,7 +9,7 @@ public class ProjectileWeaponSettings : WeaponSettings
 
     public override void Attack() // Hmm... since this is using projectiles, I feel like this should be in the monobehaviour...
     {
-        Debug.Log("projectile pew");
+
 
     }
     

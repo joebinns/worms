@@ -9,7 +9,6 @@ public class MeleeWeaponSettings : WeaponSettings
 
     public override void Attack()
     {
-        Debug.Log("melee pew");
         // Play animation
 
         // Raycast from the camera a short distance

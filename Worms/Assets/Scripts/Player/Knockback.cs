@@ -32,7 +32,7 @@ public class Knockback : MonoBehaviour
 
             // Apply force in direction of collision, which accounts for the players knockback
             var force = collision.GetContact(0).normal.normalized * knockbackMultiplier; // if normal doesn't work well, use impulse.normalized or relativeVelocity.normalized.
-            force = -force;
+            force = force;
             force.y *= 1f;
             force.y = Mathf.Abs(force.y);
 
