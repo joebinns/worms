@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Transform weaponSlot;
     public Material ditherMaterial;
     public Material flashMaterial;
+    public float flashDuration = 0.15f;
     public Sprite portrait;
     public Sprite deadPortrait;
 
@@ -57,7 +58,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<Knockback>().OnKnockbackChanged += FlashWhite;
+        GetComponent<Knockback>().OnKnockbackChanged += KnockbackEffects;
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Knockback>().OnKnockbackChanged -= KnockbackEffects;
     }
 
     public void Attack()
@@ -96,16 +102,27 @@ public class Player : MonoBehaviour
         physicsBasedCharacterController._characterLookDirection = option;
     }
 
-    public void FlashWhite(int _)
+    public void KnockbackEffects(int _)
     {
         StartCoroutine(FlashMaterial(flashMaterial));
+        StartCoroutine(FlashRendererSize(1.3f));
+        // ... slap sound
+    }
+
+    private IEnumerator FlashRendererSize(float size)
+    {
+        renderers.transform.localScale = Vector3.one * size;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        renderers.transform.localScale = Vector3.one;
     }
 
     private IEnumerator FlashMaterial(Material material)
     {
         ChangeMaterials(material);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(flashDuration);
 
         RestoreDefaultMaterials();
     }
