@@ -80,7 +80,11 @@ public class ProjectileWeapon : Weapon
     {
         if (currentAmmunition > 0)
         {
-            _force = Camera.main.transform.forward * projectileWeaponSettings.projectileSpeed;
+            _force = Camera.main.transform.forward;
+            _force.y *= 4f;
+            _force = _force.normalized;
+            _force *= projectileWeaponSettings.projectileSpeed;
+            
             DrawProjection();
         }
     }
@@ -94,21 +98,7 @@ public class ProjectileWeapon : Weapon
         
         Vector3 startPosition = transform.position;
         Vector3 startVelocity = _force / projectile.GetComponent<Rigidbody>().mass;
-        /*
-        int i = 0;
-        
-        _timeBetweenPoints = Time.fixedDeltaTime;
-        _lineRenderer.SetPosition(i, startPosition);
-        for (float t = 0; t < _linePoints; t += _timeBetweenPoints)
-        {
-            i++;
-            
-            Vector3 point = startPosition + t * startVelocity;
-            point.y = startPosition.y + startVelocity.y * t + (0.5f * Physics.gravity.y * Mathf.Pow(t, 2)); // Kinematic equation
-            
-            _lineRenderer.SetPosition(i, point);
-        }
-        */
+
         
         _lineRenderer.SetPosition(0, startPosition);
         
