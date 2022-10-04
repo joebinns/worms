@@ -4,6 +4,9 @@ public class VictoryScene : MonoBehaviour
 {
     private void Start()
     {
+        CursorVisibilityToggle.EnableCursor();
+        Cursor.lockState = CursorLockMode.None;
+        
         AudioManager.Instance.PlayDelayed("Celebration", 0.8f);
     }
 
