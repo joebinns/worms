@@ -70,6 +70,7 @@ public class InputManager : MonoBehaviour
     public void MoveInputAction(InputAction.CallbackContext context)
     {
         PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>().MoveInputAction(context);
+
     }
 
     public void JumpInputAction(InputAction.CallbackContext context)

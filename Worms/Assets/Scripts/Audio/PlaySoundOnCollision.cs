@@ -15,6 +15,6 @@ public class PlaySoundOnCollision : MonoBehaviour
     /// <param name="other">The other rigid body / collider involved in this collision.</param>
     private void OnCollisionEnter(Collision other)
     {
-        FindObjectOfType<AudioManager>().Play(audioName);
+        AudioManager.Instance.Play(audioName);
     }
 }

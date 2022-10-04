@@ -10,15 +10,15 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     /// <summary>
     /// Declare the properties of the sounds.
     /// </summary>
     void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
         {
             Destroy(gameObject);
@@ -66,6 +66,17 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
+    }
+
+    public void PlayDelayed(string name, float delay)
+    {
+        StartCoroutine(PlayDelayedCoroutine(name, delay));
+    }
+
+    private IEnumerator PlayDelayedCoroutine(string name, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Play(name);
     }
 
     /// <summary>

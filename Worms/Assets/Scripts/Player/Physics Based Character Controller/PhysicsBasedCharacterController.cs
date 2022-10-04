@@ -174,17 +174,21 @@ public class PhysicsBasedCharacterController : MonoBehaviour
 
             }
 
+            
             if (_moveInput.magnitude != 0)
             {
-                if (!FindObjectOfType<AudioManager>().IsPlaying("Walking"))
+                if (!GetComponent<AudioSource>().isPlaying)
                 {
-                    FindObjectOfType<AudioManager>().Play("Walking");
+                    //FindObjectOfType<AudioManager>().Play("Walking");
+                    GetComponent<AudioSource>().Play();
                 }
             }
             else
             {
-                FindObjectOfType<AudioManager>().Stop("Walking");
+                //FindObjectOfType<AudioManager>().Stop("Walking");
+                GetComponent<AudioSource>().Stop();
             }
+            
 
             if (_dustParticleSystem)
             {
@@ -203,7 +207,8 @@ public class PhysicsBasedCharacterController : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Stop("Walking");
+            //FindObjectOfType<AudioManager>().Stop("Walking");
+            GetComponent<AudioSource>().Stop();
 
             if (_dustParticleSystem)
             {
