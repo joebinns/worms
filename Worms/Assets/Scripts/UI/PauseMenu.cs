@@ -33,6 +33,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        AudioManager.Instance.Play("Click Primary");
+
         pauseMenuUI.SetActive(false);
         InputManager.RevertActionMap();
         if (CameraManager.state == CameraState.AimCamera)
@@ -46,6 +48,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        AudioManager.Instance.Play("Click Primary");
+
         pauseMenuUI.SetActive(true);
         InputManager.SwitchActionMap("Paused");
         CursorVisibilityToggle.EnableCursor();
@@ -56,6 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {   
+        AudioManager.Instance.Play("Click Secondary");
         Time.timeScale = 1f;
         StartCoroutine(LoadingScreen.TransitionToLoadingScreen());
     }

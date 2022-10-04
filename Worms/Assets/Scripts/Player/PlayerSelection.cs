@@ -99,6 +99,8 @@ public class PlayerSelection : MonoBehaviour
 
     private Player ChangePlayer(int id)
     {
+        AudioManager.Instance.Play("Click Primary");
+
         var currentPlayer = PlayerManager.currentPlayer;
         
         // Save edits to Player
@@ -150,6 +152,8 @@ public class PlayerSelection : MonoBehaviour
 
     public void FinaliseSelection()
     {
+        AudioManager.Instance.Play("Click Secondary");
+
         var currentPlayer = PlayerManager.currentPlayer;
         AdjustScale(currentPlayer, false);
 

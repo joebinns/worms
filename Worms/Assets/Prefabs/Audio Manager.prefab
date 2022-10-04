@@ -72,6 +72,18 @@ MonoBehaviour:
   - name: Punch
     clip: {fileID: 8300000, guid: 28b7b11f02adb794283c03a44b86b68b, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.25
+    loop: 0
+    source: {fileID: 0}
+  - name: Click Primary
+    clip: {fileID: 8300000, guid: 0b97c9229c125104e9fff7ecf128db9f, type: 3}
+    volume: 0.5
+    pitch: 0.9
+    loop: 0
+    source: {fileID: 0}
+  - name: Click Secondary
+    clip: {fileID: 8300000, guid: e3902e59eee5760478198f7e4cdf3464, type: 3}
+    volume: 1
+    pitch: 1.25
     loop: 0
     source: {fileID: 0}

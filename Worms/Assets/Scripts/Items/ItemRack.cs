@@ -37,6 +37,8 @@ public class ItemRack : MonoBehaviour
 
     public void NextItem()
     {
+        AudioManager.Instance.Play("Click Primary");
+        
         var index = (_currentIndex + 1) % items.Count;
 
         ChangeItem(index);
@@ -45,6 +47,8 @@ public class ItemRack : MonoBehaviour
 
     public void PreviousItem()
     {
+        AudioManager.Instance.Play("Click Primary");
+
         var index = (_currentIndex - 1);
         if (index < 0)
         {

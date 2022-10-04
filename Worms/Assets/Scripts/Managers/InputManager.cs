@@ -62,6 +62,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.Play("Click Primary");
             UIManager.ShowAmmunition();
             UIManager.RefreshAmmunition();
         }
