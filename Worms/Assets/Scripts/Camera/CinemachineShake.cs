@@ -20,8 +20,6 @@ public class CinemachineShake : MonoBehaviour
     {
         foreach (var virtualCamera in virtualCameras)
         {
-            Debug.Log("shake! " + virtualCamera.name);
-
             CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
         }
