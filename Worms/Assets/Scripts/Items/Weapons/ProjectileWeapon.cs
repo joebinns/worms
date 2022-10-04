@@ -77,8 +77,8 @@ public class ProjectileWeapon : Weapon
         if (currentAmmunition > 0)
         {
             _force = Camera.main.transform.forward;
-            _force.y *= 4f;
-            _force = _force.normalized;
+            //_force.y *= 4f;
+            //_force = _force.normalized;
             _force *= projectileWeaponSettings.projectileSpeed;
             
             DrawProjection();
