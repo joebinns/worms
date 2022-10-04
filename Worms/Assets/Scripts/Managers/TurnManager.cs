@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class TurnManager : MonoBehaviour
 {
-    private static int _turn = 0;
+    //private static int _turn = 0;
 
     private void OnEnable()
     {
@@ -19,10 +19,10 @@ public class TurnManager : MonoBehaviour
         CountdownTimer.OnCountedDown -= NextTurn;
     }
 
-    public static void RefreshTurn()
+    public static void ChangeTurn(int playerIndex)
     {
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
-        var newPlayer = PlayerManager.SetCurrentPlayer(_turn % PlayerManager.numPlayers);
+        var newPlayer = PlayerManager.SetCurrentPlayer(playerIndex);
   
         // Reset new player's ammo
         foreach (GameObject item in newPlayer.weaponRack.items)
@@ -40,9 +40,11 @@ public class TurnManager : MonoBehaviour
 
     public static void NextTurn()
     {
-        _turn++;
+        var currentIndex = PlayerManager.IdToIndex(PlayerManager.currentPlayer.id);
+        var nextIndex = (currentIndex + 1) % PlayerManager.numPlayers;
 
-        RefreshTurn();
+        // I think this works...
+        ChangeTurn(nextIndex);
     }
     
     public static void NextTurnInputAction(InputAction.CallbackContext context)

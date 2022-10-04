@@ -124,7 +124,7 @@ public class PlayerManager : MonoBehaviour
 
         if (player == currentPlayer)
         {
-            TurnManager.RefreshTurn();
+            TurnManager.NextTurn();
         }
 
         if (numPlayers == 1) // If this is the last player alive
