@@ -18,12 +18,6 @@ public class ProjectileWeapon : Weapon
     [Header("Display Controls")]
     [SerializeField]
     private LineRenderer _lineRenderer;
-    //[SerializeField]
-    //[Range(2, 100)]
-    //private int _linePoints = 3;
-    //[SerializeField]
-    //[Range(0.00001f, 1f)]
-    //private float _timeBetweenPoints = 0.5f;
     [SerializeField] private int _maxPhysicsFrameIterations = 10;
 
     private void OnEnable()
@@ -47,7 +41,7 @@ public class ProjectileWeapon : Weapon
     {
         if (currentAmmunition <= 0)
         {
-            StartCoroutine(CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble"));
+            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble");
             return;
         }
 
@@ -73,7 +67,7 @@ public class ProjectileWeapon : Weapon
         {
             // Make this game object invisible
             renderer.SetActive(false);
-
+            _lineRenderer.enabled = false;
         }
 
     }

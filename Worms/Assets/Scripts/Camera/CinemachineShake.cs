@@ -34,7 +34,12 @@ public class CinemachineShake : MonoBehaviour
         }
     }
 
-    public IEnumerator ShakeCamera(float intensity = 2.5f, float duration = 0.4f, string overrideNoiseProfile = null)
+    public void ShakeCamera(float intensity = 2.5f, float duration = 0.4f, string overrideNoiseProfile = null)
+    {
+        StartCoroutine(Instance.ShakeCameraCoroutine(intensity, duration,overrideNoiseProfile));
+    }
+
+    private IEnumerator ShakeCameraCoroutine(float intensity = 2.5f, float duration = 0.4f, string overrideNoiseProfile = null)
     {
         if (overrideNoiseProfile != null)
         {

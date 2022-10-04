@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(FlashMaterial(flashMaterial));
         StartCoroutine(FlashRendererSize(1.3f));
-        StartCoroutine(CinemachineShake.Instance.ShakeCamera(20f, 0.2f));
+        CinemachineShake.Instance.ShakeCamera(20f, 0.2f);
         // ... slap sound
     }
 

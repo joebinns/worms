@@ -90,7 +90,7 @@ public class PlayerSelection : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f));
+            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f);
         }
     }
 
@@ -131,7 +131,7 @@ public class PlayerSelection : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f));
+            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f);
         }
     }
 

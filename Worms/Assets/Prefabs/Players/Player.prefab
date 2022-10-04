@@ -5523,6 +5523,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7713194734496769495, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
+      propertyPath: _maxPhysicsFrameIterations
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2290623936604169849, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
     - {fileID: 5188087554917860971, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}

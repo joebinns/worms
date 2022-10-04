@@ -18,7 +18,7 @@ public class MeleeWeapon : Weapon
     {
         if (currentAmmunition <= 0)
         {
-            StartCoroutine(CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble"));
+            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble");
             return;
         }
 
