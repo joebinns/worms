@@ -7,7 +7,7 @@ public class Ammunition : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
 
-    [SerializeField] private Color32 outOfAmmo = new Color32(255, 255/2, 255/2, 255);
+    [SerializeField] private Color32 outOfAmmo = new Color32(255, 255/4, 255/4, 255);
     [SerializeField] private Color32 hasAmmo = new Color32(255, 255, 255, 255);
 
     private string outOfAmmoHex;

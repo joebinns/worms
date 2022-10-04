@@ -1,45 +1,62 @@
 using UnityEngine;
 using Cinemachine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CinemachineShake : MonoBehaviour
 {
     public static CinemachineShake Instance { get; private set; }
 
     [SerializeField] private List<CinemachineVirtualCamera> virtualCameras;
-    private float shakeTimer;
-    private float shakeTimerTotal;
-    private float startingIntensity;
+
+    [SerializeField] private List<NoiseSettings> noiseSettings;
 
     private void Awake()
     {
         Instance = this;
     }
+ 
+    private void SwitchNoiseProfile(string name)
+    {
+        var noiseSetting = noiseSettings.Find(x => x.name == name);
 
-    public void ShakeCamera(float intensity = 2.5f, float duration = 0.4f) // AIM CAMERA IS STOPPING THE SHAKE(???)
+        foreach (var virtualCamera in virtualCameras)
+        {
+            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = noiseSetting;
+        }
+    }
+
+    private void SetAmplitudeGains(float amplitudeGain)
     {
         foreach (var virtualCamera in virtualCameras)
         {
-            CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
+            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitudeGain;
         }
-
-        shakeTimer = duration;
-        shakeTimerTotal = duration;
-        startingIntensity = intensity;
     }
 
-    private void Update()
+    public IEnumerator ShakeCamera(float intensity = 2.5f, float duration = 0.4f, string overrideNoiseProfile = null)
     {
-        if (shakeTimer > 0)
+        if (overrideNoiseProfile != null)
         {
-            shakeTimer -= Time.deltaTime;
-
-            foreach (var virtualCamera in virtualCameras)
-            {
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, 1 - (shakeTimer / shakeTimerTotal));
-            }
+            SwitchNoiseProfile(overrideNoiseProfile);
         }
+
+        var t = duration;
+        while (t > 0f)
+        {
+            SetAmplitudeGains(Mathf.Lerp(intensity, 0f, 1 - (t / duration)));
+
+            t -= Time.deltaTime;
+            yield return null;
+        }
+
+        SetAmplitudeGains(0f);
+
+        if (overrideNoiseProfile != null)
+        {
+            SwitchNoiseProfile(noiseSettings[0].name); // Revert to default noise setting
+        }
+        yield break;
     }
+    
 }

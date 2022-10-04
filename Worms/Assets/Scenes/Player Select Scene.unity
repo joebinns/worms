@@ -2428,6 +2428,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCameras:
   - {fileID: 1699533096}
+  noiseSettings:
+  - {fileID: 11400000, guid: 297ccd10be5d75945a67f48f0bee9dca, type: 2}
 --- !u!1001 &1733135767
 PrefabInstance:
   m_ObjectHideFlags: 0

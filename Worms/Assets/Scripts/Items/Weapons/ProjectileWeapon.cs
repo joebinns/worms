@@ -47,6 +47,7 @@ public class ProjectileWeapon : Weapon
     {
         if (currentAmmunition <= 0)
         {
+            StartCoroutine(CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble"));
             return;
         }
 
@@ -72,6 +73,7 @@ public class ProjectileWeapon : Weapon
         {
             // Make this game object invisible
             renderer.SetActive(false);
+
         }
 
     }

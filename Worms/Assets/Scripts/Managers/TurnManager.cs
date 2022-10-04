@@ -43,7 +43,6 @@ public class TurnManager : MonoBehaviour
         var currentIndex = PlayerManager.IdToIndex(PlayerManager.currentPlayer.id);
         var nextIndex = (currentIndex + 1) % PlayerManager.numPlayers;
 
-        // I think this works...
         ChangeTurn(nextIndex);
     }
     
