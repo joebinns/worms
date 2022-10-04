@@ -5365,8 +5365,8 @@ MonoBehaviour:
   weaponRack: {fileID: 2546887323538763949}
   weaponSlot: {fileID: 6755483020088446501}
   ditherMaterial: {fileID: 2100000, guid: 84588cd6da68422458a7fe68e5d6c1f7, type: 2}
-  flashMaterial: {fileID: 2100000, guid: 96be5210e4271a24ba93071d3766e58e, type: 2}
-  flashDuration: 0.15
+  flashMaterial: {fileID: 2100000, guid: 75ea7265fe161f74f806643b9c0116c8, type: 2}
+  flashDuration: 0.25
   portrait: {fileID: 0}
   deadPortrait: {fileID: 0}
   nameplate: {fileID: 0}
@@ -5584,6 +5584,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6755483020088446501}
     m_Modifications:
+    - target: {fileID: 2314124743573307164, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5198508109083197414, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
       propertyPath: m_Name
       value: Invisible Weapon Variant

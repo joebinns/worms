@@ -105,8 +105,8 @@ public class Player : MonoBehaviour
     public void KnockbackEffects(int _)
     {
         StartCoroutine(FlashMaterial(flashMaterial));
-        StartCoroutine(FlashRendererSize(1.3f));
-        CinemachineShake.Instance.ShakeCamera(20f, 0.2f);
+        StartCoroutine(FlashRendererSize(1.2f));
+        CinemachineShake.Instance.ShakeCamera(20f, flashDuration);
         // ... slap sound
     }
 
