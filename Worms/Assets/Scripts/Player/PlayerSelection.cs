@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class PlayerSelection : MonoBehaviour
 
     public TMP_InputField nameInput;
     public ItemRack hatRack;
-    
+
+    [SerializeField] private Button _finaliseSelectionButton;
+
     private void OnEnable()
     {
         PlayerManager.OnPlayerChanged += ChangePlayerSelection;
@@ -103,6 +106,16 @@ public class PlayerSelection : MonoBehaviour
         
         // Change to next Player
         currentPlayer = PlayerManager.SetCurrentPlayer(id);
+        if (id == 0)
+        {
+            // Disable Let's Go! button
+            _finaliseSelectionButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            // Enable Let's Go! button
+            _finaliseSelectionButton.gameObject.SetActive(true);
+        }
 
         // Update name placeholder text
         ((TextMeshProUGUI)nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
