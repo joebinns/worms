@@ -9,6 +9,7 @@ public class Portraits : UIRack
     private float _portraitSpacing = 50f; // Vertical distance between the centres of portraits
     [SerializeField] private GameObject _emptyPortraitPrefab;
 
+    /*
     private void Start()
     {
         LoadPortraits();
@@ -18,6 +19,17 @@ public class Portraits : UIRack
         activeColor.a = 1f;
         activeImage.color = activeColor;
         StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), true));
+    }
+    */
+
+    private void OnEnable()
+    {
+        PlayerSpawner.OnPlayersSpawned += LoadPortraits;
+    }
+
+    private void OnDisable()
+    {
+        PlayerSpawner.OnPlayersSpawned -= LoadPortraits;
     }
 
     public void LoadPortraits()
@@ -40,6 +52,9 @@ public class Portraits : UIRack
             portrait.GetComponent<Image>().sprite = player.portrait;
             images.Add(portrait.GetComponent<Image>());
         }
+
+        ActivateImage(0);
+        
     }
 
     public void DisablePortrait(Player player)

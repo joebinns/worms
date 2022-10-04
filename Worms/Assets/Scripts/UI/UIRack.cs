@@ -24,6 +24,11 @@ public class UIRack : MonoBehaviour
         activeImage.color = deactiveColor;
         StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), false));
 
+        ActivateImage(id);
+    }
+
+    public void ActivateImage(int id)
+    {
         // Activate new image
         activeImage = images[id];
         activeImage.color = activeColor;
