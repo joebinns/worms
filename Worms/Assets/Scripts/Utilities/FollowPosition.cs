@@ -1,17 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // This script is used as a copy of a transform which doesn't account for rotation or scale.
-// Intended for use aa a fixed-angle target transform for Cinemachine.
-public class FollowPosition : MonoBehaviour
+// Intended for use as a fixed-angle target transform for Cinemachine.
+namespace Utilities
 {
-    public GameObject target;
-    
-    public void FixedUpdate()
+    public class FollowPosition : MonoBehaviour
     {
-        this.transform.position = target.transform.position;
+        public GameObject Target;
+    
+        public void FixedUpdate()
+        {
+            this.transform.position = Target.transform.position;
 
+        }
     }
 }

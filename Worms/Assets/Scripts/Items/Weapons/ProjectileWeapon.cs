@@ -1,3 +1,4 @@
+using Camera;
 using UnityEngine;
 
 namespace Items.Weapons

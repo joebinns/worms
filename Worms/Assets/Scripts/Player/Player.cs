@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
+using Camera;
 using Items.Weapons;
 using Player.Physics_Based_Character_Controller;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

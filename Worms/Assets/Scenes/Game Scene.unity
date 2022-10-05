@@ -2063,6 +2063,10 @@ PrefabInstance:
       value: Player Lime Position Follow
       objectReference: {fileID: 0}
     - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 873773784}
+    - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 873773784}
@@ -3360,7 +3364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd4819d5efad5d4287a389eaf7e2271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 200972176}
+  Target: {fileID: 847300437}
 --- !u!43 &660508843
 Mesh:
   m_ObjectHideFlags: 0
@@ -4836,6 +4840,10 @@ PrefabInstance:
       value: Player Orange Position Follow
       objectReference: {fileID: 0}
     - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 200972176}
+    - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 200972176}
@@ -4861,6 +4869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85b571c7971d04bafc61488c210631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &847300437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8880937654670262094, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
+  m_PrefabInstance: {fileID: 847300434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &849899881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8182,12 +8195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2f200d51622d143970be43f744f881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCameras:
-  - {fileID: 3772657465848145707}
-  - {fileID: 286182575170547524}
-  noiseSettings:
-  - {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-  - {fileID: 11400000, guid: 297ccd10be5d75945a67f48f0bee9dca, type: 2}
+  _virtualCameras: []
+  _noiseSettings: []
 --- !u!43 &1404336993
 Mesh:
   m_ObjectHideFlags: 0
@@ -9121,6 +9130,10 @@ PrefabInstance:
       value: Player Pink Position Follow
       objectReference: {fileID: 0}
     - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 1673522643}
+    - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1673522643}
@@ -9455,6 +9468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Cyan Position Follow
       objectReference: {fileID: 0}
+    - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 1541794742}
     - target: {fileID: 8880937654670262095, guid: 84a3d4d204af2c84b8197d90138529df, type: 3}
       propertyPath: target
       value: 

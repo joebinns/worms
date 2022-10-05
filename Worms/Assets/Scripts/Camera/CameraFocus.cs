@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using Utilities;
 
 namespace Camera
 {
@@ -27,7 +28,7 @@ namespace Camera
 
         private void SetFocus(Player.Player focusPlayer)
         {
-            PlayerFollowPosition.target = focusPlayer.gameObject;
+            PlayerFollowPosition.Target = focusPlayer.gameObject;
             if (AimCamera != null)
             {
                 AimCamera.Follow = focusPlayer.transform;
