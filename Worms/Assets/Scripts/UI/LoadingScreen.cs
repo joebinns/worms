@@ -12,7 +12,7 @@ public class LoadingScreen : MonoBehaviour
 
     public static event Action OnTransitionedToLoadingScreen;
 
-    public void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -24,32 +24,50 @@ public class LoadingScreen : MonoBehaviour
             return;
         }
         
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(Instance);
         _transition = GetComponent<Animator>();
     }
 
-    public static IEnumerator TransitionToLoadingScreen() // It would be a nice touch if the camera zoomed out
+    public void TransitionToLoadingScreen()
+    {
+        StartCoroutine(TransitionToLoadingScreenCoroutine());
+    }
+
+    private IEnumerator TransitionToLoadingScreenCoroutine()
     {
         _transition.SetTrigger("Start");
         yield return new WaitForSeconds(TRANSITION_TIME);
+        
         OnTransitionedToLoadingScreen?.Invoke();
     }
 
-    public static void TransitionFromLoadingScreen() // It would be a nice touch if the camera zoomed in
+    public void TransitionFromLoadingScreen(SceneIndices index)
     {
+        // Load scene
+        LoadScene(index);
+        // Reveal new scene
         _transition.SetTrigger("End");
     }
-
-    public static void LoadScene(SceneIndices index)
+    
+    public void LoadScene(SceneIndices index)
     {
         SceneManager.LoadScene((int)index);
     }
 
-    public static IEnumerator ChangeSceneImpatient(SceneIndices index) // For changing scenes, without needing to take precaution to make time for any methods invoked by OnTransitionedToLoadingScreen 
+    public void ChangeSceneImpatient(SceneIndices index)
     {
-        yield return TransitionToLoadingScreen();
-        LoadScene(index);
-        TransitionFromLoadingScreen();
+        StartCoroutine(ChangeSceneImpatientCoroutine(index));
+    }
+    
+    /// <summary>
+    /// For changing scenes, without needing to take precaution to make time for any methods invoked by OnTransitionedToLoadingScreen 
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    private IEnumerator ChangeSceneImpatientCoroutine(SceneIndices index)
+    {
+        yield return TransitionToLoadingScreenCoroutine();
+        TransitionFromLoadingScreen(index);
     }
 
 }

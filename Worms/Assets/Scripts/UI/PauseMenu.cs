@@ -9,11 +9,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    private void OnEnable()
-    {
-        LoadingScreen.OnTransitionedToLoadingScreen += BehindTheCurtain;
-    }
-
     public void TogglePause(InputAction.CallbackContext context)
     {
         if (!context.performed)
@@ -34,22 +29,22 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         AudioManager.Instance.Play("Click Primary");
-
         pauseMenuUI.SetActive(false);
         InputManager.RevertActionMap();
         CursorMode.DisableCursor();
         Time.timeScale = 1f;
+        
         isPaused = false;
     }
 
     public void Pause()
     {
         AudioManager.Instance.Play("Click Primary");
-
         pauseMenuUI.SetActive(true);
         InputManager.SwitchActionMap("Paused");
         CursorMode.EnableCursor();
         Time.timeScale = 0f;
+        
         isPaused = true;
     }
 
@@ -57,16 +52,6 @@ public class PauseMenu : MonoBehaviour
     {   
         AudioManager.Instance.Play("Click Secondary");
         Time.timeScale = 1f;
-        StartCoroutine(LoadingScreen.TransitionToLoadingScreen());
-    }
-
-    private void BehindTheCurtain()
-    {
-        // Remove PlayerManager and Players from DontDestroyOnLoad
-        //Destroy(FindObjectOfType<PlayerManager>().gameObject);
-
-        // Load scene
-        LoadingScreen.LoadScene(SceneIndices.MAIN_MENU);
-        LoadingScreen.TransitionFromLoadingScreen();
+        LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
     }
 }

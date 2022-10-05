@@ -157,7 +157,7 @@ public class PlayerSelection : MonoBehaviour
         var currentPlayer = PlayerManager.currentPlayer;
         AdjustScale(currentPlayer, false);
 
-        StartCoroutine(LoadingScreen.TransitionToLoadingScreen());
+        LoadingScreen.Instance.TransitionToLoadingScreen();
     }
 
     private void BehindTheCurtain()
@@ -181,11 +181,7 @@ public class PlayerSelection : MonoBehaviour
             player.PackPlayerSettings();
         }
 
-        // Load scene
-        LoadingScreen.LoadScene(SceneIndices.GAME);
-
-        // Reveal new scene
-        LoadingScreen.TransitionFromLoadingScreen();
+        LoadingScreen.Instance.TransitionFromLoadingScreen(SceneIndices.GAME);
     }
     
     private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)

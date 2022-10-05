@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
 
     public void NextScene()
     {
-        StartCoroutine(LoadingScreen.ChangeSceneImpatient(SceneIndices.VICTORY));
+        LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.VICTORY);
     }
 
 }
