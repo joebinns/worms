@@ -30,6 +30,7 @@ public class CameraManager : MonoBehaviour
     
     void Start()
     {
+        CursorMode.DisableCursor();
         UpdateCameraState(CameraState.FollowCamera);
     }
 
@@ -50,7 +51,6 @@ public class CameraManager : MonoBehaviour
                 followCameraZoom.ResetZoom();
                 aiming.enabled = false;
                 UIManager.DisableReticle();
-                CursorVisibilityToggle.DisableCursor();
                 InputManager.SwapWeapon(0);
                 UIManager.HideHotbar();
                 break;
@@ -59,7 +59,6 @@ public class CameraManager : MonoBehaviour
                 InputManager.SwitchActionMap("Aiming");
                 aiming.enabled = true;
                 UIManager.EnableReticle();
-                CursorVisibilityToggle.EnableCursor();
                 UIManager.ShowHotbar();
                 break;
         }
