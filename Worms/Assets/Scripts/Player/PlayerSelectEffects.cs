@@ -13,19 +13,19 @@ public class PlayerSelectEffects : MonoBehaviour
     private const float MAX_PLAYER_SIZE = 1.2f;
 
     // Variables
-    private Player _previousPlayer;
+    private Player.Player _previousPlayer;
     
     void OnEnable()
     {
-        PlayerManager.OnPlayerChanged += DisplayEffects;
+        PlayerManager.Instance.OnPlayerChanged += DisplayEffects;
     }
     
     void OnDisable()
     {
-        PlayerManager.OnPlayerChanged -= DisplayEffects;
+        PlayerManager.Instance.OnPlayerChanged -= DisplayEffects;
     }
     
-    private void DisplayEffects(Player player)
+    private void DisplayEffects(Player.Player player)
     {
         AdjustScales(player);
         AdjustRideHeights(player);
@@ -34,24 +34,24 @@ public class PlayerSelectEffects : MonoBehaviour
         _previousPlayer = player;
     }
     
-    private void AdjustScales(Player player)
+    private void AdjustScales(Player.Player player)
     {
         AdjustScale(_previousPlayer, false);
         AdjustScale(player, true);
     }
 
-    private void AdjustScale(Player player, bool shouldEnlarge)
+    private void AdjustScale(Player.Player player, bool shouldEnlarge)
     {
         StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
     }
 
-    private void AdjustRideHeights(Player player)
+    private void AdjustRideHeights(Player.Player player)
     {
         _previousPlayer.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
         player.AdjustRideHeight(UPPER_RIDE_HEIGHT);
     }
 
-    private void AdjustMaterials(Player player)
+    private void AdjustMaterials(Player.Player player)
     {
         if (_previousPlayer.id > player.id) // If selection moves to fewer players...
         {

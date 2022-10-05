@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class CameraFocus : MonoBehaviour
+namespace Camera
 {
-    public FollowPosition playerFollowPosition;
+    public class CameraFocus : MonoBehaviour
+    {
+        public FollowPosition PlayerFollowPosition;
     
-    [Header("Optional")]
-    public GameObject aimCamera;
+        [Header("Optional")]
+        public CinemachineVirtualCamera AimCamera;
     
-    private void OnEnable()
-    {
-        PlayerManager.OnPlayerChanged += SetFocus;
-    }
-
-    private void OnDisable()
-    {
-        PlayerManager.OnPlayerChanged -= SetFocus;
-    }
-
-    private void Start()
-    {
-        SetFocus(PlayerManager.currentPlayer);
-    }
-
-    public void SetFocus(Player focusPlayer)
-    {
-        playerFollowPosition.target = focusPlayer.gameObject;
-        if (aimCamera != null)
+        private void OnEnable()
         {
-            aimCamera.GetComponent<CinemachineVirtualCamera>().Follow = focusPlayer.transform;
+            PlayerManager.Instance.OnPlayerChanged += SetFocus;
+        }
+
+        private void OnDisable()
+        {
+            PlayerManager.Instance.OnPlayerChanged -= SetFocus;
+        }
+
+        private void Start()
+        {
+            SetFocus(PlayerManager.Instance.currentPlayer);
+        }
+
+        private void SetFocus(Player.Player focusPlayer)
+        {
+            PlayerFollowPosition.target = focusPlayer.gameObject;
+            if (AimCamera != null)
+            {
+                AimCamera.Follow = focusPlayer.transform;
+            }
         }
     }
 }

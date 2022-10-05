@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player.Physics_Based_Character_Controller;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,30 +15,26 @@ public class Aiming : MonoBehaviour
 
     private void Start()
     {
-        _characterController = PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
+        _characterController = PlayerManager.Instance.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
     }
 
     private void OnEnable()
     {
-        if (PlayerManager.currentPlayer == null)
+        if (PlayerManager.Instance.currentPlayer == null)
         {
             return;
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-
-        _characterController = PlayerManager.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
+        _characterController = PlayerManager.Instance.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
 
         _cursorPosition = Vector2.zero;
 
-        _characterController._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.aiming;
+        _characterController._characterLookDirection = PhysicsBasedCharacterController.LookDirectionOptions.Aiming;
 
     }
 
     private void OnDisable()
     {
-        Cursor.lockState = CursorLockMode.None;
-
         aimingInputVec3.y = 0;
         _characterController._aimingInput = aimingInputVec3;
 
@@ -52,7 +49,7 @@ public class Aiming : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
 
-        _characterController._characterLookDirection = PhysicsBasedCharacterController.lookDirectionOptions.velocity;
+        _characterController._characterLookDirection = PhysicsBasedCharacterController.LookDirectionOptions.Velocity;
     }
 
     public void CursorDelta(InputAction.CallbackContext context)

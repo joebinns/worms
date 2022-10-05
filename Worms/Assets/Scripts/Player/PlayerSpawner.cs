@@ -19,12 +19,12 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnPlayers()
     {
-        var players = new List<Player>(PlayerManager.players);
-        foreach (Player player in players)
+        var players = new List<Player.Player>(PlayerManager.Instance.players);
+        foreach (Player.Player player in players)
         {
             if (player.playerSettings.shouldSpawn == false)
             {
-                PlayerManager.DeletePlayer(player);
+                PlayerManager.Instance.DeletePlayer(player);
                 continue;
             }
             

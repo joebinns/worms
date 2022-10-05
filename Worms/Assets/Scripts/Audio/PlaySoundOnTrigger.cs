@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Play a given sound when this rigid body / collider enters a trigger.
-/// </summary>
-public class PlaySoundOnTrigger : MonoBehaviour
+namespace Audio
 {
-    public string audioName;
-
     /// <summary>
-    /// Play the sound when this rigid body / collider enters a trigger.
+    /// Play a given sound when this rigid body / collider enters a trigger.
     /// </summary>
-    /// <param name="other">The trigger's rigid body / collider.</param>
-    private void OnTriggerEnter(Collider other)
+    public class PlaySoundOnTrigger : MonoBehaviour
     {
-        FindObjectOfType<AudioManager>().Play(audioName);
+        [SerializeField] private string _audioName;
+
+        /// <summary>
+        /// Play the sound when this rigid body / collider enters a trigger.
+        /// </summary>
+        /// <param name="other">The trigger's rigid body / collider.</param>
+        private void OnTriggerEnter(Collider other)
+        {
+            AudioManager.Instance.Play(_audioName);
+        }
     }
 }

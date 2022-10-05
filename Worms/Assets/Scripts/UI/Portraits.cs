@@ -1,64 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Portraits : UIRack
+namespace UI
 {
-    private float _portraitSpacing = 50f; // Vertical distance between the centres of portraits
-    [SerializeField] private GameObject _emptyPortraitPrefab;
-
-    private void OnEnable()
+    public class Portraits : UIRack
     {
-        PlayerSpawner.OnPlayersSpawned += LoadPortraits;
-    }
+        private const float PORTRAIT_SPACING = 50f; // Vertical distance between the centres of portraits
+        [SerializeField] private GameObject _emptyPortraitPrefab;
 
-    private void OnDisable()
-    {
-        PlayerSpawner.OnPlayersSpawned -= LoadPortraits;
-    }
-
-    public void LoadPortraits()
-    {
-        var totalSpacing = _portraitSpacing * (PlayerManager.numPlayers - 1);
-
-        var startPosition = totalSpacing / 2;
-
-        var position = startPosition;
-
-        foreach (Player player in PlayerManager.players)
+        private void OnEnable()
         {
-            // Instantiate portrait prefabs with calculated vertical displacements
-            var portrait = Instantiate(_emptyPortraitPrefab);
-            portrait.transform.SetParent(gameObject.transform, false);
-
-            portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
-            position -= _portraitSpacing;
-
-            portrait.GetComponent<Image>().sprite = player.portrait;
-            images.Add(portrait.GetComponent<Image>());
+            PlayerSpawner.OnPlayersSpawned += LoadPortraits;
         }
 
-        ActivateImage(0);
+        private void OnDisable()
+        {
+            PlayerSpawner.OnPlayersSpawned -= LoadPortraits;
+        }
+
+        public void LoadPortraits()
+        {
+            var totalSpacing = PORTRAIT_SPACING * (PlayerManager.Instance.numPlayers - 1);
+            var startPosition = totalSpacing / 2;
+            var position = startPosition;
+
+            foreach (Player.Player player in PlayerManager.Instance.players)
+            {
+                // Instantiate portrait prefabs with calculated vertical displacements
+                var portrait = Instantiate(_emptyPortraitPrefab, gameObject.transform, false);
+
+                portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
+                position -= PORTRAIT_SPACING;
+
+                portrait.GetComponent<Image>().sprite = player.portrait;
+                images.Add(portrait.GetComponent<Image>());
+            }
+
+            ActivateImage(0);
         
-    }
-
-    public void DisablePortrait(Player player)
-    {
-        // Find portrait using player id
-        var maxIndex = images.Count - 1;
-        if (player.id > maxIndex)
-        {
-            // If player doesn't have a portrait, return
-            return;
         }
 
-        var portrait = images[player.id];
+        public void DisablePortrait(Player.Player player)
+        {
+            // Find portrait using player id
+            var maxIndex = images.Count - 1;
+            if (player.id > maxIndex)
+            {
+                // If player doesn't have a portrait, return
+                return;
+            }
 
-        // Disable portrait
-        portrait.sprite = player.deadPortrait;
+            var portrait = images[player.id];
 
+            // Disable portrait
+            portrait.sprite = player.deadPortrait;
+
+        }
     }
 }
 

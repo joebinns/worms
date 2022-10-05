@@ -1,41 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Items.Weapons;
 using TMPro;
+using UnityEngine;
 
-public class Ammunition : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private TMP_Text text;
-
-    [SerializeField] private Color32 outOfAmmo = new Color32(255, 255/4, 255/4, 255);
-    [SerializeField] private Color32 hasAmmo = new Color32(255, 255, 255, 255);
-
-    private string outOfAmmoHex;
-    private string hasAmmoHex;
-
-    private void Start()
+    public class Ammunition : MonoBehaviour
     {
-        outOfAmmoHex = ColorUtility.ToHtmlStringRGBA(outOfAmmo);
-        hasAmmoHex = ColorUtility.ToHtmlStringRGBA(hasAmmo);
-    }
+        [SerializeField] private TMP_Text _text;
 
-    public void RefreshDisplay()
-    {
-        // Get current weapon's ammunition
-        var weapon = PlayerManager.currentPlayer.weaponRack.currentItem.GetComponent<Weapon>();
-        var currentAmmunition = weapon.currentAmmunition;
-        var maxAmmunition = weapon.weaponSettings.maxAmmunition;
+        [SerializeField] private Color32 _outOfAmmo = new Color32(255, 255/4, 255/4, 255);
+        [SerializeField] private Color32 _hasAmmo = new Color32(255, 255, 255, 255);
 
-        // Determine color
-        var hexColor = hasAmmoHex;
-        if (currentAmmunition == 0)
+        private string _outOfAmmoHex;
+        private string _hasAmmoHex;
+
+        private void Start()
         {
-            hexColor = outOfAmmoHex;
+            _outOfAmmoHex = ColorUtility.ToHtmlStringRGBA(_outOfAmmo);
+            _hasAmmoHex = ColorUtility.ToHtmlStringRGBA(_hasAmmo);
         }
 
-        // Display
-        text.text = "<color=#" + hexColor + "><size=200%>" + currentAmmunition.ToString() + " <color=#" + hasAmmoHex + "><size=100%>/" + maxAmmunition.ToString();
+        public void RefreshDisplay()
+        {
+            // Get current weapon's ammunition
+            var weapon = PlayerManager.Instance.currentPlayer.weaponRack.currentItem.GetComponent<Weapon>();
+            var currentAmmunition = weapon.CurrentAmmunition;
+            var maxAmmunition = weapon.WeaponSettings.maxAmmunition;
+
+            // Determine color
+            var hexColor = _hasAmmoHex;
+            if (currentAmmunition == 0)
+            {
+                hexColor = _outOfAmmoHex;
+            }
+
+            // Display
+            _text.text = "<color=#" + hexColor + "><size=200%>" + currentAmmunition.ToString() + " <color=#" + _hasAmmoHex + "><size=100%>/" + maxAmmunition.ToString();
+
+        }
 
     }
-
 }

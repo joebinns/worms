@@ -44,40 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879e0a47b01a2784896db0efd9ab86de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Jump
-    clip: {fileID: 8300000, guid: 4072b7dea04de3e4489356dab17d2a54, type: 3}
-    volume: 0.7
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
+  Sounds:
   - name: Walking
     clip: {fileID: 8300000, guid: 1c34f2806566970499f6c715b85471b0, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 4072b7dea04de3e4489356dab17d2a54, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Land
     clip: {fileID: 8300000, guid: 0f359266d2a8f0147bc19899ef4a1a5f, type: 3}
-    volume: 0.7
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Celebration
     clip: {fileID: 8300000, guid: 83c8c345d90368340ab7f39ad588d8b9, type: 3}
-    volume: 0.7
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Punch
     clip: {fileID: 8300000, guid: 28b7b11f02adb794283c03a44b86b68b, type: 3}
     volume: 1
-    pitch: 1.25
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Click Primary
     clip: {fileID: 8300000, guid: 0b97c9229c125104e9fff7ecf128db9f, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 0.9
     loop: 0
     source: {fileID: 0}

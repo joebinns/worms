@@ -1,18 +1,22 @@
+using Audio;
 using UnityEngine;
 
-public class VictoryScene : MonoBehaviour
+namespace UI
 {
-    private void Start()
+    public class VictoryScene : MonoBehaviour
     {
-        CursorMode.EnableCursor();
+        private void Start()
+        {
+            CursorMode.EnableCursor();
         
-        AudioManager.Instance.PlayDelayed("Celebration", 0.5f);
-    }
+            AudioManager.Instance.PlayDelayed("Celebration", 0.5f);
+        }
 
-    public void ReturnToMainMenu()
-    {
-        AudioManager.Instance.Play("Click Secondary");
-        LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
-    }
+        public void ReturnToMainMenu()
+        {
+            AudioManager.Instance.Play("Click Secondary");
+            LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
+        }
     
+    }
 }

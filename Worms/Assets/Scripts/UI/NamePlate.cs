@@ -10,7 +10,7 @@ public class Nameplate : MonoBehaviour
 
     private CanvasGroup _canvasGroup;
     
-    private Player _player;
+    private Player.Player _player;
 
     [SerializeField] private Transform _nameplate;
     [SerializeField] private Transform _knockbackplate;
@@ -18,7 +18,7 @@ public class Nameplate : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-        _player = transform.parent.GetComponent<FollowPosition>().target.GetComponent<Player>();
+        _player = transform.parent.GetComponent<FollowPosition>().target.GetComponent<Player.Player>();
     }
 
     public void ChangeName(string name)
@@ -50,7 +50,7 @@ public class Nameplate : MonoBehaviour
 
     private void ChangeVisibility(CameraState cameraState)
     {
-        if (PlayerManager.currentPlayer != _player)
+        if (PlayerManager.Instance.currentPlayer != _player)
         {
             return;
         }

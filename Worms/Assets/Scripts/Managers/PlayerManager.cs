@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player.Physics_Based_Character_Controller;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    public static List<Player> players { get; private set; } = new List<Player>();
-    public static int numPlayers => players.Count;
-    public static Player currentPlayer { get; private set; }
-    public static event Action<Player> OnPlayerChanged;
-    public static event Action<Player> OnPlayerRemoved;
-    public static event Action OnLastPlayerStanding;
+    public List<Player.Player> players { get; set; } = new List<Player.Player>();
+    public int numPlayers => players.Count;
+    public Player.Player currentPlayer { get; private set; }
+    public event Action<Player.Player> OnPlayerChanged;
+    public event Action<Player.Player> OnPlayerRemoved;
+    public event Action OnLastPlayerStanding;
 
     private const int MAX_PLAYERS = 4;
 
@@ -34,18 +35,18 @@ public class PlayerManager : MonoBehaviour
         currentPlayer = players[0];
     }
 
-    public static int IdToIndex(int id) // Since the list size is subject to change, meaning indices are inconsistent-
+    public int IdToIndex(int id) // Since the list size is subject to change, meaning indices are inconsistent-
     {
-        var index = players.FindIndex(x => x.id == id);
+        var index = Instance.players.FindIndex(x => x.id == id);
         return index;
     }
 
     private void GetPlayers()
     {
-        players = new List<Player>();
-        foreach (Player player in FindObjectsOfType<Player>())
+        players = new List<Player.Player>();
+        foreach (Player.Player player in FindObjectsOfType<Player.Player>())
         {
-            players.Add(player.GetComponent<Player>());
+            players.Add(player.GetComponent<Player.Player>());
         }
     }
 
@@ -54,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         players.Sort((x, y) => x.id.CompareTo(y.id));
     }
     
-    public static Player SetCurrentPlayer(int index)
+    public Player.Player SetCurrentPlayer(int index)
     {
         if (currentPlayer != null)
         {
@@ -69,7 +70,7 @@ public class PlayerManager : MonoBehaviour
         return (currentPlayer);
     }
 
-    public static void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should probably be moved to PlayerSelection
+    public void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should probably be moved to PlayerSelection
     {
         for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
         {
@@ -86,7 +87,7 @@ public class PlayerManager : MonoBehaviour
 
     private void EnableAllParticleSystems()
     {
-        foreach (Player player in players)
+        foreach (Player.Player player in players)
         {
             player.EnableParticleSystem();
         }
@@ -94,21 +95,21 @@ public class PlayerManager : MonoBehaviour
 
     private void DisableAllParticleSystems()
     {
-        foreach (Player player in players)
+        foreach (Player.Player player in players)
         {
             player.DisableParticleSystem();
         }
     }
 
-    private void SetAllLookDirectionOptions(PhysicsBasedCharacterController.lookDirectionOptions option)
+    private void SetAllLookDirectionOptions(PhysicsBasedCharacterController.LookDirectionOptions option)
     {
-        foreach (Player player in players)
+        foreach (Player.Player player in players)
         {
             player.SetLookDirectionOption(option);
         }
     }
 
-    public static void DeletePlayer(Player player)
+    public void DeletePlayer(Player.Player player)
     {
         if (numPlayers == 1) // To ensure there is always 1 player alive
         {
@@ -133,16 +134,5 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
-
-    private void OnDestroy()
-    {
-        /*
-        foreach (Player player in players)
-        {
-            Destroy(player.gameObject);
-        }
-        */
-    }
-
 }
 

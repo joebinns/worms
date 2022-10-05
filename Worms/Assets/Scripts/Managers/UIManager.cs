@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,18 +31,18 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerManager.OnPlayerChanged += SwitchActivePortrait;
-        PlayerManager.OnPlayerRemoved += DisablePortrait;
-        PlayerManager.OnLastPlayerStanding += NextScene;
-        PlayerManager.OnPlayerChanged += ResetTurnTimer;
+        PlayerManager.Instance.OnPlayerChanged += SwitchActivePortrait;
+        PlayerManager.Instance.OnPlayerRemoved += DisablePortrait;
+        PlayerManager.Instance.OnLastPlayerStanding += NextScene;
+        PlayerManager.Instance.OnPlayerChanged += ResetTurnTimer;
     }
 
     private void OnDisable()
     {
-        PlayerManager.OnPlayerChanged -= SwitchActivePortrait;
-        PlayerManager.OnPlayerRemoved -= DisablePortrait;
-        PlayerManager.OnLastPlayerStanding -= NextScene;
-        PlayerManager.OnPlayerChanged -= ResetTurnTimer;
+        PlayerManager.Instance.OnPlayerChanged -= SwitchActivePortrait;
+        PlayerManager.Instance.OnPlayerRemoved -= DisablePortrait;
+        PlayerManager.Instance.OnLastPlayerStanding -= NextScene;
+        PlayerManager.Instance.OnPlayerChanged -= ResetTurnTimer;
     }
 
     public static void EnableReticle()
@@ -70,17 +71,17 @@ public class UIManager : MonoBehaviour
         // Update ammo
     }
 
-    public static void SwitchActivePortrait(Player player)
+    public static void SwitchActivePortrait(Player.Player player)
     {
         portraits.SwitchActive(player.id);
     }
 
-    public static void DisablePortrait(Player player)
+    public static void DisablePortrait(Player.Player player)
     {
         portraits.DisablePortrait(player);
     }
 
-    public void ResetTurnTimer(Player player)
+    public void ResetTurnTimer(Player.Player player)
     {
         turnTimer.ResetTimer();
     }

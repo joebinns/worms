@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Items.Weapons;
 using UnityEngine;
 
 public class MeleeWeapon : Weapon
@@ -8,7 +9,7 @@ public class MeleeWeapon : Weapon
     {
         get
         {
-            return weaponSettings as MeleeWeaponSettings;
+            return WeaponSettings as MeleeWeaponSettings;
         }
     }
 
@@ -16,18 +17,18 @@ public class MeleeWeapon : Weapon
 
     public override void Attack()
     {
-        if (currentAmmunition <= 0)
+        if (CurrentAmmunition <= 0)
         {
             CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble");
             return;
         }
 
-        weaponSettings.Attack();
+        WeaponSettings.Attack();
 
         // Play animation
         _animator.SetTrigger("Attack");
 
         // Deplete ammunition
-        currentAmmunition--;
+        CurrentAmmunition--;
     }
 }

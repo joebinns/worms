@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Items.Weapons;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,7 +23,7 @@ public class TurnManager : MonoBehaviour
     public static void ChangeTurn(int playerIndex)
     {
         CameraManager.UpdateCameraState(CameraState.FollowCamera);
-        var newPlayer = PlayerManager.SetCurrentPlayer(playerIndex);
+        var newPlayer = PlayerManager.Instance.SetCurrentPlayer(playerIndex);
   
         // Reset new player's ammo
         foreach (GameObject item in newPlayer.weaponRack.items)
@@ -40,8 +41,8 @@ public class TurnManager : MonoBehaviour
 
     public static void NextTurn()
     {
-        var currentIndex = PlayerManager.IdToIndex(PlayerManager.currentPlayer.id);
-        var nextIndex = (currentIndex + 1) % PlayerManager.numPlayers;
+        var currentIndex = PlayerManager.Instance.IdToIndex(PlayerManager.Instance.currentPlayer.id);
+        var nextIndex = (currentIndex + 1) % PlayerManager.Instance.numPlayers;
 
         ChangeTurn(nextIndex);
     }

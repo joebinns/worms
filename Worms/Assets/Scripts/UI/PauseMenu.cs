@@ -1,57 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PauseMenu : MonoBehaviour
+namespace UI
 {
-    public static bool isPaused = false;
-
-    public GameObject pauseMenuUI;
-
-    public void TogglePause(InputAction.CallbackContext context)
+    public class PauseMenu : MonoBehaviour
     {
-        if (!context.performed)
+        private bool _isPaused = false;
+
+        public GameObject PauseMenuUI;
+
+        public void TogglePause(InputAction.CallbackContext context)
         {
-            return;
+            if (!context.performed)
+            {
+                return;
+            }
+
+            if (_isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
 
-        if (isPaused)
+        public void Resume()
         {
-            Resume();
-        }
-        else
-        {
-            Pause();
-        }
-    }
-
-    public void Resume()
-    {
-        AudioManager.Instance.Play("Click Primary");
-        pauseMenuUI.SetActive(false);
-        InputManager.RevertActionMap();
-        CursorMode.DisableCursor();
-        Time.timeScale = 1f;
+            AudioManager.Instance.Play("Click Primary");
+            PauseMenuUI.SetActive(false);
+            InputManager.RevertActionMap();
+            CursorMode.DisableCursor();
+            Time.timeScale = 1f;
         
-        isPaused = false;
-    }
+            _isPaused = false;
+        }
 
-    public void Pause()
-    {
-        AudioManager.Instance.Play("Click Primary");
-        pauseMenuUI.SetActive(true);
-        InputManager.SwitchActionMap("Paused");
-        CursorMode.EnableCursor();
-        Time.timeScale = 0f;
+        public void Pause()
+        {
+            AudioManager.Instance.Play("Click Primary");
+            PauseMenuUI.SetActive(true);
+            InputManager.SwitchActionMap("Paused");
+            CursorMode.EnableCursor();
+            Time.timeScale = 0f;
         
-        isPaused = true;
-    }
+            _isPaused = true;
+        }
 
-    public void Exit()
-    {   
-        AudioManager.Instance.Play("Click Secondary");
-        Time.timeScale = 1f;
-        LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
+        public void Exit()
+        {   
+            AudioManager.Instance.Play("Click Secondary");
+            Time.timeScale = 1f;
+            LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
+        }
     }
 }

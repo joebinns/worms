@@ -1,17 +1,21 @@
+using Audio;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+namespace UI
 {
-    public void StartGame()
+    public class MainMenu : MonoBehaviour
     {
-        AudioManager.Instance.Play("Click Secondary");
-        LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.PLAYER_SELECT);
-    }
+        public void StartGame()
+        {
+            AudioManager.Instance.Play("Click Secondary");
+            LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.PLAYER_SELECT);
+        }
     
-    public void ExitGame()
-    {
-        AudioManager.Instance.Play("Click Secondary");
-        Application.Quit();
-    }
+        public void ExitGame()
+        {
+            AudioManager.Instance.Play("Click Secondary");
+            Application.Quit();
+        }
     
+    }
 }

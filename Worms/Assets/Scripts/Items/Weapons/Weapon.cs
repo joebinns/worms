@@ -1,30 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : Item
+namespace Items.Weapons
 {
-    [HideInInspector] public WeaponSettings weaponSettings
+    public abstract class Weapon : Item
     {
-        get
+        [HideInInspector] public WeaponSettings WeaponSettings
         {
-            return itemSettings as WeaponSettings;
+            get
+            {
+                return itemSettings as WeaponSettings;
+            }
         }
+
+        [HideInInspector] public int CurrentAmmunition;
+
+        private void Awake()
+        {
+            ResetAmmunition();
+        }
+
+        public abstract void Attack();
+
+        // Call this at the start of each turn
+        public virtual void ResetAmmunition()
+        {
+            CurrentAmmunition = WeaponSettings.maxAmmunition;
+        }
+
     }
-
-    [HideInInspector] public int currentAmmunition;
-
-    private void Awake()
-    {
-        ResetAmmunition();
-    }
-
-    public abstract void Attack();
-
-    // Call this at the start of each turn
-    public virtual void ResetAmmunition()
-    {
-        currentAmmunition = weaponSettings.maxAmmunition;
-    }
-
 }

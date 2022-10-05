@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AlwaysFaceCamera : MonoBehaviour
+namespace UI
 {
-    void Update() // Hmm... this seems slightly jittery, regardless of whether it's Update(), FixedUpdate() or LateUpdate().
+    public class AlwaysFaceCamera : MonoBehaviour
     {
-        this.transform.rotation = Camera.main.transform.rotation;
-        //transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
+        void Update() // Hmm... this seems slightly jittery, regardless of whether it's Update(), FixedUpdate() or LateUpdate().
+        {
+            this.transform.rotation = UnityEngine.Camera.main.transform.rotation;
+            //transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
+        }
     }
 }

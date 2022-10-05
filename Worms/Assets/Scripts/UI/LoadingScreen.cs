@@ -3,71 +3,74 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadingScreen : MonoBehaviour
+namespace UI
 {
-    public static LoadingScreen Instance;
-
-    private static Animator _transition;
-    private const float TRANSITION_TIME = 0.16666666666f;
-
-    public static event Action OnTransitionedToLoadingScreen;
-
-    private void Awake()
+    public class LoadingScreen : MonoBehaviour
     {
-        if (Instance == null)
+        public static LoadingScreen Instance;
+        private static Animator _transition;
+        private static readonly int Start = Animator.StringToHash("Start");
+        private static readonly int End = Animator.StringToHash("End");
+        private const float TRANSITION_TIME = 0.16666666666f;
+        public event Action OnTransitionedToLoadingScreen;
+
+        private void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+                return;
+            }
+        
+            DontDestroyOnLoad(Instance);
+            _transition = GetComponent<Animator>();
         }
-        else
+
+        public void TransitionToLoadingScreen()
         {
-            Destroy(this);
-            return;
+            StartCoroutine(TransitionToLoadingScreenCoroutine());
         }
+
+        private IEnumerator TransitionToLoadingScreenCoroutine()
+        {
+            _transition.SetTrigger(Start);
+            yield return new WaitForSeconds(TRANSITION_TIME);
         
-        DontDestroyOnLoad(Instance);
-        _transition = GetComponent<Animator>();
-    }
+            OnTransitionedToLoadingScreen?.Invoke();
+        }
 
-    public void TransitionToLoadingScreen()
-    {
-        StartCoroutine(TransitionToLoadingScreenCoroutine());
-    }
+        public void TransitionFromLoadingScreen(SceneIndices index)
+        {
+            // Load scene
+            LoadScene(index);
+            // Reveal new scene
+            _transition.SetTrigger(End);
+        }
 
-    private IEnumerator TransitionToLoadingScreenCoroutine()
-    {
-        _transition.SetTrigger("Start");
-        yield return new WaitForSeconds(TRANSITION_TIME);
-        
-        OnTransitionedToLoadingScreen?.Invoke();
-    }
+        private void LoadScene(SceneIndices index)
+        {
+            SceneManager.LoadScene((int)index);
+        }
 
-    public void TransitionFromLoadingScreen(SceneIndices index)
-    {
-        // Load scene
-        LoadScene(index);
-        // Reveal new scene
-        _transition.SetTrigger("End");
-    }
+        public void ChangeSceneImpatient(SceneIndices index)
+        {
+            StartCoroutine(ChangeSceneImpatientCoroutine(index));
+        }
     
-    public void LoadScene(SceneIndices index)
-    {
-        SceneManager.LoadScene((int)index);
-    }
+        /// <summary>
+        /// For changing scenes, without needing to take precaution to make time for any methods invoked by OnTransitionedToLoadingScreen 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        private IEnumerator ChangeSceneImpatientCoroutine(SceneIndices index)
+        {
+            yield return TransitionToLoadingScreenCoroutine();
+            TransitionFromLoadingScreen(index);
+        }
 
-    public void ChangeSceneImpatient(SceneIndices index)
-    {
-        StartCoroutine(ChangeSceneImpatientCoroutine(index));
     }
-    
-    /// <summary>
-    /// For changing scenes, without needing to take precaution to make time for any methods invoked by OnTransitionedToLoadingScreen 
-    /// </summary>
-    /// <param name="index"></param>
-    /// <returns></returns>
-    private IEnumerator ChangeSceneImpatientCoroutine(SceneIndices index)
-    {
-        yield return TransitionToLoadingScreenCoroutine();
-        TransitionFromLoadingScreen(index);
-    }
-
 }

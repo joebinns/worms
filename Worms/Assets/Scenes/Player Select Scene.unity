@@ -2213,8 +2213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcebfd1dcab3ed240a3b3091fa7fa3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 2130489882924303795}
-  hatRack: {fileID: 381200062}
+  _nameInput: {fileID: 2130489882924303795}
+  _hatRack: {fileID: 381200062}
   _finaliseSelectionButton: {fileID: 2042933544}
 --- !u!4 &1641343987
 Transform:
@@ -2413,8 +2413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c15b2103ad08f748a0d65763279d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFollowPosition: {fileID: 1325685962}
-  aimCamera: {fileID: 0}
+  PlayerFollowPosition: {fileID: 1325685962}
+  AimCamera: {fileID: 0}
 --- !u!114 &1699533099
 MonoBehaviour:
   m_ObjectHideFlags: 0

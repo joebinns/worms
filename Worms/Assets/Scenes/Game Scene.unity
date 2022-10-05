@@ -173,11 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cc2c0adf54f0d4280fe965a32621b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 494507675}
-  outOfAmmo:
+  _text: {fileID: 494507675}
+  _outOfAmmo:
     serializedVersion: 2
-    rgba: 4286545919
-  hasAmmo:
+    rgba: 4282335231
+  _hasAmmo:
     serializedVersion: 2
     rgba: 4294967295
 --- !u!1 &18012575
@@ -6960,7 +6960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9e1028bdcdc024ea29917878d2535e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 18012575}
+  PauseMenuUI: {fileID: 18012575}
 --- !u!114 &1095693552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8168,8 +8168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c15b2103ad08f748a0d65763279d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFollowPosition: {fileID: 649034892}
-  aimCamera: {fileID: 286182575170547523}
+  PlayerFollowPosition: {fileID: 649034892}
+  AimCamera: {fileID: 286182575170547524}
 --- !u!114 &1395329944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11809,7 +11809,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-11628
+  m_Name: pb_Mesh-27054
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
