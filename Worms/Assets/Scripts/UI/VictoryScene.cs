@@ -7,7 +7,7 @@ public class VictoryScene : MonoBehaviour
         CursorVisibilityToggle.EnableCursor();
         Cursor.lockState = CursorLockMode.None;
         
-        AudioManager.Instance.PlayDelayed("Celebration", 0.8f);
+        AudioManager.Instance.PlayDelayed("Celebration", 0.5f);
     }
 
     public void ReturnToMainMenu()

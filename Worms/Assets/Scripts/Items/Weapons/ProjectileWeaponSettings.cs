@@ -6,6 +6,7 @@ using UnityEngine;
 public class ProjectileWeaponSettings : WeaponSettings
 {
     public float projectileSpeed;
+    public float approxShotRange;
 
     public override void Attack() // Hmm... since this is using projectiles, I feel like this should be in the monobehaviour...
     {

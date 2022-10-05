@@ -15,7 +15,7 @@ public class CinemachineShake : MonoBehaviour
     {
         Instance = this;
     }
- 
+
     private void SwitchNoiseProfile(string name)
     {
         var noiseSetting = noiseSettings.Find(x => x.name == name);
@@ -62,6 +62,11 @@ public class CinemachineShake : MonoBehaviour
             SwitchNoiseProfile(noiseSettings[0].name); // Revert to default noise setting
         }
         yield break;
+    }
+
+    public void InvalidInputPresetShake()
+    {
+        ShakeCamera(2.5f, 0.4f, "1D Wobble");
     }
     
 }

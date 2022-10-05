@@ -5,114 +5,139 @@ using UnityEngine;
 
 public class ProjectileWeapon : Weapon
 {
-    [SerializeField] private new GameObject renderer;
-    [SerializeField] private GameObject projectile;
-    private ProjectileWeaponSettings projectileWeaponSettings
+    [SerializeField] private new GameObject _renderer;
+    [SerializeField] private GameObject _projectile;
+    private ProjectileWeaponSettings ProjectileWeaponSettings
     {
         get
         {
             return weaponSettings as ProjectileWeaponSettings;
         }
-    }
-
-    [Header("Display Controls")]
-    [SerializeField]
-    private LineRenderer _lineRenderer;
-    [SerializeField] private int _maxPhysicsFrameIterations = 10;
+    } 
 
     private void OnEnable()
     {
-        // Make this game object visible
-        renderer.SetActive(true);
-
-        // Reset the projectile
-        projectile.SetActive(false);
-        projectile.transform.parent = this.transform;
-        StartCoroutine(UnityUtils.ResetRigidbody(projectile.GetComponent<Rigidbody>(), Vector3.zero, Quaternion.identity));
-        
-        // Set the projectile's damage
-        projectile.GetComponent<Projectile>().damage = projectileWeaponSettings.damage;
-
+        ShowWeapon();
+        ResetProjectile();
+    }
+    
+    private void ShowWeapon()
+    {
+        // Make the weapon's renderer visible
+        _renderer.SetActive(true);
+    }
+    
+    private void HideWeapon()
+    {
+        // Make the weapon's renderer invisible
+        _renderer.SetActive(false);
     }
 
-    private Vector3 _force;    
-    
+    private void ResetProjectile()
+    {
+        // Reset the projectile
+        _projectile.SetActive(false);
+        _projectile.transform.parent = this.transform;
+        StartCoroutine(UnityUtils.ResetRigidbody(_projectile.GetComponent<Rigidbody>(), Vector3.zero, Quaternion.identity));
+        
+        // Check the projectile's damage
+        _projectile.GetComponent<Projectile>().damage = ProjectileWeaponSettings.damage;
+    }
+
     public override void Attack()
     {
         if (currentAmmunition <= 0)
         {
-            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble");
+            CinemachineShake.Instance.InvalidInputPresetShake();
             return;
         }
 
-        weaponSettings.Attack();
+        var force = CalculateProjectileForce();
+        ShootProjectile(force);
 
+        DepleteAmmunition();
+    }
 
-
-
-        // Activate projectile --> projectile should be a child in the prefab
-        projectile.SetActive(true);
-        projectile.transform.parent = null;
-
-        // Apply force to projectile in direction of camera
-        projectile.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
-
-
-
-
-        // Deplete ammunition
+    private void DepleteAmmunition()
+    {
         currentAmmunition--;
 
         if (currentAmmunition <= 0)
         {
-            // Make this game object invisible
-            renderer.SetActive(false);
-            _lineRenderer.enabled = false;
+            HideWeapon();
         }
-
     }
 
+    private Vector3 CalculateProjectileForce()
+    {
+        var forceDirection = ApproximateShotCorrectionToCrosshair();
+        var force = forceDirection * ProjectileWeaponSettings.projectileSpeed;
+        return force;
+    }
+    
+    /// <summary>
+    /// Attempts to correct the projectile's shoot direction towards the crosshair.
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 ApproximateShotCorrectionToCrosshair()
+    {
+        var cameraTransform = Camera.main.transform;
+        var approxShotRange = ProjectileWeaponSettings.approxShotRange;
+
+        Vector3 crosshairHitPosition;
+            
+        RaycastHit hit;
+        var doesCrosshairHit = Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, approxShotRange);
+        if (doesCrosshairHit)
+        {
+            crosshairHitPosition = hit.point;
+        }
+        else
+        {
+            crosshairHitPosition = cameraTransform.position + cameraTransform.forward * approxShotRange;
+        }
+        
+        var correctedDirection = (crosshairHitPosition - _projectile.transform.position).normalized;
+
+        return correctedDirection;
+    }
+
+    private void ShootProjectile(Vector3 force)
+    {
+        // Activate projectile
+        _projectile.SetActive(true);
+        _projectile.transform.parent = null;
+
+        // Apply force to projectile in direction of camera
+        _projectile.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+    }
+
+    #region Trajectory Guide (No longer used)
+    /*
+    [Header("Trajectory Guide")]
+    [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private int _maxPhysicsFrameIterations = 10;
+     
     private void Update()
     {
         if (currentAmmunition > 0)
         {
+            var forceDirection = ApproximateShotCorrectionToCrosshair();
+
+            _force = forceDirection * projectileWeaponSettings.projectileSpeed;
             
-            // Correct force direction to crosshair
-            Vector3 forceDirection = Camera.main.transform.forward;
-            RaycastHit hit;
-            
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 125f))
-            {
-                forceDirection = (hit.point - projectile.transform.position).normalized;
-            }
-
-            else
-            {
-                var hitPos = Camera.main.transform.position + Camera.main.transform.forward * 125f;
-                forceDirection = (hitPos - projectile.transform.position).normalized;
-            }
-
-
-            _force = forceDirection;
-            //_force.y *= 4f;
-            //_force = _force.normalized;
-            _force *= projectileWeaponSettings.projectileSpeed;
-            
-
             DrawProjection();
         }
-    }
-
+    } 
+    
     private void DrawProjection()
     {
         _lineRenderer.enabled = true;
-        //_lineRenderer.positionCount = Mathf.CeilToInt(_linePoints / _timeBetweenPoints) + 1;
         
         _lineRenderer.positionCount = _maxPhysicsFrameIterations;
         
         Vector3 startPosition = transform.position;
         Vector3 startVelocity = _force / projectile.GetComponent<Rigidbody>().mass;
-
         
         _lineRenderer.SetPosition(0, startPosition);
         
@@ -127,6 +152,8 @@ public class ProjectileWeapon : Weapon
         }
 
     }
+    */
+    #endregion
     
 }
 

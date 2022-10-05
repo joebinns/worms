@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 5
   maxAmmunition: 1
   projectileSpeed: 64
+  approxShotRange: 125

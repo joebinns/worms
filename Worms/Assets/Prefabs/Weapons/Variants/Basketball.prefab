@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 522093913711134580}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 60, y: 60, z: 60}
+  m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3852026635464084703}
@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3478287059009439000
 Transform:
   m_ObjectHideFlags: 0
@@ -304,15 +304,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 51a14f5cf17ac6a4f82fef5b66b68721, type: 2}
     - target: {fileID: 1759974589046692460, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1759974589046692460, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1759974589046692460, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1759974589046692460, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -406,10 +406,8 @@ MonoBehaviour:
   id: 0
   itemSettings: {fileID: 11400000, guid: c5edd08602c94df41bf3f9782faf6aef, type: 2}
   currentAmmunition: 0
-  renderer: {fileID: 9014415625365305680}
-  projectile: {fileID: 1780147597566245928}
-  _lineRenderer: {fileID: 7960510116984741303}
-  _maxPhysicsFrameIterations: 1
+  _renderer: {fileID: 9014415625365305680}
+  _projectile: {fileID: 1780147597566245928}
 --- !u!1 &9014415625365305680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5066346978364762613, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}
