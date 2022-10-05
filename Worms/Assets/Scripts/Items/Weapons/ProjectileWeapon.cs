@@ -76,11 +76,29 @@ public class ProjectileWeapon : Weapon
     {
         if (currentAmmunition > 0)
         {
-            _force = Camera.main.transform.forward;
+            
+            // Correct force direction to crosshair
+            Vector3 forceDirection = Camera.main.transform.forward;
+            RaycastHit hit;
+            
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 125f))
+            {
+                forceDirection = (hit.point - projectile.transform.position).normalized;
+            }
+
+            else
+            {
+                var hitPos = Camera.main.transform.position + Camera.main.transform.forward * 125f;
+                forceDirection = (hitPos - projectile.transform.position).normalized;
+            }
+
+
+            _force = forceDirection;
             //_force.y *= 4f;
             //_force = _force.normalized;
             _force *= projectileWeaponSettings.projectileSpeed;
             
+
             DrawProjection();
         }
     }
