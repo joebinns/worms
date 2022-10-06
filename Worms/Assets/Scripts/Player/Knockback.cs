@@ -1,43 +1,41 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Items.Weapons;
 using UnityEngine;
 
-public class Knockback : MonoBehaviour
+namespace Player
 {
-    private int _knockback = 0;
-
-    public event Action<int> OnKnockbackChanged;
-
-    public int ChangeKnockback(int delta)
+    public class Knockback : MonoBehaviour
     {
-        _knockback += delta;
+        private int _knockback = 0;
+        private Rigidbody _rigidbody;
+        public event Action<int> OnKnockbackChanged;
 
-        OnKnockbackChanged?.Invoke(_knockback);
-
-        return _knockback;
-    }
-    
-    // On enter trigger, if trigger is a projectile, change _knockback
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        private void Awake()
         {
-            var damage = collision.gameObject.GetComponent<Projectile>().Damage;
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
-            var knockback = ChangeKnockback(damage);
+        public void ApplyKnockback(int damage, Vector3 direction, Vector3 position)
+        {
+            var knockbackMultiplier = 20f + (float)ChangeKnockback(damage);
+            var force = CalculateForce(knockbackMultiplier, direction.normalized);
+            _rigidbody.AddForceAtPosition(force, position, ForceMode.Impulse);
+        }
 
-            var knockbackMultiplier = 10f + (float)knockback;
+        private int ChangeKnockback(int delta)
+        {
+            _knockback += delta;
+            OnKnockbackChanged?.Invoke(_knockback);
+            return _knockback;
+        }
 
-            // Apply force in direction of collision, which accounts for the players knockback
-            var force = collision.GetContact(0).normal.normalized * knockbackMultiplier; // if normal doesn't work well, use impulse.normalized or relativeVelocity.normalized.
-            force.y *= 1f;
+        private Vector3 CalculateForce(float magnitude, Vector3 direction)
+        {
+            // Apply force in same direction as raycast, whilst accounting for the player's knockback
+            var force = direction * magnitude;
             force.y = Mathf.Abs(force.y);
 
-            gameObject.GetComponent<Rigidbody>().AddForceAtPosition(force, collision.GetContact(0).point, ForceMode.Impulse);
-            
+            return force;
         }
-        
     }
 }

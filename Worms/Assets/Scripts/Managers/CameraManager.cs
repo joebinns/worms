@@ -1,93 +1,92 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
-using Unity.VisualScripting;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraManager : MonoBehaviour
+namespace Managers
 {
-    public static CameraManager Instance;
-    
-    private static Animator animator;
-
-    private static Aiming aiming;
-
-    public static CameraState state;
-
-    public static CameraZoom followCameraZoom;
-    
-    public static event Action<CameraState> OnCameraStateChanged;
-
-    private void Awake()
+    public class CameraManager : MonoBehaviour
     {
-        Instance = this;
-        animator = GetComponent<Animator>();
-        aiming = FindObjectOfType<Aiming>();
-        followCameraZoom = GameObject.Find("Follow Camera").GetComponent<CameraZoom>();
-    }
+        public static CameraManager Instance;
     
-    void Start()
-    {
-        CursorMode.DisableCursor();
-        UpdateCameraState(CameraState.FollowCamera);
-    }
+        private static Animator animator;
 
-    public static void UpdateCameraState(CameraState cameraState)
-    {
-        if (state == cameraState)
-        {
-            return;
-        }
+        private static Aiming aiming;
 
-        state = cameraState;
-        
-        switch (state)
-        {
-            case CameraState.FollowCamera:
-                animator.Play("Follow Camera"); // Switch state driven camera to use Follow Camera
-                InputManager.SwitchActionMap("Moving");
-                followCameraZoom.ResetZoom();
-                aiming.enabled = false;
-                UIManager.DisableReticle();
-                InputManager.SwapWeapon(0);
-                UIManager.HideHotbar();
-                break;
-            case CameraState.AimCamera:
-                animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
-                InputManager.SwitchActionMap("Aiming");
-                aiming.enabled = true;
-                UIManager.EnableReticle();
-                UIManager.ShowHotbar();
-                break;
-        }
+        public static CameraState state;
 
-        OnCameraStateChanged?.Invoke(state);
-    }
+        public static CameraZoom followCameraZoom;
     
-    public static void ToggleAimAction(InputAction.CallbackContext context)
-    {
-        if (!context.performed)
-        {
-            return;
-        }
+        public static event Action<CameraState> OnCameraStateChanged;
 
-        if (state == CameraState.FollowCamera)
+        private void Awake()
         {
-            UpdateCameraState(CameraState.AimCamera);
+            Instance = this;
+            animator = GetComponent<Animator>();
+            aiming = FindObjectOfType<Aiming>();
+            followCameraZoom = GameObject.Find("Follow Camera").GetComponent<CameraZoom>();
         }
-        else
+    
+        void Start()
         {
+            CursorMode.DisableCursor();
             UpdateCameraState(CameraState.FollowCamera);
         }
+
+        public static void UpdateCameraState(CameraState cameraState)
+        {
+            if (state == cameraState)
+            {
+                return;
+            }
+
+            state = cameraState;
         
+            switch (state)
+            {
+                case CameraState.FollowCamera:
+                    animator.Play("Follow Camera"); // Switch state driven camera to use Follow Camera
+                    InputManager.SwitchActionMap("Moving");
+                    followCameraZoom.ResetZoom();
+                    aiming.enabled = false;
+                    UIManager.DisableReticle();
+                    InputManager.SwapWeapon(0);
+                    UIManager.HideHotbar();
+                    break;
+                case CameraState.AimCamera:
+                    animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
+                    InputManager.SwitchActionMap("Aiming");
+                    aiming.enabled = true;
+                    UIManager.EnableReticle();
+                    UIManager.ShowHotbar();
+                    break;
+            }
+
+            OnCameraStateChanged?.Invoke(state);
+        }
+    
+        public static void ToggleAimAction(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+
+            if (state == CameraState.FollowCamera)
+            {
+                UpdateCameraState(CameraState.AimCamera);
+            }
+            else
+            {
+                UpdateCameraState(CameraState.FollowCamera);
+            }
+        
+        }
     }
+
+    public enum CameraState
+    {
+        FollowCamera,
+        AimCamera
+    };
 }
-
-public enum CameraState
-{
-    FollowCamera,
-    AimCamera
-};
-
