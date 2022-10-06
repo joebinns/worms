@@ -35,7 +35,7 @@ namespace Items.Weapons
             StartCoroutine(UnityUtils.ResetRigidbody(_projectile.GetComponent<Rigidbody>(), Vector3.zero, Quaternion.identity));
         
             // Check the projectile's damage
-            _projectile.GetComponent<Projectile>().damage = ProjectileWeaponSettings.Damage;
+            _projectile.GetComponent<Projectile>().Damage = ProjectileWeaponSettings.Damage;
         }
 
         public override void Attack()

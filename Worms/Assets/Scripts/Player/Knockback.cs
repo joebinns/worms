@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Items.Weapons;
 using UnityEngine;
 
 public class Knockback : MonoBehaviour
@@ -23,7 +24,7 @@ public class Knockback : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
         {
-            var damage = collision.gameObject.GetComponent<Projectile>().damage;
+            var damage = collision.gameObject.GetComponent<Projectile>().Damage;
 
             var knockback = ChangeKnockback(damage);
 

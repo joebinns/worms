@@ -6,9 +6,15 @@ namespace Items.Weapons
     [CreateAssetMenu(fileName = "ProjectileWeaponSettings", menuName = "ScriptableObjects/Weapon/ProjectileWeapon")]
     public class ProjectileWeaponSettings : WeaponSettings
     {
-        public float ProjectileSpeed;
+        #region Impermutable
+        [SerializeField] private float _projectileSpeed; // 52f
+        public float ProjectileSpeed => _projectileSpeed;
+        #endregion
 
-        public override void Attack() // The projectile attack behaviour is instead occuring in ProjectileWeapons.cs, due to use of scene instanced references
+        // Since scene instanced references are used for projectile attacks, I didn't have much use for this,
+        // but it makes things a little confusing (having an attack method in both scriptable objects and mono
+        // behaviours)
+        public override void Attack()
         {
         }
     }
