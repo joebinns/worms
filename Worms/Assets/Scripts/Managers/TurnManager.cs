@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Items.Weapons;
+using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,7 +27,7 @@ public class TurnManager : MonoBehaviour
         var newPlayer = PlayerManager.Instance.SetCurrentPlayer(playerIndex);
   
         // Reset new player's ammo
-        foreach (GameObject item in newPlayer.weaponRack.items)
+        foreach (GameObject item in newPlayer.weaponRack.Items)
         {
             var weapon = item.GetComponent<Weapon>();
 

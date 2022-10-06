@@ -1,10 +1,18 @@
 using UnityEngine;
 
-public abstract class WeaponSettings : ItemSettings
+namespace Items.Weapons
 {
-    public int damage;
-    public int maxAmmunition;
+    public abstract class WeaponSettings : ItemSettings
+    {
+        [SerializeField] private int _damage;
+        public int Damage => _damage;
 
-    public abstract void Attack();
+        [SerializeField] private int _maxAmmunition;
+        public int MaxAmmunition => _maxAmmunition;
 
+        [SerializeField] private float _range;
+        public float Range => _range;
+
+        public abstract void Attack();
+    }
 }

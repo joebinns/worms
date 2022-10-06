@@ -4,14 +4,7 @@ namespace Items.Weapons
 {
     public abstract class Weapon : Item
     {
-        [HideInInspector] public WeaponSettings WeaponSettings
-        {
-            get
-            {
-                return itemSettings as WeaponSettings;
-            }
-        }
-
+        public WeaponSettings WeaponSettings => _itemSettings as WeaponSettings;
         [HideInInspector] public int CurrentAmmunition;
 
         private void Awake()
@@ -22,9 +15,14 @@ namespace Items.Weapons
         public abstract void Attack();
 
         // Call this at the start of each turn
-        public virtual void ResetAmmunition()
+        public void ResetAmmunition()
         {
-            CurrentAmmunition = WeaponSettings.maxAmmunition;
+            CurrentAmmunition = WeaponSettings.MaxAmmunition;
+        }
+
+        protected virtual void DepleteAmmunition()
+        {
+            CurrentAmmunition--;
         }
 
     }

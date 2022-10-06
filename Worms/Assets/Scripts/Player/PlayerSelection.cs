@@ -1,6 +1,9 @@
 using System.Collections;
 using Audio;
 using Camera;
+using Items;
+using Items.Hats;
+using Oscillators;
 using Player.Physics_Based_Character_Controller;
 using TMPro;
 using UI;
@@ -43,7 +46,7 @@ namespace Player
             var currentPlayer = PlayerManager.Instance.currentPlayer;
             _previousPlayer = currentPlayer;
             // Update name placeholder text
-            ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
+            ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
         }
     
         private void ChangePlayerSelection(global::Player.Player player)
@@ -99,14 +102,14 @@ namespace Player
             }
         }
 
-        private global::Player.Player ChangePlayer(int id)
+        private Player ChangePlayer(int id)
         {
             AudioManager.Instance.Play("Click Primary");
 
             var currentPlayer = PlayerManager.Instance.currentPlayer;
         
             // Save edits to Player
-            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.currentItem);
+            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem);
         
             // Change to next Player
             currentPlayer = PlayerManager.Instance.SetCurrentPlayer(id);
@@ -122,11 +125,11 @@ namespace Player
             }
 
             // Update name placeholder text
-            ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.playerSettings.suggestedName;
+            ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
 
             // Restore saved edits
-            _nameInput.text = currentPlayer.playerName;
-            _hatRack.ChangeItem(currentPlayer.playerSettings.hat.id);
+            _nameInput.text = currentPlayer.name;
+            _hatRack.ChangeItem(currentPlayer.hat.GetComponent<Hat>().id);
 
             return currentPlayer;
         }
@@ -167,7 +170,7 @@ namespace Player
             var currentPlayer = PlayerManager.Instance.currentPlayer;
         
             // Save Edits to final Player
-            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.currentItem);
+            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem);
         
             PlayerManager.Instance.FinaliseNumberOfPlayers(currentPlayer.id + 1);
 
@@ -194,7 +197,7 @@ namespace Player
                 var easedT = Easing.Back.Out(t);
                 var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
                 //transform.localScale = Vector3.one * size;
-                transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
+                transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
                 yield return new WaitForFixedUpdate(); // Surely this is poor practise.
                 t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
             }

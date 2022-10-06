@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using Camera;
+using Items;
+using Items.Hats;
 using Items.Weapons;
 using Player.Physics_Based_Character_Controller;
 using UI;
@@ -13,11 +15,22 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
-        [Header("Other")]
-        public int id;
-        public string playerName = "Player Name Undefined";
-        public PlayerSettings playerSettings;
-        public Transform follower;
+        [Header("Player Settings")]
+        private PlayerSettings _playerSettings;
+        public int id {
+            get => _playerSettings.ID;
+        }
+        public bool shouldSpawn
+        {
+            get => _playerSettings.shouldSpawn;
+            set => _playerSettings.shouldSpawn = value;
+        }
+        public string suggestedName => _playerSettings.SuggestedName;
+        public new string name
+        {
+            get => _playerSettings.name;
+            private set => _playerSettings.name = value;
+        }
 
         [Header("Renderers")]
         public Transform renderers;
@@ -33,6 +46,8 @@ namespace Player
 
         //public TextMeshProUGUI namePlateText;
         public Nameplate nameplate;
+        
+        [SerializeField] private Transform _follower;
 
         [Header("Particle Systems")]
         public ParticleSystem dustParticleSystem;
@@ -51,7 +66,7 @@ namespace Player
         {
             if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndices.PLAYER_SELECT)
             {
-                playerSettings.RestoreDefaults();
+                _playerSettings.RestoreDefaults();
             }
         
             physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
@@ -71,18 +86,18 @@ namespace Player
 
         public void Attack()
         {
-            weaponRack.currentItem.GetComponent<Weapon>().Attack();
+            weaponRack.CurrentItem.GetComponent<Weapon>().Attack();
 
         } 
 
         public void ChangeName(string newName)
         {
-            playerName = newName;
+            name = newName;
 
             // Update nameplate
             if (nameplate != null)
             {
-                nameplate.ChangeName(playerName);
+                nameplate.ChangeName(name);
             }
 
         }
@@ -136,8 +151,6 @@ namespace Player
             ParticleSystem.EmissionModule emission;
             emission = dustParticleSystem.emission; // Stores the module in a local variable
             emission.enabled = true; // Applies the new value directly to the Particle System
-
-            //dustParticleSystem.transform.parent.gameObject.SetActive(true);
         }
 
         public void DisableParticleSystem()
@@ -145,8 +158,6 @@ namespace Player
             ParticleSystem.EmissionModule emission;
             emission = dustParticleSystem.emission; // Stores the module in a local variable
             emission.enabled = false; // Applies the new value directly to the Particle System
-
-            //dustParticleSystem.transform.parent.gameObject.SetActive(false);
         }
 
         public void AdjustRideHeight(float rideHeight)
@@ -226,9 +237,9 @@ namespace Player
         {
             if (name == "")
             {
-                name = playerSettings.suggestedName;
+                name = _playerSettings.SuggestedName;
             }
-            playerName = name;
+            this.name = name;
             ChangeHat(hat);
 
             PackPlayerSettings();
@@ -236,18 +247,16 @@ namespace Player
 
         public void PackPlayerSettings()
         {
-            playerSettings.id = id;
-            playerSettings.name = playerName;
-            playerSettings.hat = hat.GetComponent<Hat>().hatSettings;
+            _playerSettings.name = name;
+            _playerSettings.hat = hat.GetComponent<Hat>().HatSettings;
         }
 
-        public void UnpackPlayerSettings()
+        private void UnpackPlayerSettings()
         {
-            id = playerSettings.id;
-            ChangeName(playerSettings.name);
-            if (playerSettings.hat != null)
+            ChangeName(_playerSettings.name);
+            if (_playerSettings.hat != null)
             {
-                ChangeHat(playerSettings.hat.prefab);
+                ChangeHat(_playerSettings.hat.Prefab);
             }
         }
 
@@ -261,9 +270,9 @@ namespace Player
 
         private void OnDestroy()
         {
-            if (follower != null)
+            if (_follower != null)
             {
-                Destroy(follower.gameObject);
+                Destroy(_follower.gameObject);
             }
         }
     }

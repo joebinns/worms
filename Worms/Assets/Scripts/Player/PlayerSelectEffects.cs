@@ -1,5 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
+using Oscillators;
+using Player;
 using UnityEngine;
 
 // Fill this script with methods which will be subscribed and unsubscribed to OnPlayerChanged
@@ -68,7 +69,7 @@ public class PlayerSelectEffects : MonoBehaviour
         {
             easedT = Easing.Back.Out(t);
             var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
-            transform.GetComponent<SquashAndStretch>()._localEquilibriumScale = Vector3.one * size;
+            transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
             t += Time.deltaTime;
             yield return null;
         }

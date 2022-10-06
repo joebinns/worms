@@ -1,4 +1,5 @@
 using Cinemachine;
+using Player;
 using UnityEngine;
 using Utilities;
 

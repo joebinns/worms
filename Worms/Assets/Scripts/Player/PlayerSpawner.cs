@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
@@ -22,7 +23,7 @@ public class PlayerSpawner : MonoBehaviour
         var players = new List<Player.Player>(PlayerManager.Instance.players);
         foreach (Player.Player player in players)
         {
-            if (player.playerSettings.shouldSpawn == false)
+            if (player.shouldSpawn == false)
             {
                 PlayerManager.Instance.DeletePlayer(player);
                 continue;

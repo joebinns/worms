@@ -1,35 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using Camera;
-using Items.Weapons;
 using UnityEngine;
 
-public class MeleeWeapon : Weapon
+namespace Items.Weapons
 {
-    private MeleeWeaponSettings meleeWeaponSettings
+    public class MeleeWeapon : Weapon
     {
-        get
+        public MeleeWeaponSettings MeleeWeaponSettings => WeaponSettings as MeleeWeaponSettings;
+        [SerializeField] private Animator _animator;
+
+        public override void Attack()
         {
-            return WeaponSettings as MeleeWeaponSettings;
+            if (CurrentAmmunition <= 0)
+            {
+                CinemachineShake.Instance.InvalidInputPresetShake();
+                return;
+            }
+
+            WeaponSettings.Attack();
+
+            // Play animation
+            _animator.SetTrigger("Attack");
+
+            // Deplete ammunition
+            DepleteAmmunition();
         }
-    }
-
-    [SerializeField] private Animator _animator;
-
-    public override void Attack()
-    {
-        if (CurrentAmmunition <= 0)
-        {
-            CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f, "1D Wobble");
-            return;
-        }
-
-        WeaponSettings.Attack();
-
-        // Play animation
-        _animator.SetTrigger("Attack");
-
-        // Deplete ammunition
-        CurrentAmmunition--;
     }
 }

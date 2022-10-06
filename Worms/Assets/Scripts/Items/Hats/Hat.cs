@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Hat : Item
+namespace Items.Hats
 {
-    [HideInInspector] public HatSettings hatSettings;
-    
-    private void Awake()
+    public class Hat : Item
     {
-        if (itemSettings is HatSettings)
-        {
-            hatSettings = itemSettings as HatSettings;
-        }
-        
-        //id = (itemSettings as HatSettings).id;
+        public HatSettings HatSettings => _itemSettings as HatSettings; // hmm.. i need this to be serialized...
     }
 }

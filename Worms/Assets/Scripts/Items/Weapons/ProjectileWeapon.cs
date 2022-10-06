@@ -7,13 +7,7 @@ namespace Items.Weapons
     {
         [SerializeField] private GameObject _renderer;
         [SerializeField] private GameObject _projectile;
-        private ProjectileWeaponSettings ProjectileWeaponSettings
-        {
-            get
-            {
-                return WeaponSettings as ProjectileWeaponSettings;
-            }
-        } 
+        private ProjectileWeaponSettings ProjectileWeaponSettings => WeaponSettings as ProjectileWeaponSettings;
 
         private void OnEnable()
         {
@@ -41,7 +35,7 @@ namespace Items.Weapons
             StartCoroutine(UnityUtils.ResetRigidbody(_projectile.GetComponent<Rigidbody>(), Vector3.zero, Quaternion.identity));
         
             // Check the projectile's damage
-            _projectile.GetComponent<Projectile>().damage = ProjectileWeaponSettings.damage;
+            _projectile.GetComponent<Projectile>().damage = ProjectileWeaponSettings.Damage;
         }
 
         public override void Attack()
@@ -58,9 +52,9 @@ namespace Items.Weapons
             DepleteAmmunition();
         }
 
-        private void DepleteAmmunition()
+        protected override void DepleteAmmunition()
         {
-            CurrentAmmunition--;
+            base.DepleteAmmunition();
 
             if (CurrentAmmunition <= 0)
             {
@@ -71,7 +65,7 @@ namespace Items.Weapons
         private Vector3 CalculateProjectileForce()
         {
             var forceDirection = ApproximateShotCorrectionToCrosshair();
-            var force = forceDirection * ProjectileWeaponSettings.projectileSpeed;
+            var force = forceDirection * ProjectileWeaponSettings.ProjectileSpeed;
             return force;
         }
     
@@ -82,7 +76,7 @@ namespace Items.Weapons
         private Vector3 ApproximateShotCorrectionToCrosshair()
         {
             var cameraTransform = UnityEngine.Camera.main.transform;
-            var approxShotRange = ProjectileWeaponSettings.approxShotRange;
+            var approxShotRange = ProjectileWeaponSettings.Range;
 
             Vector3 crosshairHitPosition;
             

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileWeaponSettings", menuName = "ScriptableObjects/Weapon/ProjectileWeapon")]
-public class ProjectileWeaponSettings : WeaponSettings
+namespace Items.Weapons
 {
-    public float projectileSpeed;
-    public float approxShotRange;
-
-    public override void Attack() // Hmm... since this is using projectiles, I feel like this should be in the monobehaviour...
+    [CreateAssetMenu(fileName = "ProjectileWeaponSettings", menuName = "ScriptableObjects/Weapon/ProjectileWeapon")]
+    public class ProjectileWeaponSettings : WeaponSettings
     {
+        public float ProjectileSpeed;
 
-
+        public override void Attack() // The projectile attack behaviour is instead occuring in ProjectileWeapons.cs, due to use of scene instanced references
+        {
+        }
     }
-    
 }

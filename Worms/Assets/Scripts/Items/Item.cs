@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Items.Weapons;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+namespace Items
 {
-    [HideInInspector] public int id;
-
-    public ItemSettings itemSettings;
-    
+    public abstract class Item : MonoBehaviour
+    {
+        [SerializeField] protected ItemSettings _itemSettings;
+        public int id => _itemSettings.ID;
+    }
 }

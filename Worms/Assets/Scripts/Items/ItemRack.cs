@@ -1,61 +1,63 @@
 using System.Collections.Generic;
 using Audio;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemRack : MonoBehaviour
+namespace Items
 {
-    public List<GameObject> items;
-
-    private int _currentIndex = 0;
-
-    public SpawnEffect spawnEffect;
-
-    public GameObject currentItem;
-
-    public void ChangeItem(int index)
+    public class ItemRack : MonoBehaviour
     {
-        if (index == _currentIndex)
+        public List<GameObject> Items;
+        public GameObject CurrentItem;
+
+        private int _currentIndex = 0;
+        [SerializeField] private SpawnEffect _spawnEffect;
+
+        public void ChangeItem(int index)
         {
-            return;
+            if (index == _currentIndex)
+            {
+                return;
+            }
+
+            // Disable previous game object
+            Items[_currentIndex].SetActive(false);
+
+            // Enable newly indexed game object
+            CurrentItem = Items[index];
+            CurrentItem.SetActive(true);
+
+            // Reset transform
+            CurrentItem.transform.localPosition = Vector3.zero;
+
+            // Spawn effect
+            _spawnEffect.ActivateEffects(this.transform, CurrentItem);
+
+            _currentIndex = index;
         }
 
-        // Disable current game object
-        items[_currentIndex].SetActive(false);
-
-        // Enable newly indexed game object
-        currentItem = items[index];
-        currentItem.SetActive(true);
-
-        // Reset transform
-        currentItem.transform.localPosition = Vector3.zero;
-
-        // Spawn effect
-        spawnEffect.ActivateEffects(this.transform, currentItem);
-
-        _currentIndex = index;
-    }
-
-    public void NextItem()
-    {
-        AudioManager.Instance.Play("Click Primary");
-        
-        var index = (_currentIndex + 1) % items.Count;
-
-        ChangeItem(index);
-
-    }
-
-    public void PreviousItem()
-    {
-        AudioManager.Instance.Play("Click Primary");
-
-        var index = (_currentIndex - 1);
-        if (index < 0)
+        public void NextItem()
         {
-            index += items.Count;
+            AudioManager.Instance.Play("Click Primary");
+
+            var index = (_currentIndex + 1) % Items.Count;
+
+            ChangeItem(index);
+
         }
 
-        ChangeItem(index);
+        public void PreviousItem()
+        {
+            AudioManager.Instance.Play("Click Primary");
 
+            var index = (_currentIndex - 1);
+            if (index < 0)
+            {
+                index += Items.Count;
+            }
+
+            ChangeItem(index);
+
+        }
     }
 }

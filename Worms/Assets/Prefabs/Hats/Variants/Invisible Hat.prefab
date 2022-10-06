@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: itemSettings
       value: 
       objectReference: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
+    - target: {fileID: 765047196851787867, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
+      propertyPath: _itemSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
     - target: {fileID: 1142251910520991614, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
       propertyPath: m_Enabled
       value: 0

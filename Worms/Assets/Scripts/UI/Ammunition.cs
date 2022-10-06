@@ -1,4 +1,5 @@
 using Items.Weapons;
+using Player;
 using TMPro;
 using UnityEngine;
 
@@ -23,9 +24,9 @@ namespace UI
         public void RefreshDisplay()
         {
             // Get current weapon's ammunition
-            var weapon = PlayerManager.Instance.currentPlayer.weaponRack.currentItem.GetComponent<Weapon>();
+            var weapon = PlayerManager.Instance.currentPlayer.weaponRack.CurrentItem.GetComponent<Weapon>();
             var currentAmmunition = weapon.CurrentAmmunition;
-            var maxAmmunition = weapon.WeaponSettings.maxAmmunition;
+            var maxAmmunition = weapon.WeaponSettings.MaxAmmunition;
 
             // Determine color
             var hexColor = _hasAmmoHex;
