@@ -1,15 +1,15 @@
 using Audio;
+using Inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using CursorMode = Camera.CursorMode;
+using Utilities;
 
 namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
+        [SerializeField] private GameObject _pauseMenuUI;
         private bool _isPaused = false;
-
-        public GameObject PauseMenuUI;
 
         public void TogglePause(InputAction.CallbackContext context)
         {
@@ -31,9 +31,9 @@ namespace UI
         public void Resume()
         {
             AudioManager.Instance.Play("Click Primary");
-            PauseMenuUI.SetActive(false);
-            InputManager.RevertActionMap();
-            CursorMode.DisableCursor();
+            _pauseMenuUI.SetActive(false);
+            InputManager.Instance.RevertActionMap();
+            Cameras.CursorMode.DisableCursor();
             Time.timeScale = 1f;
         
             _isPaused = false;
@@ -42,9 +42,9 @@ namespace UI
         public void Pause()
         {
             AudioManager.Instance.Play("Click Primary");
-            PauseMenuUI.SetActive(true);
-            InputManager.SwitchActionMap("Paused");
-            CursorMode.EnableCursor();
+            _pauseMenuUI.SetActive(true);
+            InputManager.Instance.SwitchActionMap("Paused");
+            Cameras.CursorMode.EnableCursor();
             Time.timeScale = 0f;
         
             _isPaused = true;

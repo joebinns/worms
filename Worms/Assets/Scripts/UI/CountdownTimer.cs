@@ -1,53 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System;
+using TMPro;
+using UnityEngine;
 
-public class CountdownTimer : MonoBehaviour
-{	
-    [SerializeField] private TMP_Text text; 
-    private bool isPlaying = true;
-    private float _timer;
+namespace UI
+{
+    public class CountdownTimer : MonoBehaviour
+    {	
+        [SerializeField] private TMP_Text _text; 
+        private bool _isPlaying = true;
+        private float _timer;
 
-    private const float MAX_TIME = 16f;
-    private const float FLASH_MULTIPLIER = 0.175f;
+        private const float MAX_TIME = 16f;
+        private const float FLASH_MULTIPLIER = 0.175f;
 
-    public static event Action OnCountedDown;
+        #region Events
+        public static event Action OnCountedDown;
+        #endregion
 
-    private void Start()
-    {
-        ResetTimer();
-    }
-
-    private void Update()
-    {
-        if(isPlaying == true)
+        private void Awake()
         {
-            _timer -= Time.deltaTime;
-            text.text = ((int)_timer).ToString();
+            ResetTimer();
+        }
 
-            if (_timer <= 10f)
+        private void Update()
+        {
+            if(_isPlaying == true)
             {
-                var rate = (MAX_TIME - _timer);
-                var alpha = (rate * rate * FLASH_MULTIPLIER) % 1f;
-                text.alpha = alpha;
+                _timer -= Time.deltaTime;
+                _text.text = ((int)_timer).ToString();
+                if (_timer <= 5f)
+                {
+                    var rate = (MAX_TIME - _timer);
+                    var alpha = (Mathf.Pow(rate, 2f) * FLASH_MULTIPLIER) % 1f;
+                    _text.alpha = alpha;
+                }
+            }
+            if (_timer <= 0f)
+            {
+                // Next Turn
+                ResetTimer();
+                OnCountedDown?.Invoke();
             }
         }
 
-        if (_timer <= 0)
+        // Make text flash faster as timer gets lower
+        public void ResetTimer()
         {
-            // Next Turn
-            OnCountedDown?.Invoke();
+            _timer = MAX_TIME;
+            _text.alpha = 1f;
         }
 
     }
-
-    // Make text flash faster as timer gets lower
-    public void ResetTimer()
-    {
-        _timer = MAX_TIME;
-        text.alpha = 1f;
-    }
-
 }

@@ -1,5 +1,6 @@
-using Camera;
+using Cameras;
 using UnityEngine;
+using Utilities;
 
 namespace Items.Weapons
 {

@@ -1,5 +1,6 @@
 using Audio;
 using UnityEngine;
+using Utilities;
 
 namespace UI
 {
@@ -16,6 +17,5 @@ namespace UI
             AudioManager.Instance.Play("Click Secondary");
             Application.Quit();
         }
-    
     }
 }

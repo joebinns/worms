@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Camera
+namespace Cameras
 {
     public class CameraZoom : MonoBehaviour
     {

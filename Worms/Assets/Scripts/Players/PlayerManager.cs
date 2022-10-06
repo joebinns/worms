@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game;
 using Players.Physics_Based_Character_Controller;
 using UnityEngine;
 
@@ -35,10 +36,8 @@ namespace Players
                 Destroy(this);
                 return;
             }
-
             GetPlayers();
             SortPlayersByID();
-
             CurrentPlayer = Players[0];
         }
 
@@ -103,7 +102,7 @@ namespace Players
 
             if (player == CurrentPlayer)
             {
-                TurnManager.NextTurn();
+                TurnManager.Instance.NextTurn();
             }
 
             if (NumPlayers == 1) // If this is the last player alive

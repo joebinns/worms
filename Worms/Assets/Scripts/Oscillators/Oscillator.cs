@@ -14,14 +14,13 @@ namespace Oscillators
         [Tooltip("The local position about which oscillations are centered.")]
         [SerializeField] private Vector3 _localEquilibriumPosition = Vector3.zero;
         [Tooltip("The axes over which the oscillator applies force. Within range [0, 1].")]
-        public Vector3 forceScale = Vector3.one;
+        public Vector3 ForceScale = Vector3.one;
         [Tooltip("The greater the stiffness constant, the lesser the amplitude of oscillations.")]
         [SerializeField] private float _stiffness = 100f;
         [Tooltip("The greater the damper constant, the faster that oscillations will dissapear.")]
         [SerializeField] private float _damper = 2f;
         [Tooltip("The greater the mass, the lesser the amplitude of oscillations.")]
         [SerializeField] private float _mass = 1f;
-
 
         /// <summary>
         /// Update the position of the oscillator, by calculating and applying the restorative force.
@@ -69,12 +68,12 @@ namespace Oscillators
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddForce(Vector3.Scale(force, forceScale)); 
+                rb.AddForce(Vector3.Scale(force, ForceScale)); 
             }
             else
             {
                 Vector3 displacement = CalculateDisplacementDueToForce(force);
-                transform.localPosition += Vector3.Scale(displacement, forceScale);
+                transform.localPosition += Vector3.Scale(displacement, ForceScale);
             }
         }
 

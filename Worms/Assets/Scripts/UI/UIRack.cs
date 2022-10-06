@@ -1,53 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utilities;
 
-public class UIRack : MonoBehaviour
+namespace UI
 {
-    public Image activeImage;
-
-    public float minImageSize = 35f;
-    public float maxImageSize = 40f;
-
-    public Color deactiveColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-    public Color activeColor = Color.white;
-
-    public float transitionTime = 1f;
-
-    public List<Image> images = new List<Image>();
-
-    public void SwitchActive(int id)
+    public class UIRack : MonoBehaviour
     {
-        // Deactivate old image
-        activeImage.color = deactiveColor;
-        StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), false));
+        [SerializeField] private float _minImageSize = 35f;
+        [SerializeField] private float _maxImageSize = 40f;
+        [SerializeField] private Color _deactiveColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        [SerializeField] Color _activeColor = Color.white;
+        [SerializeField] protected List<Image> _images;
+        
+        private Image _activeImage;
 
-        ActivateImage(id);
-    }
-
-    public void ActivateImage(int id)
-    {
-        // Activate new image
-        activeImage = images[id];
-        activeImage.color = activeColor;
-        StartCoroutine(EasedLerpScale(activeImage.GetComponent<RectTransform>(), true));
-    }
-    
-    public IEnumerator EasedLerpScale(RectTransform image, bool shouldEnlarge)
-    {
-        var t = 0f;
-        var easedT = 0f;
-        while (Mathf.Abs(t) < transitionTime)
+        #region Constants
+        private const float TRANSITION_TIME = 1f;
+        #endregion
+        
+        public void SwitchActive(int id)
         {
-            easedT = Easing.Back.Out(t);
-            var size = (shouldEnlarge ? minImageSize : maxImageSize) + easedT * (maxImageSize - minImageSize) * (shouldEnlarge ? 1 : -1);
-            image.sizeDelta = Vector2.one * size;
-            yield return new WaitForEndOfFrame(); // Surely this is poor practise.
-            t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
+            // Deactivate old image
+            _activeImage.color = _deactiveColor;
+            StartCoroutine(EasedLerpScale(_activeImage.GetComponent<RectTransform>(), false));
+            ActivateImage(id);
         }
-        yield break;
+
+        protected void ActivateImage(int id)
+        {
+            // Activate new image
+            _activeImage = _images[id];
+            _activeImage.color = _activeColor;
+            StartCoroutine(EasedLerpScale(_activeImage.GetComponent<RectTransform>(), true));
+        }
+   
+        // I wanted to seperate this function to it's own utilities file, as similar variations in a few places.
+        // However, I can't see how I could  get the IEnumerator to return a (i.e. float size) on every loop, which the
+        // caller would pick up on. 
+        private IEnumerator EasedLerpScale(RectTransform image, bool shouldEnlarge)
+        {
+            var t = 0f;
+            var easedT = 0f;
+            while (Mathf.Abs(t) < TRANSITION_TIME)
+            {
+                easedT = EasingUtils.Back.Out(t);
+                var size = (shouldEnlarge ? _minImageSize : _maxImageSize) + easedT * (_maxImageSize - _minImageSize) * (shouldEnlarge ? 1 : -1);
+                image.sizeDelta = Vector2.one * size;
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
     }
 }
 

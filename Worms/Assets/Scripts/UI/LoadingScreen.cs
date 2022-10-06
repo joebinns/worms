@@ -2,17 +2,22 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI
 {
     public class LoadingScreen : MonoBehaviour
     {
+        #region Singleton
         public static LoadingScreen Instance;
-        private static Animator _transition;
-        private static readonly int Start = Animator.StringToHash("Start");
-        private static readonly int End = Animator.StringToHash("End");
+        #endregion
+        
+        private Animator _transition;
         private const float TRANSITION_TIME = 0.16666666666f;
+        
+        #region Events (Now redundant)
         public event Action OnTransitionedToLoadingScreen;
+        #endregion
 
         private void Awake()
         {
@@ -37,7 +42,7 @@ namespace UI
 
         private IEnumerator TransitionToLoadingScreenCoroutine()
         {
-            _transition.SetTrigger(Start);
+            _transition.SetTrigger("Start");
             yield return new WaitForSeconds(TRANSITION_TIME);
         
             OnTransitionedToLoadingScreen?.Invoke();
@@ -48,7 +53,7 @@ namespace UI
             // Load scene
             LoadScene(index);
             // Reveal new scene
-            _transition.SetTrigger(End);
+            _transition.SetTrigger("End");
         }
 
         private void LoadScene(SceneIndices index)

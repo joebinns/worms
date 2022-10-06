@@ -2,32 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class UnityUtils
+namespace Utilities
 {
-    public static void GetAllChildren(Transform parent, ref List<Transform> transforms, LayerMask layerMask)
+    public static class UnityUtils
     {
-        foreach (Transform child in parent)
+        public static void GetAllChildren(Transform parent, ref List<Transform> transforms, LayerMask layerMask)
         {
-            if (layerMask == (layerMask | (1 << child.gameObject.layer)))
+            foreach (Transform child in parent)
             {
-                transforms.Add(child);
+                if (layerMask == (layerMask | (1 << child.gameObject.layer)))
+                {
+                    transforms.Add(child);
  
-                GetAllChildren(child, ref transforms, layerMask);
+                    GetAllChildren(child, ref transforms, layerMask);
+                }
             }
-        }
- 
-    } 
+        } 
 
-    public static IEnumerator ResetRigidbody(Rigidbody rb, Vector3 targetLocalPos, Quaternion targetLocalRot)
-    {
-        // Reset velocity and angular velocity
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        public static IEnumerator ResetRigidbody(Rigidbody rb, Vector3 targetLocalPos, Quaternion targetLocalRot)
+        {
+            // Reset velocity and angular velocity
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
  
-        yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
  
-        // Reset position and rotation
-        rb.transform.localPosition = targetLocalPos;
-        rb.transform.localRotation = targetLocalRot;
+            // Reset position and rotation
+            rb.transform.localPosition = targetLocalPos;
+            rb.transform.localRotation = targetLocalRot;
+        }
     }
 }

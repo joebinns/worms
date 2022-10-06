@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
-using Camera;
+using Cameras;
 using Items;
 using Items.Hats;
 using Items.Weapons;
@@ -10,6 +10,7 @@ using Players.Physics_Based_Character_Controller;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace Players
 {

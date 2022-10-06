@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-namespace Camera
+namespace Cameras
 {
     public class CinemachineShake : MonoBehaviour
     {

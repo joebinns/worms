@@ -4,10 +4,10 @@ namespace UI
 {
     public class AlwaysFaceCamera : MonoBehaviour
     {
-        void Update() // Hmm... this seems slightly jittery, regardless of whether it's Update(), FixedUpdate() or LateUpdate().
+        void Update() // Hmm... this seems slightly jittery (at short distances), regardless of whether it's in
+                      // Update(), FixedUpdate() or LateUpdate().
         {
             this.transform.rotation = UnityEngine.Camera.main.transform.rotation;
-            //transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
         }
     }
 }

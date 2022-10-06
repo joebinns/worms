@@ -6,8 +6,11 @@ namespace UI
 {
     public class Portraits : UIRack
     {
-        private const float PORTRAIT_SPACING = 50f; // Vertical distance between the centres of portraits
         [SerializeField] private GameObject _emptyPortraitPrefab;
+
+        #region Constants
+        private const float PORTRAIT_SPACING = 50f; // Vertical distance between the centres of portraits
+        #endregion
 
         private void OnEnable()
         {
@@ -24,35 +27,33 @@ namespace UI
             var totalSpacing = PORTRAIT_SPACING * (PlayerManager.Instance.NumPlayers - 1);
             var startPosition = totalSpacing / 2;
             var position = startPosition;
-
-            foreach (Players.Player player in PlayerManager.Instance.Players)
+            foreach (Player player in PlayerManager.Instance.Players)
             {
-                // Instantiate portrait prefabs with calculated vertical displacements
-                var portrait = Instantiate(_emptyPortraitPrefab, gameObject.transform, false);
-
-                portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
+                LoadPortrait(player, position);
                 position -= PORTRAIT_SPACING;
-
-                portrait.GetComponent<Image>().sprite = player.Portrait;
-                images.Add(portrait.GetComponent<Image>());
             }
-
             ActivateImage(0);
-        
+        }
+
+        private void LoadPortrait(Player player, float position)
+        {
+            // Instantiate portrait prefabs with calculated vertical displacements
+            var portrait = Instantiate(_emptyPortraitPrefab, gameObject.transform, false);
+            portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
+            portrait.GetComponent<Image>().sprite = player.Portrait;
+            _images.Add(portrait.GetComponent<Image>());
         }
 
         public void DisablePortrait(Players.Player player)
         {
             // Find portrait using player id
-            var maxIndex = images.Count - 1;
+            var maxIndex = _images.Count - 1;
             if (player.id > maxIndex)
             {
                 // If player doesn't have a portrait, return
                 return;
             }
-
-            var portrait = images[player.id];
-
+            var portrait = _images[player.id];
             // Disable portrait
             portrait.sprite = player.DeadPortrait;
 

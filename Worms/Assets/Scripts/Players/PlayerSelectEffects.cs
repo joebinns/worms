@@ -1,6 +1,7 @@
 using System.Collections;
 using Oscillators;
 using UnityEngine;
+using Utilities;
 
 namespace Players
 {
@@ -70,13 +71,12 @@ namespace Players
             var easedT = 0f;
             while (Mathf.Abs(t) < 1f)
             {
-                easedT = Easing.Back.Out(t);
+                easedT = EasingUtils.Back.Out(t);
                 var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
                 transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
                 t += Time.deltaTime;
                 yield return null;
             }
         }
-    
     }
 }

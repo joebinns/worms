@@ -1,6 +1,6 @@
 using System.Collections;
 using Audio;
-using Camera;
+using Cameras;
 using Items;
 using Items.Hats;
 using Oscillators;
@@ -9,6 +9,7 @@ using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Players
 {
@@ -47,7 +48,7 @@ namespace Players
             ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
         }
     
-        private void ChangeCurrentPlayerSelection(global::Players.Player player)
+        private void ChangeCurrentPlayerSelection(Player player)
         {
             AdjustScales(player);
             AdjustRideHeights(player);
@@ -56,24 +57,24 @@ namespace Players
             _previousPlayer = player;
         }
 
-        private void AdjustScales(global::Players.Player player)
+        private void AdjustScales(Player player)
         {
             AdjustScale(_previousPlayer, false);
             AdjustScale(player, true);
         }
 
-        private void AdjustScale(global::Players.Player player, bool shouldEnlarge)
+        private void AdjustScale(Player player, bool shouldEnlarge)
         {
             StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
         }
 
-        private void AdjustRideHeights(global::Players.Player player)
+        private void AdjustRideHeights(Player player)
         {
             _previousPlayer.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
             player.AdjustRideHeight(UPPER_RIDE_HEIGHT);
         }
 
-        private void AdjustMaterials(global::Players.Player player)
+        private void AdjustMaterials(Player player)
         {
             if (_previousPlayer.id > player.id) // If selection moves to fewer players...
             {
@@ -173,19 +174,20 @@ namespace Players
             }
         }
     
+        // I tried to seperate this function into it's own utilities file (see Easing.EasedLerp), as similar variations
+        // in a few places. However, I can't see how I could  get the IEnumerator to return a (i.e. float size) on every
+        // loop, which the caller would pick up on. 
         private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)
         {
             var t = 0f;
             while (Mathf.Abs(t) < 1f)
             {
-                var easedT = Easing.Back.Out(t);
+                var easedT = EasingUtils.Back.Out(t);
                 var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
-                //transform.localScale = Vector3.one * size;
                 transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
-                yield return new WaitForFixedUpdate(); // Surely this is poor practise.
-                t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
+                t += Time.deltaTime;
+                yield return null;
             }
-            yield break;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Oscillators.Editor
             Oscillator oscillator = (Oscillator) target;
             for (int i = 0; i < 3; i++)
             {
-                oscillator.forceScale[i] = (int)Mathf.Clamp01(oscillator.forceScale[i]);
+                oscillator.ForceScale[i] = (int)Mathf.Clamp01(oscillator.ForceScale[i]);
             }
         }
     }

@@ -1,6 +1,6 @@
 using Audio;
 using UnityEngine;
-using CursorMode = Camera.CursorMode;
+using Utilities;
 
 namespace UI
 {
@@ -8,8 +8,7 @@ namespace UI
     {
         private void Start()
         {
-            CursorMode.EnableCursor();
-        
+            Cameras.CursorMode.EnableCursor();
             AudioManager.Instance.PlayDelayed("Celebration", 0.5f);
         }
 
@@ -18,6 +17,5 @@ namespace UI
             AudioManager.Instance.Play("Click Secondary");
             LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
         }
-    
     }
 }

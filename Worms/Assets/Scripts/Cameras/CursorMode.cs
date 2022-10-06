@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Camera
+namespace Cameras
 {
     /// <summary>
     /// Simple script to change the cursor mode, for toggling between game and menus

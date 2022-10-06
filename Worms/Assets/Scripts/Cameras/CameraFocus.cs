@@ -3,7 +3,7 @@ using Players;
 using UnityEngine;
 using Utilities;
 
-namespace Camera
+namespace Cameras
 {
     public class CameraFocus : MonoBehaviour
     {

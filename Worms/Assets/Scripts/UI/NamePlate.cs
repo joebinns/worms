@@ -1,5 +1,5 @@
 using System.Collections;
-using Managers;
+using Cameras;
 using Players;
 using UnityEngine;
 using Utilities;
@@ -8,15 +8,16 @@ namespace UI
 {
     public class Nameplate : MonoBehaviour
     {
-        private const float DEFAULT_ALPHA = 255f/100f;
-
-        private CanvasGroup _canvasGroup;
-    
-        private Players.Player _player;
-
         [SerializeField] private Transform _nameplate;
         [SerializeField] private Transform _knockbackplate;
+        
+        private CanvasGroup _canvasGroup;
+        private Player _player;
 
+        #region Constants
+        private const float DEFAULT_ALPHA = 255f/100f;
+        #endregion
+        
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
@@ -25,13 +26,13 @@ namespace UI
 
         private void OnEnable()
         {
-            CameraManager.OnCameraStateChanged += ChangeVisibility;
+            CameraManager.Instance.OnCameraStateChanged += ChangeVisibility;
             _player.GetComponent<Knockback>().OnKnockbackChanged += ChangeKnockback;
         }
 
         private void OnDisable()
         {
-            CameraManager.OnCameraStateChanged -= ChangeVisibility;
+            CameraManager.Instance.OnCameraStateChanged -= ChangeVisibility;
             _player.GetComponent<Knockback>().OnKnockbackChanged -= ChangeKnockback;
         }
     

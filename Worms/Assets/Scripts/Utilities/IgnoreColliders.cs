@@ -1,25 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Makes this collider ignore all collisions with other specified colliders.
-/// </summary>
-public class IgnoreColliders : MonoBehaviour
+namespace Utilities
 {
-    [SerializeField] private List<Collider> collidersToIgnore;
-    private Collider thisCollider;
-
     /// <summary>
-    /// Turn off collisions between this collider and other collidersToIgnore.
+    /// Makes this collider ignore all collisions with other specified colliders.
     /// </summary>
-    void Start()
+    public class IgnoreColliders : MonoBehaviour
     {
-        thisCollider = this.GetComponent<Collider>();
+        [SerializeField] private List<Collider> _collidersToIgnore;
+        private Collider _collider;
 
-        foreach (Collider otherCollider in collidersToIgnore)
+        /// <summary>
+        /// Turn off collisions between this collider and other collidersToIgnore.
+        /// </summary>
+        void Start()
         {
-            Physics.IgnoreCollision(thisCollider, otherCollider);
+            _collider = this.GetComponent<Collider>();
+            foreach (Collider otherCollider in _collidersToIgnore)
+            {
+                Physics.IgnoreCollision(_collider, otherCollider);
+            }
         }
     }
 }
