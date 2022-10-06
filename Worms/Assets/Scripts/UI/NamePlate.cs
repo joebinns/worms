@@ -1,6 +1,6 @@
 using System.Collections;
 using Managers;
-using Player;
+using Players;
 using UnityEngine;
 using Utilities;
 
@@ -12,7 +12,7 @@ namespace UI
 
         private CanvasGroup _canvasGroup;
     
-        private Player.Player _player;
+        private Players.Player _player;
 
         [SerializeField] private Transform _nameplate;
         [SerializeField] private Transform _knockbackplate;
@@ -20,7 +20,7 @@ namespace UI
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            _player = transform.parent.GetComponent<FollowPosition>().Target.GetComponent<Player.Player>();
+            _player = transform.parent.GetComponent<FollowPosition>().Target.GetComponent<Players.Player>();
         }
 
         private void OnEnable()

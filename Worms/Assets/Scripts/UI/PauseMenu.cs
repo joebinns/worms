@@ -1,6 +1,7 @@
 using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CursorMode = Camera.CursorMode;
 
 namespace UI
 {

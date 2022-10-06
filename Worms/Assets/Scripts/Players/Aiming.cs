@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Player;
-using Player.Physics_Based_Character_Controller;
+using Players;
+using Players.Physics_Based_Character_Controller;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Players
 {
     public class Aiming : MonoBehaviour
     {

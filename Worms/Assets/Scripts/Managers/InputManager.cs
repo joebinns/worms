@@ -1,6 +1,6 @@
 using Audio;
-using Player;
-using Player.Physics_Based_Character_Controller;
+using Players;
+using Players.Physics_Based_Character_Controller;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
     public static void SwapWeapon(int index)
     {
         // Change weapon rack item, change hotbar icon and update ammunition
-        PlayerManager.Instance.CurrentPlayer.GetComponent<Player.Player>().WeaponRack.ChangeItem(index);
+        PlayerManager.Instance.CurrentPlayer.GetComponent<Players.Player>().WeaponRack.ChangeItem(index);
         UIManager.SwitchActiveHotbar(index);
         if (index == 0)
         {
@@ -85,7 +85,7 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        PlayerManager.Instance.CurrentPlayer.GetComponent<Player.Player>().Attack();
+        PlayerManager.Instance.CurrentPlayer.GetComponent<Players.Player>().Attack();
         UIManager.RefreshAmmunition();
     }
 

@@ -29,13 +29,13 @@ namespace Audio
 
             foreach (Sound s in Sounds)
             {
-                s.source = gameObject.AddComponent<AudioSource>();
-                s.source.clip = s.clip;
-                s.source.playOnAwake = false;
+                s.Source = gameObject.AddComponent<AudioSource>();
+                s.Source.clip = s.Clip;
+                s.Source.playOnAwake = false;
 
-                s.source.volume = s.volume;
-                s.source.pitch = s.pitch;
-                s.source.loop = s.loop;
+                s.Source.volume = s.Volume;
+                s.Source.pitch = s.Pitch;
+                s.Source.loop = s.Loop;
             }
         }
 
@@ -46,9 +46,9 @@ namespace Audio
         {
             foreach (Sound s in Sounds)
             {
-                s.source.volume = s.volume;
-                s.source.pitch = s.pitch;
-                s.source.loop = s.loop;
+                s.Source.volume = s.Volume;
+                s.Source.pitch = s.Pitch;
+                s.Source.loop = s.Loop;
             }
         }
 
@@ -58,14 +58,14 @@ namespace Audio
         /// <param name="name">The name of the sound.</param>
         public void Play(string name)
         {
-            Sound s = Array.Find(Sounds, sound => sound.name == name);
+            Sound s = Array.Find(Sounds, sound => sound.Name == name);
             if (s == null)
             {
                 Debug.LogWarning("Sound: " + name + " not found");
                 return;
             }
 
-            s.source.Play();
+            s.Source.Play();
         }
 
         public void PlayDelayed(string name, float delay)
@@ -86,14 +86,14 @@ namespace Audio
         /// <returns>Whether the sound is playing or not.</returns>
         public bool IsPlaying(string name)
         {
-            Sound s = Array.Find(Sounds, sound => sound.name == name);
+            Sound s = Array.Find(Sounds, sound => sound.Name == name);
             if (s == null)
             {
                 Debug.LogWarning("Sound: " + name + " not found");
                 return false;
             }
 
-            return(s.source.isPlaying);
+            return(s.Source.isPlaying);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Audio
         /// <returns></returns>
         public IEnumerator PlayQueued(string name1, string name2)
         {
-            Sound s1 = Array.Find(Sounds, sound => sound.name == name1);
-            Sound s2 = Array.Find(Sounds, sound => sound.name == name2);
+            Sound s1 = Array.Find(Sounds, sound => sound.Name == name1);
+            Sound s2 = Array.Find(Sounds, sound => sound.Name == name2);
             if (s1 == null)
             {
                 Debug.LogWarning("Sound: " + name1 + " not found");
@@ -117,14 +117,14 @@ namespace Audio
                 yield return null;
             }
 
-            if (s1.source.isPlaying | s2.source.isPlaying)
+            if (s1.Source.isPlaying | s2.Source.isPlaying)
             {
                 yield return null;
             }
 
-            s1.source.Play();
-            yield return new WaitForSeconds(s1.clip.length);
-            s2.source.Play();
+            s1.Source.Play();
+            yield return new WaitForSeconds(s1.Clip.length);
+            s2.Source.Play();
         }
 
         /// <summary>
@@ -133,14 +133,14 @@ namespace Audio
         /// <param name="name">The name of the sound.</param>
         public void Stop(string name)
         {
-            Sound s = Array.Find(Sounds, sound => sound.name == name);
+            Sound s = Array.Find(Sounds, sound => sound.Name == name);
             if (s == null)
             {
                 Debug.LogWarning("Sound: " + name + " not found");
                 return;
             }
 
-            s.source.Stop();
+            s.Source.Stop();
         }
     }
 }

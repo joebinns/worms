@@ -1,4 +1,4 @@
-using Player;
+using Players;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +25,7 @@ namespace UI
             var startPosition = totalSpacing / 2;
             var position = startPosition;
 
-            foreach (Player.Player player in PlayerManager.Instance.Players)
+            foreach (Players.Player player in PlayerManager.Instance.Players)
             {
                 // Instantiate portrait prefabs with calculated vertical displacements
                 var portrait = Instantiate(_emptyPortraitPrefab, gameObject.transform, false);
@@ -41,7 +41,7 @@ namespace UI
         
         }
 
-        public void DisablePortrait(Player.Player player)
+        public void DisablePortrait(Players.Player player)
         {
             // Find portrait using player id
             var maxIndex = images.Count - 1;

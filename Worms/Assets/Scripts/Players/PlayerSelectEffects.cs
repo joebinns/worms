@@ -2,7 +2,7 @@ using System.Collections;
 using Oscillators;
 using UnityEngine;
 
-namespace Player
+namespace Players
 {
     // Fill this class with methods which will be subscribed to OnPlayerChanged
     public class PlayerSelectEffects : MonoBehaviour
@@ -29,7 +29,7 @@ namespace Player
             PlayerManager.Instance.OnCurrentPlayerChanged -= DisplayEffects;
         }
     
-        private void DisplayEffects(global::Player.Player player)
+        private void DisplayEffects(global::Players.Player player)
         {
             AdjustScales(player);
             AdjustRideHeights(player);
@@ -38,24 +38,24 @@ namespace Player
             _previousPlayer = player;
         }
     
-        private void AdjustScales(global::Player.Player player)
+        private void AdjustScales(global::Players.Player player)
         {
             AdjustScale(_previousPlayer, false);
             AdjustScale(player, true);
         }
 
-        private void AdjustScale(global::Player.Player player, bool shouldEnlarge)
+        private void AdjustScale(global::Players.Player player, bool shouldEnlarge)
         {
             StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
         }
 
-        private void AdjustRideHeights(global::Player.Player player)
+        private void AdjustRideHeights(global::Players.Player player)
         {
             _previousPlayer.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
             player.AdjustRideHeight(UPPER_RIDE_HEIGHT);
         }
 
-        private void AdjustMaterials(global::Player.Player player)
+        private void AdjustMaterials(global::Players.Player player)
         {
             if (_previousPlayer.id > player.id) // If selection moves to fewer players...
             {

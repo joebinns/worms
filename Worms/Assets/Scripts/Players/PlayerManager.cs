@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Player.Physics_Based_Character_Controller;
+using Players.Physics_Based_Character_Controller;
 using UnityEngine;
 
-namespace Player
+namespace Players
 {
     public class PlayerManager : MonoBehaviour
     {
@@ -83,10 +83,7 @@ namespace Player
         {
             for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
             {
-                var player = Players[playerToRemove];
-            
-                // Set a bool in the Player's playerSettings
-                player.shouldSpawn = false;
+                Players[playerToRemove].shouldSpawn = false;
             }
         }
 

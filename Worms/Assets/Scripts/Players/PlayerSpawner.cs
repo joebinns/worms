@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player
+namespace Players
 {
     public class PlayerSpawner : MonoBehaviour
     {

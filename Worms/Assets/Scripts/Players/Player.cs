@@ -6,12 +6,12 @@ using Camera;
 using Items;
 using Items.Hats;
 using Items.Weapons;
-using Player.Physics_Based_Character_Controller;
+using Players.Physics_Based_Character_Controller;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Player
+namespace Players
 {
     public class Player : MonoBehaviour
     {

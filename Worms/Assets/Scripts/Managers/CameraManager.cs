@@ -1,7 +1,9 @@
 using System;
-using Player;
+using Camera;
+using Players;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CursorMode = Camera.CursorMode;
 
 namespace Managers
 {

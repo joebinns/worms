@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Player;
+using Players;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -72,17 +72,17 @@ public class UIManager : MonoBehaviour
         // Update ammo
     }
 
-    public static void SwitchActivePortrait(Player.Player player)
+    public static void SwitchActivePortrait(Players.Player player)
     {
         portraits.SwitchActive(player.id);
     }
 
-    public static void DisablePortrait(Player.Player player)
+    public static void DisablePortrait(Players.Player player)
     {
         portraits.DisablePortrait(player);
     }
 
-    public void ResetTurnTimer(Player.Player player)
+    public void ResetTurnTimer(Players.Player player)
     {
         turnTimer.ResetTimer();
     }

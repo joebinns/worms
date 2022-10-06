@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Items.Weapons;
 using Managers;
-using Player;
+using Players;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;

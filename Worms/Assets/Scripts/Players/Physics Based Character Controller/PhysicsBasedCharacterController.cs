@@ -3,7 +3,7 @@ using Oscillators;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player.Physics_Based_Character_Controller
+namespace Players.Physics_Based_Character_Controller
 {
     /// <summary>
     /// A floating-capsule oriented physics based character controller. Based on the approach devised by Toyful Games for Very Very Valet.

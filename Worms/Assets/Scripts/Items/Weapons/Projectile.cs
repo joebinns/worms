@@ -1,4 +1,4 @@
-using Player;
+using Players;
 using UnityEngine;
 using Utilities;
 

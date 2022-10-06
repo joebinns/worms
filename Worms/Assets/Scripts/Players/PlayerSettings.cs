@@ -1,7 +1,7 @@
 using Items.Hats;
 using UnityEngine;
 
-namespace Player
+namespace Players
 {
     [CreateAssetMenu(fileName = "PlayerSettings", menuName = "ScriptableObjects/Player")]
     public class PlayerSettings : ScriptableObject

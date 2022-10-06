@@ -7,20 +7,28 @@ namespace Camera
 {
     public class CinemachineShake : MonoBehaviour
     {
+        #region Singleton
         public static CinemachineShake Instance { get; private set; }
-
+        #endregion
+        
         [SerializeField] private List<CinemachineVirtualCamera> _virtualCameras;
         [SerializeField] private List<NoiseSettings> _noiseSettings;
 
         private void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
 
         private void SwitchNoiseProfile(string name)
         {
             var noiseSetting = _noiseSettings.Find(x => x.name == name);
-
             foreach (var virtualCamera in _virtualCameras)
             {
                 virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = noiseSetting;

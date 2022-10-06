@@ -1,5 +1,5 @@
 using Cinemachine;
-using Player;
+using Players;
 using UnityEngine;
 using Utilities;
 
@@ -7,11 +7,13 @@ namespace Camera
 {
     public class CameraFocus : MonoBehaviour
     {
-        public FollowPosition PlayerFollowPosition;
-    
+        [SerializeField] private FollowPosition _playerFollowPosition;
+
+        #region Optional
         [Header("Optional")]
-        public CinemachineVirtualCamera AimCamera;
-    
+        [SerializeField] private CinemachineVirtualCamera _aimCamera;
+        #endregion
+
         private void OnEnable()
         {
             PlayerManager.Instance.OnCurrentPlayerChanged += SetFocus;
@@ -27,12 +29,12 @@ namespace Camera
             SetFocus(PlayerManager.Instance.CurrentPlayer);
         }
 
-        private void SetFocus(Player.Player focusPlayer)
+        private void SetFocus(Player focusPlayer)
         {
-            PlayerFollowPosition.Target = focusPlayer.gameObject;
-            if (AimCamera != null)
+            _playerFollowPosition.Target = focusPlayer.gameObject;
+            if (_aimCamera != null)
             {
-                AimCamera.Follow = focusPlayer.transform;
+                _aimCamera.Follow = focusPlayer.transform;
             }
         }
     }

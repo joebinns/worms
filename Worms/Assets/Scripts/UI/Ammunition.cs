@@ -1,5 +1,5 @@
 using Items.Weapons;
-using Player;
+using Players;
 using TMPro;
 using UnityEngine;
 

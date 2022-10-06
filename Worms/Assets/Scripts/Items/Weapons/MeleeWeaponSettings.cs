@@ -1,4 +1,4 @@
-using Player;
+using Players;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 using Utilities;

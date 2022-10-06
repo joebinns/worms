@@ -2,7 +2,7 @@ using System;
 using Items.Weapons;
 using UnityEngine;
 
-namespace Player
+namespace Players
 {
     public class Knockback : MonoBehaviour
     {

@@ -4,13 +4,13 @@ using Camera;
 using Items;
 using Items.Hats;
 using Oscillators;
-using Player.Physics_Based_Character_Controller;
+using Players.Physics_Based_Character_Controller;
 using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player
+namespace Players
 {
     public class PlayerSelection : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace Player
         private const float MAX_PLAYER_SIZE = 1.2f;
     
         // Variables
-        private global::Player.Player _previousPlayer;
+        private Player _previousPlayer;
 
         [SerializeField] private TMP_InputField _nameInput;
         [SerializeField] private ItemRack _hatRack;
@@ -32,13 +32,11 @@ namespace Player
         private void OnEnable()
         {
             PlayerManager.Instance.OnCurrentPlayerChanged += ChangeCurrentPlayerSelection;
-            LoadingScreen.Instance.OnTransitionedToLoadingScreen += BehindTheCurtain;
         }
 
         private void OnDisable()
         {
             PlayerManager.Instance.OnCurrentPlayerChanged -= ChangeCurrentPlayerSelection;
-            LoadingScreen.Instance.OnTransitionedToLoadingScreen -= BehindTheCurtain;
         }
 
         private void Start()
@@ -49,7 +47,7 @@ namespace Player
             ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
         }
     
-        private void ChangeCurrentPlayerSelection(global::Player.Player player)
+        private void ChangeCurrentPlayerSelection(global::Players.Player player)
         {
             AdjustScales(player);
             AdjustRideHeights(player);
@@ -58,24 +56,24 @@ namespace Player
             _previousPlayer = player;
         }
 
-        private void AdjustScales(global::Player.Player player)
+        private void AdjustScales(global::Players.Player player)
         {
             AdjustScale(_previousPlayer, false);
             AdjustScale(player, true);
         }
 
-        private void AdjustScale(global::Player.Player player, bool shouldEnlarge)
+        private void AdjustScale(global::Players.Player player, bool shouldEnlarge)
         {
             StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
         }
 
-        private void AdjustRideHeights(global::Player.Player player)
+        private void AdjustRideHeights(global::Players.Player player)
         {
             _previousPlayer.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
             player.AdjustRideHeight(UPPER_RIDE_HEIGHT);
         }
 
-        private void AdjustMaterials(global::Player.Player player)
+        private void AdjustMaterials(global::Players.Player player)
         {
             if (_previousPlayer.id > player.id) // If selection moves to fewer players...
             {
@@ -98,7 +96,7 @@ namespace Player
             }
             else
             {
-                CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f);
+                CinemachineShake.Instance.InvalidInputPresetShake();
             }
         }
 
@@ -151,42 +149,28 @@ namespace Player
             }
             else
             {
-                CinemachineShake.Instance.ShakeCamera(2.5f, 0.4f);
+                CinemachineShake.Instance.InvalidInputPresetShake();
             }
         }
 
         public void FinaliseSelection()
         {
             AudioManager.Instance.Play("Click Secondary");
-
-            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
-            AdjustScale(currentPlayer, false);
-
-            LoadingScreen.Instance.TransitionToLoadingScreen();
+            SaveFinalSelection();
+            LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.GAME);
         }
-
-        private void BehindTheCurtain()
+        
+        private void SaveFinalSelection()
         {
             var currentPlayer = PlayerManager.Instance.CurrentPlayer;
-        
-            // Save Edits to final Player
-            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem);
-        
-            PlayerManager.Instance.FinaliseNumberOfPlayers(currentPlayer.id + 1);
-
+            currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem); // Apply edits to final player
+            PlayerManager.Instance.FinaliseNumberOfPlayers(currentPlayer.id + 1); // Set shouldSpawn = false on excess players scriptable objects
             // For each remaining player...
-            foreach (global::Player.Player player in PlayerManager.Instance.Players)
+            foreach (Player player in PlayerManager.Instance.Players)
             {
-                player.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
-                player.SetLookDirectionOption(PhysicsBasedCharacterController.LookDirectionOptions.Velocity);
-                player.RestoreDefaultMaterials();
-                player.EnableParticleSystem();
-
                 // Save their settings
                 player.PackPlayerSettings();
             }
-
-            LoadingScreen.Instance.TransitionFromLoadingScreen(SceneIndices.GAME);
         }
     
         private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)
