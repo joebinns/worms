@@ -19,7 +19,7 @@ namespace Player
 
         private void OnEnable()
         {
-            if (PlayerManager.Instance.currentPlayer == null) { return; }
+            if (PlayerManager.Instance.CurrentPlayer == null) { return; }
             
             StartAiming();
         }
@@ -31,7 +31,7 @@ namespace Player
         
         private void StartAiming()
         {
-            _characterController = PlayerManager.Instance.currentPlayer.GetComponent<PhysicsBasedCharacterController>();
+            _characterController = PlayerManager.Instance.CurrentPlayer.GetComponent<PhysicsBasedCharacterController>();
             _cursorPosition = Vector2.zero;
             _characterController._characterLookDirection = PhysicsBasedCharacterController.LookDirectionOptions.Aiming;
         }

@@ -32,18 +32,18 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerManager.Instance.OnPlayerChanged += SwitchActivePortrait;
+        PlayerManager.Instance.OnCurrentPlayerChanged += SwitchActivePortrait;
         PlayerManager.Instance.OnPlayerRemoved += DisablePortrait;
         PlayerManager.Instance.OnLastPlayerStanding += NextScene;
-        PlayerManager.Instance.OnPlayerChanged += ResetTurnTimer;
+        PlayerManager.Instance.OnCurrentPlayerChanged += ResetTurnTimer;
     }
 
     private void OnDisable()
     {
-        PlayerManager.Instance.OnPlayerChanged -= SwitchActivePortrait;
+        PlayerManager.Instance.OnCurrentPlayerChanged -= SwitchActivePortrait;
         PlayerManager.Instance.OnPlayerRemoved -= DisablePortrait;
         PlayerManager.Instance.OnLastPlayerStanding -= NextScene;
-        PlayerManager.Instance.OnPlayerChanged -= ResetTurnTimer;
+        PlayerManager.Instance.OnCurrentPlayerChanged -= ResetTurnTimer;
     }
 
     public static void EnableReticle()

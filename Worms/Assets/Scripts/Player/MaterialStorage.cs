@@ -1,9 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
-public class MaterialStorage : MonoBehaviour
+namespace Player
 {
-    public Material defaultMaterial;
+    [RequireComponent(typeof(Renderer))]
+    public class MaterialStorage : MonoBehaviour
+    {
+        #region Impermutable
+        [SerializeField] private Material _defaultMaterial;
+        public Material DefaultMaterial => _defaultMaterial;
+        #endregion
+    }
 }

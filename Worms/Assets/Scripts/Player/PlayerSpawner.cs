@@ -1,46 +1,54 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Player;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private List<Transform> _spawnPoints;
-    private List<Transform> _availableSpawnPoints = new List<Transform>();
-
-    public static event Action OnPlayersSpawned;
-
-    private void Start()
+    public class PlayerSpawner : MonoBehaviour
     {
-        _availableSpawnPoints = _spawnPoints;
+        #region Spawn Points
+        [SerializeField] private List<Transform> _spawnPoints;
+        private List<Transform> _availableSpawnPoints;
+        #endregion
         
-        SpawnPlayers();
-    }
+        #region Events
+        public static event Action OnPlayersSpawned;
+        #endregion
 
-    private void SpawnPlayers()
-    {
-        var players = new List<Player.Player>(PlayerManager.Instance.players);
-        foreach (Player.Player player in players)
+        private void Awake()
         {
-            if (player.shouldSpawn == false)
-            {
-                PlayerManager.Instance.DeletePlayer(player);
-                continue;
-            }
-            
-            // Get a random available spawnPoint
-            var random = UnityEngine.Random.Range(0, _availableSpawnPoints.Count);
-            var spawnpoint = _availableSpawnPoints[random];
-            _availableSpawnPoints.RemoveAt(random);
-
-            // Position the player to spawnPoint
-            player.transform.position = spawnpoint.transform.position;
-
+            _availableSpawnPoints = _spawnPoints;
         }
 
-        OnPlayersSpawned?.Invoke();
+        private void Start()
+        {
+            SpawnPlayers();
+        }
 
+        private void SpawnPlayers()
+        {
+            var players = new List<Player>(PlayerManager.Instance.Players);
+            foreach (Player player in players)
+            {
+                if (player.shouldSpawn == false)
+                {
+                    PlayerManager.Instance.DeletePlayer(player);
+                    continue;
+                }
+                var spawnPoint = GetRandomSpawnPoint();
+                // Position the player to the randomly selected spawnPoint
+                player.transform.position = spawnPoint.transform.position;
+            }
+            OnPlayersSpawned?.Invoke();
+        }
+
+        private Transform GetRandomSpawnPoint()
+        {
+            // Get a random available spawnPoint
+            var randomIndex = UnityEngine.Random.Range(0, _availableSpawnPoints.Count);
+            var spawnPoint = _availableSpawnPoints[randomIndex];
+            _availableSpawnPoints.RemoveAt(randomIndex);
+            return spawnPoint;
+        }
     }
-    
 }

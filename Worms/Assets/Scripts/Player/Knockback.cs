@@ -31,7 +31,6 @@ namespace Player
 
         private Vector3 CalculateForce(float magnitude, Vector3 direction)
         {
-            // Apply force in same direction as raycast, whilst accounting for the player's knockback
             var force = direction * magnitude;
             force.y = Mathf.Abs(force.y);
 

@@ -28,7 +28,7 @@ public class TurnManager : MonoBehaviour
         var newPlayer = PlayerManager.Instance.SetCurrentPlayer(playerIndex);
   
         // Reset new player's ammo
-        foreach (GameObject item in newPlayer.weaponRack.Items)
+        foreach (GameObject item in newPlayer.WeaponRack.Items)
         {
             var weapon = item.GetComponent<Weapon>();
 
@@ -43,8 +43,8 @@ public class TurnManager : MonoBehaviour
 
     public static void NextTurn()
     {
-        var currentIndex = PlayerManager.Instance.IdToIndex(PlayerManager.Instance.currentPlayer.id);
-        var nextIndex = (currentIndex + 1) % PlayerManager.Instance.numPlayers;
+        var currentIndex = PlayerManager.Instance.IdToIndex(PlayerManager.Instance.CurrentPlayer.id);
+        var nextIndex = (currentIndex + 1) % PlayerManager.Instance.NumPlayers;
 
         ChangeTurn(nextIndex);
     }

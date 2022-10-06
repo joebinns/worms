@@ -24,7 +24,7 @@ namespace UI
         public void RefreshDisplay()
         {
             // Get current weapon's ammunition
-            var weapon = PlayerManager.Instance.currentPlayer.weaponRack.CurrentItem.GetComponent<Weapon>();
+            var weapon = PlayerManager.Instance.CurrentPlayer.WeaponRack.CurrentItem.GetComponent<Weapon>();
             var currentAmmunition = weapon.CurrentAmmunition;
             var maxAmmunition = weapon.WeaponSettings.MaxAmmunition;
 

@@ -52,7 +52,7 @@ namespace UI
 
         private void ChangeVisibility(CameraState cameraState)
         {
-            if (PlayerManager.Instance.currentPlayer != _player)
+            if (PlayerManager.Instance.CurrentPlayer != _player)
             {
                 return;
             }

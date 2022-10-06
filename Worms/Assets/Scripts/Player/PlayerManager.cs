@@ -7,15 +7,22 @@ namespace Player
 {
     public class PlayerManager : MonoBehaviour
     {
+        #region Singleton
         public static PlayerManager Instance;
-        public List<global::Player.Player> players { get; set; } = new List<global::Player.Player>();
-        public int numPlayers => players.Count;
-        public global::Player.Player currentPlayer { get; private set; }
-        public event Action<global::Player.Player> OnPlayerChanged;
-        public event Action<global::Player.Player> OnPlayerRemoved;
-        public event Action OnLastPlayerStanding;
+        #endregion
 
+        #region Players
+        public List<Player> Players { get; private set; }
+        public int NumPlayers => Players.Count;
+        public Player CurrentPlayer { get; private set; }
         private const int MAX_PLAYERS = 4;
+        #endregion
+
+        #region Events
+        public event Action<Player> OnCurrentPlayerChanged;
+        public event Action<Player> OnPlayerRemoved;
+        public event Action OnLastPlayerStanding;
+        #endregion
 
         private void Awake()
         {
@@ -25,7 +32,6 @@ namespace Player
             }
             else
             {
-                Debug.Log("oops");
                 Destroy(this);
                 return;
             }
@@ -33,86 +39,60 @@ namespace Player
             GetPlayers();
             SortPlayersByID();
 
-            currentPlayer = players[0];
+            CurrentPlayer = Players[0];
         }
 
-        public int IdToIndex(int id) // Since the list size is subject to change, meaning indices are inconsistent-
+        // Converts player id to index. Since the list size is subject to change, indices are inconsistent
+        public int IdToIndex(int id) 
         {
-            var index = Instance.players.FindIndex(x => x.id == id);
+            var index = Instance.Players.FindIndex(x => x.id == id);
             return index;
         }
 
         private void GetPlayers()
         {
-            players = new List<global::Player.Player>();
-            foreach (global::Player.Player player in FindObjectsOfType<global::Player.Player>())
+            Players = new List<Player>();
+            foreach (Player player in FindObjectsOfType<Player>())
             {
-                players.Add(player.GetComponent<global::Player.Player>());
+                Players.Add(player.GetComponent<Player>());
             }
         }
 
+        // Sort Players list by player ids, in ascending order.
         private void SortPlayersByID()
         {
-            players.Sort((x, y) => x.id.CompareTo(y.id));
+            Players.Sort((x, y) => x.id.CompareTo(y.id));
         }
     
-        public global::Player.Player SetCurrentPlayer(int index)
+        public Player SetCurrentPlayer(int index)
         {
-            if (currentPlayer != null)
+            if (CurrentPlayer != null)
             {
                 // Reset old players movement inputs
-                currentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
+                CurrentPlayer.GetComponent<PhysicsBasedCharacterController>().MakeInputsNull();
             }
 
-            currentPlayer = players[index];   
+            CurrentPlayer = Players[index];   
         
-            OnPlayerChanged?.Invoke(currentPlayer);
+            OnCurrentPlayerChanged?.Invoke(CurrentPlayer);
 
-            return (currentPlayer);
+            return (CurrentPlayer);
         }
 
         public void FinaliseNumberOfPlayers(int desiredNumberPlayers) // This should probably be moved to PlayerSelection
         {
             for (var playerToRemove = MAX_PLAYERS - 1; playerToRemove >= desiredNumberPlayers; playerToRemove--)
             {
-                var player = players[playerToRemove];
-                //players.Remove(player);
-                //Destroy(player.gameObject);
+                var player = Players[playerToRemove];
             
                 // Set a bool in the Player's playerSettings
                 player.shouldSpawn = false;
-            }
-
-            //PlayerManager.SetCurrentPlayer(0);
-        }
-
-        private void EnableAllParticleSystems()
-        {
-            foreach (Player player in players)
-            {
-                player.EnableParticleSystem();
-            }
-        }
-
-        private void DisableAllParticleSystems()
-        {
-            foreach (Player player in players)
-            {
-                player.DisableParticleSystem();
-            }
-        }
-
-        private void SetAllLookDirectionOptions(PhysicsBasedCharacterController.LookDirectionOptions option)
-        {
-            foreach (Player player in players)
-            {
-                player.SetLookDirectionOption(option);
             }
         }
 
         public void DeletePlayer(Player player)
         {
-            if (numPlayers == 1) // To ensure there is always 1 player alive
+            if (NumPlayers == 1) // To ensure there is always 1 player alive
             {
                 return;
             }
@@ -121,15 +101,15 @@ namespace Player
 
             OnPlayerRemoved?.Invoke(player); // Disable portrait
 
-            players.Remove(player); // Remove player from list
+            Players.Remove(player); // Remove player from list
             Destroy(player.gameObject); // Destroy player game object
 
-            if (player == currentPlayer)
+            if (player == CurrentPlayer)
             {
                 TurnManager.NextTurn();
             }
 
-            if (numPlayers == 1) // If this is the last player alive
+            if (NumPlayers == 1) // If this is the last player alive
             {
                 OnLastPlayerStanding?.Invoke();
             }

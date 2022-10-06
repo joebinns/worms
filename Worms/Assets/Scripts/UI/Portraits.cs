@@ -21,11 +21,11 @@ namespace UI
 
         public void LoadPortraits()
         {
-            var totalSpacing = PORTRAIT_SPACING * (PlayerManager.Instance.numPlayers - 1);
+            var totalSpacing = PORTRAIT_SPACING * (PlayerManager.Instance.NumPlayers - 1);
             var startPosition = totalSpacing / 2;
             var position = startPosition;
 
-            foreach (Player.Player player in PlayerManager.Instance.players)
+            foreach (Player.Player player in PlayerManager.Instance.Players)
             {
                 // Instantiate portrait prefabs with calculated vertical displacements
                 var portrait = Instantiate(_emptyPortraitPrefab, gameObject.transform, false);
@@ -33,7 +33,7 @@ namespace UI
                 portrait.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, position);
                 position -= PORTRAIT_SPACING;
 
-                portrait.GetComponent<Image>().sprite = player.portrait;
+                portrait.GetComponent<Image>().sprite = player.Portrait;
                 images.Add(portrait.GetComponent<Image>());
             }
 
@@ -54,7 +54,7 @@ namespace UI
             var portrait = images[player.id];
 
             // Disable portrait
-            portrait.sprite = player.deadPortrait;
+            portrait.sprite = player.DeadPortrait;
 
         }
     }

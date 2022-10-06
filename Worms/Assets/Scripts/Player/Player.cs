@@ -15,11 +15,10 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
+        #region Player Settings
         [Header("Player Settings")]
-        private PlayerSettings _playerSettings;
-        public int id {
-            get => _playerSettings.ID;
-        }
+        [SerializeField] private PlayerSettings _playerSettings;
+        public int id => _playerSettings.ID;
         public bool shouldSpawn
         {
             get => _playerSettings.shouldSpawn;
@@ -31,36 +30,41 @@ namespace Player
             get => _playerSettings.name;
             private set => _playerSettings.name = value;
         }
+        #endregion
 
+        #region Renderers
         [Header("Renderers")]
-        public Transform renderers;
-        public GameObject hat;
-        public Transform hatSlot;
-        public ItemRack weaponRack;
-        public Transform weaponSlot;
-        public Material ditherMaterial;
-        public Material flashMaterial;
-        public float flashDuration = 0.15f;
-        public Sprite portrait;
-        public Sprite deadPortrait;
-
-        //public TextMeshProUGUI namePlateText;
-        public Nameplate nameplate;
+        private List<Transform> _allRenderers = new List<Transform>();
+        [SerializeField] private Transform _renderers;
+        [SerializeField] private GameObject _hat;
+        public GameObject Hat => _hat;
+        [SerializeField] private Transform _hatSlot;
+        [SerializeField] private ItemRack _weaponRack;
+        public ItemRack WeaponRack => _weaponRack;
+        [SerializeField] private Material _ditherMaterial;
+        [SerializeField] private Material _flashMaterial;
+        private const float FLASH_DURATION = 0.25f;
+        #endregion
+        
+        #region Particle Systems
+        [Header("Particle Systems")]
+        [SerializeField] private ParticleSystem _dustParticleSystem;
+        #endregion
+        
+        #region UI
+        [SerializeField] private Sprite _portrait;
+        public Sprite Portrait => _portrait;
+        [SerializeField] private Sprite _deadPortrait;
+        public Sprite DeadPortrait => _deadPortrait;
+        
+        [SerializeField] private Nameplate _nameplate;
         
         [SerializeField] private Transform _follower;
+        #endregion
 
-        [Header("Particle Systems")]
-        public ParticleSystem dustParticleSystem;
-
-        // Events
-        public static event Action<PlayerState> OnPlayerStateChanged;
-
-        // Accessors
-        private PhysicsBasedCharacterController physicsBasedCharacterController;
-
-        // Variables
-        private PlayerState state;
-        private List<Transform> _allRenderers = new List<Transform>();
+        #region Controller
+        [SerializeField] private PhysicsBasedCharacterController _physicsBasedCharacterController;
+        #endregion
 
         private void Awake()
         {
@@ -69,7 +73,7 @@ namespace Player
                 _playerSettings.RestoreDefaults();
             }
         
-            physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
+            _physicsBasedCharacterController = GetComponent<PhysicsBasedCharacterController>();
             UnpackPlayerSettings();
             UpdateAllRenderers();
         }
@@ -86,8 +90,7 @@ namespace Player
 
         public void Attack()
         {
-            weaponRack.CurrentItem.GetComponent<Weapon>().Attack();
-
+            _weaponRack.CurrentItem.GetComponent<Weapon>().Attack();
         } 
 
         public void ChangeName(string newName)
@@ -95,20 +98,19 @@ namespace Player
             name = newName;
 
             // Update nameplate
-            if (nameplate != null)
+            if (_nameplate != null)
             {
-                nameplate.ChangeName(name);
+                _nameplate.ChangeName(name);
             }
-
         }
 
         public void ChangeHat(GameObject newHat)
         {
-            if (hat != null)
+            if (_hat != null)
             {
-                Destroy(hat);
+                Destroy(_hat);
             }
-            hat = Instantiate(newHat, hatSlot);
+            _hat = Instantiate(newHat, _hatSlot);
 
             // Change hat to have the player's layer (due to dither shader)
             UpdateAllRenderers();
@@ -117,31 +119,31 @@ namespace Player
 
         public void SetLookDirectionOption(PhysicsBasedCharacterController.LookDirectionOptions option)
         {
-            physicsBasedCharacterController._characterLookDirection = option;
+            _physicsBasedCharacterController._characterLookDirection = option;
         }
 
         public void KnockbackEffects(int _)
         {
             AudioManager.Instance.Play("Punch");
-            StartCoroutine(FlashMaterial(flashMaterial));
+            StartCoroutine(FlashMaterial(_flashMaterial));
             StartCoroutine(FlashRendererSize(1.2f));
-            CinemachineShake.Instance.ShakeCamera(20f, flashDuration);
+            CinemachineShake.Instance.ShakeCamera(20f, FLASH_DURATION);
         }
 
         private IEnumerator FlashRendererSize(float size)
         {
-            renderers.transform.localScale = Vector3.one * size;
+            _renderers.transform.localScale = Vector3.one * size;
 
-            yield return new WaitForSeconds(flashDuration);
+            yield return new WaitForSeconds(FLASH_DURATION);
 
-            renderers.transform.localScale = Vector3.one;
+            _renderers.transform.localScale = Vector3.one;
         }
 
         private IEnumerator FlashMaterial(Material material)
         {
             ChangeMaterials(material);
 
-            yield return new WaitForSeconds(flashDuration);
+            yield return new WaitForSeconds(FLASH_DURATION);
 
             RestoreDefaultMaterials();
         }
@@ -149,33 +151,33 @@ namespace Player
         public void EnableParticleSystem()
         {
             ParticleSystem.EmissionModule emission;
-            emission = dustParticleSystem.emission; // Stores the module in a local variable
+            emission = _dustParticleSystem.emission; // Stores the module in a local variable
             emission.enabled = true; // Applies the new value directly to the Particle System
         }
 
         public void DisableParticleSystem()
         {
             ParticleSystem.EmissionModule emission;
-            emission = dustParticleSystem.emission; // Stores the module in a local variable
+            emission = _dustParticleSystem.emission; // Stores the module in a local variable
             emission.enabled = false; // Applies the new value directly to the Particle System
         }
 
         public void AdjustRideHeight(float rideHeight)
         {
-            physicsBasedCharacterController._rideHeight = rideHeight;
+            _physicsBasedCharacterController._rideHeight = rideHeight;
         }
 
         private void UpdateAllRenderers()
         {
             _allRenderers.Clear();
-            _allRenderers.Add(renderers);
+            _allRenderers.Add(_renderers);
             int layerMask =~ LayerMask.GetMask("Projectile");
-            UnityUtils.GetAllChildren(renderers.transform, ref _allRenderers, layerMask);
+            UnityUtils.GetAllChildren(_renderers.transform, ref _allRenderers, layerMask);
         }
 
         public void EnableDitherMode()
         {
-            ChangeMaterials(ditherMaterial);
+            ChangeMaterials(_ditherMaterial);
         }
 
         public void RestoreDefaultMaterials()
@@ -190,7 +192,7 @@ namespace Player
                     continue;
                 }
 
-                transform.GetComponent<Renderer>().material = materialStorage.defaultMaterial;
+                transform.GetComponent<Renderer>().material = materialStorage.DefaultMaterial;
             }
         }
 
@@ -219,20 +221,6 @@ namespace Player
             }
         }
 
-        public void UpdatePlayerState(PlayerState playerState)
-        {
-            state = playerState;
-            switch (playerState)
-            {
-                case PlayerState.Moving:
-                    physicsBasedCharacterController._characterLookDirection = PhysicsBasedCharacterController.LookDirectionOptions.Velocity;
-                    break;
-                case PlayerState.Aiming:
-                    break;
-            }
-            OnPlayerStateChanged?.Invoke(state);
-        }
-
         public void EditPlayerSettings(string name, GameObject hat)
         {
             if (name == "")
@@ -248,7 +236,7 @@ namespace Player
         public void PackPlayerSettings()
         {
             _playerSettings.name = name;
-            _playerSettings.hat = hat.GetComponent<Hat>().HatSettings;
+            _playerSettings.hat = _hat.GetComponent<Hat>().HatSettings;
         }
 
         private void UnpackPlayerSettings()
@@ -275,11 +263,5 @@ namespace Player
                 Destroy(_follower.gameObject);
             }
         }
-    }
-
-    public enum PlayerState
-    {
-        Moving,
-        Aiming
     }
 }

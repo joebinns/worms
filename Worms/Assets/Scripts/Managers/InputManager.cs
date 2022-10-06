@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
     public static void SwapWeapon(int index)
     {
         // Change weapon rack item, change hotbar icon and update ammunition
-        PlayerManager.Instance.currentPlayer.GetComponent<Player.Player>().weaponRack.ChangeItem(index);
+        PlayerManager.Instance.CurrentPlayer.GetComponent<Player.Player>().WeaponRack.ChangeItem(index);
         UIManager.SwitchActiveHotbar(index);
         if (index == 0)
         {
@@ -69,13 +69,13 @@ public class InputManager : MonoBehaviour
 
     public void MoveInputAction(InputAction.CallbackContext context)
     {
-        PlayerManager.Instance.currentPlayer.GetComponent<PhysicsBasedCharacterController>().MoveInputAction(context);
+        PlayerManager.Instance.CurrentPlayer.GetComponent<PhysicsBasedCharacterController>().MoveInputAction(context);
 
     }
 
     public void JumpInputAction(InputAction.CallbackContext context)
     {
-        PlayerManager.Instance.currentPlayer.GetComponent<PhysicsBasedCharacterController>().JumpInputAction(context);
+        PlayerManager.Instance.CurrentPlayer.GetComponent<PhysicsBasedCharacterController>().JumpInputAction(context);
     }
 
     public void AttackInputAction(InputAction.CallbackContext context)
@@ -85,7 +85,7 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        PlayerManager.Instance.currentPlayer.GetComponent<Player.Player>().Attack();
+        PlayerManager.Instance.CurrentPlayer.GetComponent<Player.Player>().Attack();
         UIManager.RefreshAmmunition();
     }
 

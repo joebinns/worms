@@ -31,25 +31,25 @@ namespace Player
 
         private void OnEnable()
         {
-            PlayerManager.Instance.OnPlayerChanged += ChangePlayerSelection;
+            PlayerManager.Instance.OnCurrentPlayerChanged += ChangeCurrentPlayerSelection;
             LoadingScreen.Instance.OnTransitionedToLoadingScreen += BehindTheCurtain;
         }
 
         private void OnDisable()
         {
-            PlayerManager.Instance.OnPlayerChanged -= ChangePlayerSelection;
+            PlayerManager.Instance.OnCurrentPlayerChanged -= ChangeCurrentPlayerSelection;
             LoadingScreen.Instance.OnTransitionedToLoadingScreen -= BehindTheCurtain;
         }
 
         private void Start()
         {
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
             _previousPlayer = currentPlayer;
             // Update name placeholder text
             ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
         }
     
-        private void ChangePlayerSelection(global::Player.Player player)
+        private void ChangeCurrentPlayerSelection(global::Player.Player player)
         {
             AdjustScales(player);
             AdjustRideHeights(player);
@@ -86,11 +86,11 @@ namespace Player
     
         public void NextPlayer()
         {
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
             if (currentPlayer.id < 3)
             {
                 // Activate players hat
-                currentPlayer.hatSlot.gameObject.SetActive(true);
+                currentPlayer.Hat.gameObject.SetActive(true);
 
                 // Change to next Player
                 ChangePlayer(currentPlayer.id + 1);
@@ -106,7 +106,7 @@ namespace Player
         {
             AudioManager.Instance.Play("Click Primary");
 
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
         
             // Save edits to Player
             currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem);
@@ -129,24 +129,24 @@ namespace Player
 
             // Restore saved edits
             _nameInput.text = currentPlayer.name;
-            _hatRack.ChangeItem(currentPlayer.hat.GetComponent<Hat>().id);
+            _hatRack.ChangeItem(currentPlayer.Hat.GetComponent<Hat>().id);
 
             return currentPlayer;
         }
 
         public void PreviousPlayer()
         {
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
             if (currentPlayer.id > 0)
             {
                 // Deactivate latest players hat
-                currentPlayer.hatSlot.gameObject.SetActive(false);
+                currentPlayer.Hat.gameObject.SetActive(false);
 
                 // Change to previous player
                 currentPlayer = ChangePlayer(currentPlayer.id - 1);
 
                 // Deactivate previous players hat
-                currentPlayer.hatSlot.gameObject.SetActive(false);
+                currentPlayer.Hat.gameObject.SetActive(false);
 
             }
             else
@@ -159,7 +159,7 @@ namespace Player
         {
             AudioManager.Instance.Play("Click Secondary");
 
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
             AdjustScale(currentPlayer, false);
 
             LoadingScreen.Instance.TransitionToLoadingScreen();
@@ -167,7 +167,7 @@ namespace Player
 
         private void BehindTheCurtain()
         {
-            var currentPlayer = PlayerManager.Instance.currentPlayer;
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
         
             // Save Edits to final Player
             currentPlayer.EditPlayerSettings(_nameInput.text, _hatRack.CurrentItem);
@@ -175,7 +175,7 @@ namespace Player
             PlayerManager.Instance.FinaliseNumberOfPlayers(currentPlayer.id + 1);
 
             // For each remaining player...
-            foreach (global::Player.Player player in PlayerManager.Instance.players)
+            foreach (global::Player.Player player in PlayerManager.Instance.Players)
             {
                 player.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
                 player.SetLookDirectionOption(PhysicsBasedCharacterController.LookDirectionOptions.Velocity);

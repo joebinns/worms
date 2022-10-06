@@ -15,15 +15,15 @@ namespace Items.Weapons
             ResetProjectile();
         }
     
+        // Make the weapon's renderer visible
         private void ShowWeapon()
         {
-            // Make the weapon's renderer visible
             _renderer.SetActive(true);
         }
     
+        // Make the weapon's renderer invisible
         private void HideWeapon()
-        {
-            // Make the weapon's renderer invisible
+        {   
             _renderer.SetActive(false);
         }
 
