@@ -81,9 +81,9 @@ MonoBehaviour:
     _pitch: 1.25
     _loop: 0
     Source: {fileID: 0}
-  - _name: Click Secondary
-    _clip: {fileID: 8300000, guid: e3902e59eee5760478198f7e4cdf3464, type: 3}
-    _volume: 1
-    _pitch: 1.25
+  - _name: Death
+    _clip: {fileID: 8300000, guid: 5f438355fc5cb92468823d059c96e4af, type: 3}
+    _volume: 0.5
+    _pitch: 1
     _loop: 0
     Source: {fileID: 0}
