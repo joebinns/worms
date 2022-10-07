@@ -29,7 +29,13 @@ namespace Players
         {
             PlayerManager.Instance.OnCurrentPlayerChanged -= DisplayEffects;
         }
-    
+
+        private void Start()
+        {
+            var currentPlayer = PlayerManager.Instance.CurrentPlayer;
+            _previousPlayer = currentPlayer;
+        }
+
         private void DisplayEffects(Player player)
         {
             AdjustScales(player);
@@ -65,6 +71,9 @@ namespace Players
             player.RestoreDefaultMaterials();
         }
 
+        // I tried to seperate this function into it's own utilities file (see Easing.EasedLerp), as similar variations
+        // in a few places. However, I can't see how I could  get the IEnumerator to return a (i.e. float size) on every
+        // loop, which the caller would pick up on. 
         private IEnumerator EasedLerpScale(Transform transform, bool shouldEnlarge)
         {
             var t = 0f;
@@ -73,9 +82,14 @@ namespace Players
             {
                 easedT = EasingUtils.Back.Out(t);
                 var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
-                transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
+                
+                /*transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
                 t += Time.deltaTime;
-                yield return null;
+                yield return null;*/
+                
+                transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
+                yield return new WaitForFixedUpdate(); // Surely this is poor practise.
+                t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
             }
         }
     }

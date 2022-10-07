@@ -39,7 +39,7 @@ namespace Players
         [SerializeField] private Transform _renderers;
         [SerializeField] private GameObject _hat;
         public GameObject Hat => _hat;
-        [SerializeField] private Transform _hatSlot;
+        public Transform HatSlot;
         [SerializeField] private ItemRack _weaponRack;
         public ItemRack WeaponRack => _weaponRack;
         [SerializeField] private Material _ditherMaterial;
@@ -113,7 +113,7 @@ namespace Players
             {
                 Destroy(_hat);
             }
-            _hat = Instantiate(newHat, _hatSlot);
+            _hat = Instantiate(newHat, HatSlot);
 
             // Change hat to have the player's layer (due to dither shader)
             UpdateAllRenderers();

@@ -5357,7 +5357,7 @@ MonoBehaviour:
   _playerSettings: {fileID: 0}
   _renderers: {fileID: 5502202852554818354}
   _hat: {fileID: 5144090459030191183}
-  _hatSlot: {fileID: 6492892573529083841}
+  HatSlot: {fileID: 6492892573529083841}
   _weaponRack: {fileID: 2546887323538763949}
   _ditherMaterial: {fileID: 0}
   _flashMaterial: {fileID: 2100000, guid: 75ea7265fe161f74f806643b9c0116c8, type: 2}
