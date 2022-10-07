@@ -37,6 +37,22 @@ namespace Cameras
             _animator = GetComponent<Animator>();
             _aiming = FindObjectOfType<Aiming>();
         }
+        
+        private void OnEnable()
+        {
+            PlayerManager.OnLastPlayerStanding += DisableCameraManager;
+        }
+
+        private void OnDisable()
+        {
+            PlayerManager.OnLastPlayerStanding -= DisableCameraManager;
+        }
+
+        // To avoid missing references after the last player is deleted
+        private void DisableCameraManager()
+        {
+            gameObject.SetActive(false);
+        }
     
         void Start()
         {
