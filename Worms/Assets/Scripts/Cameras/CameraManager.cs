@@ -37,23 +37,7 @@ namespace Cameras
             _animator = GetComponent<Animator>();
             _aiming = FindObjectOfType<Aiming>();
         }
-        
-        private void OnEnable()
-        {
-            PlayerManager.OnLastPlayerStanding += DisableCameraManager;
-        }
 
-        private void OnDisable()
-        {
-            PlayerManager.OnLastPlayerStanding -= DisableCameraManager;
-        }
-
-        // To avoid missing references after the last player is deleted
-        private void DisableCameraManager()
-        {
-            gameObject.SetActive(false);
-        }
-    
         void Start()
         {
             CursorMode.DisableCursor();
@@ -68,11 +52,15 @@ namespace Cameras
             switch (_state)
             {
                 case CameraState.FollowCamera:
+                    if (_animator == null) { return; }
+
                     _animator.Play("Follow Camera"); // Switch state driven camera to use Follow Camera
                     _followCameraZoom.ResetZoom();
                     _aiming.enabled = false;
                     break;
                 case CameraState.AimCamera:
+                    if (_animator == null) { return; }
+                    
                     _animator.Play("Aim Camera"); // Switch state driven camera to use Aim Camera
                     _aiming.enabled = true;
                     break;
