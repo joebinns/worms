@@ -1,8 +1,24 @@
 # 3D Worms-like
 
-I have learnt a lot from this project! Although my code is far from perfect, it’s the first time I’ve ever built so many different systems into a single project. It’s been my first time using Events, Singletons, Getters and Setters, Scriptable Objects and a proper attempt at adhering to the C# naming convention. With so many new prinnciples on the table, I have now come to realise that I have overly relied on Singletons. Whilst I haven’t run into any practical problems with Singletons yet, I am aware of their dangers and will be a little more precautious in the future. Going ahead, I expect that spending more time to plan out my code structure will help me to minimise dependencies and alleviate my reliance on dependencies. I am aiming for a VG, but not too bothered!
+## Controls
+### Menus
+Navigate menus using <kbd>Mouse</kbd> and <kbd>Keyboard</kbd>.
+
+### Game
+Toggle between *movement mode* and *aiming mode*, using <kbd>Right Click</kbd>.
+
+#### Movement mode
+Whilst in *movement mode*, use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> and <kbd>Space</kbd> to move and jump.  
+Zoom in using <kbd>Scroll Wheel</kbd>.
+
+### Aiming mode
+Whilst in *aiming mode*, press <kbd>1</kbd> or <kbd>2</kbd> to switch between equipping your baseball bat and basketball.  
+Use <kbd>Mouse</kbd> to aim and, with a weapon equipped, <kbd>Left Click</kbd> to fire.  
+Toggle zoom using <kbd>Left Shift</kbd>.
 
 ## Features
+I have learnt a lot from this project! Although my code is far from perfect, it’s the first time I’ve ever built so many different systems into a single project. It’s been my first time using Events, Singletons, Getters and Setters, Scriptable Objects and a proper attempt at adhering to the C# naming convention. With so many new prinnciples on the table, I have now come to realise that I have overly relied on Singletons. Whilst I haven’t run into any practical problems with Singletons yet, I am aware of their dangers and will be a little more precautious in the future. Going ahead, I expect that spending more time to plan out my code structure will help me to minimise dependencies and alleviate my reliance on dependencies. I am aiming for a VG, but not too bothered!
+
 ### General
 - [x] (G) Only play scene is required
 - [x] (VG, small) Add main menu (start) scene and game over scene
@@ -45,22 +61,6 @@ I use cinemachine, with a variety of scripts each serving unique purposes: [*Wor
 - [x] (VG, medium) The two types of weapons/attacks must function differently, I.E a pistol and a hand grenade. The player can switch between the different weapons and using the active weapon on for example left mouse button
 
 I implemented a melee baseball bat and a projectile basketball for weapons. I am proud of my item system, which embraces scriptable objects and inheritance to implement both hats and weapons. I then implemented both hat selection and weapon selection through [*Worms/Assets/Scripts/Items/ItemRack.cs*](https://github.com/joebinns/worms/tree/main/Worms/Assets/Scripts/Items).
-
-## Controls
-### Menus
-Navigate menus using <kbd>Mouse</kbd> and <kbd>Keyboard</kbd>.
-
-### Game
-Toggle between *movement mode* and *aiming mode*, using <kbd>Right Click</kbd>.
-
-#### Movement mode
-Whilst in *movement mode*, use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> and <kbd>Space</kbd> to move and jump.  
-Zoom in using <kbd>Scroll Wheel</kbd>.
-
-### Aiming mode
-Whilst in *aiming mode*, press <kbd>1</kbd> or <kbd>2</kbd> to switch between equipping your baseball bat and basketball.  
-Use <kbd>Mouse</kbd> to aim and, with a weapon equipped, <kbd>Left Click</kbd> to fire.  
-Toggle zoom using <kbd>Left Shift</kbd>.
 
 ## Development Log
 ### Week 2
