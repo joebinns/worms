@@ -17,7 +17,7 @@ namespace Items.Weapons
             
             // Deal damage to the player hit, and determine the appropriate knockback force to apply
             var knockback = collision.collider.GetComponent<Knockback>();
-            knockback.ApplyKnockback(Damage, collisionContact.normal, collisionContact.point);
+            knockback.ApplyKnockback(Damage, -collisionContact.normal, collisionContact.point);
         }
     }
 }

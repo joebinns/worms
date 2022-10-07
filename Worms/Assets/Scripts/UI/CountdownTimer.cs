@@ -12,7 +12,7 @@ namespace UI
 
         #region Constants
         private const float MAX_TIME = 31f;
-        private const float FLASH_MULTIPLIER = 0.175f;
+        private const float FLASH_MULTIPLIER = 0.1f;
         #endregion
 
         #region Events
@@ -30,10 +30,10 @@ namespace UI
             {
                 _timer -= Time.deltaTime;
                 _text.text = ((int)_timer).ToString();
-                if (_timer <= 5f)
+                if (_timer <= 10f)
                 {
                     var rate = (MAX_TIME - _timer);
-                    var alpha = (Mathf.Pow(rate, 2f) * FLASH_MULTIPLIER) % 1f;
+                    var alpha = (Mathf.Pow(rate, 1.5f) * FLASH_MULTIPLIER) % 1f;
                     _text.alpha = alpha;
                 }
             }

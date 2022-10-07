@@ -89,7 +89,7 @@ MonoBehaviour:
     Source: {fileID: 0}
   - _name: Error
     _clip: {fileID: 8300000, guid: 910d674ca8ea94f4cab6aebb3ca4203d, type: 3}
-    _volume: 0.2
+    _volume: 1
     _pitch: 1
     _loop: 0
     Source: {fileID: 0}

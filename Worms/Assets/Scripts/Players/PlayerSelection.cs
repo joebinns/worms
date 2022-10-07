@@ -91,6 +91,12 @@ namespace Players
                 AudioManager.Instance.Play("Error");
             }
         }
+        
+        public void Back()
+        {
+            AudioManager.Instance.Play("Click Secondary");
+            LoadingScreen.Instance.ChangeSceneImpatient(SceneIndices.MAIN_MENU);
+        }
 
         public void FinaliseSelection()
         {
