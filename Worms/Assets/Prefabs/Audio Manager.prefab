@@ -45,45 +45,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
-  - name: Walking
-    clip: {fileID: 8300000, guid: 1c34f2806566970499f6c715b85471b0, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Jump
-    clip: {fileID: 8300000, guid: 4072b7dea04de3e4489356dab17d2a54, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Land
-    clip: {fileID: 8300000, guid: 0f359266d2a8f0147bc19899ef4a1a5f, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Celebration
-    clip: {fileID: 8300000, guid: 83c8c345d90368340ab7f39ad588d8b9, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Punch
-    clip: {fileID: 8300000, guid: 28b7b11f02adb794283c03a44b86b68b, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Click Primary
-    clip: {fileID: 8300000, guid: 0b97c9229c125104e9fff7ecf128db9f, type: 3}
-    volume: 1
-    pitch: 0.9
-    loop: 0
-    source: {fileID: 0}
-  - name: Click Secondary
-    clip: {fileID: 8300000, guid: e3902e59eee5760478198f7e4cdf3464, type: 3}
-    volume: 1
-    pitch: 1.25
-    loop: 0
-    source: {fileID: 0}
+  - _name: Jump
+    _clip: {fileID: 8300000, guid: 4072b7dea04de3e4489356dab17d2a54, type: 3}
+    _volume: 0.7
+    _pitch: 1
+    _loop: 0
+    Source: {fileID: 0}
+  - _name: Walking
+    _clip: {fileID: 8300000, guid: 1c34f2806566970499f6c715b85471b0, type: 3}
+    _volume: 1
+    _pitch: 1
+    _loop: 1
+    Source: {fileID: 0}
+  - _name: Land
+    _clip: {fileID: 8300000, guid: 0f359266d2a8f0147bc19899ef4a1a5f, type: 3}
+    _volume: 0.7
+    _pitch: 0
+    _loop: 0
+    Source: {fileID: 0}
+  - _name: Celebration
+    _clip: {fileID: 8300000, guid: 83c8c345d90368340ab7f39ad588d8b9, type: 3}
+    _volume: 0.7
+    _pitch: 1.25
+    _loop: 0
+    Source: {fileID: 0}
+  - _name: Punch
+    _clip: {fileID: 8300000, guid: 28b7b11f02adb794283c03a44b86b68b, type: 3}
+    _volume: 1
+    _pitch: 1.25
+    _loop: 0
+    Source: {fileID: 0}
+  - _name: Click Primary
+    _clip: {fileID: 8300000, guid: 0b97c9229c125104e9fff7ecf128db9f, type: 3}
+    _volume: 0.5
+    _pitch: 0.9
+    _loop: 0
+    Source: {fileID: 0}
+  - _name: Click Secondary
+    _clip: {fileID: 8300000, guid: e3902e59eee5760478198f7e4cdf3464, type: 3}
+    _volume: 1
+    _pitch: 1.25
+    _loop: 0
+    Source: {fileID: 0}
