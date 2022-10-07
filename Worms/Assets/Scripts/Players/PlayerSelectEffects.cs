@@ -30,7 +30,7 @@ namespace Players
             PlayerManager.Instance.OnCurrentPlayerChanged -= DisplayEffects;
         }
     
-        private void DisplayEffects(global::Players.Player player)
+        private void DisplayEffects(Player player)
         {
             AdjustScales(player);
             AdjustRideHeights(player);
@@ -39,24 +39,24 @@ namespace Players
             _previousPlayer = player;
         }
     
-        private void AdjustScales(global::Players.Player player)
+        private void AdjustScales(Player player)
         {
             AdjustScale(_previousPlayer, false);
             AdjustScale(player, true);
         }
 
-        private void AdjustScale(global::Players.Player player, bool shouldEnlarge)
+        private void AdjustScale(Player player, bool shouldEnlarge)
         {
             StartCoroutine(EasedLerpScale(player.transform, shouldEnlarge));
         }
 
-        private void AdjustRideHeights(global::Players.Player player)
+        private void AdjustRideHeights(Player player)
         {
             _previousPlayer.AdjustRideHeight(DEFAULT_RIDE_HEIGHT);
             player.AdjustRideHeight(UPPER_RIDE_HEIGHT);
         }
 
-        private void AdjustMaterials(global::Players.Player player)
+        private void AdjustMaterials(Player player)
         {
             if (_previousPlayer.id > player.id) // If selection moves to fewer players...
             {

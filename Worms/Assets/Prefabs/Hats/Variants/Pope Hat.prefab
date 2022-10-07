@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: defaultMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 4e2e62403aa0f5243886eef96d249872, type: 2}
+    - target: {fileID: 520601248372712697, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
+      propertyPath: _defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e2e62403aa0f5243886eef96d249872, type: 2}
     - target: {fileID: 765047196851787867, guid: b0b33b78916e8ef4ea8c5205c960432e, type: 3}
       propertyPath: hatSettings
       value: 

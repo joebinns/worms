@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 11247903}
   - component: {fileID: 11247902}
   - component: {fileID: 11247901}
-  - component: {fileID: 11247905}
   - component: {fileID: 11247900}
   m_Layer: 0
   m_Name: Main Camera
@@ -279,18 +278,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!114 &11247905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11247899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909212266de3b6445a88845378a3939b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &30209799
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7276764443248859406, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_Name
-      value: ConfettiCelebration (1)
+      value: Confetti Celebration Left
       objectReference: {fileID: 0}
     - target: {fileID: 7276764443775147242, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_LocalScale.x
@@ -790,6 +777,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7210980118885864402, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e739079ee7e32d047b88b5d9e5b44cb3, type: 3}
 --- !u!1 &300490339
@@ -949,6 +940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4484677156353062342, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6998102512539828083, guid: 10d26f7a95d056c47a08e64114fe6c4f, type: 3}
       propertyPath: m_Name
       value: Player Variant Pink
@@ -1448,6 +1443,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5414284888280672451, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0faedf3b49c1e4f4d90a211abfda3778, type: 3}
 --- !u!1 &1168076378
@@ -1727,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7276764443248859406, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_Name
-      value: ConfettiCelebration
+      value: Confetti Celebration Right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
@@ -1983,7 +1982,7 @@ GameObject:
   - component: {fileID: 1891087826}
   - component: {fileID: 1891087825}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: Transporer Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2052,6 +2051,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 805576817011922972, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354368298373859981, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2804762657269508331, guid: 4637ffb178d0277419d8abf6dcf10b1c, type: 3}

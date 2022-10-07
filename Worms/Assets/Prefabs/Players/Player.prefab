@@ -48,7 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a272118021cce6d42b788caa14bba91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
+  Items:
+  - {fileID: 8357185788804053638}
+  - {fileID: 2836825139723002784}
+  - {fileID: 8247627573373737139}
   CurrentItem: {fileID: 8357185788804053638}
   _spawnEffect: {fileID: 4845814821238458527}
 --- !u!114 &4845814821238458527
@@ -5354,7 +5357,7 @@ MonoBehaviour:
   _playerSettings: {fileID: 0}
   _renderers: {fileID: 5502202852554818354}
   _hat: {fileID: 5144090459030191183}
-  _hatSlot: {fileID: 6755483020088446501}
+  _hatSlot: {fileID: 6492892573529083841}
   _weaponRack: {fileID: 2546887323538763949}
   _ditherMaterial: {fileID: 0}
   _flashMaterial: {fileID: 2100000, guid: 75ea7265fe161f74f806643b9c0116c8, type: 2}
@@ -5667,6 +5670,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultMaterial: {fileID: 2100000, guid: 51a14f5cf17ac6a4f82fef5b66b68721, type: 2}
+--- !u!1 &8247627573373737139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7103056407376101900, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
+  m_PrefabInstance: {fileID: 1217755031225211583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9041383913215376122 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7899075683664371781, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
@@ -5915,6 +5923,11 @@ PrefabInstance:
 --- !u!4 &765350739014521687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7401972638000108968, guid: 111ac607eeb547549a65a624611ea879, type: 3}
+  m_PrefabInstance: {fileID: 7792921241909937919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2836825139723002784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5438213079050823007, guid: 111ac607eeb547549a65a624611ea879, type: 3}
   m_PrefabInstance: {fileID: 7792921241909937919}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4095159663165724924 stripped
