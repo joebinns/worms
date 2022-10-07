@@ -93,3 +93,9 @@ MonoBehaviour:
     _pitch: 1
     _loop: 0
     Source: {fileID: 0}
+  - _name: Music
+    _clip: {fileID: 8300000, guid: 699464f76968d8844af32503f27e88b2, type: 3}
+    _volume: 0.25
+    _pitch: 1
+    _loop: 1
+    Source: {fileID: 0}
