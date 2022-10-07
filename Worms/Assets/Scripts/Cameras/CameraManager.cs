@@ -20,7 +20,7 @@ namespace Cameras
         private CameraState _state;
 
         #region Events
-        public event Action<CameraState> OnCameraStateChanged;
+        public static event Action<CameraState> OnCameraStateChanged;
         #endregion
 
         private void Awake()

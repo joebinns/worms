@@ -20,9 +20,9 @@ namespace Players
         #endregion
 
         #region Events
-        public event Action<Player> OnCurrentPlayerChanged;
-        public event Action<Player> OnPlayerRemoved;
-        public event Action OnLastPlayerStanding;
+        public static event Action<Player> OnCurrentPlayerChanged;
+        public static event Action<Player> OnPlayerRemoved;
+        public static event Action OnLastPlayerStanding;
         #endregion
 
         private void Awake()

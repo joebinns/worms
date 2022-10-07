@@ -16,12 +16,12 @@ namespace Cameras
 
         private void OnEnable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged += SetFocus;
+            PlayerManager.OnCurrentPlayerChanged += SetFocus;
         }
 
         private void OnDisable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged -= SetFocus;
+            PlayerManager.OnCurrentPlayerChanged -= SetFocus;
         }
 
         private void Start()

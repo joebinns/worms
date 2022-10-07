@@ -26,14 +26,17 @@ namespace UI
 
         private void OnEnable()
         {
-            CameraManager.Instance.OnCameraStateChanged += ChangeVisibility;
+            CameraManager.OnCameraStateChanged += ChangeVisibility;
             _player.GetComponent<Knockback>().OnKnockbackChanged += ChangeKnockback;
         }
 
         private void OnDisable()
         {
-            CameraManager.Instance.OnCameraStateChanged -= ChangeVisibility;
-            _player.GetComponent<Knockback>().OnKnockbackChanged -= ChangeKnockback;
+            CameraManager.OnCameraStateChanged -= ChangeVisibility;
+            if (_player != null)
+            {
+                _player.GetComponent<Knockback>().OnKnockbackChanged -= ChangeKnockback;
+            }
         }
     
         public void ChangeName(string name)
@@ -53,10 +56,7 @@ namespace UI
 
         private void ChangeVisibility(CameraState cameraState)
         {
-            if (PlayerManager.Instance.CurrentPlayer != _player)
-            {
-                return;
-            }
+            if (PlayerManager.Instance.CurrentPlayer != _player) { return; }
         
             if (cameraState == CameraState.AimCamera)
             {

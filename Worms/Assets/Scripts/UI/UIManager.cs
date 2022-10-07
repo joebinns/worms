@@ -40,21 +40,23 @@ namespace UI
 
         private void OnEnable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged += SwitchActivePortrait;
-            PlayerManager.Instance.OnPlayerRemoved += DisablePortrait;
-            PlayerManager.Instance.OnLastPlayerStanding += NextScene;
-            CameraManager.Instance.OnCameraStateChanged += ChangeHUDMode;
+            PlayerManager.OnCurrentPlayerChanged += SwitchActivePortrait;
+            PlayerManager.OnCurrentPlayerChanged += ResetTurnTimer;
+            PlayerManager.OnPlayerRemoved += DisablePortrait;
+            PlayerManager.OnLastPlayerStanding += NextScene;
+            CameraManager.OnCameraStateChanged += ChangeHUDMode;
         }
 
-        private void OnDisable()
+            private void OnDisable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged -= SwitchActivePortrait;
-            PlayerManager.Instance.OnPlayerRemoved -= DisablePortrait;
-            PlayerManager.Instance.OnLastPlayerStanding -= NextScene;
-            CameraManager.Instance.OnCameraStateChanged -= ChangeHUDMode;
+            PlayerManager.OnCurrentPlayerChanged -= SwitchActivePortrait;
+            PlayerManager.OnCurrentPlayerChanged -= ResetTurnTimer;
+            PlayerManager.OnPlayerRemoved -= DisablePortrait;
+            PlayerManager.OnLastPlayerStanding -= NextScene;
+            CameraManager.OnCameraStateChanged -= ChangeHUDMode;
         }
-        
-        private void Start()
+
+            private void Start()
         {
             HideHotbar();
         }
@@ -114,16 +116,25 @@ namespace UI
         {
             _ammunition.RefreshDisplay();
         }
+        
+        public void ResetTurnTimer(Player player)
+        {
+            _turnTimer.ResetTimer();
+        }
 
         public void HideHotbar()
         {
-            _hotbar.gameObject.SetActive(false);
+            // NOTE: disabling the hotbar game object can cause problems due to the order of execution of HideHotbar()
+            // being inconsistent
+            //_hotbar.gameObject.SetActive(false);
+            _hotbar.GetComponent<CanvasGroup>().alpha = 0;
             HideAmmunition();
         }
 
         public void ShowHotbar()
         {
-            _hotbar.gameObject.SetActive(true);
+            //_hotbar.gameObject.SetActive(true);
+            _hotbar.GetComponent<CanvasGroup>().alpha = 1;
         }
 
         public void HideAmmunition()

@@ -10,7 +10,8 @@ namespace Items.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer != CommonLayerMasks.Players) return;
+            // Do nothing if the collision game object's layer indicates that it not a player
+            if (CommonLayerMasks.Players != (CommonLayerMasks.Players | (1 << collision.gameObject.layer))) { return; }
             
             var collisionContact = collision.GetContact(0);
             

@@ -34,12 +34,12 @@ namespace Inputs
 
         private void OnEnable()
         {
-            CameraManager.Instance.OnCameraStateChanged += ChangeControlState;
+            CameraManager.OnCameraStateChanged += ChangeControlState;
         }
 
         private void OnDisable()
         {
-            CameraManager.Instance.OnCameraStateChanged -= ChangeControlState;
+            CameraManager.OnCameraStateChanged -= ChangeControlState;
         }
 
         private void ChangeControlState(CameraState state)

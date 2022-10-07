@@ -14,8 +14,8 @@ namespace UI
         [SerializeField] Color _activeColor = Color.white;
         [SerializeField] protected List<Image> _images;
         
-        private Image _activeImage;
-
+        [SerializeField] private Image _activeImage;
+        
         #region Constants
         private const float TRANSITION_TIME = 1f;
         #endregion
@@ -49,7 +49,8 @@ namespace UI
                 var size = (shouldEnlarge ? _minImageSize : _maxImageSize) + easedT * (_maxImageSize - _minImageSize) * (shouldEnlarge ? 1 : -1);
                 image.sizeDelta = Vector2.one * size;
                 t += Time.deltaTime;
-                yield return null;
+                //yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
     }

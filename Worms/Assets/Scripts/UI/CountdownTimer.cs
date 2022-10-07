@@ -10,8 +10,10 @@ namespace UI
         private bool _isPlaying = true;
         private float _timer;
 
+        #region Constants
         private const float MAX_TIME = 16f;
         private const float FLASH_MULTIPLIER = 0.175f;
+        #endregion
 
         #region Events
         public static event Action OnCountedDown;
@@ -49,6 +51,5 @@ namespace UI
             _timer = MAX_TIME;
             _text.alpha = 1f;
         }
-
     }
 }

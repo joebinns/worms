@@ -22,12 +22,12 @@ namespace Players
         
         void OnEnable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged += DisplayEffects;
+            PlayerManager.OnCurrentPlayerChanged += DisplayEffects;
         }
     
         void OnDisable()
         {
-            PlayerManager.Instance.OnCurrentPlayerChanged -= DisplayEffects;
+            PlayerManager.OnCurrentPlayerChanged -= DisplayEffects;
         }
 
         private void Start()
