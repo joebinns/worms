@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Viking Helmet Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 2
-  name: Viking Helmet
-  prefab: {fileID: 7346147674135843937, guid: 0fccb20cb4e569549b035ffe18c262e3, type: 3}
+  _id: 2
+  _name: Viking Helmet
+  _prefab: {fileID: 7346147674135843937, guid: 0fccb20cb4e569549b035ffe18c262e3, type: 3}

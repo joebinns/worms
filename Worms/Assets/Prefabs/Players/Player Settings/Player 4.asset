@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659166dcb9a47e4480ce0a8f298985e, type: 3}
   m_Name: Player 4
   m_EditorClassIdentifier: 
-  baseId: 3
-  baseName: 
-  baseSuggestedName: Player 4
-  baseHat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
-  baseShouldSpawn: 1
+  _id: 3
+  _suggestedName: Player 4
+  _defaultName: 
+  _defaultHat: {fileID: 11400000, guid: 5e02dcc8c6f26ce42a0e54a5af3eca5e, type: 2}
+  _defaultShouldSpawn: 1

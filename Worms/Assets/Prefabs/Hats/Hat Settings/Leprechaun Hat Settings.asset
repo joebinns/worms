@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Leprechaun Hat Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 4
-  name: Leprechaun Hat
-  prefab: {fileID: 9160613413492105984, guid: f5109332c54a51840bf9804e9ada8c50, type: 3}
+  _id: 4
+  _name: Leprechaun Hat
+  _prefab: {fileID: 9160613413492105984, guid: f5109332c54a51840bf9804e9ada8c50, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Pope Hat Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 6
-  name: Pope Hat
-  prefab: {fileID: 1174918875830678905, guid: a853ad646ae0d774c9f27c6dacb1a45b, type: 3}
+  _id: 5
+  _name: Pope Hat
+  _prefab: {fileID: 1174918875830678905, guid: a853ad646ae0d774c9f27c6dacb1a45b, type: 3}

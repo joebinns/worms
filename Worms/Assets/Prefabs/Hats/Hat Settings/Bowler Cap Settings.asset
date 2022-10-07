@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Bowler Cap Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 1
-  name: Bowler Cap
-  prefab: {fileID: 1952102030661571546, guid: fbdc4c1d7857dcd48983436d3b639e03, type: 3}
+  _id: 1
+  _name: Bowler Cap
+  _prefab: {fileID: 1952102030661571546, guid: fbdc4c1d7857dcd48983436d3b639e03, type: 3}

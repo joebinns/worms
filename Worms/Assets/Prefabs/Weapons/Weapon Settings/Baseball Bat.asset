@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d6d1734a9807c4b9ba2c8f7274b78e, type: 3}
   m_Name: Baseball Bat
   m_EditorClassIdentifier: 
-  id: 1
-  name: Baseball Bat
-  prefab: {fileID: 5438213079050823007, guid: 111ac607eeb547549a65a624611ea879, type: 3}
-  damage: 20
-  maxAmmunition: 2
-  range: 8.5
+  _id: 1
+  _name: Baseball Bat
+  _prefab: {fileID: 5438213079050823007, guid: 111ac607eeb547549a65a624611ea879, type: 3}
+  _damage: 20
+  _maxAmmunition: 2
+  _range: 8

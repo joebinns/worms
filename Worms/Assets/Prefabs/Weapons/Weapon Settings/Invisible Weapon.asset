@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec3d196c9fa81447a8f9767882034f5, type: 3}
   m_Name: Invisible Weapon
   m_EditorClassIdentifier: 
-  id: 0
-  name: Invisible Weapon
-  prefab: {fileID: 5198508109083197414, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
-  damage: 0
-  projectileSpeed: 0
+  _id: 0
+  _name: Invisible Weapon
+  _prefab: {fileID: 5198508109083197414, guid: 75f0cf0daaa2df3478810d4227d4481f, type: 3}
+  _damage: 0
+  _maxAmmunition: 0
+  _range: 0
+  _projectileSpeed: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Invisible Hat Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 0
-  name: Invisible Hat
-  prefab: {fileID: 2696246847144132998, guid: 193db90aceedada418234dfe55fb1cdb, type: 3}
+  _id: 0
+  _name: Invisible Hat
+  _prefab: {fileID: 2696246847144132998, guid: 193db90aceedada418234dfe55fb1cdb, type: 3}

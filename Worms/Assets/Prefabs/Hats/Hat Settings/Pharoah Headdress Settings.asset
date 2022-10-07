@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276fe022f0e868d42acd94aa6671fa18, type: 3}
   m_Name: Pharoah Headdress Settings
   m_EditorClassIdentifier: Assembly-CSharp::HatSettings
-  id: 5
-  name: Pharoah Headdress
-  prefab: {fileID: 1545421101783787332, guid: fce0353a757a97248b9a5365dfd4cac1, type: 3}
+  _id: 6
+  _name: Pharoah Headdress
+  _prefab: {fileID: 1545421101783787332, guid: fce0353a757a97248b9a5365dfd4cac1, type: 3}

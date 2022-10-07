@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec3d196c9fa81447a8f9767882034f5, type: 3}
   m_Name: Basketball
   m_EditorClassIdentifier: 
-  id: 2
-  name: Basketball
-  prefab: {fileID: 7103056407376101900, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
-  damage: 5
-  maxAmmunition: 1
-  ProjectileSpeed: 52
-  ApproxShotRange: 125
+  _id: 2
+  _name: Basketball
+  _prefab: {fileID: 7103056407376101900, guid: b4c298d73bc3952458e20bcff037d04a, type: 3}
+  _damage: 10
+  _maxAmmunition: 1
+  _range: 125
+  _projectileSpeed: 52
