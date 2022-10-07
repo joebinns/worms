@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace Inputs
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : MonoBehaviour // Disable this when changing scenes?
     {
         #region Singleton
         public static InputManager Instance;
@@ -35,11 +35,19 @@ namespace Inputs
         private void OnEnable()
         {
             CameraManager.OnCameraStateChanged += ChangeControlState;
+            PlayerManager.OnLastPlayerStanding += DisableInputs;
         }
 
         private void OnDisable()
         {
             CameraManager.OnCameraStateChanged -= ChangeControlState;
+            PlayerManager.OnLastPlayerStanding -= DisableInputs;
+        }
+
+        // To avoid missing references after the last player is deleted
+        private void DisableInputs()
+        {
+            gameObject.SetActive(false);
         }
 
         private void ChangeControlState(CameraState state)
@@ -106,7 +114,6 @@ namespace Inputs
         public void MoveInputAction(InputAction.CallbackContext context)
         {
             PlayerManager.Instance.CurrentPlayer.GetComponent<PhysicsBasedCharacterController>().MoveInputAction(context);
-
         }
 
         public void JumpInputAction(InputAction.CallbackContext context)

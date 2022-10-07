@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2110825677049757483}
   - component: {fileID: 8066361158223283507}
   - component: {fileID: 1019653681709286764}
-  - component: {fileID: 8841986451958211076}
+  - component: {fileID: 2828893898966964335}
   m_Layer: 5
   m_Name: Name Plate
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba6b6d6b0a8e954c95f4a78bb45cc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8841986451958211076
+--- !u!114 &2828893898966964335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
