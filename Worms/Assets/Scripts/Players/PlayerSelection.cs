@@ -83,7 +83,8 @@ namespace Players
             if (currentPlayer.id > 0)
             {
                 // Deactivate latest players hat
-                currentPlayer.HatSlot.gameObject.SetActive(false); // hatSlot instead?
+                // TODO: For some reason, currentPlayer.Hat.gameObject.SetActive() isn't working, so I've made HatSlot public and used it instead.
+                currentPlayer.HatSlot.gameObject.SetActive(false); 
 
                 // Change to previous player
                 currentPlayer = ChangePlayer(currentPlayer.id - 1);

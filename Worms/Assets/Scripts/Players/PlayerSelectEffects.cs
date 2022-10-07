@@ -83,13 +83,10 @@ namespace Players
                 easedT = EasingUtils.Back.Out(t);
                 var size = (shouldEnlarge ? DEFAULT_PLAYER_SIZE : MAX_PLAYER_SIZE) + easedT * (MAX_PLAYER_SIZE - DEFAULT_PLAYER_SIZE) * (shouldEnlarge ? 1 : -1);
                 
-                /*transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
-                t += Time.deltaTime;
-                yield return null;*/
-                
                 transform.GetComponent<SquashAndStretch>().LocalEquilibriumScale = Vector3.one * size;
-                yield return new WaitForFixedUpdate(); // Surely this is poor practise.
-                t += Time.deltaTime; // Is this the correct deltaTime for a IEnumerator?
+                t += Time.deltaTime;
+                //yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
     }
