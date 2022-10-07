@@ -53,6 +53,7 @@ namespace Players
         #endregion
         
         #region UI
+        [Header("UI")]
         [SerializeField] private Sprite _portrait;
         public Sprite Portrait => _portrait;
         [SerializeField] private Sprite _deadPortrait;
@@ -64,6 +65,7 @@ namespace Players
         #endregion
 
         #region Controller
+        [Header("Controller")]
         [SerializeField] private PhysicsBasedCharacterController _physicsBasedCharacterController;
         #endregion
 

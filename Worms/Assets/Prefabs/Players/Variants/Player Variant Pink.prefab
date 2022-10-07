@@ -84,11 +84,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 154bada8a2f33f3418acbd6586ad76c6, type: 3}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: _portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 154bada8a2f33f3418acbd6586ad76c6, type: 3}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: playerName
       value: Player Pink
       objectReference: {fileID: 0}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: deadPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ee164142a244304983a7f7a8da0c43b, type: 3}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: _deadPortrait
       value: 
       objectReference: {fileID: 21300000, guid: 3ee164142a244304983a7f7a8da0c43b, type: 3}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
@@ -100,11 +108,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ab801e055a0038648b7e2fab174e2817, type: 2}
     - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: _ditherMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b9bcfeec16f46b4bb5353465bc683e5, type: 2}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: _playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ab801e055a0038648b7e2fab174e2817, type: 2}
+    - target: {fileID: 5502202853488462712, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: jumpsuitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
     - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
       propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
+    - target: {fileID: 6769903898225873924, guid: cc949d419aa56f848a1906bcca721029, type: 3}
+      propertyPath: _defaultMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 3b777192552f1d6419e2460ed6e4c596, type: 2}
     m_RemovedComponents: []

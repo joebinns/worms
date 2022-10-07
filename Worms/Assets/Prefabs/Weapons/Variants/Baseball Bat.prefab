@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77a91275ed5c8b4aac994477e35877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  itemSettings: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
-  currentAmmunition: 0
+  _itemSettings: {fileID: 11400000, guid: d52d25deb17f8a642be5952b29abad82, type: 2}
+  CurrentAmmunition: 0
   _animator: {fileID: 4614481451868537491}

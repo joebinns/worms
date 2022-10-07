@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b017aa4a82aef534f9f5d187a7b4f225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  Damage: 0
 --- !u!1001 &1288323363331910991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,11 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8675a6eb37afe1f419223e0e7a13e463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  itemSettings: {fileID: 11400000, guid: 83dd014d67bf6794e81a7d1f0ef4d33e, type: 2}
-  currentAmmunition: 0
-  renderer: {fileID: 6318071981479691450}
-  projectile: {fileID: 4492062079734121561}
+  _itemSettings: {fileID: 11400000, guid: 83dd014d67bf6794e81a7d1f0ef4d33e, type: 2}
+  CurrentAmmunition: 0
+  _renderer: {fileID: 6318071981479691450}
+  _projectile: {fileID: 4492062079734121561}
 --- !u!1 &6318071981479691450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5066346978364762613, guid: 75248a1f6b2c2214782f8665f2dddea8, type: 3}

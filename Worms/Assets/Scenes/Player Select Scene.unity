@@ -745,12 +745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55889caa204119e4489c21f15e0a15ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystems: []
-  _activatedGameObject: {fileID: 381200060}
+  _particleSystems: []
   _startPos: {x: 0, y: -1, z: 0}
   _endPos: {x: 0, y: 0, z: 0}
   _endScale: {x: 1, y: 1, z: 1}
-  isPlaying: 0
 --- !u!1 &407277225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,7 +1886,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -2389,8 +2387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c15b2103ad08f748a0d65763279d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerFollowPosition: {fileID: 1325685962}
-  AimCamera: {fileID: 0}
+  _playerFollowPosition: {fileID: 1325685962}
+  _aimCamera: {fileID: 0}
 --- !u!114 &1699533099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2403,8 +2401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2f200d51622d143970be43f744f881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _virtualCameras: []
-  _noiseSettings: []
+  _virtualCameras:
+  - {fileID: 1699533096}
+  _noiseSettings:
+  - {fileID: 11400000, guid: 297ccd10be5d75945a67f48f0bee9dca, type: 2}
 --- !u!1001 &1733135767
 PrefabInstance:
   m_ObjectHideFlags: 0

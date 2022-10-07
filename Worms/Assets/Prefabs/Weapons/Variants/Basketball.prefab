@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b017aa4a82aef534f9f5d187a7b4f225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  Damage: 0
 --- !u!1 &7899075683664371781
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,9 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8675a6eb37afe1f419223e0e7a13e463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  itemSettings: {fileID: 11400000, guid: c5edd08602c94df41bf3f9782faf6aef, type: 2}
-  currentAmmunition: 0
+  _itemSettings: {fileID: 11400000, guid: c5edd08602c94df41bf3f9782faf6aef, type: 2}
+  CurrentAmmunition: 0
   _renderer: {fileID: 9014415625365305680}
   _projectile: {fileID: 1780147597566245928}
 --- !u!1 &9014415625365305680 stripped
