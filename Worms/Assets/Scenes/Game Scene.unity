@@ -2312,7 +2312,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55394
+  m_Name: pb_Mesh152326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9513,7 +9513,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55458
+  m_Name: pb_Mesh152390
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29010,6 +29010,7 @@ GameObject:
   - component: {fileID: 3772657465848145706}
   - component: {fileID: 3772657465848145707}
   - component: {fileID: 3772657465848145709}
+  - component: {fileID: 3772657465848145710}
   m_Layer: 0
   m_Name: Follow Camera
   m_TagString: Untagged
@@ -29032,6 +29033,36 @@ MonoBehaviour:
   _defaultZoom: 20
   _zoomRange: {x: 4.5, y: 30}
   _zoomSensitivity: 1.5
+--- !u!114 &3772657465848145710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772657465848145708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 8
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.5
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0.15
+  m_CameraRadius: 0.5
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0.1
+  m_Damping: 1
+  m_DampingWhenOccluded: 1
+  m_OptimalTargetDistance: 0
 --- !u!114 &3772657466424711707
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -29227,7 +29258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5937168074597417350}
   m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 2.2474482, y: 16.375002, z: -22.247448}
+  m_LocalPosition: {x: 2.247448, y: 16.375002, z: -22.247448}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
