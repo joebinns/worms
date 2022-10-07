@@ -46,6 +46,22 @@ I use cinemachine, with a variety of scripts each serving unique purposes: [*Wor
 
 I implemented a melee baseball bat and a projectile basketball for weapons. I am proud of my item system, which embraces scriptable objects and inheritance to implement both hats and weapons. I then implemented both hat selection and weapon selection through [*Worms/Assets/Scripts/Items/ItemRack.cs*](https://github.com/joebinns/worms/tree/main/Worms/Assets/Scripts/Items).
 
+## Controls
+### Menus
+Navigate menus using <kbd>Mouse</kbd> and <kbd>Keyboard</kbd>.
+
+### Game
+Toggle between *movement mode* and *aiming mode*, using <kbd>Right Click</kbd>.
+
+#### Movement mode
+Whilst in *movement mode*, use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> and <kbd>Space</kbd> to move and jump.  
+Zoom in using <kbd>Scroll Wheel</kbd>.
+
+### Aiming mode
+Whilst in *aiming mode*, press <kbd>1</kbd> or <kbd>2</kbd> to switch between equipping your baseball bat and basketball.  
+Use <kbd>Mouse</kbd> to aim and, with a weapon equipped, <kbd>Left Click</kbd> to fire.  
+Toggle zoom using <kbd>Left Shift</kbd>.
+
 ## Development Log
 ### Week 2
 "So weapons are still in the pipeline... BUT HATS AREN'T!
