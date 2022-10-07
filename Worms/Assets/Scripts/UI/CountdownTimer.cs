@@ -11,7 +11,7 @@ namespace UI
         private float _timer;
 
         #region Constants
-        private const float MAX_TIME = 21f;
+        private const float MAX_TIME = 31f;
         private const float FLASH_MULTIPLIER = 0.175f;
         #endregion
 

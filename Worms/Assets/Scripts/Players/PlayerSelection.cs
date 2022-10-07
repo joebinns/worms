@@ -37,11 +37,11 @@ namespace Players
 
                 // Change to next Player
                 ChangePlayer(currentPlayer.id + 1);
-
             }
             else
             {
                 CinemachineShake.Instance.InvalidInputPresetShake();
+                AudioManager.Instance.Play("Error");
             }
         }
 
@@ -56,16 +56,9 @@ namespace Players
         
             // Change to next Player
             currentPlayer = PlayerManager.Instance.SetCurrentPlayer(id);
-            if (id == 0)
-            {
-                // Disable Let's Go! button
-                _finaliseSelectionButton.gameObject.SetActive(false);
-            }
-            else
-            {
-                // Enable Let's Go! button
-                _finaliseSelectionButton.gameObject.SetActive(true);
-            }
+            
+            // Enable / Disable Let's Go! button
+            _finaliseSelectionButton.gameObject.SetActive(id != 0);
 
             // Update name placeholder text
             ((TextMeshProUGUI)_nameInput.placeholder).text = currentPlayer.suggestedName;
@@ -91,11 +84,11 @@ namespace Players
 
                 // Deactivate previous players hat
                 currentPlayer.HatSlot.gameObject.SetActive(false);
-
             }
             else
             {
                 CinemachineShake.Instance.InvalidInputPresetShake();
+                AudioManager.Instance.Play("Error");
             }
         }
 

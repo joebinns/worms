@@ -17,4 +17,4 @@ MonoBehaviour:
   _prefab: {fileID: 5438213079050823007, guid: 111ac607eeb547549a65a624611ea879, type: 3}
   _damage: 20
   _maxAmmunition: 2
-  _range: 8
+  _range: 8.5

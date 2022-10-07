@@ -1,3 +1,4 @@
+using Audio;
 using Cameras;
 using UnityEngine;
 using Utilities;
@@ -44,6 +45,7 @@ namespace Items.Weapons
             if (CurrentAmmunition <= 0)
             {
                 CinemachineShake.Instance.InvalidInputPresetShake();
+                AudioManager.Instance.Play("Error");
                 return;
             }
 
