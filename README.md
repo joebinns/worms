@@ -62,6 +62,17 @@ I use cinemachine, with a variety of scripts each serving unique purposes: [*Wor
 
 I implemented a melee baseball bat and a projectile basketball for weapons. I am proud of my item system, which embraces scriptable objects and inheritance to implement both hats and weapons. I then implemented both hat selection and weapon selection through [*Worms/Assets/Scripts/Items/ItemRack.cs*](https://github.com/joebinns/worms/tree/main/Worms/Assets/Scripts/Items).
 
+## Credits
+### Sound Effects
+The sound effects and audio were kindly created and arranged by [Clara Summerton](mailto:clarasummerton@gmail.com).
+
+### Models
+[Hats](https://sketchfab.com/microsoft/models) are from Microsoft, licensed under [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/).  
+[Sports Equipment](https://skfb.ly/osyyY) are from Alberto Luviano, licensed under [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/).
+
+### All else
+Is [my own](https://joebinns.com/).
+
 ## Development Log
 ### Week 2
 "So weapons are still in the pipeline... BUT HATS AREN'T!
@@ -72,3 +83,5 @@ Here's my second week's progress for a 'Worms 3D' inspired assignment at Futureg
 "Here's my first week's progress for a 'Worms 3D' inspired assignment at Futuregames. Now to make some weapons ;)"
 
 [<img alt="3D Worms-like: Week 1 Progress" width="503" src="https://joebinns.com/documents/gifs/worms_1.gif" />](https://youtu.be/cWKQxPpcWVM)
+
+
