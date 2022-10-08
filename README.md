@@ -74,9 +74,13 @@ The sound effects and audio were kindly created and arranged by [Clara Summerton
 Is [my own](https://joebinns.com/).
 
 ## Development Log
+### Week 3
+"It's a wrap! Here's my 3rd and 4th week's final progress for a 'Worms 3D' inspired assignment at Futuregames."
+
+[<img alt="3D Worms-like: Week 2 Progress" width="503" src="https://joebinns.com/documents/gifs/worms_3.gif" />](https://youtu.be/LG2dpw9yy_M)
+
 ### Week 2
-"So weapons are still in the pipeline... BUT HATS AREN'T!
-Here's my second week's progress for a 'Worms 3D' inspired assignment at Futuregames."
+"So weapons are still in the pipeline... BUT HATS AREN'T! Here's my second week's progress for a 'Worms 3D' inspired assignment at Futuregames."
 
 [<img alt="3D Worms-like: Week 2 Progress" width="503" src="https://joebinns.com/documents/gifs/worms_2.gif" />](https://youtu.be/goXkOxxxBmk)
 ### Week 1
