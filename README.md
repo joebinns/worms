@@ -1,4 +1,7 @@
 # 3D Worms-like
+An assignment based on **Worms (3D)**, made for Futuregames course "Game Programming with C#".
+
+Before you read on, get a hands on feel for the project over at [itch.io](https://joebinns.itch.io/3d-worms-like).
 
 ## Controls
 ### Menus
