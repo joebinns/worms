@@ -9,7 +9,7 @@ namespace UI
         private void Start()
         {
             Cameras.CursorMode.EnableCursor();
-            AudioManager.Instance.PlayDelayed("Celebration", 0.5f);
+            AudioManager.Instance.PlayDelayed("Celebration", 0.25f);
         }
 
         public void ReturnToMainMenu()

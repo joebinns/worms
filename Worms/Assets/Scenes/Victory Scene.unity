@@ -498,6 +498,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 234986538}
     m_Modifications:
+    - target: {fileID: 7276764443248859404, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7276764443248859405, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -553,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 7276764443248859406, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_Name
       value: Confetti Celebration Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276764443775147240, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7276764443775147242, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_LocalScale.x
@@ -2218,6 +2226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 234986538}
     m_Modifications:
+    - target: {fileID: 7276764443248859404, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7276764443248859405, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2273,6 +2285,10 @@ PrefabInstance:
     - target: {fileID: 7276764443248859406, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
       propertyPath: m_Name
       value: Confetti Celebration Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276764443775147240, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22f0f72a1703374298bb00719a42e15, type: 3}
