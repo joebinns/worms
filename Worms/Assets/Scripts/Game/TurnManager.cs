@@ -24,15 +24,24 @@ namespace Game
                 Destroy(this);
             }
         }
+
+        private int _currentPlayerIndex = 0;
         
         private void OnEnable()
         {
             CountdownTimer.OnCountedDown += NextTurn;
+            PlayerManager.OnCurrentPlayerChanged += RefreshPlayerIndex;
         }
 
         private void OnDisable()
         {
             CountdownTimer.OnCountedDown -= NextTurn;
+            PlayerManager.OnCurrentPlayerChanged -= RefreshPlayerIndex;
+        }
+
+        private void RefreshPlayerIndex(Player player)
+        {
+            _currentPlayerIndex = PlayerManager.Instance.IdToIndex(player.id);
         }
 
         private void ChangeTurn(int playerIndex)
@@ -50,10 +59,18 @@ namespace Game
             }
         }
 
+        
         public void NextTurn()
         {
-            var currentIndex = PlayerManager.Instance.IdToIndex(PlayerManager.Instance.CurrentPlayer.id);
-            var nextIndex = (currentIndex + 1) % PlayerManager.Instance.NumPlayers;
+            int nextIndex;
+            if (PlayerManager.Instance.IdToIndex(PlayerManager.Instance.CurrentPlayer.id) == -1) // current player died
+            {
+                nextIndex = _currentPlayerIndex % PlayerManager.Instance.NumPlayers;
+            }
+            else
+            {
+                nextIndex = (_currentPlayerIndex + 1) % PlayerManager.Instance.NumPlayers;
+            }
             ChangeTurn(nextIndex);
         }
     

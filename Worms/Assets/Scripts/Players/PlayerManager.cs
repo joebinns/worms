@@ -95,7 +95,7 @@ namespace Players
 
             player.shouldSpawn = false;
 
-            OnPlayerRemoved?.Invoke(player); // Disable portrait
+            OnPlayerRemoved?.Invoke(player);
 
             Players.Remove(player); // Remove player from list
             Destroy(player.gameObject); // Destroy player game object
