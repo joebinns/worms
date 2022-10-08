@@ -27,6 +27,7 @@ namespace Players
 
         private void SpawnPlayers()
         {
+            var numPlayers = 0;
             var players = new List<Player>(PlayerManager.Instance.Players);
             foreach (Player player in players)
             {
@@ -35,10 +36,14 @@ namespace Players
                     PlayerManager.Instance.DeletePlayer(player);
                     continue;
                 }
+
+                numPlayers++;
                 var spawnPoint = GetRandomSpawnPoint();
                 // Position the player to the randomly selected spawnPoint
                 player.transform.position = spawnPoint.transform.position;
             }
+
+            PlayerManager.Instance.SelectedNumPlayers = numPlayers;
             OnPlayersSpawned?.Invoke();
         }
 

@@ -17,6 +17,7 @@ namespace Players
         public int NumPlayers => Players.Count;
         public Player CurrentPlayer { get; private set; }
         private const int MAX_PLAYERS = 4;
+        public int SelectedNumPlayers;
         #endregion
 
         #region Events
@@ -99,7 +100,7 @@ namespace Players
 
             Players.Remove(player); // Remove player from list
             Destroy(player.gameObject); // Destroy player game object
-
+            
             if (player == CurrentPlayer)
             {
                 TurnManager.Instance.NextTurn();
