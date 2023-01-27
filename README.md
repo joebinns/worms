@@ -20,7 +20,7 @@ Use <kbd>Mouse</kbd> to aim and, with a weapon equipped, <kbd>Left Click</kbd> t
 Toggle zoom using <kbd>Left Shift</kbd>.
 
 ## Features
-I have learnt a lot from this project! Although my code is far from perfect, it’s the first time I’ve ever built so many different systems into a single project. It’s been my first time using Events, Singletons, Getters and Setters, Scriptable Objects and a proper attempt at adhering to the C# naming convention. With so many new prinnciples on the table, I have now come to realise that I have overly relied on Singletons. Whilst I haven’t run into any practical problems with Singletons yet, I am aware of their dangers and will be a little more precautious in the future. Going ahead, I expect that spending more time to plan out my code structure will help me to minimise dependencies and alleviate my reliance on dependencies. I am aiming for a VG, but not too bothered!
+I have learnt a lot from this project! Although my code is far from perfect, it’s the first time I’ve ever built so many different systems into a single project. It’s been my first time using Events, Singletons, Getters and Setters, Scriptable Objects and a proper attempt at adhering to the C# naming convention. With so many new principles on the table, I have now come to realise that I have overly relied on Singletons. Whilst I haven’t run into any practical problems with Singletons yet, I am aware of their dangers and will be a little more precautious in the future. Going ahead, I expect that spending more time to plan out my code structure will help me to minimise dependencies and alleviate my reliance on dependencies. I am aiming for a VG, but not too bothered!
 
 ### General
 - [x] (G) Only play scene is required
