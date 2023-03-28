@@ -50,7 +50,7 @@ I used ProBuilder, and made certain terrain react dynamically to the player usin
 - [ ] (VG, small) A worm can only move a certain range 
 - [ ] (VG, medium) A player controls a team of (multiple worms)
 
-The physics based character controller, [stylised-character-controller](https://github.com/joebinns/stylised-character-controller), is my own previous work. I was unfortunately unable to bring it up to the new standards of this project. However, since it is currently a digital jungle of if-statemen, I will be working on cleaning it up in whenever I find some time. See my player-centric scripts at [*Worms/Assets/Scripts/Players/*](https://github.com/joebinns/worms/tree/main/Worms/Assets/Scripts/Players/), starting with the Player Manager.
+The physics based character controller, [stylised-character-controller](https://github.com/joebinns/stylised-character-controller), is my own previous work. I was unfortunately unable to bring it up to the new standards of this project. However, since it is currently a digital jungle of if-statements, I will be working on cleaning it up in whenever I find some time. See my player-centric scripts at [*Worms/Assets/Scripts/Players/*](https://github.com/joebinns/worms/tree/main/Worms/Assets/Scripts/Players/), starting with the Player Manager.
 
 ### Camera
 - [x] (G) Focus camera on active player
